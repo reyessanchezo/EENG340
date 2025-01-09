@@ -1,0 +1,2516 @@
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.fpu fpv4-sp-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"IDAC7_1.c"
+  17              		.text
+  18              	.Ltext0:
+  19              		.cfi_sections	.debug_frame
+  20              		.section	.text.IDAC7_1_Enable,"ax",%progbits
+  21              		.align	2
+  22              		.global	IDAC7_1_Enable
+  23              		.thumb
+  24              		.thumb_func
+  25              		.type	IDAC7_1_Enable, %function
+  26              	IDAC7_1_Enable:
+  27              	.LFB133:
+  28              		.file 1 "Generated_Source\\PSoC6\\IDAC7_1.c"
+   1:Generated_Source\PSoC6/IDAC7_1.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC6/IDAC7_1.c **** * \file IDAC7_1.c
+   3:Generated_Source\PSoC6/IDAC7_1.c **** * \version 1.0
+   4:Generated_Source\PSoC6/IDAC7_1.c **** *
+   5:Generated_Source\PSoC6/IDAC7_1.c **** * \brief
+   6:Generated_Source\PSoC6/IDAC7_1.c **** *  This file provides the source code of APIs for the IDAC7 component.
+   7:Generated_Source\PSoC6/IDAC7_1.c **** *
+   8:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************
+   9:Generated_Source\PSoC6/IDAC7_1.c **** * \copyright
+  10:Generated_Source\PSoC6/IDAC7_1.c **** * Copyright 2017, Cypress Semiconductor Corporation.  All rights reserved.
+  11:Generated_Source\PSoC6/IDAC7_1.c **** * You may use this file only in accordance with the license, terms, conditions,
+  12:Generated_Source\PSoC6/IDAC7_1.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  13:Generated_Source\PSoC6/IDAC7_1.c **** * the software package with which this file was provided.
+  14:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+  15:Generated_Source\PSoC6/IDAC7_1.c **** 
+  16:Generated_Source\PSoC6/IDAC7_1.c **** #include "IDAC7_1.h"
+  17:Generated_Source\PSoC6/IDAC7_1.c **** 
+  18:Generated_Source\PSoC6/IDAC7_1.c **** uint32_t IDAC7_1_initVar = 0u;
+  19:Generated_Source\PSoC6/IDAC7_1.c **** 
+  20:Generated_Source\PSoC6/IDAC7_1.c **** 
+  21:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+  22:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_Init
+  23:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+  24:Generated_Source\PSoC6/IDAC7_1.c **** *
+  25:Generated_Source\PSoC6/IDAC7_1.c **** *  Initializes all initial parameters and operating modes.
+  26:Generated_Source\PSoC6/IDAC7_1.c **** *
+  27:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+  28:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_Init(void)
+  29:Generated_Source\PSoC6/IDAC7_1.c **** {
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 2
+
+
+  30:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t interruptState;
+  31:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t newRegisterValue;
+  32:Generated_Source\PSoC6/IDAC7_1.c **** 
+  33:Generated_Source\PSoC6/IDAC7_1.c ****     /* Set IDAC default values */
+  34:Generated_Source\PSoC6/IDAC7_1.c ****     interruptState = CyEnterCriticalSection();
+  35:Generated_Source\PSoC6/IDAC7_1.c **** 
+  36:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue = (uint32_t)IDAC7_1_IDAC_CONTROL_REG;
+  37:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue &= (uint32_t)(~IDAC7_1_POLY_DYN  &
+  38:Generated_Source\PSoC6/IDAC7_1.c ****                                  ~IDAC7_1_LEG1_MODE_MASK &
+  39:Generated_Source\PSoC6/IDAC7_1.c ****                                  ~IDAC7_1_LEG2_MODE_MASK &
+  40:Generated_Source\PSoC6/IDAC7_1.c ****                                  ~IDAC7_1_DSI_CTRL_EN);
+  41:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_IDAC_CONTROL_REG = newRegisterValue;
+  42:Generated_Source\PSoC6/IDAC7_1.c **** 
+  43:Generated_Source\PSoC6/IDAC7_1.c ****     CyExitCriticalSection(interruptState);
+  44:Generated_Source\PSoC6/IDAC7_1.c **** 
+  45:Generated_Source\PSoC6/IDAC7_1.c ****     /* Set initial configuration */
+  46:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_SetValue(IDAC7_1_CURRENT_VALUE);
+  47:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_SetPolarity(IDAC7_1_CURRENT_POLARITY);
+  48:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_SetRange(IDAC7_1_CURRENT_RANGE);
+  49:Generated_Source\PSoC6/IDAC7_1.c **** }
+  50:Generated_Source\PSoC6/IDAC7_1.c **** 
+  51:Generated_Source\PSoC6/IDAC7_1.c **** 
+  52:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+  53:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_Enable
+  54:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+  55:Generated_Source\PSoC6/IDAC7_1.c **** *
+  56:Generated_Source\PSoC6/IDAC7_1.c **** *  Enables the IDAC for operation.
+  57:Generated_Source\PSoC6/IDAC7_1.c **** *
+  58:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+  59:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_Enable(void)
+  60:Generated_Source\PSoC6/IDAC7_1.c **** {
+  29              		.loc 1 60 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  61:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t interruptState;
+  62:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t newRegisterValue;
+  63:Generated_Source\PSoC6/IDAC7_1.c **** 	
+  64:Generated_Source\PSoC6/IDAC7_1.c ****     interruptState = CyEnterCriticalSection();
+  37              		.loc 1 64 0
+  38 0002 FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+  39              	.LVL0:
+  65:Generated_Source\PSoC6/IDAC7_1.c **** 
+  66:Generated_Source\PSoC6/IDAC7_1.c ****     /* Enable CSD */
+  67:Generated_Source\PSoC6/IDAC7_1.c **** 	newRegisterValue = (uint32_t)IDAC7_1_CSD_CONTROL_REG;
+  40              		.loc 1 67 0
+  41 0006 054A     		ldr	r2, .L3
+  42 0008 1368     		ldr	r3, [r2]
+  43              	.LVL1:
+  68:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue |= (IDAC7_1_CSD_CONFIG_ENABLE | IDAC7_1_CSD_CONFIG_SENSE_EN);
+  44              		.loc 1 68 0
+  45 000a 43F00043 		orr	r3, r3, #-2147483648
+  46              	.LVL2:
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 3
+
+
+  47 000e 43F48053 		orr	r3, r3, #4096
+  48              	.LVL3:
+  69:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_CSD_CONTROL_REG = newRegisterValue;
+  49              		.loc 1 69 0
+  50 0012 1360     		str	r3, [r2]
+  70:Generated_Source\PSoC6/IDAC7_1.c **** 
+  71:Generated_Source\PSoC6/IDAC7_1.c ****     CyExitCriticalSection(interruptState);
+  51              		.loc 1 71 0
+  52 0014 C0B2     		uxtb	r0, r0
+  53              	.LVL4:
+  54 0016 FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+  55              	.LVL5:
+  56 001a 08BD     		pop	{r3, pc}
+  57              	.L4:
+  58              		.align	2
+  59              	.L3:
+  60 001c 00003640 		.word	1077280768
+  61              		.cfi_endproc
+  62              	.LFE133:
+  63              		.size	IDAC7_1_Enable, .-IDAC7_1_Enable
+  64              		.section	.text.IDAC7_1_Stop,"ax",%progbits
+  65              		.align	2
+  66              		.global	IDAC7_1_Stop
+  67              		.thumb
+  68              		.thumb_func
+  69              		.type	IDAC7_1_Stop, %function
+  70              	IDAC7_1_Stop:
+  71              	.LFB135:
+  72:Generated_Source\PSoC6/IDAC7_1.c **** }
+  73:Generated_Source\PSoC6/IDAC7_1.c **** 
+  74:Generated_Source\PSoC6/IDAC7_1.c **** 
+  75:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+  76:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_Start
+  77:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+  78:Generated_Source\PSoC6/IDAC7_1.c **** *
+  79:Generated_Source\PSoC6/IDAC7_1.c **** *  Initializes all the parameters required to setup the component as defined
+  80:Generated_Source\PSoC6/IDAC7_1.c **** *  in the customizer.
+  81:Generated_Source\PSoC6/IDAC7_1.c **** *
+  82:Generated_Source\PSoC6/IDAC7_1.c **** *  This component does not stop the CSD IP block. One possible way to turn off 
+  83:Generated_Source\PSoC6/IDAC7_1.c **** *  the entire CSD block is to use a specific define (IDAC7_1_CSD_CONFIG_ENABLE) 
+  84:Generated_Source\PSoC6/IDAC7_1.c **** *  for the m0s8csdv2 IP block control register (IDAC7_1_CSD_CONTROL_REG): 
+  85:Generated_Source\PSoC6/IDAC7_1.c **** *  IDAC7_1_CSD_CONTROL_REG &= ~IDAC7_1_CSD_CONFIG_ENABLE
+  86:Generated_Source\PSoC6/IDAC7_1.c **** *
+  87:Generated_Source\PSoC6/IDAC7_1.c **** * \globalvars
+  88:Generated_Source\PSoC6/IDAC7_1.c **** *  \ref IDAC7_1_initVar - this variable is used to indicate the initial
+  89:Generated_Source\PSoC6/IDAC7_1.c **** *  configuration of this component. The variable is initialized to zero and
+  90:Generated_Source\PSoC6/IDAC7_1.c **** *  set to 1 the first time IDAC7_1_Start() is called. This allows
+  91:Generated_Source\PSoC6/IDAC7_1.c **** *  the component initialization without re-initialization in all subsequent
+  92:Generated_Source\PSoC6/IDAC7_1.c **** *  calls to the IDAC7_1_Start() routine.
+  93:Generated_Source\PSoC6/IDAC7_1.c **** *
+  94:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+  95:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_Start(void)
+  96:Generated_Source\PSoC6/IDAC7_1.c **** {
+  97:Generated_Source\PSoC6/IDAC7_1.c ****     if(0u == IDAC7_1_initVar)
+  98:Generated_Source\PSoC6/IDAC7_1.c ****     {
+  99:Generated_Source\PSoC6/IDAC7_1.c ****         IDAC7_1_Init();
+ 100:Generated_Source\PSoC6/IDAC7_1.c ****         IDAC7_1_initVar = 1u;
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 4
+
+
+ 101:Generated_Source\PSoC6/IDAC7_1.c ****     }
+ 102:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 103:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_Enable();
+ 104:Generated_Source\PSoC6/IDAC7_1.c **** }
+ 105:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 106:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 107:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+ 108:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_Stop
+ 109:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+ 110:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 111:Generated_Source\PSoC6/IDAC7_1.c **** *  The Stop is not required.
+ 112:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 113:Generated_Source\PSoC6/IDAC7_1.c **** *  This component does not stop the CSD IP block. One possible way to turn off 
+ 114:Generated_Source\PSoC6/IDAC7_1.c **** *  the entire CSD block is to use a specific define (IDAC7_1_CSD_CONFIG_ENABLE) 
+ 115:Generated_Source\PSoC6/IDAC7_1.c **** *  for the m0s8csdv2 IP block control register (IDAC7_1_CSD_CONTROL_REG): 
+ 116:Generated_Source\PSoC6/IDAC7_1.c **** *  IDAC7_1_CSD_CONTROL_REG &= ~IDAC7_1_CSD_CONFIG_ENABLE
+ 117:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 118:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+ 119:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_Stop(void)
+ 120:Generated_Source\PSoC6/IDAC7_1.c **** {
+  72              		.loc 1 120 0
+  73              		.cfi_startproc
+  74              		@ args = 0, pretend = 0, frame = 0
+  75              		@ frame_needed = 0, uses_anonymous_args = 0
+  76              		@ link register save eliminated.
+  77 0000 7047     		bx	lr
+  78              		.cfi_endproc
+  79              	.LFE135:
+  80              		.size	IDAC7_1_Stop, .-IDAC7_1_Stop
+  81 0002 00BF     		.section	.text.IDAC7_1_SetValue,"ax",%progbits
+  82              		.align	2
+  83              		.global	IDAC7_1_SetValue
+  84              		.thumb
+  85              		.thumb_func
+  86              		.type	IDAC7_1_SetValue, %function
+  87              	IDAC7_1_SetValue:
+  88              	.LFB136:
+ 121:Generated_Source\PSoC6/IDAC7_1.c ****     /* Do nothing */
+ 122:Generated_Source\PSoC6/IDAC7_1.c **** }
+ 123:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 124:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 125:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+ 126:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_SetValue
+ 127:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+ 128:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 129:Generated_Source\PSoC6/IDAC7_1.c **** *  Sets the IDAC current to the new value.
+ 130:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 131:Generated_Source\PSoC6/IDAC7_1.c **** *  \param uint32_t current: The current value
+ 132:Generated_Source\PSoC6/IDAC7_1.c **** *  * Valid range    : [0 - 127]
+ 133:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 134:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+ 135:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_SetValue(uint32_t current)
+ 136:Generated_Source\PSoC6/IDAC7_1.c **** {
+  89              		.loc 1 136 0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 5
+
+
+  93              	.LVL6:
+  94              		.loc 1 136 0
+  95 0000 10B5     		push	{r4, lr}
+  96              		.cfi_def_cfa_offset 8
+  97              		.cfi_offset 4, -8
+  98              		.cfi_offset 14, -4
+  99 0002 0446     		mov	r4, r0
+ 137:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t interruptState;
+ 138:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t newRegisterValue;
+ 139:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 140:Generated_Source\PSoC6/IDAC7_1.c ****     interruptState = CyEnterCriticalSection();
+ 100              		.loc 1 140 0
+ 101 0004 FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+ 102              	.LVL7:
+ 141:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 142:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue = (uint32_t)IDAC7_1_IDAC_CONTROL_REG & ~IDAC7_1_CURRENT_VALUE_MASK;
+ 103              		.loc 1 142 0
+ 104 0008 064A     		ldr	r2, .L8
+ 105 000a D2F80034 		ldr	r3, [r2, #1024]
+ 106 000e 23F07F03 		bic	r3, r3, #127
+ 107              	.LVL8:
+ 143:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 144:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue |= ((current << IDAC7_1_CURRENT_VALUE_POS) & IDAC7_1_CURRENT_VALUE_MASK);
+ 108              		.loc 1 144 0
+ 109 0012 04F07F04 		and	r4, r4, #127
+ 110              	.LVL9:
+ 111 0016 1C43     		orrs	r4, r4, r3
+ 112              	.LVL10:
+ 145:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 146:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_IDAC_CONTROL_REG = newRegisterValue;
+ 113              		.loc 1 146 0
+ 114 0018 C2F80044 		str	r4, [r2, #1024]
+ 147:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 148:Generated_Source\PSoC6/IDAC7_1.c ****     CyExitCriticalSection(interruptState);
+ 115              		.loc 1 148 0
+ 116 001c C0B2     		uxtb	r0, r0
+ 117              	.LVL11:
+ 118 001e FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+ 119              	.LVL12:
+ 120 0022 10BD     		pop	{r4, pc}
+ 121              	.LVL13:
+ 122              	.L9:
+ 123              		.align	2
+ 124              	.L8:
+ 125 0024 00003640 		.word	1077280768
+ 126              		.cfi_endproc
+ 127              	.LFE136:
+ 128              		.size	IDAC7_1_SetValue, .-IDAC7_1_SetValue
+ 129              		.section	.text.IDAC7_1_SetPolarity,"ax",%progbits
+ 130              		.align	2
+ 131              		.global	IDAC7_1_SetPolarity
+ 132              		.thumb
+ 133              		.thumb_func
+ 134              		.type	IDAC7_1_SetPolarity, %function
+ 135              	IDAC7_1_SetPolarity:
+ 136              	.LFB137:
+ 149:Generated_Source\PSoC6/IDAC7_1.c **** }
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 6
+
+
+ 150:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 151:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 152:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+ 153:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_SetPolarity
+ 154:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+ 155:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 156:Generated_Source\PSoC6/IDAC7_1.c **** *  Sets polarity to either sink or source.
+ 157:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 158:Generated_Source\PSoC6/IDAC7_1.c **** *  \param uint32_t polarity: Current polarity
+ 159:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_POL_SOURCE   : Source polarity
+ 160:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_POL_SINK     : Sink polarity
+ 161:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 162:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+ 163:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_SetPolarity(uint32_t polarity)
+ 164:Generated_Source\PSoC6/IDAC7_1.c **** {
+ 137              		.loc 1 164 0
+ 138              		.cfi_startproc
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 0, uses_anonymous_args = 0
+ 141              	.LVL14:
+ 142 0000 10B5     		push	{r4, lr}
+ 143              		.cfi_def_cfa_offset 8
+ 144              		.cfi_offset 4, -8
+ 145              		.cfi_offset 14, -4
+ 146 0002 0446     		mov	r4, r0
+ 165:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t interruptState;
+ 166:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t newRegisterValue;
+ 167:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 168:Generated_Source\PSoC6/IDAC7_1.c ****     interruptState = CyEnterCriticalSection();
+ 147              		.loc 1 168 0
+ 148 0004 FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+ 149              	.LVL15:
+ 169:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 170:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue = (uint32_t)IDAC7_1_IDAC_CONTROL_REG & ~IDAC7_1_POLARITY_MASK;
+ 150              		.loc 1 170 0
+ 151 0008 074A     		ldr	r2, .L12
+ 152 000a D2F80034 		ldr	r3, [r2, #1024]
+ 153 000e 23F44073 		bic	r3, r3, #768
+ 154              	.LVL16:
+ 171:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 172:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue |= ((polarity << IDAC7_1_POLARITY_POS) & IDAC7_1_POLARITY_MASK);
+ 155              		.loc 1 172 0
+ 156 0012 2402     		lsls	r4, r4, #8
+ 157              	.LVL17:
+ 158 0014 04F44074 		and	r4, r4, #768
+ 159 0018 1C43     		orrs	r4, r4, r3
+ 160              	.LVL18:
+ 173:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 174:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_IDAC_CONTROL_REG = newRegisterValue;
+ 161              		.loc 1 174 0
+ 162 001a C2F80044 		str	r4, [r2, #1024]
+ 175:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 176:Generated_Source\PSoC6/IDAC7_1.c ****     CyExitCriticalSection(interruptState);
+ 163              		.loc 1 176 0
+ 164 001e C0B2     		uxtb	r0, r0
+ 165              	.LVL19:
+ 166 0020 FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 7
+
+
+ 167              	.LVL20:
+ 168 0024 10BD     		pop	{r4, pc}
+ 169              	.LVL21:
+ 170              	.L13:
+ 171 0026 00BF     		.align	2
+ 172              	.L12:
+ 173 0028 00003640 		.word	1077280768
+ 174              		.cfi_endproc
+ 175              	.LFE137:
+ 176              		.size	IDAC7_1_SetPolarity, .-IDAC7_1_SetPolarity
+ 177              		.section	.text.IDAC7_1_SetRange,"ax",%progbits
+ 178              		.align	2
+ 179              		.global	IDAC7_1_SetRange
+ 180              		.thumb
+ 181              		.thumb_func
+ 182              		.type	IDAC7_1_SetRange, %function
+ 183              	IDAC7_1_SetRange:
+ 184              	.LFB138:
+ 177:Generated_Source\PSoC6/IDAC7_1.c **** }
+ 178:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 179:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 180:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+ 181:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_SetRange
+ 182:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+ 183:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 184:Generated_Source\PSoC6/IDAC7_1.c **** * Sets the IDAC range to one of the six ranges.
+ 185:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 186:Generated_Source\PSoC6/IDAC7_1.c **** *  \param uint32_t range: Current range
+ 187:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_RNG_4_96UA   : 39.06 nA/bit current range
+ 188:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_RNG_9_922UA   : 78.125 nA/bit current range
+ 189:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_RNG_39_69UA   : 312.5 nA/bit current range
+ 190:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_RNG_79_38UA   : 625 nA/bit current range
+ 191:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_RNG_317_5UA  : 2.5 uA/bit current range
+ 192:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_RNG_635_0UA  : 5.0 uA/bit current range
+ 193:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 194:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+ 195:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_SetRange(uint32_t range)
+ 196:Generated_Source\PSoC6/IDAC7_1.c **** {
+ 185              		.loc 1 196 0
+ 186              		.cfi_startproc
+ 187              		@ args = 0, pretend = 0, frame = 0
+ 188              		@ frame_needed = 0, uses_anonymous_args = 0
+ 189              	.LVL22:
+ 190 0000 10B5     		push	{r4, lr}
+ 191              		.cfi_def_cfa_offset 8
+ 192              		.cfi_offset 4, -8
+ 193              		.cfi_offset 14, -4
+ 194 0002 0446     		mov	r4, r0
+ 197:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t interruptState;
+ 198:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t newRegisterValue;
+ 199:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 200:Generated_Source\PSoC6/IDAC7_1.c ****     interruptState = CyEnterCriticalSection();
+ 195              		.loc 1 200 0
+ 196 0004 FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+ 197              	.LVL23:
+ 201:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 202:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue = (uint32_t)IDAC7_1_IDAC_CONTROL_REG & (~IDAC7_1_RANGE_MASK    &
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 8
+
+
+ 198              		.loc 1 202 0
+ 199 0008 064A     		ldr	r2, .L16
+ 200 000a D2F80034 		ldr	r3, [r2, #1024]
+ 201 000e 23F07073 		bic	r3, r3, #62914560
+ 202              	.LVL24:
+ 203:Generated_Source\PSoC6/IDAC7_1.c ****                                                             ~IDAC7_1_LEG1_EN       &
+ 204:Generated_Source\PSoC6/IDAC7_1.c ****                                                             ~IDAC7_1_LEG2_EN);
+ 205:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 206:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue |= (range << IDAC7_1_RANGE_POS);
+ 203              		.loc 1 206 0
+ 204 0012 43EA8453 		orr	r3, r3, r4, lsl #22
+ 205              	.LVL25:
+ 207:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 208:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_IDAC_CONTROL_REG = newRegisterValue;
+ 206              		.loc 1 208 0
+ 207 0016 C2F80034 		str	r3, [r2, #1024]
+ 209:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 210:Generated_Source\PSoC6/IDAC7_1.c ****     CyExitCriticalSection(interruptState);
+ 208              		.loc 1 210 0
+ 209 001a C0B2     		uxtb	r0, r0
+ 210              	.LVL26:
+ 211 001c FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+ 212              	.LVL27:
+ 213 0020 10BD     		pop	{r4, pc}
+ 214              	.LVL28:
+ 215              	.L17:
+ 216 0022 00BF     		.align	2
+ 217              	.L16:
+ 218 0024 00003640 		.word	1077280768
+ 219              		.cfi_endproc
+ 220              	.LFE138:
+ 221              		.size	IDAC7_1_SetRange, .-IDAC7_1_SetRange
+ 222              		.section	.text.IDAC7_1_Init,"ax",%progbits
+ 223              		.align	2
+ 224              		.global	IDAC7_1_Init
+ 225              		.thumb
+ 226              		.thumb_func
+ 227              		.type	IDAC7_1_Init, %function
+ 228              	IDAC7_1_Init:
+ 229              	.LFB132:
+  29:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t interruptState;
+ 230              		.loc 1 29 0
+ 231              		.cfi_startproc
+ 232              		@ args = 0, pretend = 0, frame = 0
+ 233              		@ frame_needed = 0, uses_anonymous_args = 0
+ 234 0000 08B5     		push	{r3, lr}
+ 235              		.cfi_def_cfa_offset 8
+ 236              		.cfi_offset 3, -8
+ 237              		.cfi_offset 14, -4
+  34:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 238              		.loc 1 34 0
+ 239 0002 FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+ 240              	.LVL29:
+  36:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue &= (uint32_t)(~IDAC7_1_POLY_DYN  &
+ 241              		.loc 1 36 0
+ 242 0006 0B4A     		ldr	r2, .L20
+ 243 0008 D2F80034 		ldr	r3, [r2, #1024]
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 9
+
+
+ 244              	.LVL30:
+  37:Generated_Source\PSoC6/IDAC7_1.c ****                                  ~IDAC7_1_LEG1_MODE_MASK &
+ 245              		.loc 1 37 0
+ 246 000c 23F43C13 		bic	r3, r3, #3080192
+ 247              	.LVL31:
+ 248 0010 23F08003 		bic	r3, r3, #128
+ 249              	.LVL32:
+  41:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 250              		.loc 1 41 0
+ 251 0014 C2F80034 		str	r3, [r2, #1024]
+  43:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 252              		.loc 1 43 0
+ 253 0018 C0B2     		uxtb	r0, r0
+ 254              	.LVL33:
+ 255 001a FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+ 256              	.LVL34:
+  46:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_SetPolarity(IDAC7_1_CURRENT_POLARITY);
+ 257              		.loc 1 46 0
+ 258 001e 0020     		movs	r0, #0
+ 259 0020 FFF7FEFF 		bl	IDAC7_1_SetValue
+ 260              	.LVL35:
+  47:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_SetRange(IDAC7_1_CURRENT_RANGE);
+ 261              		.loc 1 47 0
+ 262 0024 0020     		movs	r0, #0
+ 263 0026 FFF7FEFF 		bl	IDAC7_1_SetPolarity
+ 264              	.LVL36:
+  48:Generated_Source\PSoC6/IDAC7_1.c **** }
+ 265              		.loc 1 48 0
+ 266 002a 0D20     		movs	r0, #13
+ 267 002c FFF7FEFF 		bl	IDAC7_1_SetRange
+ 268              	.LVL37:
+ 269 0030 08BD     		pop	{r3, pc}
+ 270              	.L21:
+ 271 0032 00BF     		.align	2
+ 272              	.L20:
+ 273 0034 00003640 		.word	1077280768
+ 274              		.cfi_endproc
+ 275              	.LFE132:
+ 276              		.size	IDAC7_1_Init, .-IDAC7_1_Init
+ 277              		.section	.text.IDAC7_1_Start,"ax",%progbits
+ 278              		.align	2
+ 279              		.global	IDAC7_1_Start
+ 280              		.thumb
+ 281              		.thumb_func
+ 282              		.type	IDAC7_1_Start, %function
+ 283              	IDAC7_1_Start:
+ 284              	.LFB134:
+  96:Generated_Source\PSoC6/IDAC7_1.c ****     if(0u == IDAC7_1_initVar)
+ 285              		.loc 1 96 0
+ 286              		.cfi_startproc
+ 287              		@ args = 0, pretend = 0, frame = 0
+ 288              		@ frame_needed = 0, uses_anonymous_args = 0
+ 289 0000 08B5     		push	{r3, lr}
+ 290              		.cfi_def_cfa_offset 8
+ 291              		.cfi_offset 3, -8
+ 292              		.cfi_offset 14, -4
+  97:Generated_Source\PSoC6/IDAC7_1.c ****     {
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 10
+
+
+ 293              		.loc 1 97 0
+ 294 0002 054B     		ldr	r3, .L25
+ 295 0004 1B68     		ldr	r3, [r3]
+ 296 0006 23B9     		cbnz	r3, .L23
+  99:Generated_Source\PSoC6/IDAC7_1.c ****         IDAC7_1_initVar = 1u;
+ 297              		.loc 1 99 0
+ 298 0008 FFF7FEFF 		bl	IDAC7_1_Init
+ 299              	.LVL38:
+ 100:Generated_Source\PSoC6/IDAC7_1.c ****     }
+ 300              		.loc 1 100 0
+ 301 000c 0122     		movs	r2, #1
+ 302 000e 024B     		ldr	r3, .L25
+ 303 0010 1A60     		str	r2, [r3]
+ 304              	.L23:
+ 103:Generated_Source\PSoC6/IDAC7_1.c **** }
+ 305              		.loc 1 103 0
+ 306 0012 FFF7FEFF 		bl	IDAC7_1_Enable
+ 307              	.LVL39:
+ 308 0016 08BD     		pop	{r3, pc}
+ 309              	.L26:
+ 310              		.align	2
+ 311              	.L25:
+ 312 0018 00000000 		.word	.LANCHOR0
+ 313              		.cfi_endproc
+ 314              	.LFE134:
+ 315              		.size	IDAC7_1_Start, .-IDAC7_1_Start
+ 316              		.global	IDAC7_1_initVar
+ 317              		.bss
+ 318              		.align	2
+ 319              		.set	.LANCHOR0,. + 0
+ 320              		.type	IDAC7_1_initVar, %object
+ 321              		.size	IDAC7_1_initVar, 4
+ 322              	IDAC7_1_initVar:
+ 323 0000 00000000 		.space	4
+ 324              		.text
+ 325              	.Letext0:
+ 326              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 327              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 328              		.file 4 "Generated_Source\\PSoC6\\pdl\\devices/psoc6/include/ip/cyip_csd.h"
+ 329              		.file 5 "Generated_Source\\PSoC6\\pdl\\devices/psoc6/include/psoc6_01_config.h"
+ 330              		.file 6 "Generated_Source\\PSoC6\\pdl\\cmsis/include/core_cm4.h"
+ 331              		.file 7 "Generated_Source\\PSoC6\\pdl\\drivers/peripheral/syslib/cy_syslib.h"
+ 332              		.section	.debug_info,"",%progbits
+ 333              	.Ldebug_info0:
+ 334 0000 56070000 		.4byte	0x756
+ 335 0004 0400     		.2byte	0x4
+ 336 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 337 000a 04       		.byte	0x4
+ 338 000b 01       		.uleb128 0x1
+ 339 000c A8000000 		.4byte	.LASF95
+ 340 0010 0C       		.byte	0xc
+ 341 0011 A1030000 		.4byte	.LASF96
+ 342 0015 5F000000 		.4byte	.LASF97
+ 343 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 344 001d 00000000 		.4byte	0
+ 345 0021 00000000 		.4byte	.Ldebug_line0
+ 346 0025 02       		.uleb128 0x2
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 11
+
+
+ 347 0026 02       		.byte	0x2
+ 348 0027 05       		.byte	0x5
+ 349 0028 37000000 		.4byte	.LASF0
+ 350 002c 02       		.uleb128 0x2
+ 351 002d 01       		.byte	0x1
+ 352 002e 06       		.byte	0x6
+ 353 002f D8010000 		.4byte	.LASF1
+ 354 0033 03       		.uleb128 0x3
+ 355 0034 5A020000 		.4byte	.LASF4
+ 356 0038 02       		.byte	0x2
+ 357 0039 1D       		.byte	0x1d
+ 358 003a 3E000000 		.4byte	0x3e
+ 359 003e 02       		.uleb128 0x2
+ 360 003f 01       		.byte	0x1
+ 361 0040 08       		.byte	0x8
+ 362 0041 A9020000 		.4byte	.LASF2
+ 363 0045 02       		.uleb128 0x2
+ 364 0046 02       		.byte	0x2
+ 365 0047 07       		.byte	0x7
+ 366 0048 78030000 		.4byte	.LASF3
+ 367 004c 03       		.uleb128 0x3
+ 368 004d 92040000 		.4byte	.LASF5
+ 369 0051 02       		.byte	0x2
+ 370 0052 3F       		.byte	0x3f
+ 371 0053 57000000 		.4byte	0x57
+ 372 0057 02       		.uleb128 0x2
+ 373 0058 04       		.byte	0x4
+ 374 0059 05       		.byte	0x5
+ 375 005a 39020000 		.4byte	.LASF6
+ 376 005e 03       		.uleb128 0x3
+ 377 005f 5B010000 		.4byte	.LASF7
+ 378 0063 02       		.byte	0x2
+ 379 0064 41       		.byte	0x41
+ 380 0065 69000000 		.4byte	0x69
+ 381 0069 02       		.uleb128 0x2
+ 382 006a 04       		.byte	0x4
+ 383 006b 07       		.byte	0x7
+ 384 006c 2E040000 		.4byte	.LASF8
+ 385 0070 02       		.uleb128 0x2
+ 386 0071 08       		.byte	0x8
+ 387 0072 05       		.byte	0x5
+ 388 0073 0C020000 		.4byte	.LASF9
+ 389 0077 02       		.uleb128 0x2
+ 390 0078 08       		.byte	0x8
+ 391 0079 07       		.byte	0x7
+ 392 007a 1A030000 		.4byte	.LASF10
+ 393 007e 04       		.uleb128 0x4
+ 394 007f 04       		.byte	0x4
+ 395 0080 05       		.byte	0x5
+ 396 0081 696E7400 		.ascii	"int\000"
+ 397 0085 02       		.uleb128 0x2
+ 398 0086 04       		.byte	0x4
+ 399 0087 07       		.byte	0x7
+ 400 0088 4C030000 		.4byte	.LASF11
+ 401 008c 03       		.uleb128 0x3
+ 402 008d C6040000 		.4byte	.LASF12
+ 403 0091 03       		.byte	0x3
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 12
+
+
+ 404 0092 18       		.byte	0x18
+ 405 0093 33000000 		.4byte	0x33
+ 406 0097 03       		.uleb128 0x3
+ 407 0098 99030000 		.4byte	.LASF13
+ 408 009c 03       		.byte	0x3
+ 409 009d 2C       		.byte	0x2c
+ 410 009e 4C000000 		.4byte	0x4c
+ 411 00a2 03       		.uleb128 0x3
+ 412 00a3 31030000 		.4byte	.LASF14
+ 413 00a7 03       		.byte	0x3
+ 414 00a8 30       		.byte	0x30
+ 415 00a9 5E000000 		.4byte	0x5e
+ 416 00ad 02       		.uleb128 0x2
+ 417 00ae 04       		.byte	0x4
+ 418 00af 07       		.byte	0x7
+ 419 00b0 4F000000 		.4byte	.LASF15
+ 420 00b4 05       		.uleb128 0x5
+ 421 00b5 A2000000 		.4byte	0xa2
+ 422 00b9 06       		.uleb128 0x6
+ 423 00ba B4000000 		.4byte	0xb4
+ 424 00be 07       		.uleb128 0x7
+ 425 00bf B9000000 		.4byte	0xb9
+ 426 00c3 CE000000 		.4byte	0xce
+ 427 00c7 08       		.uleb128 0x8
+ 428 00c8 AD000000 		.4byte	0xad
+ 429 00cc 01       		.byte	0x1
+ 430 00cd 00       		.byte	0
+ 431 00ce 07       		.uleb128 0x7
+ 432 00cf B9000000 		.4byte	0xb9
+ 433 00d3 DE000000 		.4byte	0xde
+ 434 00d7 08       		.uleb128 0x8
+ 435 00d8 AD000000 		.4byte	0xad
+ 436 00dc 06       		.byte	0x6
+ 437 00dd 00       		.byte	0
+ 438 00de 07       		.uleb128 0x7
+ 439 00df B9000000 		.4byte	0xb9
+ 440 00e3 EE000000 		.4byte	0xee
+ 441 00e7 08       		.uleb128 0x8
+ 442 00e8 AD000000 		.4byte	0xad
+ 443 00ec 0F       		.byte	0xf
+ 444 00ed 00       		.byte	0
+ 445 00ee 07       		.uleb128 0x7
+ 446 00ef B9000000 		.4byte	0xb9
+ 447 00f3 FE000000 		.4byte	0xfe
+ 448 00f7 08       		.uleb128 0x8
+ 449 00f8 AD000000 		.4byte	0xad
+ 450 00fc 3E       		.byte	0x3e
+ 451 00fd 00       		.byte	0
+ 452 00fe 07       		.uleb128 0x7
+ 453 00ff B9000000 		.4byte	0xb9
+ 454 0103 0E010000 		.4byte	0x10e
+ 455 0107 08       		.uleb128 0x8
+ 456 0108 AD000000 		.4byte	0xad
+ 457 010c 02       		.byte	0x2
+ 458 010d 00       		.byte	0
+ 459 010e 07       		.uleb128 0x7
+ 460 010f B9000000 		.4byte	0xb9
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 13
+
+
+ 461 0113 1E010000 		.4byte	0x11e
+ 462 0117 08       		.uleb128 0x8
+ 463 0118 AD000000 		.4byte	0xad
+ 464 011c 1F       		.byte	0x1f
+ 465 011d 00       		.byte	0
+ 466 011e 07       		.uleb128 0x7
+ 467 011f B9000000 		.4byte	0xb9
+ 468 0123 2E010000 		.4byte	0x12e
+ 469 0127 08       		.uleb128 0x8
+ 470 0128 AD000000 		.4byte	0xad
+ 471 012c 17       		.byte	0x17
+ 472 012d 00       		.byte	0
+ 473 012e 09       		.uleb128 0x9
+ 474 012f 0405     		.2byte	0x504
+ 475 0131 04       		.byte	0x4
+ 476 0132 21       		.byte	0x21
+ 477 0133 19040000 		.4byte	0x419
+ 478 0137 0A       		.uleb128 0xa
+ 479 0138 40050000 		.4byte	.LASF16
+ 480 013c 04       		.byte	0x4
+ 481 013d 22       		.byte	0x22
+ 482 013e B4000000 		.4byte	0xb4
+ 483 0142 00       		.byte	0
+ 484 0143 0A       		.uleb128 0xa
+ 485 0144 8D010000 		.4byte	.LASF17
+ 486 0148 04       		.byte	0x4
+ 487 0149 23       		.byte	0x23
+ 488 014a B4000000 		.4byte	0xb4
+ 489 014e 04       		.byte	0x4
+ 490 014f 0A       		.uleb128 0xa
+ 491 0150 24050000 		.4byte	.LASF18
+ 492 0154 04       		.byte	0x4
+ 493 0155 24       		.byte	0x24
+ 494 0156 2E040000 		.4byte	0x42e
+ 495 015a 08       		.byte	0x8
+ 496 015b 0A       		.uleb128 0xa
+ 497 015c 32020000 		.4byte	.LASF19
+ 498 0160 04       		.byte	0x4
+ 499 0161 25       		.byte	0x25
+ 500 0162 B9000000 		.4byte	0xb9
+ 501 0166 80       		.byte	0x80
+ 502 0167 0A       		.uleb128 0xa
+ 503 0168 3A030000 		.4byte	.LASF20
+ 504 016c 04       		.byte	0x4
+ 505 016d 26       		.byte	0x26
+ 506 016e B9000000 		.4byte	0xb9
+ 507 0172 84       		.byte	0x84
+ 508 0173 0A       		.uleb128 0xa
+ 509 0174 59030000 		.4byte	.LASF21
+ 510 0178 04       		.byte	0x4
+ 511 0179 27       		.byte	0x27
+ 512 017a B9000000 		.4byte	0xb9
+ 513 017e 88       		.byte	0x88
+ 514 017f 0A       		.uleb128 0xa
+ 515 0180 83010000 		.4byte	.LASF22
+ 516 0184 04       		.byte	0x4
+ 517 0185 28       		.byte	0x28
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 14
+
+
+ 518 0186 B9000000 		.4byte	0xb9
+ 519 018a 8C       		.byte	0x8c
+ 520 018b 0A       		.uleb128 0xa
+ 521 018c FC030000 		.4byte	.LASF23
+ 522 0190 04       		.byte	0x4
+ 523 0191 29       		.byte	0x29
+ 524 0192 38040000 		.4byte	0x438
+ 525 0196 90       		.byte	0x90
+ 526 0197 0A       		.uleb128 0xa
+ 527 0198 D4040000 		.4byte	.LASF24
+ 528 019c 04       		.byte	0x4
+ 529 019d 2A       		.byte	0x2a
+ 530 019e B9000000 		.4byte	0xb9
+ 531 01a2 D0       		.byte	0xd0
+ 532 01a3 0A       		.uleb128 0xa
+ 533 01a4 E0040000 		.4byte	.LASF25
+ 534 01a8 04       		.byte	0x4
+ 535 01a9 2B       		.byte	0x2b
+ 536 01aa B9000000 		.4byte	0xb9
+ 537 01ae D4       		.byte	0xd4
+ 538 01af 0A       		.uleb128 0xa
+ 539 01b0 06040000 		.4byte	.LASF26
+ 540 01b4 04       		.byte	0x4
+ 541 01b5 2C       		.byte	0x2c
+ 542 01b6 42040000 		.4byte	0x442
+ 543 01ba D8       		.byte	0xd8
+ 544 01bb 0A       		.uleb128 0xa
+ 545 01bc C2030000 		.4byte	.LASF27
+ 546 01c0 04       		.byte	0x4
+ 547 01c1 2D       		.byte	0x2d
+ 548 01c2 B9000000 		.4byte	0xb9
+ 549 01c6 E0       		.byte	0xe0
+ 550 01c7 0A       		.uleb128 0xa
+ 551 01c8 10040000 		.4byte	.LASF28
+ 552 01cc 04       		.byte	0x4
+ 553 01cd 2E       		.byte	0x2e
+ 554 01ce 4C040000 		.4byte	0x44c
+ 555 01d2 E4       		.byte	0xe4
+ 556 01d3 0A       		.uleb128 0xa
+ 557 01d4 32000000 		.4byte	.LASF29
+ 558 01d8 04       		.byte	0x4
+ 559 01d9 2F       		.byte	0x2f
+ 560 01da B4000000 		.4byte	0xb4
+ 561 01de F0       		.byte	0xf0
+ 562 01df 0A       		.uleb128 0xa
+ 563 01e0 F1010000 		.4byte	.LASF30
+ 564 01e4 04       		.byte	0x4
+ 565 01e5 30       		.byte	0x30
+ 566 01e6 B4000000 		.4byte	0xb4
+ 567 01ea F4       		.byte	0xf4
+ 568 01eb 0A       		.uleb128 0xa
+ 569 01ec AB010000 		.4byte	.LASF31
+ 570 01f0 04       		.byte	0x4
+ 571 01f1 31       		.byte	0x31
+ 572 01f2 B4000000 		.4byte	0xb4
+ 573 01f6 F8       		.byte	0xf8
+ 574 01f7 0A       		.uleb128 0xa
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 15
+
+
+ 575 01f8 73020000 		.4byte	.LASF32
+ 576 01fc 04       		.byte	0x4
+ 577 01fd 32       		.byte	0x32
+ 578 01fe B9000000 		.4byte	0xb9
+ 579 0202 FC       		.byte	0xfc
+ 580 0203 0B       		.uleb128 0xb
+ 581 0204 1A040000 		.4byte	.LASF33
+ 582 0208 04       		.byte	0x4
+ 583 0209 33       		.byte	0x33
+ 584 020a 56040000 		.4byte	0x456
+ 585 020e 0001     		.2byte	0x100
+ 586 0210 0B       		.uleb128 0xb
+ 587 0211 2D050000 		.4byte	.LASF34
+ 588 0215 04       		.byte	0x4
+ 589 0216 34       		.byte	0x34
+ 590 0217 B4000000 		.4byte	0xb4
+ 591 021b 8001     		.2byte	0x180
+ 592 021d 0B       		.uleb128 0xb
+ 593 021e CE040000 		.4byte	.LASF35
+ 594 0222 04       		.byte	0x4
+ 595 0223 35       		.byte	0x35
+ 596 0224 B4000000 		.4byte	0xb4
+ 597 0228 8401     		.2byte	0x184
+ 598 022a 0B       		.uleb128 0xb
+ 599 022b 58000000 		.4byte	.LASF36
+ 600 022f 04       		.byte	0x4
+ 601 0230 36       		.byte	0x36
+ 602 0231 B4000000 		.4byte	0xb4
+ 603 0235 8801     		.2byte	0x188
+ 604 0237 0B       		.uleb128 0xb
+ 605 0238 7C010000 		.4byte	.LASF37
+ 606 023c 04       		.byte	0x4
+ 607 023d 37       		.byte	0x37
+ 608 023e B4000000 		.4byte	0xb4
+ 609 0242 8C01     		.2byte	0x18c
+ 610 0244 0B       		.uleb128 0xb
+ 611 0245 24040000 		.4byte	.LASF38
+ 612 0249 04       		.byte	0x4
+ 613 024a 38       		.byte	0x38
+ 614 024b 60040000 		.4byte	0x460
+ 615 024f 9001     		.2byte	0x190
+ 616 0251 0B       		.uleb128 0xb
+ 617 0252 A1000000 		.4byte	.LASF39
+ 618 0256 04       		.byte	0x4
+ 619 0257 39       		.byte	0x39
+ 620 0258 B4000000 		.4byte	0xb4
+ 621 025c F001     		.2byte	0x1f0
+ 622 025e 0B       		.uleb128 0xb
+ 623 025f A1010000 		.4byte	.LASF40
+ 624 0263 04       		.byte	0x4
+ 625 0264 3A       		.byte	0x3a
+ 626 0265 6A040000 		.4byte	0x46a
+ 627 0269 F401     		.2byte	0x1f4
+ 628 026b 0B       		.uleb128 0xb
+ 629 026c B9040000 		.4byte	.LASF41
+ 630 0270 04       		.byte	0x4
+ 631 0271 3B       		.byte	0x3b
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 16
+
+
+ 632 0272 B4000000 		.4byte	0xb4
+ 633 0276 0002     		.2byte	0x200
+ 634 0278 0B       		.uleb128 0xb
+ 635 0279 68040000 		.4byte	.LASF42
+ 636 027d 04       		.byte	0x4
+ 637 027e 3C       		.byte	0x3c
+ 638 027f B4000000 		.4byte	0xb4
+ 639 0283 0402     		.2byte	0x204
+ 640 0285 0B       		.uleb128 0xb
+ 641 0286 40040000 		.4byte	.LASF43
+ 642 028a 04       		.byte	0x4
+ 643 028b 3D       		.byte	0x3d
+ 644 028c 74040000 		.4byte	0x474
+ 645 0290 0802     		.2byte	0x208
+ 646 0292 0B       		.uleb128 0xb
+ 647 0293 18050000 		.4byte	.LASF44
+ 648 0297 04       		.byte	0x4
+ 649 0298 3E       		.byte	0x3e
+ 650 0299 B4000000 		.4byte	0xb4
+ 651 029d 8002     		.2byte	0x280
+ 652 029f 0B       		.uleb128 0xb
+ 653 02a0 70010000 		.4byte	.LASF45
+ 654 02a4 04       		.byte	0x4
+ 655 02a5 3F       		.byte	0x3f
+ 656 02a6 B4000000 		.4byte	0xb4
+ 657 02aa 8402     		.2byte	0x284
+ 658 02ac 0B       		.uleb128 0xb
+ 659 02ad B5010000 		.4byte	.LASF46
+ 660 02b1 04       		.byte	0x4
+ 661 02b2 40       		.byte	0x40
+ 662 02b3 B4000000 		.4byte	0xb4
+ 663 02b7 8802     		.2byte	0x288
+ 664 02b9 0B       		.uleb128 0xb
+ 665 02ba 4A040000 		.4byte	.LASF47
+ 666 02be 04       		.byte	0x4
+ 667 02bf 41       		.byte	0x41
+ 668 02c0 B9000000 		.4byte	0xb9
+ 669 02c4 8C02     		.2byte	0x28c
+ 670 02c6 0B       		.uleb128 0xb
+ 671 02c7 64020000 		.4byte	.LASF48
+ 672 02cb 04       		.byte	0x4
+ 673 02cc 42       		.byte	0x42
+ 674 02cd B4000000 		.4byte	0xb4
+ 675 02d1 9002     		.2byte	0x290
+ 676 02d3 0B       		.uleb128 0xb
+ 677 02d4 1A020000 		.4byte	.LASF49
+ 678 02d8 04       		.byte	0x4
+ 679 02d9 43       		.byte	0x43
+ 680 02da B4000000 		.4byte	0xb4
+ 681 02de 9402     		.2byte	0x294
+ 682 02e0 0B       		.uleb128 0xb
+ 683 02e1 C3010000 		.4byte	.LASF50
+ 684 02e5 04       		.byte	0x4
+ 685 02e6 44       		.byte	0x44
+ 686 02e7 7E040000 		.4byte	0x47e
+ 687 02eb 9802     		.2byte	0x298
+ 688 02ed 0B       		.uleb128 0xb
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 17
+
+
+ 689 02ee E4010000 		.4byte	.LASF51
+ 690 02f2 04       		.byte	0x4
+ 691 02f3 45       		.byte	0x45
+ 692 02f4 B4000000 		.4byte	0xb4
+ 693 02f8 A002     		.2byte	0x2a0
+ 694 02fa 0B       		.uleb128 0xb
+ 695 02fb 6B030000 		.4byte	.LASF52
+ 696 02ff 04       		.byte	0x4
+ 697 0300 46       		.byte	0x46
+ 698 0301 B4000000 		.4byte	0xb4
+ 699 0305 A402     		.2byte	0x2a4
+ 700 0307 0B       		.uleb128 0xb
+ 701 0308 93010000 		.4byte	.LASF53
+ 702 030c 04       		.byte	0x4
+ 703 030d 47       		.byte	0x47
+ 704 030e B4000000 		.4byte	0xb4
+ 705 0312 A802     		.2byte	0x2a8
+ 706 0314 0B       		.uleb128 0xb
+ 707 0315 B7020000 		.4byte	.LASF54
+ 708 0319 04       		.byte	0x4
+ 709 031a 48       		.byte	0x48
+ 710 031b B9000000 		.4byte	0xb9
+ 711 031f AC02     		.2byte	0x2ac
+ 712 0321 0B       		.uleb128 0xb
+ 713 0322 84040000 		.4byte	.LASF55
+ 714 0326 04       		.byte	0x4
+ 715 0327 49       		.byte	0x49
+ 716 0328 B4000000 		.4byte	0xb4
+ 717 032c B002     		.2byte	0x2b0
+ 718 032e 0B       		.uleb128 0xb
+ 719 032f CA030000 		.4byte	.LASF56
+ 720 0333 04       		.byte	0x4
+ 721 0334 4A       		.byte	0x4a
+ 722 0335 B4000000 		.4byte	0xb4
+ 723 0339 B402     		.2byte	0x2b4
+ 724 033b 0B       		.uleb128 0xb
+ 725 033c C2020000 		.4byte	.LASF57
+ 726 0340 04       		.byte	0x4
+ 727 0341 4B       		.byte	0x4b
+ 728 0342 88040000 		.4byte	0x488
+ 729 0346 B802     		.2byte	0x2b8
+ 730 0348 0B       		.uleb128 0xb
+ 731 0349 CD010000 		.4byte	.LASF58
+ 732 034d 04       		.byte	0x4
+ 733 034e 4C       		.byte	0x4c
+ 734 034f B4000000 		.4byte	0xb4
+ 735 0353 C002     		.2byte	0x2c0
+ 736 0355 0B       		.uleb128 0xb
+ 737 0356 CD020000 		.4byte	.LASF59
+ 738 035a 04       		.byte	0x4
+ 739 035b 4D       		.byte	0x4d
+ 740 035c 92040000 		.4byte	0x492
+ 741 0360 C402     		.2byte	0x2c4
+ 742 0362 0B       		.uleb128 0xb
+ 743 0363 B2040000 		.4byte	.LASF60
+ 744 0367 04       		.byte	0x4
+ 745 0368 4E       		.byte	0x4e
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 18
+
+
+ 746 0369 B4000000 		.4byte	0xb4
+ 747 036d D002     		.2byte	0x2d0
+ 748 036f 0B       		.uleb128 0xb
+ 749 0370 D8020000 		.4byte	.LASF61
+ 750 0374 04       		.byte	0x4
+ 751 0375 4F       		.byte	0x4f
+ 752 0376 AC040000 		.4byte	0x4ac
+ 753 037a D402     		.2byte	0x2d4
+ 754 037c 0B       		.uleb128 0xb
+ 755 037d 43030000 		.4byte	.LASF62
+ 756 0381 04       		.byte	0x4
+ 757 0382 50       		.byte	0x50
+ 758 0383 B4000000 		.4byte	0xb4
+ 759 0387 0003     		.2byte	0x300
+ 760 0389 0B       		.uleb128 0xb
+ 761 038a E3020000 		.4byte	.LASF63
+ 762 038e 04       		.byte	0x4
+ 763 038f 51       		.byte	0x51
+ 764 0390 B6040000 		.4byte	0x4b6
+ 765 0394 0403     		.2byte	0x304
+ 766 0396 0B       		.uleb128 0xb
+ 767 0397 5B040000 		.4byte	.LASF64
+ 768 039b 04       		.byte	0x4
+ 769 039c 52       		.byte	0x52
+ 770 039d B4000000 		.4byte	0xb4
+ 771 03a1 1003     		.2byte	0x310
+ 772 03a3 0B       		.uleb128 0xb
+ 773 03a4 1F000000 		.4byte	.LASF65
+ 774 03a8 04       		.byte	0x4
+ 775 03a9 53       		.byte	0x53
+ 776 03aa B4000000 		.4byte	0xb4
+ 777 03ae 1403     		.2byte	0x314
+ 778 03b0 0B       		.uleb128 0xb
+ 779 03b1 EE020000 		.4byte	.LASF66
+ 780 03b5 04       		.byte	0x4
+ 781 03b6 54       		.byte	0x54
+ 782 03b7 C0040000 		.4byte	0x4c0
+ 783 03bb 1803     		.2byte	0x318
+ 784 03bd 0B       		.uleb128 0xb
+ 785 03be 52020000 		.4byte	.LASF67
+ 786 03c2 04       		.byte	0x4
+ 787 03c3 55       		.byte	0x55
+ 788 03c4 B4000000 		.4byte	0xb4
+ 789 03c8 2003     		.2byte	0x320
+ 790 03ca 0B       		.uleb128 0xb
+ 791 03cb F9020000 		.4byte	.LASF68
+ 792 03cf 04       		.byte	0x4
+ 793 03d0 56       		.byte	0x56
+ 794 03d1 CA040000 		.4byte	0x4ca
+ 795 03d5 2403     		.2byte	0x324
+ 796 03d7 0B       		.uleb128 0xb
+ 797 03d8 66010000 		.4byte	.LASF69
+ 798 03dc 04       		.byte	0x4
+ 799 03dd 57       		.byte	0x57
+ 800 03de B4000000 		.4byte	0xb4
+ 801 03e2 4003     		.2byte	0x340
+ 802 03e4 0B       		.uleb128 0xb
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 19
+
+
+ 803 03e5 04030000 		.4byte	.LASF70
+ 804 03e9 04       		.byte	0x4
+ 805 03ea 58       		.byte	0x58
+ 806 03eb E4040000 		.4byte	0x4e4
+ 807 03ef 4403     		.2byte	0x344
+ 808 03f1 0B       		.uleb128 0xb
+ 809 03f2 0C050000 		.4byte	.LASF71
+ 810 03f6 04       		.byte	0x4
+ 811 03f7 59       		.byte	0x59
+ 812 03f8 B4000000 		.4byte	0xb4
+ 813 03fc 0004     		.2byte	0x400
+ 814 03fe 0B       		.uleb128 0xb
+ 815 03ff 0F030000 		.4byte	.LASF72
+ 816 0403 04       		.byte	0x4
+ 817 0404 5A       		.byte	0x5a
+ 818 0405 EE040000 		.4byte	0x4ee
+ 819 0409 0404     		.2byte	0x404
+ 820 040b 0B       		.uleb128 0xb
+ 821 040c 12050000 		.4byte	.LASF73
+ 822 0410 04       		.byte	0x4
+ 823 0411 5B       		.byte	0x5b
+ 824 0412 B4000000 		.4byte	0xb4
+ 825 0416 0005     		.2byte	0x500
+ 826 0418 00       		.byte	0
+ 827 0419 07       		.uleb128 0x7
+ 828 041a B9000000 		.4byte	0xb9
+ 829 041e 29040000 		.4byte	0x429
+ 830 0422 08       		.uleb128 0x8
+ 831 0423 AD000000 		.4byte	0xad
+ 832 0427 1D       		.byte	0x1d
+ 833 0428 00       		.byte	0
+ 834 0429 05       		.uleb128 0x5
+ 835 042a 19040000 		.4byte	0x419
+ 836 042e 06       		.uleb128 0x6
+ 837 042f 29040000 		.4byte	0x429
+ 838 0433 05       		.uleb128 0x5
+ 839 0434 DE000000 		.4byte	0xde
+ 840 0438 06       		.uleb128 0x6
+ 841 0439 33040000 		.4byte	0x433
+ 842 043d 05       		.uleb128 0x5
+ 843 043e BE000000 		.4byte	0xbe
+ 844 0442 06       		.uleb128 0x6
+ 845 0443 3D040000 		.4byte	0x43d
+ 846 0447 05       		.uleb128 0x5
+ 847 0448 FE000000 		.4byte	0xfe
+ 848 044c 06       		.uleb128 0x6
+ 849 044d 47040000 		.4byte	0x447
+ 850 0451 05       		.uleb128 0x5
+ 851 0452 0E010000 		.4byte	0x10e
+ 852 0456 06       		.uleb128 0x6
+ 853 0457 51040000 		.4byte	0x451
+ 854 045b 05       		.uleb128 0x5
+ 855 045c 1E010000 		.4byte	0x11e
+ 856 0460 06       		.uleb128 0x6
+ 857 0461 5B040000 		.4byte	0x45b
+ 858 0465 05       		.uleb128 0x5
+ 859 0466 FE000000 		.4byte	0xfe
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 20
+
+
+ 860 046a 06       		.uleb128 0x6
+ 861 046b 65040000 		.4byte	0x465
+ 862 046f 05       		.uleb128 0x5
+ 863 0470 19040000 		.4byte	0x419
+ 864 0474 06       		.uleb128 0x6
+ 865 0475 6F040000 		.4byte	0x46f
+ 866 0479 05       		.uleb128 0x5
+ 867 047a BE000000 		.4byte	0xbe
+ 868 047e 06       		.uleb128 0x6
+ 869 047f 79040000 		.4byte	0x479
+ 870 0483 05       		.uleb128 0x5
+ 871 0484 BE000000 		.4byte	0xbe
+ 872 0488 06       		.uleb128 0x6
+ 873 0489 83040000 		.4byte	0x483
+ 874 048d 05       		.uleb128 0x5
+ 875 048e FE000000 		.4byte	0xfe
+ 876 0492 06       		.uleb128 0x6
+ 877 0493 8D040000 		.4byte	0x48d
+ 878 0497 07       		.uleb128 0x7
+ 879 0498 B9000000 		.4byte	0xb9
+ 880 049c A7040000 		.4byte	0x4a7
+ 881 04a0 08       		.uleb128 0x8
+ 882 04a1 AD000000 		.4byte	0xad
+ 883 04a5 0A       		.byte	0xa
+ 884 04a6 00       		.byte	0
+ 885 04a7 05       		.uleb128 0x5
+ 886 04a8 97040000 		.4byte	0x497
+ 887 04ac 06       		.uleb128 0x6
+ 888 04ad A7040000 		.4byte	0x4a7
+ 889 04b1 05       		.uleb128 0x5
+ 890 04b2 FE000000 		.4byte	0xfe
+ 891 04b6 06       		.uleb128 0x6
+ 892 04b7 B1040000 		.4byte	0x4b1
+ 893 04bb 05       		.uleb128 0x5
+ 894 04bc BE000000 		.4byte	0xbe
+ 895 04c0 06       		.uleb128 0x6
+ 896 04c1 BB040000 		.4byte	0x4bb
+ 897 04c5 05       		.uleb128 0x5
+ 898 04c6 CE000000 		.4byte	0xce
+ 899 04ca 06       		.uleb128 0x6
+ 900 04cb C5040000 		.4byte	0x4c5
+ 901 04cf 07       		.uleb128 0x7
+ 902 04d0 B9000000 		.4byte	0xb9
+ 903 04d4 DF040000 		.4byte	0x4df
+ 904 04d8 08       		.uleb128 0x8
+ 905 04d9 AD000000 		.4byte	0xad
+ 906 04dd 2E       		.byte	0x2e
+ 907 04de 00       		.byte	0
+ 908 04df 05       		.uleb128 0x5
+ 909 04e0 CF040000 		.4byte	0x4cf
+ 910 04e4 06       		.uleb128 0x6
+ 911 04e5 DF040000 		.4byte	0x4df
+ 912 04e9 05       		.uleb128 0x5
+ 913 04ea EE000000 		.4byte	0xee
+ 914 04ee 06       		.uleb128 0x6
+ 915 04ef E9040000 		.4byte	0x4e9
+ 916 04f3 03       		.uleb128 0x3
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 21
+
+
+ 917 04f4 00020000 		.4byte	.LASF74
+ 918 04f8 04       		.byte	0x4
+ 919 04f9 5C       		.byte	0x5c
+ 920 04fa 2E010000 		.4byte	0x12e
+ 921 04fe 0C       		.uleb128 0xc
+ 922 04ff 90030000 		.4byte	.LASF75
+ 923 0503 05       		.byte	0x5
+ 924 0504 4006     		.2byte	0x640
+ 925 0506 F3040000 		.4byte	0x4f3
+ 926 050a 02       		.uleb128 0x2
+ 927 050b 08       		.byte	0x8
+ 928 050c 04       		.byte	0x4
+ 929 050d 9D020000 		.4byte	.LASF76
+ 930 0511 02       		.uleb128 0x2
+ 931 0512 01       		.byte	0x1
+ 932 0513 08       		.byte	0x8
+ 933 0514 8B030000 		.4byte	.LASF77
+ 934 0518 02       		.uleb128 0x2
+ 935 0519 04       		.byte	0x4
+ 936 051a 04       		.byte	0x4
+ 937 051b FA010000 		.4byte	.LASF78
+ 938 051f 02       		.uleb128 0x2
+ 939 0520 08       		.byte	0x8
+ 940 0521 04       		.byte	0x4
+ 941 0522 54040000 		.4byte	.LASF79
+ 942 0526 0D       		.uleb128 0xd
+ 943 0527 FD040000 		.4byte	.LASF82
+ 944 052b 01       		.byte	0x1
+ 945 052c 3B       		.byte	0x3b
+ 946 052d 00000000 		.4byte	.LFB133
+ 947 0531 20000000 		.4byte	.LFE133-.LFB133
+ 948 0535 01       		.uleb128 0x1
+ 949 0536 9C       		.byte	0x9c
+ 950 0537 6C050000 		.4byte	0x56c
+ 951 053b 0E       		.uleb128 0xe
+ 952 053c ED030000 		.4byte	.LASF80
+ 953 0540 01       		.byte	0x1
+ 954 0541 3D       		.byte	0x3d
+ 955 0542 A2000000 		.4byte	0xa2
+ 956 0546 00000000 		.4byte	.LLST0
+ 957 054a 0E       		.uleb128 0xe
+ 958 054b 47050000 		.4byte	.LASF81
+ 959 054f 01       		.byte	0x1
+ 960 0550 3E       		.byte	0x3e
+ 961 0551 A2000000 		.4byte	0xa2
+ 962 0555 23000000 		.4byte	.LLST1
+ 963 0559 0F       		.uleb128 0xf
+ 964 055a 06000000 		.4byte	.LVL0
+ 965 055e 41070000 		.4byte	0x741
+ 966 0562 0F       		.uleb128 0xf
+ 967 0563 1A000000 		.4byte	.LVL5
+ 968 0567 4D070000 		.4byte	0x74d
+ 969 056b 00       		.byte	0
+ 970 056c 10       		.uleb128 0x10
+ 971 056d A5040000 		.4byte	.LASF98
+ 972 0571 01       		.byte	0x1
+ 973 0572 77       		.byte	0x77
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 22
+
+
+ 974 0573 00000000 		.4byte	.LFB135
+ 975 0577 02000000 		.4byte	.LFE135-.LFB135
+ 976 057b 01       		.uleb128 0x1
+ 977 057c 9C       		.byte	0x9c
+ 978 057d 0D       		.uleb128 0xd
+ 979 057e 73040000 		.4byte	.LASF83
+ 980 0582 01       		.byte	0x1
+ 981 0583 87       		.byte	0x87
+ 982 0584 00000000 		.4byte	.LFB136
+ 983 0588 28000000 		.4byte	.LFE136-.LFB136
+ 984 058c 01       		.uleb128 0x1
+ 985 058d 9C       		.byte	0x9c
+ 986 058e D2050000 		.4byte	0x5d2
+ 987 0592 11       		.uleb128 0x11
+ 988 0593 63030000 		.4byte	.LASF85
+ 989 0597 01       		.byte	0x1
+ 990 0598 87       		.byte	0x87
+ 991 0599 A2000000 		.4byte	0xa2
+ 992 059d 41000000 		.4byte	.LLST2
+ 993 05a1 0E       		.uleb128 0xe
+ 994 05a2 ED030000 		.4byte	.LASF80
+ 995 05a6 01       		.byte	0x1
+ 996 05a7 89       		.byte	0x89
+ 997 05a8 A2000000 		.4byte	0xa2
+ 998 05ac 6D000000 		.4byte	.LLST3
+ 999 05b0 0E       		.uleb128 0xe
+ 1000 05b1 47050000 		.4byte	.LASF81
+ 1001 05b5 01       		.byte	0x1
+ 1002 05b6 8A       		.byte	0x8a
+ 1003 05b7 A2000000 		.4byte	0xa2
+ 1004 05bb 90000000 		.4byte	.LLST4
+ 1005 05bf 0F       		.uleb128 0xf
+ 1006 05c0 08000000 		.4byte	.LVL7
+ 1007 05c4 41070000 		.4byte	0x741
+ 1008 05c8 0F       		.uleb128 0xf
+ 1009 05c9 22000000 		.4byte	.LVL12
+ 1010 05cd 4D070000 		.4byte	0x74d
+ 1011 05d1 00       		.byte	0
+ 1012 05d2 0D       		.uleb128 0xd
+ 1013 05d3 D9030000 		.4byte	.LASF84
+ 1014 05d7 01       		.byte	0x1
+ 1015 05d8 A3       		.byte	0xa3
+ 1016 05d9 00000000 		.4byte	.LFB137
+ 1017 05dd 2C000000 		.4byte	.LFE137-.LFB137
+ 1018 05e1 01       		.uleb128 0x1
+ 1019 05e2 9C       		.byte	0x9c
+ 1020 05e3 27060000 		.4byte	0x627
+ 1021 05e7 11       		.uleb128 0x11
+ 1022 05e8 9C040000 		.4byte	.LASF86
+ 1023 05ec 01       		.byte	0x1
+ 1024 05ed A3       		.byte	0xa3
+ 1025 05ee A2000000 		.4byte	0xa2
+ 1026 05f2 AE000000 		.4byte	.LLST5
+ 1027 05f6 0E       		.uleb128 0xe
+ 1028 05f7 ED030000 		.4byte	.LASF80
+ 1029 05fb 01       		.byte	0x1
+ 1030 05fc A5       		.byte	0xa5
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 23
+
+
+ 1031 05fd A2000000 		.4byte	0xa2
+ 1032 0601 DA000000 		.4byte	.LLST6
+ 1033 0605 0E       		.uleb128 0xe
+ 1034 0606 47050000 		.4byte	.LASF81
+ 1035 060a 01       		.byte	0x1
+ 1036 060b A6       		.byte	0xa6
+ 1037 060c A2000000 		.4byte	0xa2
+ 1038 0610 FD000000 		.4byte	.LLST7
+ 1039 0614 0F       		.uleb128 0xf
+ 1040 0615 08000000 		.4byte	.LVL15
+ 1041 0619 41070000 		.4byte	0x741
+ 1042 061d 0F       		.uleb128 0xf
+ 1043 061e 24000000 		.4byte	.LVL20
+ 1044 0622 4D070000 		.4byte	0x74d
+ 1045 0626 00       		.byte	0
+ 1046 0627 0D       		.uleb128 0xd
+ 1047 0628 EC040000 		.4byte	.LASF87
+ 1048 062c 01       		.byte	0x1
+ 1049 062d C3       		.byte	0xc3
+ 1050 062e 00000000 		.4byte	.LFB138
+ 1051 0632 28000000 		.4byte	.LFE138-.LFB138
+ 1052 0636 01       		.uleb128 0x1
+ 1053 0637 9C       		.byte	0x9c
+ 1054 0638 7C060000 		.4byte	0x67c
+ 1055 063c 11       		.uleb128 0x11
+ 1056 063d 2C000000 		.4byte	.LASF88
+ 1057 0641 01       		.byte	0x1
+ 1058 0642 C3       		.byte	0xc3
+ 1059 0643 A2000000 		.4byte	0xa2
+ 1060 0647 1B010000 		.4byte	.LLST8
+ 1061 064b 0E       		.uleb128 0xe
+ 1062 064c ED030000 		.4byte	.LASF80
+ 1063 0650 01       		.byte	0x1
+ 1064 0651 C5       		.byte	0xc5
+ 1065 0652 A2000000 		.4byte	0xa2
+ 1066 0656 47010000 		.4byte	.LLST9
+ 1067 065a 0E       		.uleb128 0xe
+ 1068 065b 47050000 		.4byte	.LASF81
+ 1069 065f 01       		.byte	0x1
+ 1070 0660 C6       		.byte	0xc6
+ 1071 0661 A2000000 		.4byte	0xa2
+ 1072 0665 6A010000 		.4byte	.LLST10
+ 1073 0669 0F       		.uleb128 0xf
+ 1074 066a 08000000 		.4byte	.LVL23
+ 1075 066e 41070000 		.4byte	0x741
+ 1076 0672 0F       		.uleb128 0xf
+ 1077 0673 20000000 		.4byte	.LVL27
+ 1078 0677 4D070000 		.4byte	0x74d
+ 1079 067b 00       		.byte	0
+ 1080 067c 0D       		.uleb128 0xd
+ 1081 067d 25020000 		.4byte	.LASF89
+ 1082 0681 01       		.byte	0x1
+ 1083 0682 1C       		.byte	0x1c
+ 1084 0683 00000000 		.4byte	.LFB132
+ 1085 0687 38000000 		.4byte	.LFE132-.LFB132
+ 1086 068b 01       		.uleb128 0x1
+ 1087 068c 9C       		.byte	0x9c
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 24
+
+
+ 1088 068d F7060000 		.4byte	0x6f7
+ 1089 0691 0E       		.uleb128 0xe
+ 1090 0692 ED030000 		.4byte	.LASF80
+ 1091 0696 01       		.byte	0x1
+ 1092 0697 1E       		.byte	0x1e
+ 1093 0698 A2000000 		.4byte	0xa2
+ 1094 069c 7D010000 		.4byte	.LLST11
+ 1095 06a0 0E       		.uleb128 0xe
+ 1096 06a1 47050000 		.4byte	.LASF81
+ 1097 06a5 01       		.byte	0x1
+ 1098 06a6 1F       		.byte	0x1f
+ 1099 06a7 A2000000 		.4byte	0xa2
+ 1100 06ab A0010000 		.4byte	.LLST12
+ 1101 06af 0F       		.uleb128 0xf
+ 1102 06b0 06000000 		.4byte	.LVL29
+ 1103 06b4 41070000 		.4byte	0x741
+ 1104 06b8 0F       		.uleb128 0xf
+ 1105 06b9 1E000000 		.4byte	.LVL34
+ 1106 06bd 4D070000 		.4byte	0x74d
+ 1107 06c1 12       		.uleb128 0x12
+ 1108 06c2 24000000 		.4byte	.LVL35
+ 1109 06c6 7D050000 		.4byte	0x57d
+ 1110 06ca D4060000 		.4byte	0x6d4
+ 1111 06ce 13       		.uleb128 0x13
+ 1112 06cf 01       		.uleb128 0x1
+ 1113 06d0 50       		.byte	0x50
+ 1114 06d1 01       		.uleb128 0x1
+ 1115 06d2 30       		.byte	0x30
+ 1116 06d3 00       		.byte	0
+ 1117 06d4 12       		.uleb128 0x12
+ 1118 06d5 2A000000 		.4byte	.LVL36
+ 1119 06d9 D2050000 		.4byte	0x5d2
+ 1120 06dd E7060000 		.4byte	0x6e7
+ 1121 06e1 13       		.uleb128 0x13
+ 1122 06e2 01       		.uleb128 0x1
+ 1123 06e3 50       		.byte	0x50
+ 1124 06e4 01       		.uleb128 0x1
+ 1125 06e5 30       		.byte	0x30
+ 1126 06e6 00       		.byte	0
+ 1127 06e7 14       		.uleb128 0x14
+ 1128 06e8 30000000 		.4byte	.LVL37
+ 1129 06ec 27060000 		.4byte	0x627
+ 1130 06f0 13       		.uleb128 0x13
+ 1131 06f1 01       		.uleb128 0x1
+ 1132 06f2 50       		.byte	0x50
+ 1133 06f3 01       		.uleb128 0x1
+ 1134 06f4 3D       		.byte	0x3d
+ 1135 06f5 00       		.byte	0
+ 1136 06f6 00       		.byte	0
+ 1137 06f7 0D       		.uleb128 0xd
+ 1138 06f8 41000000 		.4byte	.LASF90
+ 1139 06fc 01       		.byte	0x1
+ 1140 06fd 5F       		.byte	0x5f
+ 1141 06fe 00000000 		.4byte	.LFB134
+ 1142 0702 1C000000 		.4byte	.LFE134-.LFB134
+ 1143 0706 01       		.uleb128 0x1
+ 1144 0707 9C       		.byte	0x9c
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 25
+
+
+ 1145 0708 1F070000 		.4byte	0x71f
+ 1146 070c 0F       		.uleb128 0xf
+ 1147 070d 0C000000 		.4byte	.LVL38
+ 1148 0711 7C060000 		.4byte	0x67c
+ 1149 0715 0F       		.uleb128 0xf
+ 1150 0716 16000000 		.4byte	.LVL39
+ 1151 071a 26050000 		.4byte	0x526
+ 1152 071e 00       		.byte	0
+ 1153 071f 15       		.uleb128 0x15
+ 1154 0720 33050000 		.4byte	.LASF91
+ 1155 0724 06       		.byte	0x6
+ 1156 0725 F907     		.2byte	0x7f9
+ 1157 0727 2B070000 		.4byte	0x72b
+ 1158 072b 05       		.uleb128 0x5
+ 1159 072c 97000000 		.4byte	0x97
+ 1160 0730 16       		.uleb128 0x16
+ 1161 0731 42020000 		.4byte	.LASF92
+ 1162 0735 01       		.byte	0x1
+ 1163 0736 12       		.byte	0x12
+ 1164 0737 A2000000 		.4byte	0xa2
+ 1165 073b 05       		.uleb128 0x5
+ 1166 073c 03       		.byte	0x3
+ 1167 073d 00000000 		.4byte	IDAC7_1_initVar
+ 1168 0741 17       		.uleb128 0x17
+ 1169 0742 00000000 		.4byte	.LASF93
+ 1170 0746 00000000 		.4byte	.LASF93
+ 1171 074a 07       		.byte	0x7
+ 1172 074b B203     		.2byte	0x3b2
+ 1173 074d 17       		.uleb128 0x17
+ 1174 074e 7F020000 		.4byte	.LASF94
+ 1175 0752 7F020000 		.4byte	.LASF94
+ 1176 0756 07       		.byte	0x7
+ 1177 0757 C103     		.2byte	0x3c1
+ 1178 0759 00       		.byte	0
+ 1179              		.section	.debug_abbrev,"",%progbits
+ 1180              	.Ldebug_abbrev0:
+ 1181 0000 01       		.uleb128 0x1
+ 1182 0001 11       		.uleb128 0x11
+ 1183 0002 01       		.byte	0x1
+ 1184 0003 25       		.uleb128 0x25
+ 1185 0004 0E       		.uleb128 0xe
+ 1186 0005 13       		.uleb128 0x13
+ 1187 0006 0B       		.uleb128 0xb
+ 1188 0007 03       		.uleb128 0x3
+ 1189 0008 0E       		.uleb128 0xe
+ 1190 0009 1B       		.uleb128 0x1b
+ 1191 000a 0E       		.uleb128 0xe
+ 1192 000b 55       		.uleb128 0x55
+ 1193 000c 17       		.uleb128 0x17
+ 1194 000d 11       		.uleb128 0x11
+ 1195 000e 01       		.uleb128 0x1
+ 1196 000f 10       		.uleb128 0x10
+ 1197 0010 17       		.uleb128 0x17
+ 1198 0011 00       		.byte	0
+ 1199 0012 00       		.byte	0
+ 1200 0013 02       		.uleb128 0x2
+ 1201 0014 24       		.uleb128 0x24
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 26
+
+
+ 1202 0015 00       		.byte	0
+ 1203 0016 0B       		.uleb128 0xb
+ 1204 0017 0B       		.uleb128 0xb
+ 1205 0018 3E       		.uleb128 0x3e
+ 1206 0019 0B       		.uleb128 0xb
+ 1207 001a 03       		.uleb128 0x3
+ 1208 001b 0E       		.uleb128 0xe
+ 1209 001c 00       		.byte	0
+ 1210 001d 00       		.byte	0
+ 1211 001e 03       		.uleb128 0x3
+ 1212 001f 16       		.uleb128 0x16
+ 1213 0020 00       		.byte	0
+ 1214 0021 03       		.uleb128 0x3
+ 1215 0022 0E       		.uleb128 0xe
+ 1216 0023 3A       		.uleb128 0x3a
+ 1217 0024 0B       		.uleb128 0xb
+ 1218 0025 3B       		.uleb128 0x3b
+ 1219 0026 0B       		.uleb128 0xb
+ 1220 0027 49       		.uleb128 0x49
+ 1221 0028 13       		.uleb128 0x13
+ 1222 0029 00       		.byte	0
+ 1223 002a 00       		.byte	0
+ 1224 002b 04       		.uleb128 0x4
+ 1225 002c 24       		.uleb128 0x24
+ 1226 002d 00       		.byte	0
+ 1227 002e 0B       		.uleb128 0xb
+ 1228 002f 0B       		.uleb128 0xb
+ 1229 0030 3E       		.uleb128 0x3e
+ 1230 0031 0B       		.uleb128 0xb
+ 1231 0032 03       		.uleb128 0x3
+ 1232 0033 08       		.uleb128 0x8
+ 1233 0034 00       		.byte	0
+ 1234 0035 00       		.byte	0
+ 1235 0036 05       		.uleb128 0x5
+ 1236 0037 35       		.uleb128 0x35
+ 1237 0038 00       		.byte	0
+ 1238 0039 49       		.uleb128 0x49
+ 1239 003a 13       		.uleb128 0x13
+ 1240 003b 00       		.byte	0
+ 1241 003c 00       		.byte	0
+ 1242 003d 06       		.uleb128 0x6
+ 1243 003e 26       		.uleb128 0x26
+ 1244 003f 00       		.byte	0
+ 1245 0040 49       		.uleb128 0x49
+ 1246 0041 13       		.uleb128 0x13
+ 1247 0042 00       		.byte	0
+ 1248 0043 00       		.byte	0
+ 1249 0044 07       		.uleb128 0x7
+ 1250 0045 01       		.uleb128 0x1
+ 1251 0046 01       		.byte	0x1
+ 1252 0047 49       		.uleb128 0x49
+ 1253 0048 13       		.uleb128 0x13
+ 1254 0049 01       		.uleb128 0x1
+ 1255 004a 13       		.uleb128 0x13
+ 1256 004b 00       		.byte	0
+ 1257 004c 00       		.byte	0
+ 1258 004d 08       		.uleb128 0x8
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 27
+
+
+ 1259 004e 21       		.uleb128 0x21
+ 1260 004f 00       		.byte	0
+ 1261 0050 49       		.uleb128 0x49
+ 1262 0051 13       		.uleb128 0x13
+ 1263 0052 2F       		.uleb128 0x2f
+ 1264 0053 0B       		.uleb128 0xb
+ 1265 0054 00       		.byte	0
+ 1266 0055 00       		.byte	0
+ 1267 0056 09       		.uleb128 0x9
+ 1268 0057 13       		.uleb128 0x13
+ 1269 0058 01       		.byte	0x1
+ 1270 0059 0B       		.uleb128 0xb
+ 1271 005a 05       		.uleb128 0x5
+ 1272 005b 3A       		.uleb128 0x3a
+ 1273 005c 0B       		.uleb128 0xb
+ 1274 005d 3B       		.uleb128 0x3b
+ 1275 005e 0B       		.uleb128 0xb
+ 1276 005f 01       		.uleb128 0x1
+ 1277 0060 13       		.uleb128 0x13
+ 1278 0061 00       		.byte	0
+ 1279 0062 00       		.byte	0
+ 1280 0063 0A       		.uleb128 0xa
+ 1281 0064 0D       		.uleb128 0xd
+ 1282 0065 00       		.byte	0
+ 1283 0066 03       		.uleb128 0x3
+ 1284 0067 0E       		.uleb128 0xe
+ 1285 0068 3A       		.uleb128 0x3a
+ 1286 0069 0B       		.uleb128 0xb
+ 1287 006a 3B       		.uleb128 0x3b
+ 1288 006b 0B       		.uleb128 0xb
+ 1289 006c 49       		.uleb128 0x49
+ 1290 006d 13       		.uleb128 0x13
+ 1291 006e 38       		.uleb128 0x38
+ 1292 006f 0B       		.uleb128 0xb
+ 1293 0070 00       		.byte	0
+ 1294 0071 00       		.byte	0
+ 1295 0072 0B       		.uleb128 0xb
+ 1296 0073 0D       		.uleb128 0xd
+ 1297 0074 00       		.byte	0
+ 1298 0075 03       		.uleb128 0x3
+ 1299 0076 0E       		.uleb128 0xe
+ 1300 0077 3A       		.uleb128 0x3a
+ 1301 0078 0B       		.uleb128 0xb
+ 1302 0079 3B       		.uleb128 0x3b
+ 1303 007a 0B       		.uleb128 0xb
+ 1304 007b 49       		.uleb128 0x49
+ 1305 007c 13       		.uleb128 0x13
+ 1306 007d 38       		.uleb128 0x38
+ 1307 007e 05       		.uleb128 0x5
+ 1308 007f 00       		.byte	0
+ 1309 0080 00       		.byte	0
+ 1310 0081 0C       		.uleb128 0xc
+ 1311 0082 16       		.uleb128 0x16
+ 1312 0083 00       		.byte	0
+ 1313 0084 03       		.uleb128 0x3
+ 1314 0085 0E       		.uleb128 0xe
+ 1315 0086 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 28
+
+
+ 1316 0087 0B       		.uleb128 0xb
+ 1317 0088 3B       		.uleb128 0x3b
+ 1318 0089 05       		.uleb128 0x5
+ 1319 008a 49       		.uleb128 0x49
+ 1320 008b 13       		.uleb128 0x13
+ 1321 008c 00       		.byte	0
+ 1322 008d 00       		.byte	0
+ 1323 008e 0D       		.uleb128 0xd
+ 1324 008f 2E       		.uleb128 0x2e
+ 1325 0090 01       		.byte	0x1
+ 1326 0091 3F       		.uleb128 0x3f
+ 1327 0092 19       		.uleb128 0x19
+ 1328 0093 03       		.uleb128 0x3
+ 1329 0094 0E       		.uleb128 0xe
+ 1330 0095 3A       		.uleb128 0x3a
+ 1331 0096 0B       		.uleb128 0xb
+ 1332 0097 3B       		.uleb128 0x3b
+ 1333 0098 0B       		.uleb128 0xb
+ 1334 0099 27       		.uleb128 0x27
+ 1335 009a 19       		.uleb128 0x19
+ 1336 009b 11       		.uleb128 0x11
+ 1337 009c 01       		.uleb128 0x1
+ 1338 009d 12       		.uleb128 0x12
+ 1339 009e 06       		.uleb128 0x6
+ 1340 009f 40       		.uleb128 0x40
+ 1341 00a0 18       		.uleb128 0x18
+ 1342 00a1 9742     		.uleb128 0x2117
+ 1343 00a3 19       		.uleb128 0x19
+ 1344 00a4 01       		.uleb128 0x1
+ 1345 00a5 13       		.uleb128 0x13
+ 1346 00a6 00       		.byte	0
+ 1347 00a7 00       		.byte	0
+ 1348 00a8 0E       		.uleb128 0xe
+ 1349 00a9 34       		.uleb128 0x34
+ 1350 00aa 00       		.byte	0
+ 1351 00ab 03       		.uleb128 0x3
+ 1352 00ac 0E       		.uleb128 0xe
+ 1353 00ad 3A       		.uleb128 0x3a
+ 1354 00ae 0B       		.uleb128 0xb
+ 1355 00af 3B       		.uleb128 0x3b
+ 1356 00b0 0B       		.uleb128 0xb
+ 1357 00b1 49       		.uleb128 0x49
+ 1358 00b2 13       		.uleb128 0x13
+ 1359 00b3 02       		.uleb128 0x2
+ 1360 00b4 17       		.uleb128 0x17
+ 1361 00b5 00       		.byte	0
+ 1362 00b6 00       		.byte	0
+ 1363 00b7 0F       		.uleb128 0xf
+ 1364 00b8 898201   		.uleb128 0x4109
+ 1365 00bb 00       		.byte	0
+ 1366 00bc 11       		.uleb128 0x11
+ 1367 00bd 01       		.uleb128 0x1
+ 1368 00be 31       		.uleb128 0x31
+ 1369 00bf 13       		.uleb128 0x13
+ 1370 00c0 00       		.byte	0
+ 1371 00c1 00       		.byte	0
+ 1372 00c2 10       		.uleb128 0x10
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 29
+
+
+ 1373 00c3 2E       		.uleb128 0x2e
+ 1374 00c4 00       		.byte	0
+ 1375 00c5 3F       		.uleb128 0x3f
+ 1376 00c6 19       		.uleb128 0x19
+ 1377 00c7 03       		.uleb128 0x3
+ 1378 00c8 0E       		.uleb128 0xe
+ 1379 00c9 3A       		.uleb128 0x3a
+ 1380 00ca 0B       		.uleb128 0xb
+ 1381 00cb 3B       		.uleb128 0x3b
+ 1382 00cc 0B       		.uleb128 0xb
+ 1383 00cd 27       		.uleb128 0x27
+ 1384 00ce 19       		.uleb128 0x19
+ 1385 00cf 11       		.uleb128 0x11
+ 1386 00d0 01       		.uleb128 0x1
+ 1387 00d1 12       		.uleb128 0x12
+ 1388 00d2 06       		.uleb128 0x6
+ 1389 00d3 40       		.uleb128 0x40
+ 1390 00d4 18       		.uleb128 0x18
+ 1391 00d5 9742     		.uleb128 0x2117
+ 1392 00d7 19       		.uleb128 0x19
+ 1393 00d8 00       		.byte	0
+ 1394 00d9 00       		.byte	0
+ 1395 00da 11       		.uleb128 0x11
+ 1396 00db 05       		.uleb128 0x5
+ 1397 00dc 00       		.byte	0
+ 1398 00dd 03       		.uleb128 0x3
+ 1399 00de 0E       		.uleb128 0xe
+ 1400 00df 3A       		.uleb128 0x3a
+ 1401 00e0 0B       		.uleb128 0xb
+ 1402 00e1 3B       		.uleb128 0x3b
+ 1403 00e2 0B       		.uleb128 0xb
+ 1404 00e3 49       		.uleb128 0x49
+ 1405 00e4 13       		.uleb128 0x13
+ 1406 00e5 02       		.uleb128 0x2
+ 1407 00e6 17       		.uleb128 0x17
+ 1408 00e7 00       		.byte	0
+ 1409 00e8 00       		.byte	0
+ 1410 00e9 12       		.uleb128 0x12
+ 1411 00ea 898201   		.uleb128 0x4109
+ 1412 00ed 01       		.byte	0x1
+ 1413 00ee 11       		.uleb128 0x11
+ 1414 00ef 01       		.uleb128 0x1
+ 1415 00f0 31       		.uleb128 0x31
+ 1416 00f1 13       		.uleb128 0x13
+ 1417 00f2 01       		.uleb128 0x1
+ 1418 00f3 13       		.uleb128 0x13
+ 1419 00f4 00       		.byte	0
+ 1420 00f5 00       		.byte	0
+ 1421 00f6 13       		.uleb128 0x13
+ 1422 00f7 8A8201   		.uleb128 0x410a
+ 1423 00fa 00       		.byte	0
+ 1424 00fb 02       		.uleb128 0x2
+ 1425 00fc 18       		.uleb128 0x18
+ 1426 00fd 9142     		.uleb128 0x2111
+ 1427 00ff 18       		.uleb128 0x18
+ 1428 0100 00       		.byte	0
+ 1429 0101 00       		.byte	0
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 30
+
+
+ 1430 0102 14       		.uleb128 0x14
+ 1431 0103 898201   		.uleb128 0x4109
+ 1432 0106 01       		.byte	0x1
+ 1433 0107 11       		.uleb128 0x11
+ 1434 0108 01       		.uleb128 0x1
+ 1435 0109 31       		.uleb128 0x31
+ 1436 010a 13       		.uleb128 0x13
+ 1437 010b 00       		.byte	0
+ 1438 010c 00       		.byte	0
+ 1439 010d 15       		.uleb128 0x15
+ 1440 010e 34       		.uleb128 0x34
+ 1441 010f 00       		.byte	0
+ 1442 0110 03       		.uleb128 0x3
+ 1443 0111 0E       		.uleb128 0xe
+ 1444 0112 3A       		.uleb128 0x3a
+ 1445 0113 0B       		.uleb128 0xb
+ 1446 0114 3B       		.uleb128 0x3b
+ 1447 0115 05       		.uleb128 0x5
+ 1448 0116 49       		.uleb128 0x49
+ 1449 0117 13       		.uleb128 0x13
+ 1450 0118 3F       		.uleb128 0x3f
+ 1451 0119 19       		.uleb128 0x19
+ 1452 011a 3C       		.uleb128 0x3c
+ 1453 011b 19       		.uleb128 0x19
+ 1454 011c 00       		.byte	0
+ 1455 011d 00       		.byte	0
+ 1456 011e 16       		.uleb128 0x16
+ 1457 011f 34       		.uleb128 0x34
+ 1458 0120 00       		.byte	0
+ 1459 0121 03       		.uleb128 0x3
+ 1460 0122 0E       		.uleb128 0xe
+ 1461 0123 3A       		.uleb128 0x3a
+ 1462 0124 0B       		.uleb128 0xb
+ 1463 0125 3B       		.uleb128 0x3b
+ 1464 0126 0B       		.uleb128 0xb
+ 1465 0127 49       		.uleb128 0x49
+ 1466 0128 13       		.uleb128 0x13
+ 1467 0129 3F       		.uleb128 0x3f
+ 1468 012a 19       		.uleb128 0x19
+ 1469 012b 02       		.uleb128 0x2
+ 1470 012c 18       		.uleb128 0x18
+ 1471 012d 00       		.byte	0
+ 1472 012e 00       		.byte	0
+ 1473 012f 17       		.uleb128 0x17
+ 1474 0130 2E       		.uleb128 0x2e
+ 1475 0131 00       		.byte	0
+ 1476 0132 3F       		.uleb128 0x3f
+ 1477 0133 19       		.uleb128 0x19
+ 1478 0134 3C       		.uleb128 0x3c
+ 1479 0135 19       		.uleb128 0x19
+ 1480 0136 6E       		.uleb128 0x6e
+ 1481 0137 0E       		.uleb128 0xe
+ 1482 0138 03       		.uleb128 0x3
+ 1483 0139 0E       		.uleb128 0xe
+ 1484 013a 3A       		.uleb128 0x3a
+ 1485 013b 0B       		.uleb128 0xb
+ 1486 013c 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 31
+
+
+ 1487 013d 05       		.uleb128 0x5
+ 1488 013e 00       		.byte	0
+ 1489 013f 00       		.byte	0
+ 1490 0140 00       		.byte	0
+ 1491              		.section	.debug_loc,"",%progbits
+ 1492              	.Ldebug_loc0:
+ 1493              	.LLST0:
+ 1494 0000 06000000 		.4byte	.LVL0
+ 1495 0004 16000000 		.4byte	.LVL4
+ 1496 0008 0600     		.2byte	0x6
+ 1497 000a 70       		.byte	0x70
+ 1498 000b 00       		.sleb128 0
+ 1499 000c 08       		.byte	0x8
+ 1500 000d FF       		.byte	0xff
+ 1501 000e 1A       		.byte	0x1a
+ 1502 000f 9F       		.byte	0x9f
+ 1503 0010 16000000 		.4byte	.LVL4
+ 1504 0014 19000000 		.4byte	.LVL5-1
+ 1505 0018 0100     		.2byte	0x1
+ 1506 001a 50       		.byte	0x50
+ 1507 001b 00000000 		.4byte	0
+ 1508 001f 00000000 		.4byte	0
+ 1509              	.LLST1:
+ 1510 0023 0A000000 		.4byte	.LVL1
+ 1511 0027 0E000000 		.4byte	.LVL2
+ 1512 002b 0100     		.2byte	0x1
+ 1513 002d 53       		.byte	0x53
+ 1514 002e 12000000 		.4byte	.LVL3
+ 1515 0032 19000000 		.4byte	.LVL5-1
+ 1516 0036 0100     		.2byte	0x1
+ 1517 0038 53       		.byte	0x53
+ 1518 0039 00000000 		.4byte	0
+ 1519 003d 00000000 		.4byte	0
+ 1520              	.LLST2:
+ 1521 0041 00000000 		.4byte	.LVL6
+ 1522 0045 07000000 		.4byte	.LVL7-1
+ 1523 0049 0100     		.2byte	0x1
+ 1524 004b 50       		.byte	0x50
+ 1525 004c 07000000 		.4byte	.LVL7-1
+ 1526 0050 16000000 		.4byte	.LVL9
+ 1527 0054 0100     		.2byte	0x1
+ 1528 0056 54       		.byte	0x54
+ 1529 0057 16000000 		.4byte	.LVL9
+ 1530 005b 28000000 		.4byte	.LFE136
+ 1531 005f 0400     		.2byte	0x4
+ 1532 0061 F3       		.byte	0xf3
+ 1533 0062 01       		.uleb128 0x1
+ 1534 0063 50       		.byte	0x50
+ 1535 0064 9F       		.byte	0x9f
+ 1536 0065 00000000 		.4byte	0
+ 1537 0069 00000000 		.4byte	0
+ 1538              	.LLST3:
+ 1539 006d 08000000 		.4byte	.LVL7
+ 1540 0071 1E000000 		.4byte	.LVL11
+ 1541 0075 0600     		.2byte	0x6
+ 1542 0077 70       		.byte	0x70
+ 1543 0078 00       		.sleb128 0
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 32
+
+
+ 1544 0079 08       		.byte	0x8
+ 1545 007a FF       		.byte	0xff
+ 1546 007b 1A       		.byte	0x1a
+ 1547 007c 9F       		.byte	0x9f
+ 1548 007d 1E000000 		.4byte	.LVL11
+ 1549 0081 21000000 		.4byte	.LVL12-1
+ 1550 0085 0100     		.2byte	0x1
+ 1551 0087 50       		.byte	0x50
+ 1552 0088 00000000 		.4byte	0
+ 1553 008c 00000000 		.4byte	0
+ 1554              	.LLST4:
+ 1555 0090 12000000 		.4byte	.LVL8
+ 1556 0094 18000000 		.4byte	.LVL10
+ 1557 0098 0100     		.2byte	0x1
+ 1558 009a 53       		.byte	0x53
+ 1559 009b 18000000 		.4byte	.LVL10
+ 1560 009f 24000000 		.4byte	.LVL13
+ 1561 00a3 0100     		.2byte	0x1
+ 1562 00a5 54       		.byte	0x54
+ 1563 00a6 00000000 		.4byte	0
+ 1564 00aa 00000000 		.4byte	0
+ 1565              	.LLST5:
+ 1566 00ae 00000000 		.4byte	.LVL14
+ 1567 00b2 07000000 		.4byte	.LVL15-1
+ 1568 00b6 0100     		.2byte	0x1
+ 1569 00b8 50       		.byte	0x50
+ 1570 00b9 07000000 		.4byte	.LVL15-1
+ 1571 00bd 14000000 		.4byte	.LVL17
+ 1572 00c1 0100     		.2byte	0x1
+ 1573 00c3 54       		.byte	0x54
+ 1574 00c4 14000000 		.4byte	.LVL17
+ 1575 00c8 2C000000 		.4byte	.LFE137
+ 1576 00cc 0400     		.2byte	0x4
+ 1577 00ce F3       		.byte	0xf3
+ 1578 00cf 01       		.uleb128 0x1
+ 1579 00d0 50       		.byte	0x50
+ 1580 00d1 9F       		.byte	0x9f
+ 1581 00d2 00000000 		.4byte	0
+ 1582 00d6 00000000 		.4byte	0
+ 1583              	.LLST6:
+ 1584 00da 08000000 		.4byte	.LVL15
+ 1585 00de 20000000 		.4byte	.LVL19
+ 1586 00e2 0600     		.2byte	0x6
+ 1587 00e4 70       		.byte	0x70
+ 1588 00e5 00       		.sleb128 0
+ 1589 00e6 08       		.byte	0x8
+ 1590 00e7 FF       		.byte	0xff
+ 1591 00e8 1A       		.byte	0x1a
+ 1592 00e9 9F       		.byte	0x9f
+ 1593 00ea 20000000 		.4byte	.LVL19
+ 1594 00ee 23000000 		.4byte	.LVL20-1
+ 1595 00f2 0100     		.2byte	0x1
+ 1596 00f4 50       		.byte	0x50
+ 1597 00f5 00000000 		.4byte	0
+ 1598 00f9 00000000 		.4byte	0
+ 1599              	.LLST7:
+ 1600 00fd 12000000 		.4byte	.LVL16
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 33
+
+
+ 1601 0101 1A000000 		.4byte	.LVL18
+ 1602 0105 0100     		.2byte	0x1
+ 1603 0107 53       		.byte	0x53
+ 1604 0108 1A000000 		.4byte	.LVL18
+ 1605 010c 26000000 		.4byte	.LVL21
+ 1606 0110 0100     		.2byte	0x1
+ 1607 0112 54       		.byte	0x54
+ 1608 0113 00000000 		.4byte	0
+ 1609 0117 00000000 		.4byte	0
+ 1610              	.LLST8:
+ 1611 011b 00000000 		.4byte	.LVL22
+ 1612 011f 07000000 		.4byte	.LVL23-1
+ 1613 0123 0100     		.2byte	0x1
+ 1614 0125 50       		.byte	0x50
+ 1615 0126 07000000 		.4byte	.LVL23-1
+ 1616 012a 22000000 		.4byte	.LVL28
+ 1617 012e 0100     		.2byte	0x1
+ 1618 0130 54       		.byte	0x54
+ 1619 0131 22000000 		.4byte	.LVL28
+ 1620 0135 28000000 		.4byte	.LFE138
+ 1621 0139 0400     		.2byte	0x4
+ 1622 013b F3       		.byte	0xf3
+ 1623 013c 01       		.uleb128 0x1
+ 1624 013d 50       		.byte	0x50
+ 1625 013e 9F       		.byte	0x9f
+ 1626 013f 00000000 		.4byte	0
+ 1627 0143 00000000 		.4byte	0
+ 1628              	.LLST9:
+ 1629 0147 08000000 		.4byte	.LVL23
+ 1630 014b 1C000000 		.4byte	.LVL26
+ 1631 014f 0600     		.2byte	0x6
+ 1632 0151 70       		.byte	0x70
+ 1633 0152 00       		.sleb128 0
+ 1634 0153 08       		.byte	0x8
+ 1635 0154 FF       		.byte	0xff
+ 1636 0155 1A       		.byte	0x1a
+ 1637 0156 9F       		.byte	0x9f
+ 1638 0157 1C000000 		.4byte	.LVL26
+ 1639 015b 1F000000 		.4byte	.LVL27-1
+ 1640 015f 0100     		.2byte	0x1
+ 1641 0161 50       		.byte	0x50
+ 1642 0162 00000000 		.4byte	0
+ 1643 0166 00000000 		.4byte	0
+ 1644              	.LLST10:
+ 1645 016a 12000000 		.4byte	.LVL24
+ 1646 016e 1F000000 		.4byte	.LVL27-1
+ 1647 0172 0100     		.2byte	0x1
+ 1648 0174 53       		.byte	0x53
+ 1649 0175 00000000 		.4byte	0
+ 1650 0179 00000000 		.4byte	0
+ 1651              	.LLST11:
+ 1652 017d 06000000 		.4byte	.LVL29
+ 1653 0181 1A000000 		.4byte	.LVL33
+ 1654 0185 0600     		.2byte	0x6
+ 1655 0187 70       		.byte	0x70
+ 1656 0188 00       		.sleb128 0
+ 1657 0189 08       		.byte	0x8
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 34
+
+
+ 1658 018a FF       		.byte	0xff
+ 1659 018b 1A       		.byte	0x1a
+ 1660 018c 9F       		.byte	0x9f
+ 1661 018d 1A000000 		.4byte	.LVL33
+ 1662 0191 1D000000 		.4byte	.LVL34-1
+ 1663 0195 0100     		.2byte	0x1
+ 1664 0197 50       		.byte	0x50
+ 1665 0198 00000000 		.4byte	0
+ 1666 019c 00000000 		.4byte	0
+ 1667              	.LLST12:
+ 1668 01a0 0C000000 		.4byte	.LVL30
+ 1669 01a4 10000000 		.4byte	.LVL31
+ 1670 01a8 0100     		.2byte	0x1
+ 1671 01aa 53       		.byte	0x53
+ 1672 01ab 14000000 		.4byte	.LVL32
+ 1673 01af 1D000000 		.4byte	.LVL34-1
+ 1674 01b3 0100     		.2byte	0x1
+ 1675 01b5 53       		.byte	0x53
+ 1676 01b6 00000000 		.4byte	0
+ 1677 01ba 00000000 		.4byte	0
+ 1678              		.section	.debug_aranges,"",%progbits
+ 1679 0000 4C000000 		.4byte	0x4c
+ 1680 0004 0200     		.2byte	0x2
+ 1681 0006 00000000 		.4byte	.Ldebug_info0
+ 1682 000a 04       		.byte	0x4
+ 1683 000b 00       		.byte	0
+ 1684 000c 0000     		.2byte	0
+ 1685 000e 0000     		.2byte	0
+ 1686 0010 00000000 		.4byte	.LFB133
+ 1687 0014 20000000 		.4byte	.LFE133-.LFB133
+ 1688 0018 00000000 		.4byte	.LFB135
+ 1689 001c 02000000 		.4byte	.LFE135-.LFB135
+ 1690 0020 00000000 		.4byte	.LFB136
+ 1691 0024 28000000 		.4byte	.LFE136-.LFB136
+ 1692 0028 00000000 		.4byte	.LFB137
+ 1693 002c 2C000000 		.4byte	.LFE137-.LFB137
+ 1694 0030 00000000 		.4byte	.LFB138
+ 1695 0034 28000000 		.4byte	.LFE138-.LFB138
+ 1696 0038 00000000 		.4byte	.LFB132
+ 1697 003c 38000000 		.4byte	.LFE132-.LFB132
+ 1698 0040 00000000 		.4byte	.LFB134
+ 1699 0044 1C000000 		.4byte	.LFE134-.LFB134
+ 1700 0048 00000000 		.4byte	0
+ 1701 004c 00000000 		.4byte	0
+ 1702              		.section	.debug_ranges,"",%progbits
+ 1703              	.Ldebug_ranges0:
+ 1704 0000 00000000 		.4byte	.LFB133
+ 1705 0004 20000000 		.4byte	.LFE133
+ 1706 0008 00000000 		.4byte	.LFB135
+ 1707 000c 02000000 		.4byte	.LFE135
+ 1708 0010 00000000 		.4byte	.LFB136
+ 1709 0014 28000000 		.4byte	.LFE136
+ 1710 0018 00000000 		.4byte	.LFB137
+ 1711 001c 2C000000 		.4byte	.LFE137
+ 1712 0020 00000000 		.4byte	.LFB138
+ 1713 0024 28000000 		.4byte	.LFE138
+ 1714 0028 00000000 		.4byte	.LFB132
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 35
+
+
+ 1715 002c 38000000 		.4byte	.LFE132
+ 1716 0030 00000000 		.4byte	.LFB134
+ 1717 0034 1C000000 		.4byte	.LFE134
+ 1718 0038 00000000 		.4byte	0
+ 1719 003c 00000000 		.4byte	0
+ 1720              		.section	.debug_line,"",%progbits
+ 1721              	.Ldebug_line0:
+ 1722 0000 CC020000 		.section	.debug_str,"MS",%progbits,1
+ 1722      02003702 
+ 1722      00000201 
+ 1722      FB0E0D00 
+ 1722      01010101 
+ 1723              	.LASF93:
+ 1724 0000 43795F53 		.ascii	"Cy_SysLib_EnterCriticalSection\000"
+ 1724      79734C69 
+ 1724      625F456E 
+ 1724      74657243 
+ 1724      72697469 
+ 1725              	.LASF65:
+ 1726 001f 5345515F 		.ascii	"SEQ_NORM_CNT\000"
+ 1726      4E4F524D 
+ 1726      5F434E54 
+ 1726      00
+ 1727              	.LASF88:
+ 1728 002c 72616E67 		.ascii	"range\000"
+ 1728      6500
+ 1729              	.LASF29:
+ 1730 0032 494E5452 		.ascii	"INTR\000"
+ 1730      00
+ 1731              	.LASF0:
+ 1732 0037 73686F72 		.ascii	"short int\000"
+ 1732      7420696E 
+ 1732      7400
+ 1733              	.LASF90:
+ 1734 0041 49444143 		.ascii	"IDAC7_1_Start\000"
+ 1734      375F315F 
+ 1734      53746172 
+ 1734      7400
+ 1735              	.LASF15:
+ 1736 004f 73697A65 		.ascii	"sizetype\000"
+ 1736      74797065 
+ 1736      00
+ 1737              	.LASF36:
+ 1738 0058 52454647 		.ascii	"REFGEN\000"
+ 1738      454E00
+ 1739              	.LASF97:
+ 1740 005f 433A5C55 		.ascii	"C:\\Users\\oars0\\Documents\\School\\Interfacing\\w"
+ 1740      73657273 
+ 1740      5C6F6172 
+ 1740      73305C44 
+ 1740      6F63756D 
+ 1741 008c 6F726B73 		.ascii	"orkspace\\Lab01.cydsn\000"
+ 1741      70616365 
+ 1741      5C4C6162 
+ 1741      30312E63 
+ 1741      7964736E 
+ 1742              	.LASF39:
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 36
+
+
+ 1743 00a1 53575F52 		.ascii	"SW_RES\000"
+ 1743      455300
+ 1744              	.LASF95:
+ 1745 00a8 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1745      43313120 
+ 1745      352E342E 
+ 1745      31203230 
+ 1745      31363036 
+ 1746 00db 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m4 -mfloat-abi=s"
+ 1746      20726576 
+ 1746      6973696F 
+ 1746      6E203233 
+ 1746      37373135 
+ 1747 010e 6F667466 		.ascii	"oftfp -mfpu=fpv4-sp-d16 -mthumb -g -Og -ffunction-s"
+ 1747      70202D6D 
+ 1747      6670753D 
+ 1747      66707634 
+ 1747      2D73702D 
+ 1748 0141 65637469 		.ascii	"ections -ffat-lto-objects\000"
+ 1748      6F6E7320 
+ 1748      2D666661 
+ 1748      742D6C74 
+ 1748      6F2D6F62 
+ 1749              	.LASF7:
+ 1750 015b 5F5F7569 		.ascii	"__uint32_t\000"
+ 1750      6E743332 
+ 1750      5F7400
+ 1751              	.LASF69:
+ 1752 0166 5345515F 		.ascii	"SEQ_START\000"
+ 1752      53544152 
+ 1752      5400
+ 1753              	.LASF45:
+ 1754 0170 53575F48 		.ascii	"SW_HS_N_SEL\000"
+ 1754      535F4E5F 
+ 1754      53454C00 
+ 1755              	.LASF37:
+ 1756 017c 43534443 		.ascii	"CSDCMP\000"
+ 1756      4D5000
+ 1757              	.LASF22:
+ 1758 0183 53544154 		.ascii	"STAT_HCNT\000"
+ 1758      5F48434E 
+ 1758      5400
+ 1759              	.LASF17:
+ 1760 018d 53504152 		.ascii	"SPARE\000"
+ 1760      4500
+ 1761              	.LASF53:
+ 1762 0193 53575F52 		.ascii	"SW_REFGEN_SEL\000"
+ 1762      45464745 
+ 1762      4E5F5345 
+ 1762      4C00
+ 1763              	.LASF40:
+ 1764 01a1 52455345 		.ascii	"RESERVED6\000"
+ 1764      52564544 
+ 1764      3600
+ 1765              	.LASF31:
+ 1766 01ab 494E5452 		.ascii	"INTR_MASK\000"
+ 1766      5F4D4153 
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 37
+
+
+ 1766      4B00
+ 1767              	.LASF46:
+ 1768 01b5 53575F53 		.ascii	"SW_SHIELD_SEL\000"
+ 1768      4849454C 
+ 1768      445F5345 
+ 1768      4C00
+ 1769              	.LASF50:
+ 1770 01c3 52455345 		.ascii	"RESERVED9\000"
+ 1770      52564544 
+ 1770      3900
+ 1771              	.LASF58:
+ 1772 01cd 53575F44 		.ascii	"SW_DSI_SEL\000"
+ 1772      53495F53 
+ 1772      454C00
+ 1773              	.LASF1:
+ 1774 01d8 7369676E 		.ascii	"signed char\000"
+ 1774      65642063 
+ 1774      68617200 
+ 1775              	.LASF51:
+ 1776 01e4 53575F43 		.ascii	"SW_CMP_P_SEL\000"
+ 1776      4D505F50 
+ 1776      5F53454C 
+ 1776      00
+ 1777              	.LASF30:
+ 1778 01f1 494E5452 		.ascii	"INTR_SET\000"
+ 1778      5F534554 
+ 1778      00
+ 1779              	.LASF78:
+ 1780 01fa 666C6F61 		.ascii	"float\000"
+ 1780      7400
+ 1781              	.LASF74:
+ 1782 0200 4353445F 		.ascii	"CSD_V1_Type\000"
+ 1782      56315F54 
+ 1782      79706500 
+ 1783              	.LASF9:
+ 1784 020c 6C6F6E67 		.ascii	"long long int\000"
+ 1784      206C6F6E 
+ 1784      6720696E 
+ 1784      7400
+ 1785              	.LASF49:
+ 1786 021a 53575F42 		.ascii	"SW_BYP_SEL\000"
+ 1786      59505F53 
+ 1786      454C00
+ 1787              	.LASF89:
+ 1788 0225 49444143 		.ascii	"IDAC7_1_Init\000"
+ 1788      375F315F 
+ 1788      496E6974 
+ 1788      00
+ 1789              	.LASF19:
+ 1790 0232 53544154 		.ascii	"STATUS\000"
+ 1790      555300
+ 1791              	.LASF6:
+ 1792 0239 6C6F6E67 		.ascii	"long int\000"
+ 1792      20696E74 
+ 1792      00
+ 1793              	.LASF92:
+ 1794 0242 49444143 		.ascii	"IDAC7_1_initVar\000"
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 38
+
+
+ 1794      375F315F 
+ 1794      696E6974 
+ 1794      56617200 
+ 1795              	.LASF67:
+ 1796 0252 4144435F 		.ascii	"ADC_CTL\000"
+ 1796      43544C00 
+ 1797              	.LASF4:
+ 1798 025a 5F5F7569 		.ascii	"__uint8_t\000"
+ 1798      6E74385F 
+ 1798      7400
+ 1799              	.LASF48:
+ 1800 0264 53575F41 		.ascii	"SW_AMUXBUF_SEL\000"
+ 1800      4D555842 
+ 1800      55465F53 
+ 1800      454C00
+ 1801              	.LASF32:
+ 1802 0273 494E5452 		.ascii	"INTR_MASKED\000"
+ 1802      5F4D4153 
+ 1802      4B454400 
+ 1803              	.LASF94:
+ 1804 027f 43795F53 		.ascii	"Cy_SysLib_ExitCriticalSection\000"
+ 1804      79734C69 
+ 1804      625F4578 
+ 1804      69744372 
+ 1804      69746963 
+ 1805              	.LASF76:
+ 1806 029d 6C6F6E67 		.ascii	"long double\000"
+ 1806      20646F75 
+ 1806      626C6500 
+ 1807              	.LASF2:
+ 1808 02a9 756E7369 		.ascii	"unsigned char\000"
+ 1808      676E6564 
+ 1808      20636861 
+ 1808      7200
+ 1809              	.LASF54:
+ 1810 02b7 52455345 		.ascii	"RESERVED10\000"
+ 1810      52564544 
+ 1810      313000
+ 1811              	.LASF57:
+ 1812 02c2 52455345 		.ascii	"RESERVED11\000"
+ 1812      52564544 
+ 1812      313100
+ 1813              	.LASF59:
+ 1814 02cd 52455345 		.ascii	"RESERVED12\000"
+ 1814      52564544 
+ 1814      313200
+ 1815              	.LASF61:
+ 1816 02d8 52455345 		.ascii	"RESERVED13\000"
+ 1816      52564544 
+ 1816      313300
+ 1817              	.LASF63:
+ 1818 02e3 52455345 		.ascii	"RESERVED14\000"
+ 1818      52564544 
+ 1818      313400
+ 1819              	.LASF66:
+ 1820 02ee 52455345 		.ascii	"RESERVED15\000"
+ 1820      52564544 
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 39
+
+
+ 1820      313500
+ 1821              	.LASF68:
+ 1822 02f9 52455345 		.ascii	"RESERVED16\000"
+ 1822      52564544 
+ 1822      313600
+ 1823              	.LASF70:
+ 1824 0304 52455345 		.ascii	"RESERVED17\000"
+ 1824      52564544 
+ 1824      313700
+ 1825              	.LASF72:
+ 1826 030f 52455345 		.ascii	"RESERVED18\000"
+ 1826      52564544 
+ 1826      313800
+ 1827              	.LASF10:
+ 1828 031a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1828      206C6F6E 
+ 1828      6720756E 
+ 1828      7369676E 
+ 1828      65642069 
+ 1829              	.LASF14:
+ 1830 0331 75696E74 		.ascii	"uint32_t\000"
+ 1830      33325F74 
+ 1830      00
+ 1831              	.LASF20:
+ 1832 033a 53544154 		.ascii	"STAT_SEQ\000"
+ 1832      5F534551 
+ 1832      00
+ 1833              	.LASF62:
+ 1834 0343 5345515F 		.ascii	"SEQ_TIME\000"
+ 1834      54494D45 
+ 1834      00
+ 1835              	.LASF11:
+ 1836 034c 756E7369 		.ascii	"unsigned int\000"
+ 1836      676E6564 
+ 1836      20696E74 
+ 1836      00
+ 1837              	.LASF21:
+ 1838 0359 53544154 		.ascii	"STAT_CNTS\000"
+ 1838      5F434E54 
+ 1838      5300
+ 1839              	.LASF85:
+ 1840 0363 63757272 		.ascii	"current\000"
+ 1840      656E7400 
+ 1841              	.LASF52:
+ 1842 036b 53575F43 		.ascii	"SW_CMP_N_SEL\000"
+ 1842      4D505F4E 
+ 1842      5F53454C 
+ 1842      00
+ 1843              	.LASF3:
+ 1844 0378 73686F72 		.ascii	"short unsigned int\000"
+ 1844      7420756E 
+ 1844      7369676E 
+ 1844      65642069 
+ 1844      6E7400
+ 1845              	.LASF77:
+ 1846 038b 63686172 		.ascii	"char\000"
+ 1846      00
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 40
+
+
+ 1847              	.LASF75:
+ 1848 0390 4353445F 		.ascii	"CSD_Type\000"
+ 1848      54797065 
+ 1848      00
+ 1849              	.LASF13:
+ 1850 0399 696E7433 		.ascii	"int32_t\000"
+ 1850      325F7400 
+ 1851              	.LASF96:
+ 1852 03a1 47656E65 		.ascii	"Generated_Source\\PSoC6\\IDAC7_1.c\000"
+ 1852      72617465 
+ 1852      645F536F 
+ 1852      75726365 
+ 1852      5C50536F 
+ 1853              	.LASF27:
+ 1854 03c2 4144435F 		.ascii	"ADC_RES\000"
+ 1854      52455300 
+ 1855              	.LASF56:
+ 1856 03ca 53575F46 		.ascii	"SW_FW_TANK_SEL\000"
+ 1856      575F5441 
+ 1856      4E4B5F53 
+ 1856      454C00
+ 1857              	.LASF84:
+ 1858 03d9 49444143 		.ascii	"IDAC7_1_SetPolarity\000"
+ 1858      375F315F 
+ 1858      53657450 
+ 1858      6F6C6172 
+ 1858      69747900 
+ 1859              	.LASF80:
+ 1860 03ed 696E7465 		.ascii	"interruptState\000"
+ 1860      72727570 
+ 1860      74537461 
+ 1860      746500
+ 1861              	.LASF23:
+ 1862 03fc 52455345 		.ascii	"RESERVED1\000"
+ 1862      52564544 
+ 1862      3100
+ 1863              	.LASF26:
+ 1864 0406 52455345 		.ascii	"RESERVED2\000"
+ 1864      52564544 
+ 1864      3200
+ 1865              	.LASF28:
+ 1866 0410 52455345 		.ascii	"RESERVED3\000"
+ 1866      52564544 
+ 1866      3300
+ 1867              	.LASF33:
+ 1868 041a 52455345 		.ascii	"RESERVED4\000"
+ 1868      52564544 
+ 1868      3400
+ 1869              	.LASF38:
+ 1870 0424 52455345 		.ascii	"RESERVED5\000"
+ 1870      52564544 
+ 1870      3500
+ 1871              	.LASF8:
+ 1872 042e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1872      20756E73 
+ 1872      69676E65 
+ 1872      6420696E 
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 41
+
+
+ 1872      7400
+ 1873              	.LASF43:
+ 1874 0440 52455345 		.ascii	"RESERVED7\000"
+ 1874      52564544 
+ 1874      3700
+ 1875              	.LASF47:
+ 1876 044a 52455345 		.ascii	"RESERVED8\000"
+ 1876      52564544 
+ 1876      3800
+ 1877              	.LASF79:
+ 1878 0454 646F7562 		.ascii	"double\000"
+ 1878      6C6500
+ 1879              	.LASF64:
+ 1880 045b 5345515F 		.ascii	"SEQ_INIT_CNT\000"
+ 1880      494E4954 
+ 1880      5F434E54 
+ 1880      00
+ 1881              	.LASF42:
+ 1882 0468 53454E53 		.ascii	"SENSE_DUTY\000"
+ 1882      455F4455 
+ 1882      545900
+ 1883              	.LASF83:
+ 1884 0473 49444143 		.ascii	"IDAC7_1_SetValue\000"
+ 1884      375F315F 
+ 1884      53657456 
+ 1884      616C7565 
+ 1884      00
+ 1885              	.LASF55:
+ 1886 0484 53575F46 		.ascii	"SW_FW_MOD_SEL\000"
+ 1886      575F4D4F 
+ 1886      445F5345 
+ 1886      4C00
+ 1887              	.LASF5:
+ 1888 0492 5F5F696E 		.ascii	"__int32_t\000"
+ 1888      7433325F 
+ 1888      7400
+ 1889              	.LASF86:
+ 1890 049c 706F6C61 		.ascii	"polarity\000"
+ 1890      72697479 
+ 1890      00
+ 1891              	.LASF98:
+ 1892 04a5 49444143 		.ascii	"IDAC7_1_Stop\000"
+ 1892      375F315F 
+ 1892      53746F70 
+ 1892      00
+ 1893              	.LASF60:
+ 1894 04b2 494F5F53 		.ascii	"IO_SEL\000"
+ 1894      454C00
+ 1895              	.LASF41:
+ 1896 04b9 53454E53 		.ascii	"SENSE_PERIOD\000"
+ 1896      455F5045 
+ 1896      52494F44 
+ 1896      00
+ 1897              	.LASF12:
+ 1898 04c6 75696E74 		.ascii	"uint8_t\000"
+ 1898      385F7400 
+ 1899              	.LASF35:
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cci13Qqb.s 			page 42
+
+
+ 1900 04ce 414D4255 		.ascii	"AMBUF\000"
+ 1900      4600
+ 1901              	.LASF24:
+ 1902 04d4 52455355 		.ascii	"RESULT_VAL1\000"
+ 1902      4C545F56 
+ 1902      414C3100 
+ 1903              	.LASF25:
+ 1904 04e0 52455355 		.ascii	"RESULT_VAL2\000"
+ 1904      4C545F56 
+ 1904      414C3200 
+ 1905              	.LASF87:
+ 1906 04ec 49444143 		.ascii	"IDAC7_1_SetRange\000"
+ 1906      375F315F 
+ 1906      53657452 
+ 1906      616E6765 
+ 1906      00
+ 1907              	.LASF82:
+ 1908 04fd 49444143 		.ascii	"IDAC7_1_Enable\000"
+ 1908      375F315F 
+ 1908      456E6162 
+ 1908      6C6500
+ 1909              	.LASF71:
+ 1910 050c 49444143 		.ascii	"IDACA\000"
+ 1910      4100
+ 1911              	.LASF73:
+ 1912 0512 49444143 		.ascii	"IDACB\000"
+ 1912      4200
+ 1913              	.LASF44:
+ 1914 0518 53575F48 		.ascii	"SW_HS_P_SEL\000"
+ 1914      535F505F 
+ 1914      53454C00 
+ 1915              	.LASF18:
+ 1916 0524 52455345 		.ascii	"RESERVED\000"
+ 1916      52564544 
+ 1916      00
+ 1917              	.LASF34:
+ 1918 052d 4853434D 		.ascii	"HSCMP\000"
+ 1918      5000
+ 1919              	.LASF91:
+ 1920 0533 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1920      52784275 
+ 1920      66666572 
+ 1920      00
+ 1921              	.LASF16:
+ 1922 0540 434F4E46 		.ascii	"CONFIG\000"
+ 1922      494700
+ 1923              	.LASF81:
+ 1924 0547 6E657752 		.ascii	"newRegisterValue\000"
+ 1924      65676973 
+ 1924      74657256 
+ 1924      616C7565 
+ 1924      00
+ 1925              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,2489 @@
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0plus
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"IDAC7_1.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.IDAC7_1_Enable,"ax",%progbits
+  20              		.align	2
+  21              		.global	IDAC7_1_Enable
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	IDAC7_1_Enable, %function
+  25              	IDAC7_1_Enable:
+  26              	.LFB46:
+  27              		.file 1 "Generated_Source\\PSoC6\\IDAC7_1.c"
+   1:Generated_Source\PSoC6/IDAC7_1.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC6/IDAC7_1.c **** * \file IDAC7_1.c
+   3:Generated_Source\PSoC6/IDAC7_1.c **** * \version 1.0
+   4:Generated_Source\PSoC6/IDAC7_1.c **** *
+   5:Generated_Source\PSoC6/IDAC7_1.c **** * \brief
+   6:Generated_Source\PSoC6/IDAC7_1.c **** *  This file provides the source code of APIs for the IDAC7 component.
+   7:Generated_Source\PSoC6/IDAC7_1.c **** *
+   8:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************
+   9:Generated_Source\PSoC6/IDAC7_1.c **** * \copyright
+  10:Generated_Source\PSoC6/IDAC7_1.c **** * Copyright 2017, Cypress Semiconductor Corporation.  All rights reserved.
+  11:Generated_Source\PSoC6/IDAC7_1.c **** * You may use this file only in accordance with the license, terms, conditions,
+  12:Generated_Source\PSoC6/IDAC7_1.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  13:Generated_Source\PSoC6/IDAC7_1.c **** * the software package with which this file was provided.
+  14:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+  15:Generated_Source\PSoC6/IDAC7_1.c **** 
+  16:Generated_Source\PSoC6/IDAC7_1.c **** #include "IDAC7_1.h"
+  17:Generated_Source\PSoC6/IDAC7_1.c **** 
+  18:Generated_Source\PSoC6/IDAC7_1.c **** uint32_t IDAC7_1_initVar = 0u;
+  19:Generated_Source\PSoC6/IDAC7_1.c **** 
+  20:Generated_Source\PSoC6/IDAC7_1.c **** 
+  21:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+  22:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_Init
+  23:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+  24:Generated_Source\PSoC6/IDAC7_1.c **** *
+  25:Generated_Source\PSoC6/IDAC7_1.c **** *  Initializes all initial parameters and operating modes.
+  26:Generated_Source\PSoC6/IDAC7_1.c **** *
+  27:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+  28:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_Init(void)
+  29:Generated_Source\PSoC6/IDAC7_1.c **** {
+  30:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t interruptState;
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 2
+
+
+  31:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t newRegisterValue;
+  32:Generated_Source\PSoC6/IDAC7_1.c **** 
+  33:Generated_Source\PSoC6/IDAC7_1.c ****     /* Set IDAC default values */
+  34:Generated_Source\PSoC6/IDAC7_1.c ****     interruptState = CyEnterCriticalSection();
+  35:Generated_Source\PSoC6/IDAC7_1.c **** 
+  36:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue = (uint32_t)IDAC7_1_IDAC_CONTROL_REG;
+  37:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue &= (uint32_t)(~IDAC7_1_POLY_DYN  &
+  38:Generated_Source\PSoC6/IDAC7_1.c ****                                  ~IDAC7_1_LEG1_MODE_MASK &
+  39:Generated_Source\PSoC6/IDAC7_1.c ****                                  ~IDAC7_1_LEG2_MODE_MASK &
+  40:Generated_Source\PSoC6/IDAC7_1.c ****                                  ~IDAC7_1_DSI_CTRL_EN);
+  41:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_IDAC_CONTROL_REG = newRegisterValue;
+  42:Generated_Source\PSoC6/IDAC7_1.c **** 
+  43:Generated_Source\PSoC6/IDAC7_1.c ****     CyExitCriticalSection(interruptState);
+  44:Generated_Source\PSoC6/IDAC7_1.c **** 
+  45:Generated_Source\PSoC6/IDAC7_1.c ****     /* Set initial configuration */
+  46:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_SetValue(IDAC7_1_CURRENT_VALUE);
+  47:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_SetPolarity(IDAC7_1_CURRENT_POLARITY);
+  48:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_SetRange(IDAC7_1_CURRENT_RANGE);
+  49:Generated_Source\PSoC6/IDAC7_1.c **** }
+  50:Generated_Source\PSoC6/IDAC7_1.c **** 
+  51:Generated_Source\PSoC6/IDAC7_1.c **** 
+  52:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+  53:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_Enable
+  54:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+  55:Generated_Source\PSoC6/IDAC7_1.c **** *
+  56:Generated_Source\PSoC6/IDAC7_1.c **** *  Enables the IDAC for operation.
+  57:Generated_Source\PSoC6/IDAC7_1.c **** *
+  58:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+  59:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_Enable(void)
+  60:Generated_Source\PSoC6/IDAC7_1.c **** {
+  28              		.loc 1 60 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  61:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t interruptState;
+  62:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t newRegisterValue;
+  63:Generated_Source\PSoC6/IDAC7_1.c **** 	
+  64:Generated_Source\PSoC6/IDAC7_1.c ****     interruptState = CyEnterCriticalSection();
+  36              		.loc 1 64 0
+  37 0002 FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+  38              	.LVL0:
+  39 0006 FF23     		movs	r3, #255
+  40 0008 1840     		ands	r0, r3
+  41              	.LVL1:
+  65:Generated_Source\PSoC6/IDAC7_1.c **** 
+  66:Generated_Source\PSoC6/IDAC7_1.c ****     /* Enable CSD */
+  67:Generated_Source\PSoC6/IDAC7_1.c **** 	newRegisterValue = (uint32_t)IDAC7_1_CSD_CONTROL_REG;
+  42              		.loc 1 67 0
+  43 000a 044A     		ldr	r2, .L2
+  44 000c 1368     		ldr	r3, [r2]
+  45              	.LVL2:
+  68:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue |= (IDAC7_1_CSD_CONFIG_ENABLE | IDAC7_1_CSD_CONFIG_SENSE_EN);
+  46              		.loc 1 68 0
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 3
+
+
+  47 000e 0449     		ldr	r1, .L2+4
+  48 0010 0B43     		orrs	r3, r1
+  49              	.LVL3:
+  69:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_CSD_CONTROL_REG = newRegisterValue;
+  50              		.loc 1 69 0
+  51 0012 1360     		str	r3, [r2]
+  70:Generated_Source\PSoC6/IDAC7_1.c **** 
+  71:Generated_Source\PSoC6/IDAC7_1.c ****     CyExitCriticalSection(interruptState);
+  52              		.loc 1 71 0
+  53 0014 FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+  54              	.LVL4:
+  72:Generated_Source\PSoC6/IDAC7_1.c **** }
+  55              		.loc 1 72 0
+  56              		@ sp needed
+  57 0018 10BD     		pop	{r4, pc}
+  58              	.L3:
+  59 001a C046     		.align	2
+  60              	.L2:
+  61 001c 00003640 		.word	1077280768
+  62 0020 00100080 		.word	-2147479552
+  63              		.cfi_endproc
+  64              	.LFE46:
+  65              		.size	IDAC7_1_Enable, .-IDAC7_1_Enable
+  66              		.section	.text.IDAC7_1_Stop,"ax",%progbits
+  67              		.align	2
+  68              		.global	IDAC7_1_Stop
+  69              		.code	16
+  70              		.thumb_func
+  71              		.type	IDAC7_1_Stop, %function
+  72              	IDAC7_1_Stop:
+  73              	.LFB48:
+  73:Generated_Source\PSoC6/IDAC7_1.c **** 
+  74:Generated_Source\PSoC6/IDAC7_1.c **** 
+  75:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+  76:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_Start
+  77:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+  78:Generated_Source\PSoC6/IDAC7_1.c **** *
+  79:Generated_Source\PSoC6/IDAC7_1.c **** *  Initializes all the parameters required to setup the component as defined
+  80:Generated_Source\PSoC6/IDAC7_1.c **** *  in the customizer.
+  81:Generated_Source\PSoC6/IDAC7_1.c **** *
+  82:Generated_Source\PSoC6/IDAC7_1.c **** *  This component does not stop the CSD IP block. One possible way to turn off 
+  83:Generated_Source\PSoC6/IDAC7_1.c **** *  the entire CSD block is to use a specific define (IDAC7_1_CSD_CONFIG_ENABLE) 
+  84:Generated_Source\PSoC6/IDAC7_1.c **** *  for the m0s8csdv2 IP block control register (IDAC7_1_CSD_CONTROL_REG): 
+  85:Generated_Source\PSoC6/IDAC7_1.c **** *  IDAC7_1_CSD_CONTROL_REG &= ~IDAC7_1_CSD_CONFIG_ENABLE
+  86:Generated_Source\PSoC6/IDAC7_1.c **** *
+  87:Generated_Source\PSoC6/IDAC7_1.c **** * \globalvars
+  88:Generated_Source\PSoC6/IDAC7_1.c **** *  \ref IDAC7_1_initVar - this variable is used to indicate the initial
+  89:Generated_Source\PSoC6/IDAC7_1.c **** *  configuration of this component. The variable is initialized to zero and
+  90:Generated_Source\PSoC6/IDAC7_1.c **** *  set to 1 the first time IDAC7_1_Start() is called. This allows
+  91:Generated_Source\PSoC6/IDAC7_1.c **** *  the component initialization without re-initialization in all subsequent
+  92:Generated_Source\PSoC6/IDAC7_1.c **** *  calls to the IDAC7_1_Start() routine.
+  93:Generated_Source\PSoC6/IDAC7_1.c **** *
+  94:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+  95:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_Start(void)
+  96:Generated_Source\PSoC6/IDAC7_1.c **** {
+  97:Generated_Source\PSoC6/IDAC7_1.c ****     if(0u == IDAC7_1_initVar)
+  98:Generated_Source\PSoC6/IDAC7_1.c ****     {
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 4
+
+
+  99:Generated_Source\PSoC6/IDAC7_1.c ****         IDAC7_1_Init();
+ 100:Generated_Source\PSoC6/IDAC7_1.c ****         IDAC7_1_initVar = 1u;
+ 101:Generated_Source\PSoC6/IDAC7_1.c ****     }
+ 102:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 103:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_Enable();
+ 104:Generated_Source\PSoC6/IDAC7_1.c **** }
+ 105:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 106:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 107:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+ 108:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_Stop
+ 109:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+ 110:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 111:Generated_Source\PSoC6/IDAC7_1.c **** *  The Stop is not required.
+ 112:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 113:Generated_Source\PSoC6/IDAC7_1.c **** *  This component does not stop the CSD IP block. One possible way to turn off 
+ 114:Generated_Source\PSoC6/IDAC7_1.c **** *  the entire CSD block is to use a specific define (IDAC7_1_CSD_CONFIG_ENABLE) 
+ 115:Generated_Source\PSoC6/IDAC7_1.c **** *  for the m0s8csdv2 IP block control register (IDAC7_1_CSD_CONTROL_REG): 
+ 116:Generated_Source\PSoC6/IDAC7_1.c **** *  IDAC7_1_CSD_CONTROL_REG &= ~IDAC7_1_CSD_CONFIG_ENABLE
+ 117:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 118:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+ 119:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_Stop(void)
+ 120:Generated_Source\PSoC6/IDAC7_1.c **** {
+  74              		.loc 1 120 0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78              		@ link register save eliminated.
+ 121:Generated_Source\PSoC6/IDAC7_1.c ****     /* Do nothing */
+ 122:Generated_Source\PSoC6/IDAC7_1.c **** }
+  79              		.loc 1 122 0
+  80              		@ sp needed
+  81 0000 7047     		bx	lr
+  82              		.cfi_endproc
+  83              	.LFE48:
+  84              		.size	IDAC7_1_Stop, .-IDAC7_1_Stop
+  85 0002 C046     		.section	.text.IDAC7_1_SetValue,"ax",%progbits
+  86              		.align	2
+  87              		.global	IDAC7_1_SetValue
+  88              		.code	16
+  89              		.thumb_func
+  90              		.type	IDAC7_1_SetValue, %function
+  91              	IDAC7_1_SetValue:
+  92              	.LFB49:
+ 123:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 124:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 125:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+ 126:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_SetValue
+ 127:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+ 128:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 129:Generated_Source\PSoC6/IDAC7_1.c **** *  Sets the IDAC current to the new value.
+ 130:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 131:Generated_Source\PSoC6/IDAC7_1.c **** *  \param uint32_t current: The current value
+ 132:Generated_Source\PSoC6/IDAC7_1.c **** *  * Valid range    : [0 - 127]
+ 133:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 134:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+ 135:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_SetValue(uint32_t current)
+ 136:Generated_Source\PSoC6/IDAC7_1.c **** {
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 5
+
+
+  93              		.loc 1 136 0
+  94              		.cfi_startproc
+  95              		@ args = 0, pretend = 0, frame = 0
+  96              		@ frame_needed = 0, uses_anonymous_args = 0
+  97              	.LVL5:
+  98 0000 70B5     		push	{r4, r5, r6, lr}
+  99              		.cfi_def_cfa_offset 16
+ 100              		.cfi_offset 4, -16
+ 101              		.cfi_offset 5, -12
+ 102              		.cfi_offset 6, -8
+ 103              		.cfi_offset 14, -4
+ 104 0002 0400     		movs	r4, r0
+ 137:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t interruptState;
+ 138:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t newRegisterValue;
+ 139:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 140:Generated_Source\PSoC6/IDAC7_1.c ****     interruptState = CyEnterCriticalSection();
+ 105              		.loc 1 140 0
+ 106 0004 FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+ 107              	.LVL6:
+ 108 0008 FF23     		movs	r3, #255
+ 109 000a 1840     		ands	r0, r3
+ 110              	.LVL7:
+ 141:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 142:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue = (uint32_t)IDAC7_1_IDAC_CONTROL_REG & ~IDAC7_1_CURRENT_VALUE_MASK;
+ 111              		.loc 1 142 0
+ 112 000c 0549     		ldr	r1, .L6
+ 113 000e 8022     		movs	r2, #128
+ 114 0010 D200     		lsls	r2, r2, #3
+ 115 0012 8B58     		ldr	r3, [r1, r2]
+ 116 0014 7F25     		movs	r5, #127
+ 117 0016 AB43     		bics	r3, r5
+ 118              	.LVL8:
+ 143:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 144:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue |= ((current << IDAC7_1_CURRENT_VALUE_POS) & IDAC7_1_CURRENT_VALUE_MASK);
+ 119              		.loc 1 144 0
+ 120 0018 2C40     		ands	r4, r5
+ 121              	.LVL9:
+ 122 001a 1C43     		orrs	r4, r3
+ 123              	.LVL10:
+ 145:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 146:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_IDAC_CONTROL_REG = newRegisterValue;
+ 124              		.loc 1 146 0
+ 125 001c 8C50     		str	r4, [r1, r2]
+ 147:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 148:Generated_Source\PSoC6/IDAC7_1.c ****     CyExitCriticalSection(interruptState);
+ 126              		.loc 1 148 0
+ 127 001e FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+ 128              	.LVL11:
+ 149:Generated_Source\PSoC6/IDAC7_1.c **** }
+ 129              		.loc 1 149 0
+ 130              		@ sp needed
+ 131              	.LVL12:
+ 132 0022 70BD     		pop	{r4, r5, r6, pc}
+ 133              	.L7:
+ 134              		.align	2
+ 135              	.L6:
+ 136 0024 00003640 		.word	1077280768
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 6
+
+
+ 137              		.cfi_endproc
+ 138              	.LFE49:
+ 139              		.size	IDAC7_1_SetValue, .-IDAC7_1_SetValue
+ 140              		.section	.text.IDAC7_1_SetPolarity,"ax",%progbits
+ 141              		.align	2
+ 142              		.global	IDAC7_1_SetPolarity
+ 143              		.code	16
+ 144              		.thumb_func
+ 145              		.type	IDAC7_1_SetPolarity, %function
+ 146              	IDAC7_1_SetPolarity:
+ 147              	.LFB50:
+ 150:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 151:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 152:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+ 153:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_SetPolarity
+ 154:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+ 155:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 156:Generated_Source\PSoC6/IDAC7_1.c **** *  Sets polarity to either sink or source.
+ 157:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 158:Generated_Source\PSoC6/IDAC7_1.c **** *  \param uint32_t polarity: Current polarity
+ 159:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_POL_SOURCE   : Source polarity
+ 160:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_POL_SINK     : Sink polarity
+ 161:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 162:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+ 163:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_SetPolarity(uint32_t polarity)
+ 164:Generated_Source\PSoC6/IDAC7_1.c **** {
+ 148              		.loc 1 164 0
+ 149              		.cfi_startproc
+ 150              		@ args = 0, pretend = 0, frame = 0
+ 151              		@ frame_needed = 0, uses_anonymous_args = 0
+ 152              	.LVL13:
+ 153 0000 70B5     		push	{r4, r5, r6, lr}
+ 154              		.cfi_def_cfa_offset 16
+ 155              		.cfi_offset 4, -16
+ 156              		.cfi_offset 5, -12
+ 157              		.cfi_offset 6, -8
+ 158              		.cfi_offset 14, -4
+ 159 0002 0400     		movs	r4, r0
+ 165:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t interruptState;
+ 166:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t newRegisterValue;
+ 167:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 168:Generated_Source\PSoC6/IDAC7_1.c ****     interruptState = CyEnterCriticalSection();
+ 160              		.loc 1 168 0
+ 161 0004 FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+ 162              	.LVL14:
+ 163 0008 FF23     		movs	r3, #255
+ 164 000a 1840     		ands	r0, r3
+ 165              	.LVL15:
+ 169:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 170:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue = (uint32_t)IDAC7_1_IDAC_CONTROL_REG & ~IDAC7_1_POLARITY_MASK;
+ 166              		.loc 1 170 0
+ 167 000c 074E     		ldr	r6, .L9
+ 168 000e 8025     		movs	r5, #128
+ 169 0010 ED00     		lsls	r5, r5, #3
+ 170 0012 7359     		ldr	r3, [r6, r5]
+ 171 0014 064A     		ldr	r2, .L9+4
+ 172 0016 1340     		ands	r3, r2
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 7
+
+
+ 173 0018 1900     		movs	r1, r3
+ 174              	.LVL16:
+ 171:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 172:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue |= ((polarity << IDAC7_1_POLARITY_POS) & IDAC7_1_POLARITY_MASK);
+ 175              		.loc 1 172 0
+ 176 001a 2302     		lsls	r3, r4, #8
+ 177 001c C022     		movs	r2, #192
+ 178 001e 9200     		lsls	r2, r2, #2
+ 179 0020 1340     		ands	r3, r2
+ 180 0022 0B43     		orrs	r3, r1
+ 181              	.LVL17:
+ 173:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 174:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_IDAC_CONTROL_REG = newRegisterValue;
+ 182              		.loc 1 174 0
+ 183 0024 7351     		str	r3, [r6, r5]
+ 175:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 176:Generated_Source\PSoC6/IDAC7_1.c ****     CyExitCriticalSection(interruptState);
+ 184              		.loc 1 176 0
+ 185 0026 FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+ 186              	.LVL18:
+ 177:Generated_Source\PSoC6/IDAC7_1.c **** }
+ 187              		.loc 1 177 0
+ 188              		@ sp needed
+ 189              	.LVL19:
+ 190 002a 70BD     		pop	{r4, r5, r6, pc}
+ 191              	.L10:
+ 192              		.align	2
+ 193              	.L9:
+ 194 002c 00003640 		.word	1077280768
+ 195 0030 FFFCFFFF 		.word	-769
+ 196              		.cfi_endproc
+ 197              	.LFE50:
+ 198              		.size	IDAC7_1_SetPolarity, .-IDAC7_1_SetPolarity
+ 199              		.section	.text.IDAC7_1_SetRange,"ax",%progbits
+ 200              		.align	2
+ 201              		.global	IDAC7_1_SetRange
+ 202              		.code	16
+ 203              		.thumb_func
+ 204              		.type	IDAC7_1_SetRange, %function
+ 205              	IDAC7_1_SetRange:
+ 206              	.LFB51:
+ 178:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 179:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 180:Generated_Source\PSoC6/IDAC7_1.c **** /*******************************************************************************
+ 181:Generated_Source\PSoC6/IDAC7_1.c **** * Function Name: IDAC7_1_SetRange
+ 182:Generated_Source\PSoC6/IDAC7_1.c **** ****************************************************************************//**
+ 183:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 184:Generated_Source\PSoC6/IDAC7_1.c **** * Sets the IDAC range to one of the six ranges.
+ 185:Generated_Source\PSoC6/IDAC7_1.c **** *
+ 186:Generated_Source\PSoC6/IDAC7_1.c **** *  \param uint32_t range: Current range
+ 187:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_RNG_4_96UA   : 39.06 nA/bit current range
+ 188:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_RNG_9_922UA   : 78.125 nA/bit current range
+ 189:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_RNG_39_69UA   : 312.5 nA/bit current range
+ 190:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_RNG_79_38UA   : 625 nA/bit current range
+ 191:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_RNG_317_5UA  : 2.5 uA/bit current range
+ 192:Generated_Source\PSoC6/IDAC7_1.c **** *  * IDAC7_1_RNG_635_0UA  : 5.0 uA/bit current range
+ 193:Generated_Source\PSoC6/IDAC7_1.c **** *
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 8
+
+
+ 194:Generated_Source\PSoC6/IDAC7_1.c **** *******************************************************************************/
+ 195:Generated_Source\PSoC6/IDAC7_1.c **** void IDAC7_1_SetRange(uint32_t range)
+ 196:Generated_Source\PSoC6/IDAC7_1.c **** {
+ 207              		.loc 1 196 0
+ 208              		.cfi_startproc
+ 209              		@ args = 0, pretend = 0, frame = 0
+ 210              		@ frame_needed = 0, uses_anonymous_args = 0
+ 211              	.LVL20:
+ 212 0000 70B5     		push	{r4, r5, r6, lr}
+ 213              		.cfi_def_cfa_offset 16
+ 214              		.cfi_offset 4, -16
+ 215              		.cfi_offset 5, -12
+ 216              		.cfi_offset 6, -8
+ 217              		.cfi_offset 14, -4
+ 218 0002 0400     		movs	r4, r0
+ 197:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t interruptState;
+ 198:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t newRegisterValue;
+ 199:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 200:Generated_Source\PSoC6/IDAC7_1.c ****     interruptState = CyEnterCriticalSection();
+ 219              		.loc 1 200 0
+ 220 0004 FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+ 221              	.LVL21:
+ 222 0008 FF23     		movs	r3, #255
+ 223 000a 1840     		ands	r0, r3
+ 224              	.LVL22:
+ 201:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 202:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue = (uint32_t)IDAC7_1_IDAC_CONTROL_REG & (~IDAC7_1_RANGE_MASK    &
+ 225              		.loc 1 202 0
+ 226 000c 0549     		ldr	r1, .L12
+ 227 000e 8022     		movs	r2, #128
+ 228 0010 D200     		lsls	r2, r2, #3
+ 229 0012 8D58     		ldr	r5, [r1, r2]
+ 230 0014 044B     		ldr	r3, .L12+4
+ 231 0016 2B40     		ands	r3, r5
+ 232              	.LVL23:
+ 203:Generated_Source\PSoC6/IDAC7_1.c ****                                                             ~IDAC7_1_LEG1_EN       &
+ 204:Generated_Source\PSoC6/IDAC7_1.c ****                                                             ~IDAC7_1_LEG2_EN);
+ 205:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 206:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue |= (range << IDAC7_1_RANGE_POS);
+ 233              		.loc 1 206 0
+ 234 0018 A405     		lsls	r4, r4, #22
+ 235              	.LVL24:
+ 236 001a 1C43     		orrs	r4, r3
+ 237              	.LVL25:
+ 207:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 208:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_IDAC_CONTROL_REG = newRegisterValue;
+ 238              		.loc 1 208 0
+ 239 001c 8C50     		str	r4, [r1, r2]
+ 209:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 210:Generated_Source\PSoC6/IDAC7_1.c ****     CyExitCriticalSection(interruptState);
+ 240              		.loc 1 210 0
+ 241 001e FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+ 242              	.LVL26:
+ 211:Generated_Source\PSoC6/IDAC7_1.c **** }
+ 243              		.loc 1 211 0
+ 244              		@ sp needed
+ 245              	.LVL27:
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 9
+
+
+ 246              	.LVL28:
+ 247 0022 70BD     		pop	{r4, r5, r6, pc}
+ 248              	.L13:
+ 249              		.align	2
+ 250              	.L12:
+ 251 0024 00003640 		.word	1077280768
+ 252 0028 FFFF3FFC 		.word	-62914561
+ 253              		.cfi_endproc
+ 254              	.LFE51:
+ 255              		.size	IDAC7_1_SetRange, .-IDAC7_1_SetRange
+ 256              		.section	.text.IDAC7_1_Init,"ax",%progbits
+ 257              		.align	2
+ 258              		.global	IDAC7_1_Init
+ 259              		.code	16
+ 260              		.thumb_func
+ 261              		.type	IDAC7_1_Init, %function
+ 262              	IDAC7_1_Init:
+ 263              	.LFB45:
+  29:Generated_Source\PSoC6/IDAC7_1.c ****     uint32_t interruptState;
+ 264              		.loc 1 29 0
+ 265              		.cfi_startproc
+ 266              		@ args = 0, pretend = 0, frame = 0
+ 267              		@ frame_needed = 0, uses_anonymous_args = 0
+ 268 0000 10B5     		push	{r4, lr}
+ 269              		.cfi_def_cfa_offset 8
+ 270              		.cfi_offset 4, -8
+ 271              		.cfi_offset 14, -4
+  34:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 272              		.loc 1 34 0
+ 273 0002 FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+ 274              	.LVL29:
+ 275 0006 FF23     		movs	r3, #255
+ 276 0008 1840     		ands	r0, r3
+ 277              	.LVL30:
+  36:Generated_Source\PSoC6/IDAC7_1.c ****     newRegisterValue &= (uint32_t)(~IDAC7_1_POLY_DYN  &
+ 278              		.loc 1 36 0
+ 279 000a 0949     		ldr	r1, .L15
+ 280 000c 8022     		movs	r2, #128
+ 281 000e D200     		lsls	r2, r2, #3
+ 282 0010 8C58     		ldr	r4, [r1, r2]
+ 283              	.LVL31:
+  37:Generated_Source\PSoC6/IDAC7_1.c ****                                  ~IDAC7_1_LEG1_MODE_MASK &
+ 284              		.loc 1 37 0
+ 285 0012 084B     		ldr	r3, .L15+4
+ 286 0014 2340     		ands	r3, r4
+ 287              	.LVL32:
+  41:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 288              		.loc 1 41 0
+ 289 0016 8B50     		str	r3, [r1, r2]
+  43:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 290              		.loc 1 43 0
+ 291 0018 FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+ 292              	.LVL33:
+  46:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_SetPolarity(IDAC7_1_CURRENT_POLARITY);
+ 293              		.loc 1 46 0
+ 294 001c 0020     		movs	r0, #0
+ 295 001e FFF7FEFF 		bl	IDAC7_1_SetValue
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 10
+
+
+ 296              	.LVL34:
+  47:Generated_Source\PSoC6/IDAC7_1.c ****     IDAC7_1_SetRange(IDAC7_1_CURRENT_RANGE);
+ 297              		.loc 1 47 0
+ 298 0022 0020     		movs	r0, #0
+ 299 0024 FFF7FEFF 		bl	IDAC7_1_SetPolarity
+ 300              	.LVL35:
+  48:Generated_Source\PSoC6/IDAC7_1.c **** }
+ 301              		.loc 1 48 0
+ 302 0028 0D20     		movs	r0, #13
+ 303 002a FFF7FEFF 		bl	IDAC7_1_SetRange
+ 304              	.LVL36:
+  49:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 305              		.loc 1 49 0
+ 306              		@ sp needed
+ 307              	.LVL37:
+ 308 002e 10BD     		pop	{r4, pc}
+ 309              	.L16:
+ 310              		.align	2
+ 311              	.L15:
+ 312 0030 00003640 		.word	1077280768
+ 313 0034 7FFFD0FF 		.word	-3080321
+ 314              		.cfi_endproc
+ 315              	.LFE45:
+ 316              		.size	IDAC7_1_Init, .-IDAC7_1_Init
+ 317              		.section	.text.IDAC7_1_Start,"ax",%progbits
+ 318              		.align	2
+ 319              		.global	IDAC7_1_Start
+ 320              		.code	16
+ 321              		.thumb_func
+ 322              		.type	IDAC7_1_Start, %function
+ 323              	IDAC7_1_Start:
+ 324              	.LFB47:
+  96:Generated_Source\PSoC6/IDAC7_1.c ****     if(0u == IDAC7_1_initVar)
+ 325              		.loc 1 96 0
+ 326              		.cfi_startproc
+ 327              		@ args = 0, pretend = 0, frame = 0
+ 328              		@ frame_needed = 0, uses_anonymous_args = 0
+ 329 0000 10B5     		push	{r4, lr}
+ 330              		.cfi_def_cfa_offset 8
+ 331              		.cfi_offset 4, -8
+ 332              		.cfi_offset 14, -4
+  97:Generated_Source\PSoC6/IDAC7_1.c ****     {
+ 333              		.loc 1 97 0
+ 334 0002 064B     		ldr	r3, .L19
+ 335 0004 1B68     		ldr	r3, [r3]
+ 336 0006 002B     		cmp	r3, #0
+ 337 0008 04D1     		bne	.L18
+  99:Generated_Source\PSoC6/IDAC7_1.c ****         IDAC7_1_initVar = 1u;
+ 338              		.loc 1 99 0
+ 339 000a FFF7FEFF 		bl	IDAC7_1_Init
+ 340              	.LVL38:
+ 100:Generated_Source\PSoC6/IDAC7_1.c ****     }
+ 341              		.loc 1 100 0
+ 342 000e 0122     		movs	r2, #1
+ 343 0010 024B     		ldr	r3, .L19
+ 344 0012 1A60     		str	r2, [r3]
+ 345              	.L18:
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 11
+
+
+ 103:Generated_Source\PSoC6/IDAC7_1.c **** }
+ 346              		.loc 1 103 0
+ 347 0014 FFF7FEFF 		bl	IDAC7_1_Enable
+ 348              	.LVL39:
+ 104:Generated_Source\PSoC6/IDAC7_1.c **** 
+ 349              		.loc 1 104 0
+ 350              		@ sp needed
+ 351 0018 10BD     		pop	{r4, pc}
+ 352              	.L20:
+ 353 001a C046     		.align	2
+ 354              	.L19:
+ 355 001c 00000000 		.word	.LANCHOR0
+ 356              		.cfi_endproc
+ 357              	.LFE47:
+ 358              		.size	IDAC7_1_Start, .-IDAC7_1_Start
+ 359              		.global	IDAC7_1_initVar
+ 360              		.bss
+ 361              		.align	2
+ 362              		.set	.LANCHOR0,. + 0
+ 363              		.type	IDAC7_1_initVar, %object
+ 364              		.size	IDAC7_1_initVar, 4
+ 365              	IDAC7_1_initVar:
+ 366 0000 00000000 		.space	4
+ 367              		.text
+ 368              	.Letext0:
+ 369              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 370              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 371              		.file 4 "Generated_Source\\PSoC6\\pdl\\devices/psoc6/include/ip/cyip_csd.h"
+ 372              		.file 5 "Generated_Source\\PSoC6\\pdl\\devices/psoc6/include/psoc6_01_config.h"
+ 373              		.file 6 "Generated_Source\\PSoC6\\pdl\\drivers/peripheral/syslib/cy_syslib.h"
+ 374              		.section	.debug_info,"",%progbits
+ 375              	.Ldebug_info0:
+ 376 0000 2F070000 		.4byte	0x72f
+ 377 0004 0400     		.2byte	0x4
+ 378 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 379 000a 04       		.byte	0x4
+ 380 000b 01       		.uleb128 0x1
+ 381 000c A1000000 		.4byte	.LASF91
+ 382 0010 0C       		.byte	0xc
+ 383 0011 5A030000 		.4byte	.LASF92
+ 384 0015 5F000000 		.4byte	.LASF93
+ 385 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 386 001d 00000000 		.4byte	0
+ 387 0021 00000000 		.4byte	.Ldebug_line0
+ 388 0025 02       		.uleb128 0x2
+ 389 0026 02       		.byte	0x2
+ 390 0027 05       		.byte	0x5
+ 391 0028 37000000 		.4byte	.LASF0
+ 392 002c 02       		.uleb128 0x2
+ 393 002d 01       		.byte	0x1
+ 394 002e 08       		.byte	0x8
+ 395 002f 6A020000 		.4byte	.LASF1
+ 396 0033 02       		.uleb128 0x2
+ 397 0034 01       		.byte	0x1
+ 398 0035 06       		.byte	0x6
+ 399 0036 B7010000 		.4byte	.LASF2
+ 400 003a 03       		.uleb128 0x3
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 12
+
+
+ 401 003b 39020000 		.4byte	.LASF5
+ 402 003f 02       		.byte	0x2
+ 403 0040 1D       		.byte	0x1d
+ 404 0041 2C000000 		.4byte	0x2c
+ 405 0045 02       		.uleb128 0x2
+ 406 0046 02       		.byte	0x2
+ 407 0047 07       		.byte	0x7
+ 408 0048 39030000 		.4byte	.LASF3
+ 409 004c 02       		.uleb128 0x2
+ 410 004d 04       		.byte	0x4
+ 411 004e 05       		.byte	0x5
+ 412 004f 18020000 		.4byte	.LASF4
+ 413 0053 03       		.uleb128 0x3
+ 414 0054 3A010000 		.4byte	.LASF6
+ 415 0058 02       		.byte	0x2
+ 416 0059 41       		.byte	0x41
+ 417 005a 5E000000 		.4byte	0x5e
+ 418 005e 02       		.uleb128 0x2
+ 419 005f 04       		.byte	0x4
+ 420 0060 07       		.byte	0x7
+ 421 0061 D3030000 		.4byte	.LASF7
+ 422 0065 02       		.uleb128 0x2
+ 423 0066 08       		.byte	0x8
+ 424 0067 05       		.byte	0x5
+ 425 0068 EB010000 		.4byte	.LASF8
+ 426 006c 02       		.uleb128 0x2
+ 427 006d 08       		.byte	0x8
+ 428 006e 07       		.byte	0x7
+ 429 006f DB020000 		.4byte	.LASF9
+ 430 0073 04       		.uleb128 0x4
+ 431 0074 04       		.byte	0x4
+ 432 0075 05       		.byte	0x5
+ 433 0076 696E7400 		.ascii	"int\000"
+ 434 007a 02       		.uleb128 0x2
+ 435 007b 04       		.byte	0x4
+ 436 007c 07       		.byte	0x7
+ 437 007d 0D030000 		.4byte	.LASF10
+ 438 0081 03       		.uleb128 0x3
+ 439 0082 75040000 		.4byte	.LASF11
+ 440 0086 03       		.byte	0x3
+ 441 0087 18       		.byte	0x18
+ 442 0088 3A000000 		.4byte	0x3a
+ 443 008c 03       		.uleb128 0x3
+ 444 008d F2020000 		.4byte	.LASF12
+ 445 0091 03       		.byte	0x3
+ 446 0092 30       		.byte	0x30
+ 447 0093 53000000 		.4byte	0x53
+ 448 0097 02       		.uleb128 0x2
+ 449 0098 04       		.byte	0x4
+ 450 0099 07       		.byte	0x7
+ 451 009a 4F000000 		.4byte	.LASF13
+ 452 009e 05       		.uleb128 0x5
+ 453 009f 8C000000 		.4byte	0x8c
+ 454 00a3 06       		.uleb128 0x6
+ 455 00a4 9E000000 		.4byte	0x9e
+ 456 00a8 07       		.uleb128 0x7
+ 457 00a9 A3000000 		.4byte	0xa3
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 13
+
+
+ 458 00ad B8000000 		.4byte	0xb8
+ 459 00b1 08       		.uleb128 0x8
+ 460 00b2 97000000 		.4byte	0x97
+ 461 00b6 01       		.byte	0x1
+ 462 00b7 00       		.byte	0
+ 463 00b8 07       		.uleb128 0x7
+ 464 00b9 A3000000 		.4byte	0xa3
+ 465 00bd C8000000 		.4byte	0xc8
+ 466 00c1 08       		.uleb128 0x8
+ 467 00c2 97000000 		.4byte	0x97
+ 468 00c6 06       		.byte	0x6
+ 469 00c7 00       		.byte	0
+ 470 00c8 07       		.uleb128 0x7
+ 471 00c9 A3000000 		.4byte	0xa3
+ 472 00cd D8000000 		.4byte	0xd8
+ 473 00d1 08       		.uleb128 0x8
+ 474 00d2 97000000 		.4byte	0x97
+ 475 00d6 0F       		.byte	0xf
+ 476 00d7 00       		.byte	0
+ 477 00d8 07       		.uleb128 0x7
+ 478 00d9 A3000000 		.4byte	0xa3
+ 479 00dd E8000000 		.4byte	0xe8
+ 480 00e1 08       		.uleb128 0x8
+ 481 00e2 97000000 		.4byte	0x97
+ 482 00e6 3E       		.byte	0x3e
+ 483 00e7 00       		.byte	0
+ 484 00e8 07       		.uleb128 0x7
+ 485 00e9 A3000000 		.4byte	0xa3
+ 486 00ed F8000000 		.4byte	0xf8
+ 487 00f1 08       		.uleb128 0x8
+ 488 00f2 97000000 		.4byte	0x97
+ 489 00f6 02       		.byte	0x2
+ 490 00f7 00       		.byte	0
+ 491 00f8 07       		.uleb128 0x7
+ 492 00f9 A3000000 		.4byte	0xa3
+ 493 00fd 08010000 		.4byte	0x108
+ 494 0101 08       		.uleb128 0x8
+ 495 0102 97000000 		.4byte	0x97
+ 496 0106 1F       		.byte	0x1f
+ 497 0107 00       		.byte	0
+ 498 0108 07       		.uleb128 0x7
+ 499 0109 A3000000 		.4byte	0xa3
+ 500 010d 18010000 		.4byte	0x118
+ 501 0111 08       		.uleb128 0x8
+ 502 0112 97000000 		.4byte	0x97
+ 503 0116 17       		.byte	0x17
+ 504 0117 00       		.byte	0
+ 505 0118 09       		.uleb128 0x9
+ 506 0119 0405     		.2byte	0x504
+ 507 011b 04       		.byte	0x4
+ 508 011c 21       		.byte	0x21
+ 509 011d 03040000 		.4byte	0x403
+ 510 0121 0A       		.uleb128 0xa
+ 511 0122 00050000 		.4byte	.LASF14
+ 512 0126 04       		.byte	0x4
+ 513 0127 22       		.byte	0x22
+ 514 0128 9E000000 		.4byte	0x9e
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 14
+
+
+ 515 012c 00       		.byte	0
+ 516 012d 0A       		.uleb128 0xa
+ 517 012e 6C010000 		.4byte	.LASF15
+ 518 0132 04       		.byte	0x4
+ 519 0133 23       		.byte	0x23
+ 520 0134 9E000000 		.4byte	0x9e
+ 521 0138 04       		.byte	0x4
+ 522 0139 0A       		.uleb128 0xa
+ 523 013a D3040000 		.4byte	.LASF16
+ 524 013e 04       		.byte	0x4
+ 525 013f 24       		.byte	0x24
+ 526 0140 18040000 		.4byte	0x418
+ 527 0144 08       		.byte	0x8
+ 528 0145 0A       		.uleb128 0xa
+ 529 0146 11020000 		.4byte	.LASF17
+ 530 014a 04       		.byte	0x4
+ 531 014b 25       		.byte	0x25
+ 532 014c A3000000 		.4byte	0xa3
+ 533 0150 80       		.byte	0x80
+ 534 0151 0A       		.uleb128 0xa
+ 535 0152 FB020000 		.4byte	.LASF18
+ 536 0156 04       		.byte	0x4
+ 537 0157 26       		.byte	0x26
+ 538 0158 A3000000 		.4byte	0xa3
+ 539 015c 84       		.byte	0x84
+ 540 015d 0A       		.uleb128 0xa
+ 541 015e 1A030000 		.4byte	.LASF19
+ 542 0162 04       		.byte	0x4
+ 543 0163 27       		.byte	0x27
+ 544 0164 A3000000 		.4byte	0xa3
+ 545 0168 88       		.byte	0x88
+ 546 0169 0A       		.uleb128 0xa
+ 547 016a 62010000 		.4byte	.LASF20
+ 548 016e 04       		.byte	0x4
+ 549 016f 28       		.byte	0x28
+ 550 0170 A3000000 		.4byte	0xa3
+ 551 0174 8C       		.byte	0x8c
+ 552 0175 0A       		.uleb128 0xa
+ 553 0176 A1030000 		.4byte	.LASF21
+ 554 017a 04       		.byte	0x4
+ 555 017b 29       		.byte	0x29
+ 556 017c 22040000 		.4byte	0x422
+ 557 0180 90       		.byte	0x90
+ 558 0181 0A       		.uleb128 0xa
+ 559 0182 83040000 		.4byte	.LASF22
+ 560 0186 04       		.byte	0x4
+ 561 0187 2A       		.byte	0x2a
+ 562 0188 A3000000 		.4byte	0xa3
+ 563 018c D0       		.byte	0xd0
+ 564 018d 0A       		.uleb128 0xa
+ 565 018e 8F040000 		.4byte	.LASF23
+ 566 0192 04       		.byte	0x4
+ 567 0193 2B       		.byte	0x2b
+ 568 0194 A3000000 		.4byte	0xa3
+ 569 0198 D4       		.byte	0xd4
+ 570 0199 0A       		.uleb128 0xa
+ 571 019a AB030000 		.4byte	.LASF24
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 15
+
+
+ 572 019e 04       		.byte	0x4
+ 573 019f 2C       		.byte	0x2c
+ 574 01a0 2C040000 		.4byte	0x42c
+ 575 01a4 D8       		.byte	0xd8
+ 576 01a5 0A       		.uleb128 0xa
+ 577 01a6 7B030000 		.4byte	.LASF25
+ 578 01aa 04       		.byte	0x4
+ 579 01ab 2D       		.byte	0x2d
+ 580 01ac A3000000 		.4byte	0xa3
+ 581 01b0 E0       		.byte	0xe0
+ 582 01b1 0A       		.uleb128 0xa
+ 583 01b2 B5030000 		.4byte	.LASF26
+ 584 01b6 04       		.byte	0x4
+ 585 01b7 2E       		.byte	0x2e
+ 586 01b8 36040000 		.4byte	0x436
+ 587 01bc E4       		.byte	0xe4
+ 588 01bd 0A       		.uleb128 0xa
+ 589 01be 32000000 		.4byte	.LASF27
+ 590 01c2 04       		.byte	0x4
+ 591 01c3 2F       		.byte	0x2f
+ 592 01c4 9E000000 		.4byte	0x9e
+ 593 01c8 F0       		.byte	0xf0
+ 594 01c9 0A       		.uleb128 0xa
+ 595 01ca D0010000 		.4byte	.LASF28
+ 596 01ce 04       		.byte	0x4
+ 597 01cf 30       		.byte	0x30
+ 598 01d0 9E000000 		.4byte	0x9e
+ 599 01d4 F4       		.byte	0xf4
+ 600 01d5 0A       		.uleb128 0xa
+ 601 01d6 8A010000 		.4byte	.LASF29
+ 602 01da 04       		.byte	0x4
+ 603 01db 31       		.byte	0x31
+ 604 01dc 9E000000 		.4byte	0x9e
+ 605 01e0 F8       		.byte	0xf8
+ 606 01e1 0A       		.uleb128 0xa
+ 607 01e2 52020000 		.4byte	.LASF30
+ 608 01e6 04       		.byte	0x4
+ 609 01e7 32       		.byte	0x32
+ 610 01e8 A3000000 		.4byte	0xa3
+ 611 01ec FC       		.byte	0xfc
+ 612 01ed 0B       		.uleb128 0xb
+ 613 01ee BF030000 		.4byte	.LASF31
+ 614 01f2 04       		.byte	0x4
+ 615 01f3 33       		.byte	0x33
+ 616 01f4 40040000 		.4byte	0x440
+ 617 01f8 0001     		.2byte	0x100
+ 618 01fa 0B       		.uleb128 0xb
+ 619 01fb DC040000 		.4byte	.LASF32
+ 620 01ff 04       		.byte	0x4
+ 621 0200 34       		.byte	0x34
+ 622 0201 9E000000 		.4byte	0x9e
+ 623 0205 8001     		.2byte	0x180
+ 624 0207 0B       		.uleb128 0xb
+ 625 0208 7D040000 		.4byte	.LASF33
+ 626 020c 04       		.byte	0x4
+ 627 020d 35       		.byte	0x35
+ 628 020e 9E000000 		.4byte	0x9e
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 16
+
+
+ 629 0212 8401     		.2byte	0x184
+ 630 0214 0B       		.uleb128 0xb
+ 631 0215 58000000 		.4byte	.LASF34
+ 632 0219 04       		.byte	0x4
+ 633 021a 36       		.byte	0x36
+ 634 021b 9E000000 		.4byte	0x9e
+ 635 021f 8801     		.2byte	0x188
+ 636 0221 0B       		.uleb128 0xb
+ 637 0222 5B010000 		.4byte	.LASF35
+ 638 0226 04       		.byte	0x4
+ 639 0227 37       		.byte	0x37
+ 640 0228 9E000000 		.4byte	0x9e
+ 641 022c 8C01     		.2byte	0x18c
+ 642 022e 0B       		.uleb128 0xb
+ 643 022f C9030000 		.4byte	.LASF36
+ 644 0233 04       		.byte	0x4
+ 645 0234 38       		.byte	0x38
+ 646 0235 4A040000 		.4byte	0x44a
+ 647 0239 9001     		.2byte	0x190
+ 648 023b 0B       		.uleb128 0xb
+ 649 023c 33010000 		.4byte	.LASF37
+ 650 0240 04       		.byte	0x4
+ 651 0241 39       		.byte	0x39
+ 652 0242 9E000000 		.4byte	0x9e
+ 653 0246 F001     		.2byte	0x1f0
+ 654 0248 0B       		.uleb128 0xb
+ 655 0249 80010000 		.4byte	.LASF38
+ 656 024d 04       		.byte	0x4
+ 657 024e 3A       		.byte	0x3a
+ 658 024f 54040000 		.4byte	0x454
+ 659 0253 F401     		.2byte	0x1f4
+ 660 0255 0B       		.uleb128 0xb
+ 661 0256 68040000 		.4byte	.LASF39
+ 662 025a 04       		.byte	0x4
+ 663 025b 3B       		.byte	0x3b
+ 664 025c 9E000000 		.4byte	0x9e
+ 665 0260 0002     		.2byte	0x200
+ 666 0262 0B       		.uleb128 0xb
+ 667 0263 0D040000 		.4byte	.LASF40
+ 668 0267 04       		.byte	0x4
+ 669 0268 3C       		.byte	0x3c
+ 670 0269 9E000000 		.4byte	0x9e
+ 671 026d 0402     		.2byte	0x204
+ 672 026f 0B       		.uleb128 0xb
+ 673 0270 E5030000 		.4byte	.LASF41
+ 674 0274 04       		.byte	0x4
+ 675 0275 3D       		.byte	0x3d
+ 676 0276 5E040000 		.4byte	0x45e
+ 677 027a 0802     		.2byte	0x208
+ 678 027c 0B       		.uleb128 0xb
+ 679 027d C7040000 		.4byte	.LASF42
+ 680 0281 04       		.byte	0x4
+ 681 0282 3E       		.byte	0x3e
+ 682 0283 9E000000 		.4byte	0x9e
+ 683 0287 8002     		.2byte	0x280
+ 684 0289 0B       		.uleb128 0xb
+ 685 028a 4F010000 		.4byte	.LASF43
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 17
+
+
+ 686 028e 04       		.byte	0x4
+ 687 028f 3F       		.byte	0x3f
+ 688 0290 9E000000 		.4byte	0x9e
+ 689 0294 8402     		.2byte	0x284
+ 690 0296 0B       		.uleb128 0xb
+ 691 0297 94010000 		.4byte	.LASF44
+ 692 029b 04       		.byte	0x4
+ 693 029c 40       		.byte	0x40
+ 694 029d 9E000000 		.4byte	0x9e
+ 695 02a1 8802     		.2byte	0x288
+ 696 02a3 0B       		.uleb128 0xb
+ 697 02a4 EF030000 		.4byte	.LASF45
+ 698 02a8 04       		.byte	0x4
+ 699 02a9 41       		.byte	0x41
+ 700 02aa A3000000 		.4byte	0xa3
+ 701 02ae 8C02     		.2byte	0x28c
+ 702 02b0 0B       		.uleb128 0xb
+ 703 02b1 43020000 		.4byte	.LASF46
+ 704 02b5 04       		.byte	0x4
+ 705 02b6 42       		.byte	0x42
+ 706 02b7 9E000000 		.4byte	0x9e
+ 707 02bb 9002     		.2byte	0x290
+ 708 02bd 0B       		.uleb128 0xb
+ 709 02be F9010000 		.4byte	.LASF47
+ 710 02c2 04       		.byte	0x4
+ 711 02c3 43       		.byte	0x43
+ 712 02c4 9E000000 		.4byte	0x9e
+ 713 02c8 9402     		.2byte	0x294
+ 714 02ca 0B       		.uleb128 0xb
+ 715 02cb A2010000 		.4byte	.LASF48
+ 716 02cf 04       		.byte	0x4
+ 717 02d0 44       		.byte	0x44
+ 718 02d1 68040000 		.4byte	0x468
+ 719 02d5 9802     		.2byte	0x298
+ 720 02d7 0B       		.uleb128 0xb
+ 721 02d8 C3010000 		.4byte	.LASF49
+ 722 02dc 04       		.byte	0x4
+ 723 02dd 45       		.byte	0x45
+ 724 02de 9E000000 		.4byte	0x9e
+ 725 02e2 A002     		.2byte	0x2a0
+ 726 02e4 0B       		.uleb128 0xb
+ 727 02e5 2C030000 		.4byte	.LASF50
+ 728 02e9 04       		.byte	0x4
+ 729 02ea 46       		.byte	0x46
+ 730 02eb 9E000000 		.4byte	0x9e
+ 731 02ef A402     		.2byte	0x2a4
+ 732 02f1 0B       		.uleb128 0xb
+ 733 02f2 72010000 		.4byte	.LASF51
+ 734 02f6 04       		.byte	0x4
+ 735 02f7 47       		.byte	0x47
+ 736 02f8 9E000000 		.4byte	0x9e
+ 737 02fc A802     		.2byte	0x2a8
+ 738 02fe 0B       		.uleb128 0xb
+ 739 02ff 78020000 		.4byte	.LASF52
+ 740 0303 04       		.byte	0x4
+ 741 0304 48       		.byte	0x48
+ 742 0305 A3000000 		.4byte	0xa3
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 18
+
+
+ 743 0309 AC02     		.2byte	0x2ac
+ 744 030b 0B       		.uleb128 0xb
+ 745 030c 29040000 		.4byte	.LASF53
+ 746 0310 04       		.byte	0x4
+ 747 0311 49       		.byte	0x49
+ 748 0312 9E000000 		.4byte	0x9e
+ 749 0316 B002     		.2byte	0x2b0
+ 750 0318 0B       		.uleb128 0xb
+ 751 0319 83030000 		.4byte	.LASF54
+ 752 031d 04       		.byte	0x4
+ 753 031e 4A       		.byte	0x4a
+ 754 031f 9E000000 		.4byte	0x9e
+ 755 0323 B402     		.2byte	0x2b4
+ 756 0325 0B       		.uleb128 0xb
+ 757 0326 83020000 		.4byte	.LASF55
+ 758 032a 04       		.byte	0x4
+ 759 032b 4B       		.byte	0x4b
+ 760 032c 72040000 		.4byte	0x472
+ 761 0330 B802     		.2byte	0x2b8
+ 762 0332 0B       		.uleb128 0xb
+ 763 0333 AC010000 		.4byte	.LASF56
+ 764 0337 04       		.byte	0x4
+ 765 0338 4C       		.byte	0x4c
+ 766 0339 9E000000 		.4byte	0x9e
+ 767 033d C002     		.2byte	0x2c0
+ 768 033f 0B       		.uleb128 0xb
+ 769 0340 8E020000 		.4byte	.LASF57
+ 770 0344 04       		.byte	0x4
+ 771 0345 4D       		.byte	0x4d
+ 772 0346 7C040000 		.4byte	0x47c
+ 773 034a C402     		.2byte	0x2c4
+ 774 034c 0B       		.uleb128 0xb
+ 775 034d 61040000 		.4byte	.LASF58
+ 776 0351 04       		.byte	0x4
+ 777 0352 4E       		.byte	0x4e
+ 778 0353 9E000000 		.4byte	0x9e
+ 779 0357 D002     		.2byte	0x2d0
+ 780 0359 0B       		.uleb128 0xb
+ 781 035a 99020000 		.4byte	.LASF59
+ 782 035e 04       		.byte	0x4
+ 783 035f 4F       		.byte	0x4f
+ 784 0360 96040000 		.4byte	0x496
+ 785 0364 D402     		.2byte	0x2d4
+ 786 0366 0B       		.uleb128 0xb
+ 787 0367 04030000 		.4byte	.LASF60
+ 788 036b 04       		.byte	0x4
+ 789 036c 50       		.byte	0x50
+ 790 036d 9E000000 		.4byte	0x9e
+ 791 0371 0003     		.2byte	0x300
+ 792 0373 0B       		.uleb128 0xb
+ 793 0374 A4020000 		.4byte	.LASF61
+ 794 0378 04       		.byte	0x4
+ 795 0379 51       		.byte	0x51
+ 796 037a A0040000 		.4byte	0x4a0
+ 797 037e 0403     		.2byte	0x304
+ 798 0380 0B       		.uleb128 0xb
+ 799 0381 00040000 		.4byte	.LASF62
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 19
+
+
+ 800 0385 04       		.byte	0x4
+ 801 0386 52       		.byte	0x52
+ 802 0387 9E000000 		.4byte	0x9e
+ 803 038b 1003     		.2byte	0x310
+ 804 038d 0B       		.uleb128 0xb
+ 805 038e 1F000000 		.4byte	.LASF63
+ 806 0392 04       		.byte	0x4
+ 807 0393 53       		.byte	0x53
+ 808 0394 9E000000 		.4byte	0x9e
+ 809 0398 1403     		.2byte	0x314
+ 810 039a 0B       		.uleb128 0xb
+ 811 039b AF020000 		.4byte	.LASF64
+ 812 039f 04       		.byte	0x4
+ 813 03a0 54       		.byte	0x54
+ 814 03a1 AA040000 		.4byte	0x4aa
+ 815 03a5 1803     		.2byte	0x318
+ 816 03a7 0B       		.uleb128 0xb
+ 817 03a8 31020000 		.4byte	.LASF65
+ 818 03ac 04       		.byte	0x4
+ 819 03ad 55       		.byte	0x55
+ 820 03ae 9E000000 		.4byte	0x9e
+ 821 03b2 2003     		.2byte	0x320
+ 822 03b4 0B       		.uleb128 0xb
+ 823 03b5 BA020000 		.4byte	.LASF66
+ 824 03b9 04       		.byte	0x4
+ 825 03ba 56       		.byte	0x56
+ 826 03bb B4040000 		.4byte	0x4b4
+ 827 03bf 2403     		.2byte	0x324
+ 828 03c1 0B       		.uleb128 0xb
+ 829 03c2 45010000 		.4byte	.LASF67
+ 830 03c6 04       		.byte	0x4
+ 831 03c7 57       		.byte	0x57
+ 832 03c8 9E000000 		.4byte	0x9e
+ 833 03cc 4003     		.2byte	0x340
+ 834 03ce 0B       		.uleb128 0xb
+ 835 03cf C5020000 		.4byte	.LASF68
+ 836 03d3 04       		.byte	0x4
+ 837 03d4 58       		.byte	0x58
+ 838 03d5 CE040000 		.4byte	0x4ce
+ 839 03d9 4403     		.2byte	0x344
+ 840 03db 0B       		.uleb128 0xb
+ 841 03dc BB040000 		.4byte	.LASF69
+ 842 03e0 04       		.byte	0x4
+ 843 03e1 59       		.byte	0x59
+ 844 03e2 9E000000 		.4byte	0x9e
+ 845 03e6 0004     		.2byte	0x400
+ 846 03e8 0B       		.uleb128 0xb
+ 847 03e9 D0020000 		.4byte	.LASF70
+ 848 03ed 04       		.byte	0x4
+ 849 03ee 5A       		.byte	0x5a
+ 850 03ef D8040000 		.4byte	0x4d8
+ 851 03f3 0404     		.2byte	0x404
+ 852 03f5 0B       		.uleb128 0xb
+ 853 03f6 C1040000 		.4byte	.LASF71
+ 854 03fa 04       		.byte	0x4
+ 855 03fb 5B       		.byte	0x5b
+ 856 03fc 9E000000 		.4byte	0x9e
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 20
+
+
+ 857 0400 0005     		.2byte	0x500
+ 858 0402 00       		.byte	0
+ 859 0403 07       		.uleb128 0x7
+ 860 0404 A3000000 		.4byte	0xa3
+ 861 0408 13040000 		.4byte	0x413
+ 862 040c 08       		.uleb128 0x8
+ 863 040d 97000000 		.4byte	0x97
+ 864 0411 1D       		.byte	0x1d
+ 865 0412 00       		.byte	0
+ 866 0413 05       		.uleb128 0x5
+ 867 0414 03040000 		.4byte	0x403
+ 868 0418 06       		.uleb128 0x6
+ 869 0419 13040000 		.4byte	0x413
+ 870 041d 05       		.uleb128 0x5
+ 871 041e C8000000 		.4byte	0xc8
+ 872 0422 06       		.uleb128 0x6
+ 873 0423 1D040000 		.4byte	0x41d
+ 874 0427 05       		.uleb128 0x5
+ 875 0428 A8000000 		.4byte	0xa8
+ 876 042c 06       		.uleb128 0x6
+ 877 042d 27040000 		.4byte	0x427
+ 878 0431 05       		.uleb128 0x5
+ 879 0432 E8000000 		.4byte	0xe8
+ 880 0436 06       		.uleb128 0x6
+ 881 0437 31040000 		.4byte	0x431
+ 882 043b 05       		.uleb128 0x5
+ 883 043c F8000000 		.4byte	0xf8
+ 884 0440 06       		.uleb128 0x6
+ 885 0441 3B040000 		.4byte	0x43b
+ 886 0445 05       		.uleb128 0x5
+ 887 0446 08010000 		.4byte	0x108
+ 888 044a 06       		.uleb128 0x6
+ 889 044b 45040000 		.4byte	0x445
+ 890 044f 05       		.uleb128 0x5
+ 891 0450 E8000000 		.4byte	0xe8
+ 892 0454 06       		.uleb128 0x6
+ 893 0455 4F040000 		.4byte	0x44f
+ 894 0459 05       		.uleb128 0x5
+ 895 045a 03040000 		.4byte	0x403
+ 896 045e 06       		.uleb128 0x6
+ 897 045f 59040000 		.4byte	0x459
+ 898 0463 05       		.uleb128 0x5
+ 899 0464 A8000000 		.4byte	0xa8
+ 900 0468 06       		.uleb128 0x6
+ 901 0469 63040000 		.4byte	0x463
+ 902 046d 05       		.uleb128 0x5
+ 903 046e A8000000 		.4byte	0xa8
+ 904 0472 06       		.uleb128 0x6
+ 905 0473 6D040000 		.4byte	0x46d
+ 906 0477 05       		.uleb128 0x5
+ 907 0478 E8000000 		.4byte	0xe8
+ 908 047c 06       		.uleb128 0x6
+ 909 047d 77040000 		.4byte	0x477
+ 910 0481 07       		.uleb128 0x7
+ 911 0482 A3000000 		.4byte	0xa3
+ 912 0486 91040000 		.4byte	0x491
+ 913 048a 08       		.uleb128 0x8
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 21
+
+
+ 914 048b 97000000 		.4byte	0x97
+ 915 048f 0A       		.byte	0xa
+ 916 0490 00       		.byte	0
+ 917 0491 05       		.uleb128 0x5
+ 918 0492 81040000 		.4byte	0x481
+ 919 0496 06       		.uleb128 0x6
+ 920 0497 91040000 		.4byte	0x491
+ 921 049b 05       		.uleb128 0x5
+ 922 049c E8000000 		.4byte	0xe8
+ 923 04a0 06       		.uleb128 0x6
+ 924 04a1 9B040000 		.4byte	0x49b
+ 925 04a5 05       		.uleb128 0x5
+ 926 04a6 A8000000 		.4byte	0xa8
+ 927 04aa 06       		.uleb128 0x6
+ 928 04ab A5040000 		.4byte	0x4a5
+ 929 04af 05       		.uleb128 0x5
+ 930 04b0 B8000000 		.4byte	0xb8
+ 931 04b4 06       		.uleb128 0x6
+ 932 04b5 AF040000 		.4byte	0x4af
+ 933 04b9 07       		.uleb128 0x7
+ 934 04ba A3000000 		.4byte	0xa3
+ 935 04be C9040000 		.4byte	0x4c9
+ 936 04c2 08       		.uleb128 0x8
+ 937 04c3 97000000 		.4byte	0x97
+ 938 04c7 2E       		.byte	0x2e
+ 939 04c8 00       		.byte	0
+ 940 04c9 05       		.uleb128 0x5
+ 941 04ca B9040000 		.4byte	0x4b9
+ 942 04ce 06       		.uleb128 0x6
+ 943 04cf C9040000 		.4byte	0x4c9
+ 944 04d3 05       		.uleb128 0x5
+ 945 04d4 D8000000 		.4byte	0xd8
+ 946 04d8 06       		.uleb128 0x6
+ 947 04d9 D3040000 		.4byte	0x4d3
+ 948 04dd 03       		.uleb128 0x3
+ 949 04de DF010000 		.4byte	.LASF72
+ 950 04e2 04       		.byte	0x4
+ 951 04e3 5C       		.byte	0x5c
+ 952 04e4 18010000 		.4byte	0x118
+ 953 04e8 0C       		.uleb128 0xc
+ 954 04e9 51030000 		.4byte	.LASF73
+ 955 04ed 05       		.byte	0x5
+ 956 04ee 4006     		.2byte	0x640
+ 957 04f0 DD040000 		.4byte	0x4dd
+ 958 04f4 02       		.uleb128 0x2
+ 959 04f5 08       		.byte	0x8
+ 960 04f6 04       		.byte	0x4
+ 961 04f7 5E020000 		.4byte	.LASF74
+ 962 04fb 02       		.uleb128 0x2
+ 963 04fc 01       		.byte	0x1
+ 964 04fd 08       		.byte	0x8
+ 965 04fe 4C030000 		.4byte	.LASF75
+ 966 0502 02       		.uleb128 0x2
+ 967 0503 04       		.byte	0x4
+ 968 0504 04       		.byte	0x4
+ 969 0505 D9010000 		.4byte	.LASF76
+ 970 0509 02       		.uleb128 0x2
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 22
+
+
+ 971 050a 08       		.byte	0x8
+ 972 050b 04       		.byte	0x4
+ 973 050c F9030000 		.4byte	.LASF77
+ 974 0510 0D       		.uleb128 0xd
+ 975 0511 AC040000 		.4byte	.LASF80
+ 976 0515 01       		.byte	0x1
+ 977 0516 3B       		.byte	0x3b
+ 978 0517 00000000 		.4byte	.LFB46
+ 979 051b 24000000 		.4byte	.LFE46-.LFB46
+ 980 051f 01       		.uleb128 0x1
+ 981 0520 9C       		.byte	0x9c
+ 982 0521 56050000 		.4byte	0x556
+ 983 0525 0E       		.uleb128 0xe
+ 984 0526 92030000 		.4byte	.LASF78
+ 985 052a 01       		.byte	0x1
+ 986 052b 3D       		.byte	0x3d
+ 987 052c 8C000000 		.4byte	0x8c
+ 988 0530 00000000 		.4byte	.LLST0
+ 989 0534 0E       		.uleb128 0xe
+ 990 0535 07050000 		.4byte	.LASF79
+ 991 0539 01       		.byte	0x1
+ 992 053a 3E       		.byte	0x3e
+ 993 053b 8C000000 		.4byte	0x8c
+ 994 053f 13000000 		.4byte	.LLST1
+ 995 0543 0F       		.uleb128 0xf
+ 996 0544 06000000 		.4byte	.LVL0
+ 997 0548 1A070000 		.4byte	0x71a
+ 998 054c 0F       		.uleb128 0xf
+ 999 054d 18000000 		.4byte	.LVL4
+ 1000 0551 26070000 		.4byte	0x726
+ 1001 0555 00       		.byte	0
+ 1002 0556 10       		.uleb128 0x10
+ 1003 0557 54040000 		.4byte	.LASF94
+ 1004 055b 01       		.byte	0x1
+ 1005 055c 77       		.byte	0x77
+ 1006 055d 00000000 		.4byte	.LFB48
+ 1007 0561 02000000 		.4byte	.LFE48-.LFB48
+ 1008 0565 01       		.uleb128 0x1
+ 1009 0566 9C       		.byte	0x9c
+ 1010 0567 0D       		.uleb128 0xd
+ 1011 0568 18040000 		.4byte	.LASF81
+ 1012 056c 01       		.byte	0x1
+ 1013 056d 87       		.byte	0x87
+ 1014 056e 00000000 		.4byte	.LFB49
+ 1015 0572 28000000 		.4byte	.LFE49-.LFB49
+ 1016 0576 01       		.uleb128 0x1
+ 1017 0577 9C       		.byte	0x9c
+ 1018 0578 BC050000 		.4byte	0x5bc
+ 1019 057c 11       		.uleb128 0x11
+ 1020 057d 24030000 		.4byte	.LASF83
+ 1021 0581 01       		.byte	0x1
+ 1022 0582 87       		.byte	0x87
+ 1023 0583 8C000000 		.4byte	0x8c
+ 1024 0587 26000000 		.4byte	.LLST2
+ 1025 058b 0E       		.uleb128 0xe
+ 1026 058c 92030000 		.4byte	.LASF78
+ 1027 0590 01       		.byte	0x1
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 23
+
+
+ 1028 0591 89       		.byte	0x89
+ 1029 0592 8C000000 		.4byte	0x8c
+ 1030 0596 52000000 		.4byte	.LLST3
+ 1031 059a 0E       		.uleb128 0xe
+ 1032 059b 07050000 		.4byte	.LASF79
+ 1033 059f 01       		.byte	0x1
+ 1034 05a0 8A       		.byte	0x8a
+ 1035 05a1 8C000000 		.4byte	0x8c
+ 1036 05a5 65000000 		.4byte	.LLST4
+ 1037 05a9 0F       		.uleb128 0xf
+ 1038 05aa 08000000 		.4byte	.LVL6
+ 1039 05ae 1A070000 		.4byte	0x71a
+ 1040 05b2 0F       		.uleb128 0xf
+ 1041 05b3 22000000 		.4byte	.LVL11
+ 1042 05b7 26070000 		.4byte	0x726
+ 1043 05bb 00       		.byte	0
+ 1044 05bc 0D       		.uleb128 0xd
+ 1045 05bd 37040000 		.4byte	.LASF82
+ 1046 05c1 01       		.byte	0x1
+ 1047 05c2 A3       		.byte	0xa3
+ 1048 05c3 00000000 		.4byte	.LFB50
+ 1049 05c7 34000000 		.4byte	.LFE50-.LFB50
+ 1050 05cb 01       		.uleb128 0x1
+ 1051 05cc 9C       		.byte	0x9c
+ 1052 05cd 11060000 		.4byte	0x611
+ 1053 05d1 11       		.uleb128 0x11
+ 1054 05d2 4B040000 		.4byte	.LASF84
+ 1055 05d6 01       		.byte	0x1
+ 1056 05d7 A3       		.byte	0xa3
+ 1057 05d8 8C000000 		.4byte	0x8c
+ 1058 05dc 83000000 		.4byte	.LLST5
+ 1059 05e0 0E       		.uleb128 0xe
+ 1060 05e1 92030000 		.4byte	.LASF78
+ 1061 05e5 01       		.byte	0x1
+ 1062 05e6 A5       		.byte	0xa5
+ 1063 05e7 8C000000 		.4byte	0x8c
+ 1064 05eb AF000000 		.4byte	.LLST6
+ 1065 05ef 0E       		.uleb128 0xe
+ 1066 05f0 07050000 		.4byte	.LASF79
+ 1067 05f4 01       		.byte	0x1
+ 1068 05f5 A6       		.byte	0xa6
+ 1069 05f6 8C000000 		.4byte	0x8c
+ 1070 05fa C2000000 		.4byte	.LLST7
+ 1071 05fe 0F       		.uleb128 0xf
+ 1072 05ff 08000000 		.4byte	.LVL14
+ 1073 0603 1A070000 		.4byte	0x71a
+ 1074 0607 0F       		.uleb128 0xf
+ 1075 0608 2A000000 		.4byte	.LVL18
+ 1076 060c 26070000 		.4byte	0x726
+ 1077 0610 00       		.byte	0
+ 1078 0611 0D       		.uleb128 0xd
+ 1079 0612 9B040000 		.4byte	.LASF85
+ 1080 0616 01       		.byte	0x1
+ 1081 0617 C3       		.byte	0xc3
+ 1082 0618 00000000 		.4byte	.LFB51
+ 1083 061c 2C000000 		.4byte	.LFE51-.LFB51
+ 1084 0620 01       		.uleb128 0x1
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 24
+
+
+ 1085 0621 9C       		.byte	0x9c
+ 1086 0622 66060000 		.4byte	0x666
+ 1087 0626 11       		.uleb128 0x11
+ 1088 0627 2C000000 		.4byte	.LASF86
+ 1089 062b 01       		.byte	0x1
+ 1090 062c C3       		.byte	0xc3
+ 1091 062d 8C000000 		.4byte	0x8c
+ 1092 0631 E0000000 		.4byte	.LLST8
+ 1093 0635 0E       		.uleb128 0xe
+ 1094 0636 92030000 		.4byte	.LASF78
+ 1095 063a 01       		.byte	0x1
+ 1096 063b C5       		.byte	0xc5
+ 1097 063c 8C000000 		.4byte	0x8c
+ 1098 0640 0C010000 		.4byte	.LLST9
+ 1099 0644 0E       		.uleb128 0xe
+ 1100 0645 07050000 		.4byte	.LASF79
+ 1101 0649 01       		.byte	0x1
+ 1102 064a C6       		.byte	0xc6
+ 1103 064b 8C000000 		.4byte	0x8c
+ 1104 064f 1F010000 		.4byte	.LLST10
+ 1105 0653 0F       		.uleb128 0xf
+ 1106 0654 08000000 		.4byte	.LVL21
+ 1107 0658 1A070000 		.4byte	0x71a
+ 1108 065c 0F       		.uleb128 0xf
+ 1109 065d 22000000 		.4byte	.LVL26
+ 1110 0661 26070000 		.4byte	0x726
+ 1111 0665 00       		.byte	0
+ 1112 0666 0D       		.uleb128 0xd
+ 1113 0667 04020000 		.4byte	.LASF87
+ 1114 066b 01       		.byte	0x1
+ 1115 066c 1C       		.byte	0x1c
+ 1116 066d 00000000 		.4byte	.LFB45
+ 1117 0671 38000000 		.4byte	.LFE45-.LFB45
+ 1118 0675 01       		.uleb128 0x1
+ 1119 0676 9C       		.byte	0x9c
+ 1120 0677 E1060000 		.4byte	0x6e1
+ 1121 067b 0E       		.uleb128 0xe
+ 1122 067c 92030000 		.4byte	.LASF78
+ 1123 0680 01       		.byte	0x1
+ 1124 0681 1E       		.byte	0x1e
+ 1125 0682 8C000000 		.4byte	0x8c
+ 1126 0686 56010000 		.4byte	.LLST11
+ 1127 068a 0E       		.uleb128 0xe
+ 1128 068b 07050000 		.4byte	.LASF79
+ 1129 068f 01       		.byte	0x1
+ 1130 0690 1F       		.byte	0x1f
+ 1131 0691 8C000000 		.4byte	0x8c
+ 1132 0695 69010000 		.4byte	.LLST12
+ 1133 0699 0F       		.uleb128 0xf
+ 1134 069a 06000000 		.4byte	.LVL29
+ 1135 069e 1A070000 		.4byte	0x71a
+ 1136 06a2 0F       		.uleb128 0xf
+ 1137 06a3 1C000000 		.4byte	.LVL33
+ 1138 06a7 26070000 		.4byte	0x726
+ 1139 06ab 12       		.uleb128 0x12
+ 1140 06ac 22000000 		.4byte	.LVL34
+ 1141 06b0 67050000 		.4byte	0x567
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 25
+
+
+ 1142 06b4 BE060000 		.4byte	0x6be
+ 1143 06b8 13       		.uleb128 0x13
+ 1144 06b9 01       		.uleb128 0x1
+ 1145 06ba 50       		.byte	0x50
+ 1146 06bb 01       		.uleb128 0x1
+ 1147 06bc 30       		.byte	0x30
+ 1148 06bd 00       		.byte	0
+ 1149 06be 12       		.uleb128 0x12
+ 1150 06bf 28000000 		.4byte	.LVL35
+ 1151 06c3 BC050000 		.4byte	0x5bc
+ 1152 06c7 D1060000 		.4byte	0x6d1
+ 1153 06cb 13       		.uleb128 0x13
+ 1154 06cc 01       		.uleb128 0x1
+ 1155 06cd 50       		.byte	0x50
+ 1156 06ce 01       		.uleb128 0x1
+ 1157 06cf 30       		.byte	0x30
+ 1158 06d0 00       		.byte	0
+ 1159 06d1 14       		.uleb128 0x14
+ 1160 06d2 2E000000 		.4byte	.LVL36
+ 1161 06d6 11060000 		.4byte	0x611
+ 1162 06da 13       		.uleb128 0x13
+ 1163 06db 01       		.uleb128 0x1
+ 1164 06dc 50       		.byte	0x50
+ 1165 06dd 01       		.uleb128 0x1
+ 1166 06de 3D       		.byte	0x3d
+ 1167 06df 00       		.byte	0
+ 1168 06e0 00       		.byte	0
+ 1169 06e1 0D       		.uleb128 0xd
+ 1170 06e2 41000000 		.4byte	.LASF88
+ 1171 06e6 01       		.byte	0x1
+ 1172 06e7 5F       		.byte	0x5f
+ 1173 06e8 00000000 		.4byte	.LFB47
+ 1174 06ec 20000000 		.4byte	.LFE47-.LFB47
+ 1175 06f0 01       		.uleb128 0x1
+ 1176 06f1 9C       		.byte	0x9c
+ 1177 06f2 09070000 		.4byte	0x709
+ 1178 06f6 0F       		.uleb128 0xf
+ 1179 06f7 0E000000 		.4byte	.LVL38
+ 1180 06fb 66060000 		.4byte	0x666
+ 1181 06ff 0F       		.uleb128 0xf
+ 1182 0700 18000000 		.4byte	.LVL39
+ 1183 0704 10050000 		.4byte	0x510
+ 1184 0708 00       		.byte	0
+ 1185 0709 15       		.uleb128 0x15
+ 1186 070a 21020000 		.4byte	.LASF95
+ 1187 070e 01       		.byte	0x1
+ 1188 070f 12       		.byte	0x12
+ 1189 0710 8C000000 		.4byte	0x8c
+ 1190 0714 05       		.uleb128 0x5
+ 1191 0715 03       		.byte	0x3
+ 1192 0716 00000000 		.4byte	IDAC7_1_initVar
+ 1193 071a 16       		.uleb128 0x16
+ 1194 071b 00000000 		.4byte	.LASF89
+ 1195 071f 00000000 		.4byte	.LASF89
+ 1196 0723 06       		.byte	0x6
+ 1197 0724 B203     		.2byte	0x3b2
+ 1198 0726 16       		.uleb128 0x16
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 26
+
+
+ 1199 0727 E2040000 		.4byte	.LASF90
+ 1200 072b E2040000 		.4byte	.LASF90
+ 1201 072f 06       		.byte	0x6
+ 1202 0730 C103     		.2byte	0x3c1
+ 1203 0732 00       		.byte	0
+ 1204              		.section	.debug_abbrev,"",%progbits
+ 1205              	.Ldebug_abbrev0:
+ 1206 0000 01       		.uleb128 0x1
+ 1207 0001 11       		.uleb128 0x11
+ 1208 0002 01       		.byte	0x1
+ 1209 0003 25       		.uleb128 0x25
+ 1210 0004 0E       		.uleb128 0xe
+ 1211 0005 13       		.uleb128 0x13
+ 1212 0006 0B       		.uleb128 0xb
+ 1213 0007 03       		.uleb128 0x3
+ 1214 0008 0E       		.uleb128 0xe
+ 1215 0009 1B       		.uleb128 0x1b
+ 1216 000a 0E       		.uleb128 0xe
+ 1217 000b 55       		.uleb128 0x55
+ 1218 000c 17       		.uleb128 0x17
+ 1219 000d 11       		.uleb128 0x11
+ 1220 000e 01       		.uleb128 0x1
+ 1221 000f 10       		.uleb128 0x10
+ 1222 0010 17       		.uleb128 0x17
+ 1223 0011 00       		.byte	0
+ 1224 0012 00       		.byte	0
+ 1225 0013 02       		.uleb128 0x2
+ 1226 0014 24       		.uleb128 0x24
+ 1227 0015 00       		.byte	0
+ 1228 0016 0B       		.uleb128 0xb
+ 1229 0017 0B       		.uleb128 0xb
+ 1230 0018 3E       		.uleb128 0x3e
+ 1231 0019 0B       		.uleb128 0xb
+ 1232 001a 03       		.uleb128 0x3
+ 1233 001b 0E       		.uleb128 0xe
+ 1234 001c 00       		.byte	0
+ 1235 001d 00       		.byte	0
+ 1236 001e 03       		.uleb128 0x3
+ 1237 001f 16       		.uleb128 0x16
+ 1238 0020 00       		.byte	0
+ 1239 0021 03       		.uleb128 0x3
+ 1240 0022 0E       		.uleb128 0xe
+ 1241 0023 3A       		.uleb128 0x3a
+ 1242 0024 0B       		.uleb128 0xb
+ 1243 0025 3B       		.uleb128 0x3b
+ 1244 0026 0B       		.uleb128 0xb
+ 1245 0027 49       		.uleb128 0x49
+ 1246 0028 13       		.uleb128 0x13
+ 1247 0029 00       		.byte	0
+ 1248 002a 00       		.byte	0
+ 1249 002b 04       		.uleb128 0x4
+ 1250 002c 24       		.uleb128 0x24
+ 1251 002d 00       		.byte	0
+ 1252 002e 0B       		.uleb128 0xb
+ 1253 002f 0B       		.uleb128 0xb
+ 1254 0030 3E       		.uleb128 0x3e
+ 1255 0031 0B       		.uleb128 0xb
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 27
+
+
+ 1256 0032 03       		.uleb128 0x3
+ 1257 0033 08       		.uleb128 0x8
+ 1258 0034 00       		.byte	0
+ 1259 0035 00       		.byte	0
+ 1260 0036 05       		.uleb128 0x5
+ 1261 0037 35       		.uleb128 0x35
+ 1262 0038 00       		.byte	0
+ 1263 0039 49       		.uleb128 0x49
+ 1264 003a 13       		.uleb128 0x13
+ 1265 003b 00       		.byte	0
+ 1266 003c 00       		.byte	0
+ 1267 003d 06       		.uleb128 0x6
+ 1268 003e 26       		.uleb128 0x26
+ 1269 003f 00       		.byte	0
+ 1270 0040 49       		.uleb128 0x49
+ 1271 0041 13       		.uleb128 0x13
+ 1272 0042 00       		.byte	0
+ 1273 0043 00       		.byte	0
+ 1274 0044 07       		.uleb128 0x7
+ 1275 0045 01       		.uleb128 0x1
+ 1276 0046 01       		.byte	0x1
+ 1277 0047 49       		.uleb128 0x49
+ 1278 0048 13       		.uleb128 0x13
+ 1279 0049 01       		.uleb128 0x1
+ 1280 004a 13       		.uleb128 0x13
+ 1281 004b 00       		.byte	0
+ 1282 004c 00       		.byte	0
+ 1283 004d 08       		.uleb128 0x8
+ 1284 004e 21       		.uleb128 0x21
+ 1285 004f 00       		.byte	0
+ 1286 0050 49       		.uleb128 0x49
+ 1287 0051 13       		.uleb128 0x13
+ 1288 0052 2F       		.uleb128 0x2f
+ 1289 0053 0B       		.uleb128 0xb
+ 1290 0054 00       		.byte	0
+ 1291 0055 00       		.byte	0
+ 1292 0056 09       		.uleb128 0x9
+ 1293 0057 13       		.uleb128 0x13
+ 1294 0058 01       		.byte	0x1
+ 1295 0059 0B       		.uleb128 0xb
+ 1296 005a 05       		.uleb128 0x5
+ 1297 005b 3A       		.uleb128 0x3a
+ 1298 005c 0B       		.uleb128 0xb
+ 1299 005d 3B       		.uleb128 0x3b
+ 1300 005e 0B       		.uleb128 0xb
+ 1301 005f 01       		.uleb128 0x1
+ 1302 0060 13       		.uleb128 0x13
+ 1303 0061 00       		.byte	0
+ 1304 0062 00       		.byte	0
+ 1305 0063 0A       		.uleb128 0xa
+ 1306 0064 0D       		.uleb128 0xd
+ 1307 0065 00       		.byte	0
+ 1308 0066 03       		.uleb128 0x3
+ 1309 0067 0E       		.uleb128 0xe
+ 1310 0068 3A       		.uleb128 0x3a
+ 1311 0069 0B       		.uleb128 0xb
+ 1312 006a 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 28
+
+
+ 1313 006b 0B       		.uleb128 0xb
+ 1314 006c 49       		.uleb128 0x49
+ 1315 006d 13       		.uleb128 0x13
+ 1316 006e 38       		.uleb128 0x38
+ 1317 006f 0B       		.uleb128 0xb
+ 1318 0070 00       		.byte	0
+ 1319 0071 00       		.byte	0
+ 1320 0072 0B       		.uleb128 0xb
+ 1321 0073 0D       		.uleb128 0xd
+ 1322 0074 00       		.byte	0
+ 1323 0075 03       		.uleb128 0x3
+ 1324 0076 0E       		.uleb128 0xe
+ 1325 0077 3A       		.uleb128 0x3a
+ 1326 0078 0B       		.uleb128 0xb
+ 1327 0079 3B       		.uleb128 0x3b
+ 1328 007a 0B       		.uleb128 0xb
+ 1329 007b 49       		.uleb128 0x49
+ 1330 007c 13       		.uleb128 0x13
+ 1331 007d 38       		.uleb128 0x38
+ 1332 007e 05       		.uleb128 0x5
+ 1333 007f 00       		.byte	0
+ 1334 0080 00       		.byte	0
+ 1335 0081 0C       		.uleb128 0xc
+ 1336 0082 16       		.uleb128 0x16
+ 1337 0083 00       		.byte	0
+ 1338 0084 03       		.uleb128 0x3
+ 1339 0085 0E       		.uleb128 0xe
+ 1340 0086 3A       		.uleb128 0x3a
+ 1341 0087 0B       		.uleb128 0xb
+ 1342 0088 3B       		.uleb128 0x3b
+ 1343 0089 05       		.uleb128 0x5
+ 1344 008a 49       		.uleb128 0x49
+ 1345 008b 13       		.uleb128 0x13
+ 1346 008c 00       		.byte	0
+ 1347 008d 00       		.byte	0
+ 1348 008e 0D       		.uleb128 0xd
+ 1349 008f 2E       		.uleb128 0x2e
+ 1350 0090 01       		.byte	0x1
+ 1351 0091 3F       		.uleb128 0x3f
+ 1352 0092 19       		.uleb128 0x19
+ 1353 0093 03       		.uleb128 0x3
+ 1354 0094 0E       		.uleb128 0xe
+ 1355 0095 3A       		.uleb128 0x3a
+ 1356 0096 0B       		.uleb128 0xb
+ 1357 0097 3B       		.uleb128 0x3b
+ 1358 0098 0B       		.uleb128 0xb
+ 1359 0099 27       		.uleb128 0x27
+ 1360 009a 19       		.uleb128 0x19
+ 1361 009b 11       		.uleb128 0x11
+ 1362 009c 01       		.uleb128 0x1
+ 1363 009d 12       		.uleb128 0x12
+ 1364 009e 06       		.uleb128 0x6
+ 1365 009f 40       		.uleb128 0x40
+ 1366 00a0 18       		.uleb128 0x18
+ 1367 00a1 9742     		.uleb128 0x2117
+ 1368 00a3 19       		.uleb128 0x19
+ 1369 00a4 01       		.uleb128 0x1
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 29
+
+
+ 1370 00a5 13       		.uleb128 0x13
+ 1371 00a6 00       		.byte	0
+ 1372 00a7 00       		.byte	0
+ 1373 00a8 0E       		.uleb128 0xe
+ 1374 00a9 34       		.uleb128 0x34
+ 1375 00aa 00       		.byte	0
+ 1376 00ab 03       		.uleb128 0x3
+ 1377 00ac 0E       		.uleb128 0xe
+ 1378 00ad 3A       		.uleb128 0x3a
+ 1379 00ae 0B       		.uleb128 0xb
+ 1380 00af 3B       		.uleb128 0x3b
+ 1381 00b0 0B       		.uleb128 0xb
+ 1382 00b1 49       		.uleb128 0x49
+ 1383 00b2 13       		.uleb128 0x13
+ 1384 00b3 02       		.uleb128 0x2
+ 1385 00b4 17       		.uleb128 0x17
+ 1386 00b5 00       		.byte	0
+ 1387 00b6 00       		.byte	0
+ 1388 00b7 0F       		.uleb128 0xf
+ 1389 00b8 898201   		.uleb128 0x4109
+ 1390 00bb 00       		.byte	0
+ 1391 00bc 11       		.uleb128 0x11
+ 1392 00bd 01       		.uleb128 0x1
+ 1393 00be 31       		.uleb128 0x31
+ 1394 00bf 13       		.uleb128 0x13
+ 1395 00c0 00       		.byte	0
+ 1396 00c1 00       		.byte	0
+ 1397 00c2 10       		.uleb128 0x10
+ 1398 00c3 2E       		.uleb128 0x2e
+ 1399 00c4 00       		.byte	0
+ 1400 00c5 3F       		.uleb128 0x3f
+ 1401 00c6 19       		.uleb128 0x19
+ 1402 00c7 03       		.uleb128 0x3
+ 1403 00c8 0E       		.uleb128 0xe
+ 1404 00c9 3A       		.uleb128 0x3a
+ 1405 00ca 0B       		.uleb128 0xb
+ 1406 00cb 3B       		.uleb128 0x3b
+ 1407 00cc 0B       		.uleb128 0xb
+ 1408 00cd 27       		.uleb128 0x27
+ 1409 00ce 19       		.uleb128 0x19
+ 1410 00cf 11       		.uleb128 0x11
+ 1411 00d0 01       		.uleb128 0x1
+ 1412 00d1 12       		.uleb128 0x12
+ 1413 00d2 06       		.uleb128 0x6
+ 1414 00d3 40       		.uleb128 0x40
+ 1415 00d4 18       		.uleb128 0x18
+ 1416 00d5 9742     		.uleb128 0x2117
+ 1417 00d7 19       		.uleb128 0x19
+ 1418 00d8 00       		.byte	0
+ 1419 00d9 00       		.byte	0
+ 1420 00da 11       		.uleb128 0x11
+ 1421 00db 05       		.uleb128 0x5
+ 1422 00dc 00       		.byte	0
+ 1423 00dd 03       		.uleb128 0x3
+ 1424 00de 0E       		.uleb128 0xe
+ 1425 00df 3A       		.uleb128 0x3a
+ 1426 00e0 0B       		.uleb128 0xb
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 30
+
+
+ 1427 00e1 3B       		.uleb128 0x3b
+ 1428 00e2 0B       		.uleb128 0xb
+ 1429 00e3 49       		.uleb128 0x49
+ 1430 00e4 13       		.uleb128 0x13
+ 1431 00e5 02       		.uleb128 0x2
+ 1432 00e6 17       		.uleb128 0x17
+ 1433 00e7 00       		.byte	0
+ 1434 00e8 00       		.byte	0
+ 1435 00e9 12       		.uleb128 0x12
+ 1436 00ea 898201   		.uleb128 0x4109
+ 1437 00ed 01       		.byte	0x1
+ 1438 00ee 11       		.uleb128 0x11
+ 1439 00ef 01       		.uleb128 0x1
+ 1440 00f0 31       		.uleb128 0x31
+ 1441 00f1 13       		.uleb128 0x13
+ 1442 00f2 01       		.uleb128 0x1
+ 1443 00f3 13       		.uleb128 0x13
+ 1444 00f4 00       		.byte	0
+ 1445 00f5 00       		.byte	0
+ 1446 00f6 13       		.uleb128 0x13
+ 1447 00f7 8A8201   		.uleb128 0x410a
+ 1448 00fa 00       		.byte	0
+ 1449 00fb 02       		.uleb128 0x2
+ 1450 00fc 18       		.uleb128 0x18
+ 1451 00fd 9142     		.uleb128 0x2111
+ 1452 00ff 18       		.uleb128 0x18
+ 1453 0100 00       		.byte	0
+ 1454 0101 00       		.byte	0
+ 1455 0102 14       		.uleb128 0x14
+ 1456 0103 898201   		.uleb128 0x4109
+ 1457 0106 01       		.byte	0x1
+ 1458 0107 11       		.uleb128 0x11
+ 1459 0108 01       		.uleb128 0x1
+ 1460 0109 31       		.uleb128 0x31
+ 1461 010a 13       		.uleb128 0x13
+ 1462 010b 00       		.byte	0
+ 1463 010c 00       		.byte	0
+ 1464 010d 15       		.uleb128 0x15
+ 1465 010e 34       		.uleb128 0x34
+ 1466 010f 00       		.byte	0
+ 1467 0110 03       		.uleb128 0x3
+ 1468 0111 0E       		.uleb128 0xe
+ 1469 0112 3A       		.uleb128 0x3a
+ 1470 0113 0B       		.uleb128 0xb
+ 1471 0114 3B       		.uleb128 0x3b
+ 1472 0115 0B       		.uleb128 0xb
+ 1473 0116 49       		.uleb128 0x49
+ 1474 0117 13       		.uleb128 0x13
+ 1475 0118 3F       		.uleb128 0x3f
+ 1476 0119 19       		.uleb128 0x19
+ 1477 011a 02       		.uleb128 0x2
+ 1478 011b 18       		.uleb128 0x18
+ 1479 011c 00       		.byte	0
+ 1480 011d 00       		.byte	0
+ 1481 011e 16       		.uleb128 0x16
+ 1482 011f 2E       		.uleb128 0x2e
+ 1483 0120 00       		.byte	0
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 31
+
+
+ 1484 0121 3F       		.uleb128 0x3f
+ 1485 0122 19       		.uleb128 0x19
+ 1486 0123 3C       		.uleb128 0x3c
+ 1487 0124 19       		.uleb128 0x19
+ 1488 0125 6E       		.uleb128 0x6e
+ 1489 0126 0E       		.uleb128 0xe
+ 1490 0127 03       		.uleb128 0x3
+ 1491 0128 0E       		.uleb128 0xe
+ 1492 0129 3A       		.uleb128 0x3a
+ 1493 012a 0B       		.uleb128 0xb
+ 1494 012b 3B       		.uleb128 0x3b
+ 1495 012c 05       		.uleb128 0x5
+ 1496 012d 00       		.byte	0
+ 1497 012e 00       		.byte	0
+ 1498 012f 00       		.byte	0
+ 1499              		.section	.debug_loc,"",%progbits
+ 1500              	.Ldebug_loc0:
+ 1501              	.LLST0:
+ 1502 0000 0A000000 		.4byte	.LVL1
+ 1503 0004 17000000 		.4byte	.LVL4-1
+ 1504 0008 0100     		.2byte	0x1
+ 1505 000a 50       		.byte	0x50
+ 1506 000b 00000000 		.4byte	0
+ 1507 000f 00000000 		.4byte	0
+ 1508              	.LLST1:
+ 1509 0013 0E000000 		.4byte	.LVL2
+ 1510 0017 17000000 		.4byte	.LVL4-1
+ 1511 001b 0100     		.2byte	0x1
+ 1512 001d 53       		.byte	0x53
+ 1513 001e 00000000 		.4byte	0
+ 1514 0022 00000000 		.4byte	0
+ 1515              	.LLST2:
+ 1516 0026 00000000 		.4byte	.LVL5
+ 1517 002a 07000000 		.4byte	.LVL6-1
+ 1518 002e 0100     		.2byte	0x1
+ 1519 0030 50       		.byte	0x50
+ 1520 0031 07000000 		.4byte	.LVL6-1
+ 1521 0035 1A000000 		.4byte	.LVL9
+ 1522 0039 0100     		.2byte	0x1
+ 1523 003b 54       		.byte	0x54
+ 1524 003c 1A000000 		.4byte	.LVL9
+ 1525 0040 28000000 		.4byte	.LFE49
+ 1526 0044 0400     		.2byte	0x4
+ 1527 0046 F3       		.byte	0xf3
+ 1528 0047 01       		.uleb128 0x1
+ 1529 0048 50       		.byte	0x50
+ 1530 0049 9F       		.byte	0x9f
+ 1531 004a 00000000 		.4byte	0
+ 1532 004e 00000000 		.4byte	0
+ 1533              	.LLST3:
+ 1534 0052 0C000000 		.4byte	.LVL7
+ 1535 0056 21000000 		.4byte	.LVL11-1
+ 1536 005a 0100     		.2byte	0x1
+ 1537 005c 50       		.byte	0x50
+ 1538 005d 00000000 		.4byte	0
+ 1539 0061 00000000 		.4byte	0
+ 1540              	.LLST4:
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 32
+
+
+ 1541 0065 18000000 		.4byte	.LVL8
+ 1542 0069 1C000000 		.4byte	.LVL10
+ 1543 006d 0100     		.2byte	0x1
+ 1544 006f 53       		.byte	0x53
+ 1545 0070 1C000000 		.4byte	.LVL10
+ 1546 0074 22000000 		.4byte	.LVL12
+ 1547 0078 0100     		.2byte	0x1
+ 1548 007a 54       		.byte	0x54
+ 1549 007b 00000000 		.4byte	0
+ 1550 007f 00000000 		.4byte	0
+ 1551              	.LLST5:
+ 1552 0083 00000000 		.4byte	.LVL13
+ 1553 0087 07000000 		.4byte	.LVL14-1
+ 1554 008b 0100     		.2byte	0x1
+ 1555 008d 50       		.byte	0x50
+ 1556 008e 07000000 		.4byte	.LVL14-1
+ 1557 0092 2A000000 		.4byte	.LVL19
+ 1558 0096 0100     		.2byte	0x1
+ 1559 0098 54       		.byte	0x54
+ 1560 0099 2A000000 		.4byte	.LVL19
+ 1561 009d 34000000 		.4byte	.LFE50
+ 1562 00a1 0400     		.2byte	0x4
+ 1563 00a3 F3       		.byte	0xf3
+ 1564 00a4 01       		.uleb128 0x1
+ 1565 00a5 50       		.byte	0x50
+ 1566 00a6 9F       		.byte	0x9f
+ 1567 00a7 00000000 		.4byte	0
+ 1568 00ab 00000000 		.4byte	0
+ 1569              	.LLST6:
+ 1570 00af 0C000000 		.4byte	.LVL15
+ 1571 00b3 29000000 		.4byte	.LVL18-1
+ 1572 00b7 0100     		.2byte	0x1
+ 1573 00b9 50       		.byte	0x50
+ 1574 00ba 00000000 		.4byte	0
+ 1575 00be 00000000 		.4byte	0
+ 1576              	.LLST7:
+ 1577 00c2 1A000000 		.4byte	.LVL16
+ 1578 00c6 24000000 		.4byte	.LVL17
+ 1579 00ca 0100     		.2byte	0x1
+ 1580 00cc 51       		.byte	0x51
+ 1581 00cd 24000000 		.4byte	.LVL17
+ 1582 00d1 29000000 		.4byte	.LVL18-1
+ 1583 00d5 0100     		.2byte	0x1
+ 1584 00d7 53       		.byte	0x53
+ 1585 00d8 00000000 		.4byte	0
+ 1586 00dc 00000000 		.4byte	0
+ 1587              	.LLST8:
+ 1588 00e0 00000000 		.4byte	.LVL20
+ 1589 00e4 07000000 		.4byte	.LVL21-1
+ 1590 00e8 0100     		.2byte	0x1
+ 1591 00ea 50       		.byte	0x50
+ 1592 00eb 07000000 		.4byte	.LVL21-1
+ 1593 00ef 1A000000 		.4byte	.LVL24
+ 1594 00f3 0100     		.2byte	0x1
+ 1595 00f5 54       		.byte	0x54
+ 1596 00f6 1A000000 		.4byte	.LVL24
+ 1597 00fa 2C000000 		.4byte	.LFE51
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 33
+
+
+ 1598 00fe 0400     		.2byte	0x4
+ 1599 0100 F3       		.byte	0xf3
+ 1600 0101 01       		.uleb128 0x1
+ 1601 0102 50       		.byte	0x50
+ 1602 0103 9F       		.byte	0x9f
+ 1603 0104 00000000 		.4byte	0
+ 1604 0108 00000000 		.4byte	0
+ 1605              	.LLST9:
+ 1606 010c 0C000000 		.4byte	.LVL22
+ 1607 0110 21000000 		.4byte	.LVL26-1
+ 1608 0114 0100     		.2byte	0x1
+ 1609 0116 50       		.byte	0x50
+ 1610 0117 00000000 		.4byte	0
+ 1611 011b 00000000 		.4byte	0
+ 1612              	.LLST10:
+ 1613 011f 18000000 		.4byte	.LVL23
+ 1614 0123 1C000000 		.4byte	.LVL25
+ 1615 0127 0100     		.2byte	0x1
+ 1616 0129 53       		.byte	0x53
+ 1617 012a 1C000000 		.4byte	.LVL25
+ 1618 012e 22000000 		.4byte	.LVL27
+ 1619 0132 0100     		.2byte	0x1
+ 1620 0134 54       		.byte	0x54
+ 1621 0135 22000000 		.4byte	.LVL27
+ 1622 0139 22000000 		.4byte	.LVL28
+ 1623 013d 0F00     		.2byte	0xf
+ 1624 013f 75       		.byte	0x75
+ 1625 0140 00       		.sleb128 0
+ 1626 0141 11       		.byte	0x11
+ 1627 0142 FFFFFF61 		.sleb128 -62914561
+ 1628 0146 1A       		.byte	0x1a
+ 1629 0147 F3       		.byte	0xf3
+ 1630 0148 01       		.uleb128 0x1
+ 1631 0149 50       		.byte	0x50
+ 1632 014a 46       		.byte	0x46
+ 1633 014b 24       		.byte	0x24
+ 1634 014c 21       		.byte	0x21
+ 1635 014d 9F       		.byte	0x9f
+ 1636 014e 00000000 		.4byte	0
+ 1637 0152 00000000 		.4byte	0
+ 1638              	.LLST11:
+ 1639 0156 0A000000 		.4byte	.LVL30
+ 1640 015a 1B000000 		.4byte	.LVL33-1
+ 1641 015e 0100     		.2byte	0x1
+ 1642 0160 50       		.byte	0x50
+ 1643 0161 00000000 		.4byte	0
+ 1644 0165 00000000 		.4byte	0
+ 1645              	.LLST12:
+ 1646 0169 12000000 		.4byte	.LVL31
+ 1647 016d 16000000 		.4byte	.LVL32
+ 1648 0171 0100     		.2byte	0x1
+ 1649 0173 54       		.byte	0x54
+ 1650 0174 16000000 		.4byte	.LVL32
+ 1651 0178 1B000000 		.4byte	.LVL33-1
+ 1652 017c 0100     		.2byte	0x1
+ 1653 017e 53       		.byte	0x53
+ 1654 017f 1B000000 		.4byte	.LVL33-1
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 34
+
+
+ 1655 0183 2E000000 		.4byte	.LVL37
+ 1656 0187 0900     		.2byte	0x9
+ 1657 0189 74       		.byte	0x74
+ 1658 018a 00       		.sleb128 0
+ 1659 018b 11       		.byte	0x11
+ 1660 018c FFFEC37E 		.sleb128 -3080321
+ 1661 0190 1A       		.byte	0x1a
+ 1662 0191 9F       		.byte	0x9f
+ 1663 0192 00000000 		.4byte	0
+ 1664 0196 00000000 		.4byte	0
+ 1665              		.section	.debug_aranges,"",%progbits
+ 1666 0000 4C000000 		.4byte	0x4c
+ 1667 0004 0200     		.2byte	0x2
+ 1668 0006 00000000 		.4byte	.Ldebug_info0
+ 1669 000a 04       		.byte	0x4
+ 1670 000b 00       		.byte	0
+ 1671 000c 0000     		.2byte	0
+ 1672 000e 0000     		.2byte	0
+ 1673 0010 00000000 		.4byte	.LFB46
+ 1674 0014 24000000 		.4byte	.LFE46-.LFB46
+ 1675 0018 00000000 		.4byte	.LFB48
+ 1676 001c 02000000 		.4byte	.LFE48-.LFB48
+ 1677 0020 00000000 		.4byte	.LFB49
+ 1678 0024 28000000 		.4byte	.LFE49-.LFB49
+ 1679 0028 00000000 		.4byte	.LFB50
+ 1680 002c 34000000 		.4byte	.LFE50-.LFB50
+ 1681 0030 00000000 		.4byte	.LFB51
+ 1682 0034 2C000000 		.4byte	.LFE51-.LFB51
+ 1683 0038 00000000 		.4byte	.LFB45
+ 1684 003c 38000000 		.4byte	.LFE45-.LFB45
+ 1685 0040 00000000 		.4byte	.LFB47
+ 1686 0044 20000000 		.4byte	.LFE47-.LFB47
+ 1687 0048 00000000 		.4byte	0
+ 1688 004c 00000000 		.4byte	0
+ 1689              		.section	.debug_ranges,"",%progbits
+ 1690              	.Ldebug_ranges0:
+ 1691 0000 00000000 		.4byte	.LFB46
+ 1692 0004 24000000 		.4byte	.LFE46
+ 1693 0008 00000000 		.4byte	.LFB48
+ 1694 000c 02000000 		.4byte	.LFE48
+ 1695 0010 00000000 		.4byte	.LFB49
+ 1696 0014 28000000 		.4byte	.LFE49
+ 1697 0018 00000000 		.4byte	.LFB50
+ 1698 001c 34000000 		.4byte	.LFE50
+ 1699 0020 00000000 		.4byte	.LFB51
+ 1700 0024 2C000000 		.4byte	.LFE51
+ 1701 0028 00000000 		.4byte	.LFB45
+ 1702 002c 38000000 		.4byte	.LFE45
+ 1703 0030 00000000 		.4byte	.LFB47
+ 1704 0034 20000000 		.4byte	.LFE47
+ 1705 0038 00000000 		.4byte	0
+ 1706 003c 00000000 		.4byte	0
+ 1707              		.section	.debug_line,"",%progbits
+ 1708              	.Ldebug_line0:
+ 1709 0000 9B020000 		.section	.debug_str,"MS",%progbits,1
+ 1709      02000002 
+ 1709      00000201 
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 35
+
+
+ 1709      FB0E0D00 
+ 1709      01010101 
+ 1710              	.LASF89:
+ 1711 0000 43795F53 		.ascii	"Cy_SysLib_EnterCriticalSection\000"
+ 1711      79734C69 
+ 1711      625F456E 
+ 1711      74657243 
+ 1711      72697469 
+ 1712              	.LASF63:
+ 1713 001f 5345515F 		.ascii	"SEQ_NORM_CNT\000"
+ 1713      4E4F524D 
+ 1713      5F434E54 
+ 1713      00
+ 1714              	.LASF86:
+ 1715 002c 72616E67 		.ascii	"range\000"
+ 1715      6500
+ 1716              	.LASF27:
+ 1717 0032 494E5452 		.ascii	"INTR\000"
+ 1717      00
+ 1718              	.LASF0:
+ 1719 0037 73686F72 		.ascii	"short int\000"
+ 1719      7420696E 
+ 1719      7400
+ 1720              	.LASF88:
+ 1721 0041 49444143 		.ascii	"IDAC7_1_Start\000"
+ 1721      375F315F 
+ 1721      53746172 
+ 1721      7400
+ 1722              	.LASF13:
+ 1723 004f 73697A65 		.ascii	"sizetype\000"
+ 1723      74797065 
+ 1723      00
+ 1724              	.LASF34:
+ 1725 0058 52454647 		.ascii	"REFGEN\000"
+ 1725      454E00
+ 1726              	.LASF93:
+ 1727 005f 433A5C55 		.ascii	"C:\\Users\\oars0\\Documents\\School\\Interfacing\\w"
+ 1727      73657273 
+ 1727      5C6F6172 
+ 1727      73305C44 
+ 1727      6F63756D 
+ 1728 008c 6F726B73 		.ascii	"orkspace\\Lab01.cydsn\000"
+ 1728      70616365 
+ 1728      5C4C6162 
+ 1728      30312E63 
+ 1728      7964736E 
+ 1729              	.LASF91:
+ 1730 00a1 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1730      43313120 
+ 1730      352E342E 
+ 1730      31203230 
+ 1730      31363036 
+ 1731 00d4 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0plus -mthumb -"
+ 1731      20726576 
+ 1731      6973696F 
+ 1731      6E203233 
+ 1731      37373135 
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 36
+
+
+ 1732 0107 67202D4F 		.ascii	"g -Og -ffunction-sections -ffat-lto-objects\000"
+ 1732      67202D66 
+ 1732      66756E63 
+ 1732      74696F6E 
+ 1732      2D736563 
+ 1733              	.LASF37:
+ 1734 0133 53575F52 		.ascii	"SW_RES\000"
+ 1734      455300
+ 1735              	.LASF6:
+ 1736 013a 5F5F7569 		.ascii	"__uint32_t\000"
+ 1736      6E743332 
+ 1736      5F7400
+ 1737              	.LASF67:
+ 1738 0145 5345515F 		.ascii	"SEQ_START\000"
+ 1738      53544152 
+ 1738      5400
+ 1739              	.LASF43:
+ 1740 014f 53575F48 		.ascii	"SW_HS_N_SEL\000"
+ 1740      535F4E5F 
+ 1740      53454C00 
+ 1741              	.LASF35:
+ 1742 015b 43534443 		.ascii	"CSDCMP\000"
+ 1742      4D5000
+ 1743              	.LASF20:
+ 1744 0162 53544154 		.ascii	"STAT_HCNT\000"
+ 1744      5F48434E 
+ 1744      5400
+ 1745              	.LASF15:
+ 1746 016c 53504152 		.ascii	"SPARE\000"
+ 1746      4500
+ 1747              	.LASF51:
+ 1748 0172 53575F52 		.ascii	"SW_REFGEN_SEL\000"
+ 1748      45464745 
+ 1748      4E5F5345 
+ 1748      4C00
+ 1749              	.LASF38:
+ 1750 0180 52455345 		.ascii	"RESERVED6\000"
+ 1750      52564544 
+ 1750      3600
+ 1751              	.LASF29:
+ 1752 018a 494E5452 		.ascii	"INTR_MASK\000"
+ 1752      5F4D4153 
+ 1752      4B00
+ 1753              	.LASF44:
+ 1754 0194 53575F53 		.ascii	"SW_SHIELD_SEL\000"
+ 1754      4849454C 
+ 1754      445F5345 
+ 1754      4C00
+ 1755              	.LASF48:
+ 1756 01a2 52455345 		.ascii	"RESERVED9\000"
+ 1756      52564544 
+ 1756      3900
+ 1757              	.LASF56:
+ 1758 01ac 53575F44 		.ascii	"SW_DSI_SEL\000"
+ 1758      53495F53 
+ 1758      454C00
+ 1759              	.LASF2:
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 37
+
+
+ 1760 01b7 7369676E 		.ascii	"signed char\000"
+ 1760      65642063 
+ 1760      68617200 
+ 1761              	.LASF49:
+ 1762 01c3 53575F43 		.ascii	"SW_CMP_P_SEL\000"
+ 1762      4D505F50 
+ 1762      5F53454C 
+ 1762      00
+ 1763              	.LASF28:
+ 1764 01d0 494E5452 		.ascii	"INTR_SET\000"
+ 1764      5F534554 
+ 1764      00
+ 1765              	.LASF76:
+ 1766 01d9 666C6F61 		.ascii	"float\000"
+ 1766      7400
+ 1767              	.LASF72:
+ 1768 01df 4353445F 		.ascii	"CSD_V1_Type\000"
+ 1768      56315F54 
+ 1768      79706500 
+ 1769              	.LASF8:
+ 1770 01eb 6C6F6E67 		.ascii	"long long int\000"
+ 1770      206C6F6E 
+ 1770      6720696E 
+ 1770      7400
+ 1771              	.LASF47:
+ 1772 01f9 53575F42 		.ascii	"SW_BYP_SEL\000"
+ 1772      59505F53 
+ 1772      454C00
+ 1773              	.LASF87:
+ 1774 0204 49444143 		.ascii	"IDAC7_1_Init\000"
+ 1774      375F315F 
+ 1774      496E6974 
+ 1774      00
+ 1775              	.LASF17:
+ 1776 0211 53544154 		.ascii	"STATUS\000"
+ 1776      555300
+ 1777              	.LASF4:
+ 1778 0218 6C6F6E67 		.ascii	"long int\000"
+ 1778      20696E74 
+ 1778      00
+ 1779              	.LASF95:
+ 1780 0221 49444143 		.ascii	"IDAC7_1_initVar\000"
+ 1780      375F315F 
+ 1780      696E6974 
+ 1780      56617200 
+ 1781              	.LASF65:
+ 1782 0231 4144435F 		.ascii	"ADC_CTL\000"
+ 1782      43544C00 
+ 1783              	.LASF5:
+ 1784 0239 5F5F7569 		.ascii	"__uint8_t\000"
+ 1784      6E74385F 
+ 1784      7400
+ 1785              	.LASF46:
+ 1786 0243 53575F41 		.ascii	"SW_AMUXBUF_SEL\000"
+ 1786      4D555842 
+ 1786      55465F53 
+ 1786      454C00
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 38
+
+
+ 1787              	.LASF30:
+ 1788 0252 494E5452 		.ascii	"INTR_MASKED\000"
+ 1788      5F4D4153 
+ 1788      4B454400 
+ 1789              	.LASF74:
+ 1790 025e 6C6F6E67 		.ascii	"long double\000"
+ 1790      20646F75 
+ 1790      626C6500 
+ 1791              	.LASF1:
+ 1792 026a 756E7369 		.ascii	"unsigned char\000"
+ 1792      676E6564 
+ 1792      20636861 
+ 1792      7200
+ 1793              	.LASF52:
+ 1794 0278 52455345 		.ascii	"RESERVED10\000"
+ 1794      52564544 
+ 1794      313000
+ 1795              	.LASF55:
+ 1796 0283 52455345 		.ascii	"RESERVED11\000"
+ 1796      52564544 
+ 1796      313100
+ 1797              	.LASF57:
+ 1798 028e 52455345 		.ascii	"RESERVED12\000"
+ 1798      52564544 
+ 1798      313200
+ 1799              	.LASF59:
+ 1800 0299 52455345 		.ascii	"RESERVED13\000"
+ 1800      52564544 
+ 1800      313300
+ 1801              	.LASF61:
+ 1802 02a4 52455345 		.ascii	"RESERVED14\000"
+ 1802      52564544 
+ 1802      313400
+ 1803              	.LASF64:
+ 1804 02af 52455345 		.ascii	"RESERVED15\000"
+ 1804      52564544 
+ 1804      313500
+ 1805              	.LASF66:
+ 1806 02ba 52455345 		.ascii	"RESERVED16\000"
+ 1806      52564544 
+ 1806      313600
+ 1807              	.LASF68:
+ 1808 02c5 52455345 		.ascii	"RESERVED17\000"
+ 1808      52564544 
+ 1808      313700
+ 1809              	.LASF70:
+ 1810 02d0 52455345 		.ascii	"RESERVED18\000"
+ 1810      52564544 
+ 1810      313800
+ 1811              	.LASF9:
+ 1812 02db 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1812      206C6F6E 
+ 1812      6720756E 
+ 1812      7369676E 
+ 1812      65642069 
+ 1813              	.LASF12:
+ 1814 02f2 75696E74 		.ascii	"uint32_t\000"
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 39
+
+
+ 1814      33325F74 
+ 1814      00
+ 1815              	.LASF18:
+ 1816 02fb 53544154 		.ascii	"STAT_SEQ\000"
+ 1816      5F534551 
+ 1816      00
+ 1817              	.LASF60:
+ 1818 0304 5345515F 		.ascii	"SEQ_TIME\000"
+ 1818      54494D45 
+ 1818      00
+ 1819              	.LASF10:
+ 1820 030d 756E7369 		.ascii	"unsigned int\000"
+ 1820      676E6564 
+ 1820      20696E74 
+ 1820      00
+ 1821              	.LASF19:
+ 1822 031a 53544154 		.ascii	"STAT_CNTS\000"
+ 1822      5F434E54 
+ 1822      5300
+ 1823              	.LASF83:
+ 1824 0324 63757272 		.ascii	"current\000"
+ 1824      656E7400 
+ 1825              	.LASF50:
+ 1826 032c 53575F43 		.ascii	"SW_CMP_N_SEL\000"
+ 1826      4D505F4E 
+ 1826      5F53454C 
+ 1826      00
+ 1827              	.LASF3:
+ 1828 0339 73686F72 		.ascii	"short unsigned int\000"
+ 1828      7420756E 
+ 1828      7369676E 
+ 1828      65642069 
+ 1828      6E7400
+ 1829              	.LASF75:
+ 1830 034c 63686172 		.ascii	"char\000"
+ 1830      00
+ 1831              	.LASF73:
+ 1832 0351 4353445F 		.ascii	"CSD_Type\000"
+ 1832      54797065 
+ 1832      00
+ 1833              	.LASF92:
+ 1834 035a 47656E65 		.ascii	"Generated_Source\\PSoC6\\IDAC7_1.c\000"
+ 1834      72617465 
+ 1834      645F536F 
+ 1834      75726365 
+ 1834      5C50536F 
+ 1835              	.LASF25:
+ 1836 037b 4144435F 		.ascii	"ADC_RES\000"
+ 1836      52455300 
+ 1837              	.LASF54:
+ 1838 0383 53575F46 		.ascii	"SW_FW_TANK_SEL\000"
+ 1838      575F5441 
+ 1838      4E4B5F53 
+ 1838      454C00
+ 1839              	.LASF78:
+ 1840 0392 696E7465 		.ascii	"interruptState\000"
+ 1840      72727570 
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 40
+
+
+ 1840      74537461 
+ 1840      746500
+ 1841              	.LASF21:
+ 1842 03a1 52455345 		.ascii	"RESERVED1\000"
+ 1842      52564544 
+ 1842      3100
+ 1843              	.LASF24:
+ 1844 03ab 52455345 		.ascii	"RESERVED2\000"
+ 1844      52564544 
+ 1844      3200
+ 1845              	.LASF26:
+ 1846 03b5 52455345 		.ascii	"RESERVED3\000"
+ 1846      52564544 
+ 1846      3300
+ 1847              	.LASF31:
+ 1848 03bf 52455345 		.ascii	"RESERVED4\000"
+ 1848      52564544 
+ 1848      3400
+ 1849              	.LASF36:
+ 1850 03c9 52455345 		.ascii	"RESERVED5\000"
+ 1850      52564544 
+ 1850      3500
+ 1851              	.LASF7:
+ 1852 03d3 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1852      20756E73 
+ 1852      69676E65 
+ 1852      6420696E 
+ 1852      7400
+ 1853              	.LASF41:
+ 1854 03e5 52455345 		.ascii	"RESERVED7\000"
+ 1854      52564544 
+ 1854      3700
+ 1855              	.LASF45:
+ 1856 03ef 52455345 		.ascii	"RESERVED8\000"
+ 1856      52564544 
+ 1856      3800
+ 1857              	.LASF77:
+ 1858 03f9 646F7562 		.ascii	"double\000"
+ 1858      6C6500
+ 1859              	.LASF62:
+ 1860 0400 5345515F 		.ascii	"SEQ_INIT_CNT\000"
+ 1860      494E4954 
+ 1860      5F434E54 
+ 1860      00
+ 1861              	.LASF40:
+ 1862 040d 53454E53 		.ascii	"SENSE_DUTY\000"
+ 1862      455F4455 
+ 1862      545900
+ 1863              	.LASF81:
+ 1864 0418 49444143 		.ascii	"IDAC7_1_SetValue\000"
+ 1864      375F315F 
+ 1864      53657456 
+ 1864      616C7565 
+ 1864      00
+ 1865              	.LASF53:
+ 1866 0429 53575F46 		.ascii	"SW_FW_MOD_SEL\000"
+ 1866      575F4D4F 
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 41
+
+
+ 1866      445F5345 
+ 1866      4C00
+ 1867              	.LASF82:
+ 1868 0437 49444143 		.ascii	"IDAC7_1_SetPolarity\000"
+ 1868      375F315F 
+ 1868      53657450 
+ 1868      6F6C6172 
+ 1868      69747900 
+ 1869              	.LASF84:
+ 1870 044b 706F6C61 		.ascii	"polarity\000"
+ 1870      72697479 
+ 1870      00
+ 1871              	.LASF94:
+ 1872 0454 49444143 		.ascii	"IDAC7_1_Stop\000"
+ 1872      375F315F 
+ 1872      53746F70 
+ 1872      00
+ 1873              	.LASF58:
+ 1874 0461 494F5F53 		.ascii	"IO_SEL\000"
+ 1874      454C00
+ 1875              	.LASF39:
+ 1876 0468 53454E53 		.ascii	"SENSE_PERIOD\000"
+ 1876      455F5045 
+ 1876      52494F44 
+ 1876      00
+ 1877              	.LASF11:
+ 1878 0475 75696E74 		.ascii	"uint8_t\000"
+ 1878      385F7400 
+ 1879              	.LASF33:
+ 1880 047d 414D4255 		.ascii	"AMBUF\000"
+ 1880      4600
+ 1881              	.LASF22:
+ 1882 0483 52455355 		.ascii	"RESULT_VAL1\000"
+ 1882      4C545F56 
+ 1882      414C3100 
+ 1883              	.LASF23:
+ 1884 048f 52455355 		.ascii	"RESULT_VAL2\000"
+ 1884      4C545F56 
+ 1884      414C3200 
+ 1885              	.LASF85:
+ 1886 049b 49444143 		.ascii	"IDAC7_1_SetRange\000"
+ 1886      375F315F 
+ 1886      53657452 
+ 1886      616E6765 
+ 1886      00
+ 1887              	.LASF80:
+ 1888 04ac 49444143 		.ascii	"IDAC7_1_Enable\000"
+ 1888      375F315F 
+ 1888      456E6162 
+ 1888      6C6500
+ 1889              	.LASF69:
+ 1890 04bb 49444143 		.ascii	"IDACA\000"
+ 1890      4100
+ 1891              	.LASF71:
+ 1892 04c1 49444143 		.ascii	"IDACB\000"
+ 1892      4200
+ 1893              	.LASF42:
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\cc6SrMpq.s 			page 42
+
+
+ 1894 04c7 53575F48 		.ascii	"SW_HS_P_SEL\000"
+ 1894      535F505F 
+ 1894      53454C00 
+ 1895              	.LASF16:
+ 1896 04d3 52455345 		.ascii	"RESERVED\000"
+ 1896      52564544 
+ 1896      00
+ 1897              	.LASF32:
+ 1898 04dc 4853434D 		.ascii	"HSCMP\000"
+ 1898      5000
+ 1899              	.LASF90:
+ 1900 04e2 43795F53 		.ascii	"Cy_SysLib_ExitCriticalSection\000"
+ 1900      79734C69 
+ 1900      625F4578 
+ 1900      69744372 
+ 1900      69746963 
+ 1901              	.LASF14:
+ 1902 0500 434F4E46 		.ascii	"CONFIG\000"
+ 1902      494700
+ 1903              	.LASF79:
+ 1904 0507 6E657752 		.ascii	"newRegisterValue\000"
+ 1904      65676973 
+ 1904      74657256 
+ 1904      616C7565 
+ 1904      00
+ 1905              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

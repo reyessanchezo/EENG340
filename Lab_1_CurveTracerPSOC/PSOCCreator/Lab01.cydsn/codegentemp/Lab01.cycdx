@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
+  <block name="VCL" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="VCH" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="VBH" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="VBL" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IDAC_IB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ADC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="cy_analog_noconnect_27" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_27" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_28" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_29" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_30" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_28" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_29" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_25" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_25" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_36" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_37" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_35" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_36" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_37" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_39" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_39" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_38" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_38" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_35" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_31" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_32" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_30" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_31" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_32" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_34" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_34" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_33" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_33" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_16" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_20" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_20" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_19" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_19" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_16" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_65" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinNegMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_64" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinNegMux_0" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_66" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinNegMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_68" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinNegMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_67" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_63" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_60" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_60" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_59" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_59" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_61" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_62" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_63" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_61" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_62" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_fvint_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vRef_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_fvint" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vRef_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vRef_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_69" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vRef_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vRef_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_87" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vrefMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_72" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vrefMux_0" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_71" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vrefMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_74" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vrefMuxRemoved" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_73" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vrefMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_46" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_46" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_45" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_45" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_47" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_48" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_49" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_47" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_48" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_44" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_41" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_41" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_40" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_40" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_42" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_43" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_44" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_42" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_43" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_55" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_56" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_54" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_55" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_56" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_58" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_58" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_57" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_57" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_54" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_50" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_51" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_49" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_50" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_51" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_53" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_53" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_52" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_52" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_147" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_146" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_148" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_150" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_16" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_149" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_142" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_141" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_143" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_145" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_144" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_157" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_156" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_25" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_159" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_27" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_158" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_155" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_19" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_152" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_151" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_20" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_154" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_153" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="aclkMux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="socMux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_0" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="extVrefMux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vplusMux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vminusMux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="SARMUX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="intSarClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusConnect" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusConnect" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinNegConnect" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_138" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_137" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_140" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_139" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_136" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="SAR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_133" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="or_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_135" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_134" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_185" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_53" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_184" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_52" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_186" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_55" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_188" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_54" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_187" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_51" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_180" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_48" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_179" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_47" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_181" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_50" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_183" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_49" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_182" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_62" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_195" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_61" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_194" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_63" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_196" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinMinusMux_0" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_193" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_57" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_190" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_56" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_189" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_58" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_192" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_60" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_191" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_59" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_166" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_34" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_165" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_33" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_167" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_36" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_169" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_35" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_168" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_32" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_161" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_29" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_160" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_28" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_162" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_31" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_164" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_30" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_163" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_43" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_176" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_42" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_175" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_44" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_178" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_46" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_177" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_45" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_174" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_38" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_171" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_37" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_170" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_39" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_173" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_41" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_172" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vinPlusMux_40" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  </block>
+  <block name="UART" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="rx_VM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="rx" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cts_VM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="SCB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="SCB_IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="clock_VM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="SCBCLK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="tx" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="or_sclk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  </block>
+  <block name="VDAC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="cy_analog_virtualmux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VOUTBUF" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="IncludeDriver_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="CTDAC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="CTDAC_CTDAC_CTRL" address="0x40000" bitWidth="32" desc="Global CTDAC control" hidden="false">
+      <field name="DEGLITCH_CNT" from="5" to="0" access="RW" resetVal="" desc="To prevent glitches after VALUE changes from propagating, the output switch can be opened for DEGLITCH_CNT+1 clk_ctdac clock cycles." hidden="false" />
+      <field name="DEGLITCH_CO6" from="8" to="8" access="RW" resetVal="" desc="Force CTDAC.CO6 switch open after each VALUE change for the set number of clock cycles." hidden="false" />
+      <field name="DEGLITCH_COS" from="9" to="9" access="RW" resetVal="" desc="Force CTB.COS switch open after each VALUE change for the set number of clock cycles." hidden="false" />
+      <field name="OUT_EN" from="22" to="22" access="RW" resetVal="" desc="Output enable, intended to be used during the Hold phase of the Sample and Hold when power cycling :&#xA;0: output disabled, the output is either: &#xA;       - Tri-state (DISABLED_MODE=0) &#xA;       - or Vssa (DISABLED_MODE=1 &amp;&amp; CTDAC_RANGE=0)  &#xA;       - or Vref (DISABLED_MODE=1 &amp;&amp; CTDAC_RANGE=1) &#xA;1: output enabled, CTDAC output drives the programmed VALUE" hidden="false" />
+      <field name="CTDAC_RANGE" from="23" to="23" access="RW" resetVal="" desc="By closing the bottom switch in the R2R network the output is lifted by one LSB, effectively adding 1&#xA;0: Range is [0, 4095] * Vref / 4096 &#xA;1: Range is [1, 4096] * Vref / 4096" hidden="false" />
+      <field name="CTDAC_MODE" from="25" to="24" access="RW" resetVal="" desc="DAC mode, this determines the Value decoding" hidden="false">
+        <value name="UNSIGNED12" value="0" desc="Unsigned 12-bit VDAC, i.e. no value decoding." />
+        <value name="VIRT_SIGNED12" value="1" desc="Virtual signed 12-bits' VDAC. Value decoding: &#xA;add 0x800 to the 12-bit Value (=invert MSB), to convert the lowest signed number 0x800 to the lowest unsigned number 0x000. This is the same as the SAR handles 12-bit 'virtual' signed numbers." />
+        <value name="RESERVED2" value="10" desc="" />
+        <value name="RESERVED3" value="11" desc="" />
+      </field>
+      <field name="DISABLED_MODE" from="27" to="27" access="RW" resetVal="" desc="Select the output value when the output is disabled (OUT_EN=0) (for risk mitigation)&#xA;0: Tri-state CTDAC output when disabled&#xA;1: output Vssa or Vref when disabled (see OUT_EN description)" hidden="false" />
+      <field name="DSI_STROBE_EN" from="28" to="28" access="RW" resetVal="" desc="DSI strobe input Enable. This enables CTDAC updates to be further throttled by DSI.&#xA;0: Ignore DSI strobe input&#xA;1: Only do a CTDAC update if alllowed by the DSI stobe (throttle), see below for level or edge" hidden="false" />
+      <field name="DSI_STROBE_LEVEL" from="29" to="29" access="RW" resetVal="" desc="Select level or edge detect for DSI strobe&#xA;- 0: DSI strobe signal is a pulse input, after a positive edge is detected on the DSI strobe signal the next DAC value update is done on the next CTDAC clock&#xA;- 1: DSI strobe signal is a level input, as long as the DSI strobe signal remains high the CTDAC will do a next DAC value update on each CTDAC clock." hidden="false" />
+      <field name="DEEPSLEEP_ON" from="30" to="30" access="RW" resetVal="" desc="- 0: CTDAC IP disabled off during DeepSleep power mode&#xA;- 1: CTDAC IP remains enabled during DeepSleep power mode (if ENABLED=1)" hidden="false" />
+      <field name="ENABLED" from="31" to="31" access="RW" resetVal="" desc="0: CTDAC IP disabled (put analog in power down, open all switches)&#xA;1: CTDAC IP enabled" hidden="false" />
+    </register>
+    <register name="CTDAC_INTR" address="0x40020" bitWidth="32" desc="Interrupt request register" hidden="false">
+      <field name="VDAC_EMPTY" from="0" to="0" access="RW" resetVal="" desc="VDAC Interrupt: hardware sets this interrupt when VDAC next value field is empty, i.e. was copied to the current VALUE. Write with '1' to clear bit." hidden="false" />
+    </register>
+    <register name="CTDAC_INTR_SET" address="0x40024" bitWidth="32" desc="Interrupt request set register" hidden="false">
+      <field name="VDAC_EMPTY_SET" from="0" to="0" access="RW" resetVal="" desc="Write with '1' to set corresponding bit in interrupt request register." hidden="false" />
+    </register>
+    <register name="CTDAC_INTR_MASK" address="0x40028" bitWidth="32" desc="Interrupt request mask" hidden="false">
+      <field name="VDAC_EMPTY_MASK" from="0" to="0" access="RW" resetVal="" desc="Mask bit for corresponding bit in interrupt request register." hidden="false" />
+    </register>
+    <register name="CTDAC_INTR_MASKED" address="0x4002C" bitWidth="32" desc="Interrupt request masked" hidden="false">
+      <field name="VDAC_EMPTY_MASKED" from="0" to="0" access="R" resetVal="" desc="Logical and of corresponding request and mask bits." hidden="false" />
+    </register>
+    <register name="CTDAC_CTDAC_SW" address="0x400B0" bitWidth="32" desc="CTDAC switch control" hidden="false">
+      <field name="CTDD_CVD" from="0" to="0" access="RW" resetVal="" desc="VDDA supply to ctdrefdrive" hidden="false" />
+      <field name="CTDO_CO6" from="8" to="8" access="RW" resetVal="" desc="ctdvout to P6 pin. Note this switch will temporarily be opened for deglitching if DEGLITCH_CO6 is set" hidden="false" />
+    </register>
+    <register name="CTDAC_CTDAC_SW_CLEAR" address="0x400B4" bitWidth="32" desc="CTDAC switch control clear" hidden="false">
+      <field name="CTDD_CVD" from="0" to="0" access="RW" resetVal="" desc="see corresponding bit in CTD_SW" hidden="false" />
+      <field name="CTDO_CO6" from="8" to="8" access="RW" resetVal="" desc="see corresponding bit in CTD_SW" hidden="false" />
+    </register>
+    <register name="CTDAC_CTDAC_VAL" address="0x40100" bitWidth="32" desc="DAC Value" hidden="false">
+      <field name="VALUE" from="11" to="0" access="RW" resetVal="" desc="Value, in CTDAC_MODE 1 this value is decoded" hidden="false" />
+    </register>
+    <register name="CTDAC_CTDAC_VAL_NXT" address="0x40104" bitWidth="32" desc="Next DAC value (double buffering)" hidden="false">
+      <field name="VALUE" from="11" to="0" access="RW" resetVal="" desc="Next value for CTDAC_VAL.VALUE" hidden="false" />
+    </register>
+  </block>
+  <block name="VDAC_VC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="IDAC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="cy_constant_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_constant_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_constant_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_constant_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_mxs40_csidac" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="GROUP_CSDV2_CONFIG" address="0x40360000" bitWidth="32" desc="Configuration and Control" hidden="false">
+      <field name="IREF_SEL" from="0" to="0" access="RW" resetVal="" desc="Select Iref supply." hidden="false">
+        <value name="IREF_SRSS" value="0" desc="select SRSS Iref (default)" />
+        <value name="IREF_PASS" value="1" desc="select PASS.AREF Iref, only available if PASS IP is on the chip." />
+      </field>
+      <field name="FILTER_DELAY" from="8" to="4" access="RW" resetVal="" desc="This value determines the number of cycles that the digital filter makes the CSDCMP output ignored while the counter counts and IDAC is on. &#xA;When set to 0 the digital filter is off. When set to any other value the ignoring will last for FILTER_DELAY clk_csd cycles after the start of each measurement and from the first comparator trip to the end of each measurement." hidden="false" />
+      <field name="SHIELD_DELAY" from="11" to="10" access="RW" resetVal="" desc="Selects the delay by which csd_shield is delayed relative to csd_sense." hidden="false">
+        <value name="OFF" value="0" desc="Delay line is off, csd_shield=csd_sense" />
+        <value name="D5NS" value="1" desc="Introduces a 5ns delay (typ)" />
+        <value name="D10NS" value="10" desc="Introduces a 10ns delay (typ)" />
+        <value name="D20NS" value="11" desc="Introduces a 20ns delay (typ)" />
+      </field>
+      <field name="SENSE_EN" from="12" to="12" access="RW" resetVal="" desc="Enables the sense modulator output. &#xA;0: all switches, static or dynamic, are open and IDAC in CSD mode is off&#xA;1: switches and IDAC can be closed/on as per MMIO setting and CSD sequencer." hidden="false" />
+      <field name="FULL_WAVE" from="17" to="17" access="RW" resetVal="" desc="Enables full wave cap sensing mode" hidden="false">
+        <value name="HALFWAVE" value="0" desc="Half Wave mode (normal).&#xA;In this mode the comparator always trips in the same direction (positive or negative edge) and the same Vref, i.e. no polarity change." />
+        <value name="FULLWAVE" value="1" desc="Full Wave mode.&#xA;In this mode the comparator trips in opposite direction and with different Vref in each phase, i.e. the polarity flips." />
+      </field>
+      <field name="MUTUAL_CAP" from="18" to="18" access="RW" resetVal="" desc="Enables mutual cap sensing mode" hidden="false">
+        <value name="SELFCAP" value="0" desc="Self-cap mode (configure sense line as CSD_SENSE)" />
+        <value name="MUTUALCAP" value="1" desc="Mutual-cap mode (configure Tx line as CSD_SENSE, inverted Tx line as CSD_SHIELD and Rx Line as AMUXA). In this mode the polarity bit of the IDAC is controlled by csd_sense." />
+      </field>
+      <field name="CSX_DUAL_CNT" from="19" to="19" access="RW" resetVal="" desc="Enable the use of two counters for MUTUAL cap sensing mode (CSX), do not use when MUTUAL_CAP=0" hidden="false">
+        <value name="ONE" value="0" desc="Use one counter for both phases (source and sink)." />
+        <value name="TWO" value="1" desc="Use two counters, separate count for when csd_sense is high and when csd_sense is low." />
+      </field>
+      <field name="DSI_COUNT_SEL" from="24" to="24" access="RW" resetVal="" desc="Select what to output  on the dsi_count bus." hidden="false">
+        <value name="CSD_RESULT" value="0" desc="depending on the dsi_count_val_sel input either output  RESULT_VAL1.VALUE (0) or RESULT_VAL2.VALUE (1) on the dsi_count bus. Note that dsi_count_val_sel is not synchronized, i.e. it controls the mux combinatorially." />
+        <value name="ADC_RESULT" value="1" desc="output ADC_RES.VIN_CNT on the dsi_count bus" />
+      </field>
+      <field name="DSI_SAMPLE_EN" from="25" to="25" access="RW" resetVal="" desc="Enables the use of the dsi_sample_in input instead of the comparator output to strobe COUNTER." hidden="false" />
+      <field name="SAMPLE_SYNC" from="26" to="26" access="RW" resetVal="" desc="Enables double synchronizing of sample input from DSI (only relevant when DSI_SAMPLE_EN=1)." hidden="false" />
+      <field name="DSI_SENSE_EN" from="27" to="27" access="RW" resetVal="" desc="Enables the use of the dsi_sense_in input instead of the internally generated modulation signal to drive csd_sense and csd_shield signals." hidden="false" />
+      <field name="LP_MODE" from="30" to="30" access="RW" resetVal="" desc="Select the power mode for the CSD components (REFGEN, AMBUF, CSDCMP, HSCMP):&#xA;0: High Power mode&#xA;1: Low Power mode" hidden="false" />
+      <field name="ENABLE" from="31" to="31" access="RW" resetVal="" desc="Master enable of the CSDv2 IP.  Must be set to 1 for any CSDv2, ADC or IDAC operation to function.&#xA;When 0 all analog components will be off and all switches will be open." hidden="false" />
+    </register>
+    <register name="GROUP_CSDV2_IDACA" address="0x40360400" bitWidth="32" desc="IDACA Configuration" hidden="false">
+      <field name="VAL" from="6" to="0" access="RW" resetVal="" desc="Current value setting for this IDAC (7 bits)." hidden="false" />
+      <field name="POL_DYN" from="7" to="7" access="RW" resetVal="" desc="Polarity is dynamic, this bit does not influence the logic in the SoftIP, it only goes to the HardIP." hidden="false">
+        <value name="STATIC" value="0" desc="Static polarity. Polarity is expected to be stable, so to save power this avoids the shunting of the unused polarity, at the expense of response time." />
+        <value name="DYNAMIC" value="1" desc="Dynamic polarity. Polarity is expected to change frequently (e.g. invert after every csd_sense phase), so to improve response time this keeps the shunt of the unused polarity on at the expense of power." />
+      </field>
+      <field name="POLARITY" from="9" to="8" access="RW" resetVal="" desc="Selects the polarity of the IDAC (sensing operation). Normally the actual polarity depends on this bit, optionally mixed with DSI (see DSI_CTRL_EN) and if LEG1_MODE==CSD also mixed with the CSD configuration and operation. However in mutual cap mode with one IDAC (config.mutual_cap=1 &amp; config.csx_dual_idac=0) the polarity of the IDAC is controlled by csd_sense." hidden="false">
+        <value name="VSSA_SRC" value="0" desc="Normal: switch between Vssa and Cmod.  For non-CSD application, IDAC will source current." />
+        <value name="VDDA_SNK" value="1" desc="Inverted: switch between Vdda and Cmod. For non-CSD application, IDAC will sink current." />
+        <value name="SENSE" value="10" desc="The polarity of the IDAC will follow the csd_sense signal (POL_DYN bit should be set too). The intended usage is for CSX using a single IDAC." />
+        <value name="SENSE_INV" value="11" desc="The polarity of the IDAC will follow the inverted csd_sense signal (POL_DYN bit should be set too). The intended usage is for CSX using a single IDAC." />
+      </field>
+      <field name="BAL_MODE" from="11" to="10" access="RW" resetVal="" desc="Balancing mode: only applies to legs configured as CSD." hidden="false">
+        <value name="FULL" value="0" desc="enabled from start of Phi2 until disabled by CSDCMP. Intended usage: legacy CSD for balancing over a full csd_sense period (non-overlap should be turned off)" />
+        <value name="PHI1" value="1" desc="enabled from start of Phi1 and disabled by CSDCMP or at end of Phi1. Enables dual IDAC CSX or Full-Wave, one for sourcing and the other for sinking." />
+        <value name="PHI2" value="10" desc="enabled from start of Phi2 and disabled by CSDCMP or at end of Phi2. Intended usage: CSD Low EMI or  dual IDAC CSX or Full-Wave." />
+        <value name="PHI1_2" value="11" desc="enabled from start of both Phi1 and Phi2 and disabled by CSDCMP or at end of Phi1 or Phi2 (if non-overlap enabled). Intended usage: single IDAC CSX, or Full-Wave." />
+      </field>
+      <field name="LEG1_MODE" from="17" to="16" access="RW" resetVal="" desc="Controls the usage mode of LEG1 and the Polarity bit" hidden="false">
+        <value name="GP_STATIC" value="0" desc="General Purpose static mode: LEG1 and POLARITY are controlled by MMIO and optionally mixed with DSI (see DSI_CTRL_EN). No shunting is used, this saves power when off but also any on/off switching will take longer." />
+        <value name="GP" value="1" desc="General Purpose dynamic mode: LEG1 and POLARITY are controlled by MMIO and optionally mixed with DSI (see DSI_CTRL_EN). Shunting is used, so on/off switching is faster, but power is wasted when the leg is disabled." />
+        <value name="CSD_STATIC" value="10" desc="CSD static mode: LEG1 can only be on when the CSD Sequencer is in the Sample_init or Sample_norm state. In those states LEG1 is controlled by LEG1_EN, csd_sense and the CSD configuration. Polarity is controlled by the CSD configuration and operation. In addition leg1 enable and polarity can optionally be mixed with DSI (see DSI_CTRL_EN). No shunting is used, this saves power when off but also any on/off switching will take longer." />
+        <value name="CSD" value="11" desc="CSD dynamic mode: LEG1 can only be on when the CSD Sequencer is in the Sample_init or Sample_norm state. In thoses states LEG1 is controlled by LEG1_EN, the CSD configuration, csd_sense and the flopped CSDCMP output (CSDCMP_OUT_FF). Polarity is controlled by the CSD configuration and operation. In addition leg1 enable and polarity can optionally be mixed with DSI (see DSI_CTRL_EN). Shunting is used, so on/off switching is faster, but power is wasted when the leg is disabled." />
+      </field>
+      <field name="LEG2_MODE" from="19" to="18" access="RW" resetVal="" desc="Controls the usage mode of LEG2" hidden="false">
+        <value name="GP_STATIC" value="0" desc="General Purpose static mode: LEG2 is controlled by MMIO and optionally mixed with DSI (see DSI_CTRL_EN).  No shunting is used, this saves power when off but also any on/off switching will take longer." />
+        <value name="GP" value="1" desc="General Purpose dynamic mode: LEG2 is controlled by MMIO and optionally mixed with DSI (see DSI_CTRL_EN). Shunting is used, so on/off switching is faster, but power is wasted when the leg is disabled." />
+        <value name="CSD_STATIC" value="10" desc="CSD static mode: LEG2 can only be on when the CSD Sequencer is in the Sample_init or Sample_norm state. In those states LEG2 is controlled by LEG2_EN, csd_sense and the CSD configuration. Polarity is controlled by the CSD configuration and operation. In addition leg2 enable and polarity can optionally be mixed with DSI (see DSI_CTRL_EN). No shunting is used, this saves power when off but also any on/off switching will take longer." />
+        <value name="CSD" value="11" desc="CSD dynamic mode: LEG2 can only be on when the CSD Sequencer is in the Sample_init or Sample_norm state. In those states LEG2 is controlled by LEG2_EN, the CSD configuration, csd_sense and the flopped CSDCMP output (CSDCMP_OUT_FF). In addition leg2 enable can optionally be mixed with DSI (see DSI_CTRL_EN). Shunting is used, so on/off switching is faster, but power is wasted when the leg is disabled." />
+      </field>
+      <field name="DSI_CTRL_EN" from="21" to="21" access="RW" resetVal="" desc="Mix DSI inputs with MMIO controls or not (before getting mixed with CSD controls if enabled).&#xA;0: no DSI control &#xA;     IDACA_POLARITY = IDACA.POLARITY &#xA;     IDACA_LEG1_EN =  IDACA.LEG1_EN &#xA;     IDACA_LEG2_EN = IDACA.LEG2_EN   &#xA;1: Mix MMIO with DSI control&#xA;     IDACA_POLARITY = IDACA.POLARITY EXOR dsi_idaca_pol&#xA;     IDACA_LEG1_EN =  IDACA.LEG1_EN AND dsi_idaca_leg1_en &#xA;     IDACA_LEG2_EN = IDACA.LEG2_EN AND dsi_idaca_leg2_en" hidden="false" />
+      <field name="RANGE" from="23" to="22" access="RW" resetVal="" desc="IDAC multiplier" hidden="false">
+        <value name="IDAC_LO" value="0" desc="1 LSB =   37.5 nA" />
+        <value name="IDAC_MED" value="1" desc="1 LSB =  300 nA" />
+        <value name="IDAC_HI" value="10" desc="1 LSB = 2400 nA" />
+      </field>
+      <field name="LEG1_EN" from="24" to="24" access="RW" resetVal="" desc="output enable for leg 1 to CSDBUSA" hidden="false" />
+      <field name="LEG2_EN" from="25" to="25" access="RW" resetVal="" desc="output enable for leg 2 to CSDBUSA" hidden="false" />
+    </register>
+    <register name="GROUP_CSDV2_IDACB" address="0x40360500" bitWidth="32" desc="IDACB Configuration" hidden="false">
+      <field name="VAL" from="6" to="0" access="RW" resetVal="" desc="Current value setting for this IDAC (7 bits)." hidden="false" />
+      <field name="POL_DYN" from="7" to="7" access="RW" resetVal="" desc="Polarity is dynamic, this bit does not influence the logic in the SoftIP, it only goes to the HardIP." hidden="false">
+        <value name="STATIC" value="0" desc="Static polarity. Polarity is expected to be stable, so to save power this avoids the shunting of the unused polarity, at the expense of response time." />
+        <value name="DYNAMIC" value="1" desc="Dynamic polarity. Polarity is expected to change frequently (e.g. invert after every csd_sense phase), so to improve response time this keeps the shunt of the unused polarity on at the expense of power." />
+      </field>
+      <field name="POLARITY" from="9" to="8" access="RW" resetVal="" desc="Selects the polarity of the IDAC (sensing operation). Normally the actual polarity depends on this bit, optionally mixed with DSI (see DSI_CTRL_EN) and if LEG1_EN==1 and LEG1_MODE==CSD also mixed with the CSD configuration and operation. In mutual cap mode however (see config.mutual_cap) the polarity of the IDAC is controlled by csd_sense. If LEG3_EN=1 (the other two legs must be off) then the ADC sequencer controls the IDACB polarity, optionally mixed with DSI." hidden="false">
+        <value name="VSSA_SRC" value="0" desc="Normal: switch between Vssa and Cmod.  For non-CSD application, IDAC will source current." />
+        <value name="VDDA_SNK" value="1" desc="Inverted: switch between Vdda and Cmod. For non-CSD application, IDAC will sink current." />
+        <value name="SENSE" value="10" desc="The polarity of the IDAC will follow the csd_sense signal (POL_DYN bit should be set too). The intended usage is for CSX using a single IDAC." />
+        <value name="SENSE_INV" value="11" desc="The polarity of the IDAC will follow the inverted csd_sense signal (POL_DYN bit should be set too). The intended usage is for CSX using a single IDAC." />
+      </field>
+      <field name="BAL_MODE" from="11" to="10" access="RW" resetVal="" desc="same as corresponding IDACA Balancing mode" hidden="false">
+        <value name="FULL" value="0" desc="same as corresponding IDACA Balancing mode" />
+        <value name="PHI1" value="1" desc="same as corresponding IDACA Balancing mode" />
+        <value name="PHI2" value="10" desc="same as corresponding IDACA Balancing mode" />
+        <value name="PHI1_2" value="11" desc="same as corresponding IDACA Balancing mode" />
+      </field>
+      <field name="LEG1_MODE" from="17" to="16" access="RW" resetVal="" desc="Controls the usage mode of LEG1 and the Polarity bit" hidden="false">
+        <value name="GP_STATIC" value="0" desc="same as corresponding IDACA.LEG1_MODE" />
+        <value name="GP" value="1" desc="same as corresponding IDACA.LEG1_MODE" />
+        <value name="CSD_STATIC" value="10" desc="same as corresponding IDACA.LEG1_MODE" />
+        <value name="CSD" value="11" desc="same as corresponding IDACA.LEG1_MODE" />
+      </field>
+      <field name="LEG2_MODE" from="19" to="18" access="RW" resetVal="" desc="Controls the usage mode of LEG2" hidden="false">
+        <value name="GP_STATIC" value="0" desc="same as corresponding IDACA.LEG2_MODE" />
+        <value name="GP" value="1" desc="same as corresponding IDACA.LEG2_MODE" />
+        <value name="CSD_STATIC" value="10" desc="same as corresponding IDACA.LEG2_MODE" />
+        <value name="CSD" value="11" desc="same as corresponding IDACA.LEG2_MODE" />
+      </field>
+      <field name="DSI_CTRL_EN" from="21" to="21" access="RW" resetVal="" desc="Mix DSI inputs with MMIO controls or not (before getting mixed with CSD controls if enabled)&#xA;0: no DSI control&#xA;     IDACB_POLARITY = IDACB.POLARITY &#xA;     IDACB_LEG1_EN =  IDACB.LEG1_EN &#xA;     IDACB_LEG2_EN = IDACB.LEG2_EN   &#xA;     IDACB_LEG3_EN = IDACB.LEG3_EN   &#xA;1: Mix MMIO with DSI control&#xA;     IDACB_POLARITY = IDACB.POLARITY EXOR dsi_idacb_pol&#xA;     IDACB_LEG1_EN =  IDACB.LEG1_EN AND dsi_idacb_leg1_en &#xA;     IDACB_LEG2_EN = IDACB.LEG2_EN AND dsi_idacb_leg2_en  &#xA;     IDACB_LEG3_EN = IDACB.LEG3_EN AND dsi_idacb_leg3_en" hidden="false" />
+      <field name="RANGE" from="23" to="22" access="RW" resetVal="" desc="IDAC multiplier" hidden="false">
+        <value name="IDAC_LO" value="0" desc="1 LSB =   37.5 nA" />
+        <value name="IDAC_MED" value="1" desc="1 LSB =  300 nA" />
+        <value name="IDAC_HI" value="10" desc="1 LSB = 2400 nA" />
+      </field>
+      <field name="LEG1_EN" from="24" to="24" access="RW" resetVal="" desc="output enable for leg 1 to CSDBUSB or CSDBUSA" hidden="false" />
+      <field name="LEG2_EN" from="25" to="25" access="RW" resetVal="" desc="output enable for leg 2 to CSDBUSB or CSDBUSA" hidden="false" />
+      <field name="LEG3_EN" from="26" to="26" access="RW" resetVal="" desc="output enable for leg3 to CSDBUSC, only allowed when RANGE = IDAC_LO. When this bit is set both other legs should be off.&#xA;Note that leg3 can only be used for ADC mode, not GP mode. Which means that leg3 can only be on when the ADC Sequencer is in the ADC_measure or Calib_measure state. In those states  leg3 is controlled by the ADC configuration and the HSCMP output. In addition this leg3 enable bit can optionally be mixed with DSI (see DSI_CTRL_EN).&#xA;When LEG3_EN=1 also the IDACB polarity is controlled by the ADC sequencer." hidden="false" />
+    </register>
+  </block>
+</blockRegMap>

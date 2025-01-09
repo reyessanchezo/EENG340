@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device schemaVersion="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_0.xsd">
+  <name>CYBLE_416045_02</name>
+  <version>0.1</version>
+  <description>PSoC 63</description>
+  <addressUnitBits>8</addressUnitBits>
+  <width>32</width>
+  <peripherals>
+    <peripheral>
+      <name>VDAC</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>CTDAC_CTDAC_CTRL</name>
+          <description>Global CTDAC control</description>
+          <addressOffset>0x40000</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>DEGLITCH_CNT</name>
+              <description>To prevent glitches after VALUE changes from propagating, the output switch can be opened for DEGLITCH_CNT+1 clk_ctdac clock cycles.</description>
+              <lsb>0</lsb>
+              <msb>5</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>DEGLITCH_CO6</name>
+              <description>Force CTDAC.CO6 switch open after each VALUE change for the set number of clock cycles.</description>
+              <lsb>8</lsb>
+              <msb>8</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>DEGLITCH_COS</name>
+              <description>Force CTB.COS switch open after each VALUE change for the set number of clock cycles.</description>
+              <lsb>9</lsb>
+              <msb>9</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>OUT_EN</name>
+              <description>Output enable, intended to be used during the Hold phase of the Sample and Hold when power cycling :?0: output disabled, the output is either: ?       - Tri-state (DISABLED_MODE=0) ?       - or Vssa (DISABLED_MODE=1 &amp;&amp; CTDAC_RANGE=0)  ?       - or Vref (DISABLED_MODE=1 &amp;&amp; CTDAC_RANGE=1) ?1: output enabled, CTDAC output drives the programmed VALUE</description>
+              <lsb>22</lsb>
+              <msb>22</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTDAC_RANGE</name>
+              <description>By closing the bottom switch in the R2R network the output is lifted by one LSB, effectively adding 1?0: Range is [0, 4095] * Vref / 4096 ?1: Range is [1, 4096] * Vref / 4096</description>
+              <lsb>23</lsb>
+              <msb>23</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTDAC_MODE</name>
+              <description>DAC mode, this determines the Value decoding</description>
+              <lsb>24</lsb>
+              <msb>25</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>UNSIGNED12</name>
+                  <description>Unsigned 12-bit VDAC, i.e. no value decoding.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>VIRT_SIGNED12</name>
+                  <description>Virtual signed 12-bits' VDAC. Value decoding: ?add 0x800 to the 12-bit Value (=invert MSB), to convert the lowest signed number 0x800 to the lowest unsigned number 0x000. This is the same as the SAR handles 12-bit 'virtual' signed numbers.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>RESERVED2</name>
+                  <description>No description available</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>RESERVED3</name>
+                  <description>No description available</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>DISABLED_MODE</name>
+              <description>Select the output value when the output is disabled (OUT_EN=0) (for risk mitigation)?0: Tri-state CTDAC output when disabled?1: output Vssa or Vref when disabled (see OUT_EN description)</description>
+              <lsb>27</lsb>
+              <msb>27</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>DSI_STROBE_EN</name>
+              <description>DSI strobe input Enable. This enables CTDAC updates to be further throttled by DSI.?0: Ignore DSI strobe input?1: Only do a CTDAC update if alllowed by the DSI stobe (throttle), see below for level or edge</description>
+              <lsb>28</lsb>
+              <msb>28</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>DSI_STROBE_LEVEL</name>
+              <description>Select level or edge detect for DSI strobe?- 0: DSI strobe signal is a pulse input, after a positive edge is detected on the DSI strobe signal the next DAC value update is done on the next CTDAC clock?- 1: DSI strobe signal is a level input, as long as the DSI strobe signal remains high the CTDAC will do a next DAC value update on each CTDAC clock.</description>
+              <lsb>29</lsb>
+              <msb>29</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>DEEPSLEEP_ON</name>
+              <description>- 0: CTDAC IP disabled off during DeepSleep power mode?- 1: CTDAC IP remains enabled during DeepSleep power mode (if ENABLED=1)</description>
+              <lsb>30</lsb>
+              <msb>30</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>ENABLED</name>
+              <description>0: CTDAC IP disabled (put analog in power down, open all switches)?1: CTDAC IP enabled</description>
+              <lsb>31</lsb>
+              <msb>31</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CTDAC_INTR</name>
+          <description>Interrupt request register</description>
+          <addressOffset>0x40020</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>VDAC_EMPTY</name>
+              <description>VDAC Interrupt: hardware sets this interrupt when VDAC next value field is empty, i.e. was copied to the current VALUE. Write with '1' to clear bit.</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CTDAC_INTR_SET</name>
+          <description>Interrupt request set register</description>
+          <addressOffset>0x40024</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>VDAC_EMPTY_SET</name>
+              <description>Write with '1' to set corresponding bit in interrupt request register.</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CTDAC_INTR_MASK</name>
+          <description>Interrupt request mask</description>
+          <addressOffset>0x40028</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>VDAC_EMPTY_MASK</name>
+              <description>Mask bit for corresponding bit in interrupt request register.</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CTDAC_INTR_MASKED</name>
+          <description>Interrupt request masked</description>
+          <addressOffset>0x4002C</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>VDAC_EMPTY_MASKED</name>
+              <description>Logical and of corresponding request and mask bits.</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CTDAC_CTDAC_SW</name>
+          <description>CTDAC switch control</description>
+          <addressOffset>0x400B0</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>CTDD_CVD</name>
+              <description>VDDA supply to ctdrefdrive</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTDO_CO6</name>
+              <description>ctdvout to P6 pin. Note this switch will temporarily be opened for deglitching if DEGLITCH_CO6 is set</description>
+              <lsb>8</lsb>
+              <msb>8</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CTDAC_CTDAC_SW_CLEAR</name>
+          <description>CTDAC switch control clear</description>
+          <addressOffset>0x400B4</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>CTDD_CVD</name>
+              <description>see corresponding bit in CTD_SW</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTDO_CO6</name>
+              <description>see corresponding bit in CTD_SW</description>
+              <lsb>8</lsb>
+              <msb>8</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CTDAC_CTDAC_VAL</name>
+          <description>DAC Value</description>
+          <addressOffset>0x40100</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>VALUE</name>
+              <description>Value, in CTDAC_MODE 1 this value is decoded</description>
+              <lsb>0</lsb>
+              <msb>11</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CTDAC_CTDAC_VAL_NXT</name>
+          <description>Next DAC value (double buffering)</description>
+          <addressOffset>0x40104</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>VALUE</name>
+              <description>Next value for CTDAC_VAL.VALUE</description>
+              <lsb>0</lsb>
+              <msb>11</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>IDAC</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>GROUP_CSDV2_CONFIG</name>
+          <description>Configuration and Control</description>
+          <addressOffset>0x40360000</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>IREF_SEL</name>
+              <description>Select Iref supply.</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>IREF_SRSS</name>
+                  <description>select SRSS Iref (default)</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>IREF_PASS</name>
+                  <description>select PASS.AREF Iref, only available if PASS IP is on the chip.</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>FILTER_DELAY</name>
+              <description>This value determines the number of cycles that the digital filter makes the CSDCMP output ignored while the counter counts and IDAC is on. ?When set to 0 the digital filter is off. When set to any other value the ignoring will last for FILTER_DELAY clk_csd cycles after the start of each measurement and from the first comparator trip to the end of each measurement.</description>
+              <lsb>4</lsb>
+              <msb>8</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SHIELD_DELAY</name>
+              <description>Selects the delay by which csd_shield is delayed relative to csd_sense.</description>
+              <lsb>10</lsb>
+              <msb>11</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>OFF</name>
+                  <description>Delay line is off, csd_shield=csd_sense</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>D5NS</name>
+                  <description>Introduces a 5ns delay (typ)</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>D10NS</name>
+                  <description>Introduces a 10ns delay (typ)</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>D20NS</name>
+                  <description>Introduces a 20ns delay (typ)</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>SENSE_EN</name>
+              <description>Enables the sense modulator output. ?0: all switches, static or dynamic, are open and IDAC in CSD mode is off?1: switches and IDAC can be closed/on as per MMIO setting and CSD sequencer.</description>
+              <lsb>12</lsb>
+              <msb>12</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>FULL_WAVE</name>
+              <description>Enables full wave cap sensing mode</description>
+              <lsb>17</lsb>
+              <msb>17</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>HALFWAVE</name>
+                  <description>Half Wave mode (normal).?In this mode the comparator always trips in the same direction (positive or negative edge) and the same Vref, i.e. no polarity change.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>FULLWAVE</name>
+                  <description>Full Wave mode.?In this mode the comparator trips in opposite direction and with different Vref in each phase, i.e. the polarity flips.</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>MUTUAL_CAP</name>
+              <description>Enables mutual cap sensing mode</description>
+              <lsb>18</lsb>
+              <msb>18</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>SELFCAP</name>
+                  <description>Self-cap mode (configure sense line as CSD_SENSE)</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>MUTUALCAP</name>
+                  <description>Mutual-cap mode (configure Tx line as CSD_SENSE, inverted Tx line as CSD_SHIELD and Rx Line as AMUXA). In this mode the polarity bit of the IDAC is controlled by csd_sense.</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CSX_DUAL_CNT</name>
+              <description>Enable the use of two counters for MUTUAL cap sensing mode (CSX), do not use when MUTUAL_CAP=0</description>
+              <lsb>19</lsb>
+              <msb>19</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>ONE</name>
+                  <description>Use one counter for both phases (source and sink).</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>TWO</name>
+                  <description>Use two counters, separate count for when csd_sense is high and when csd_sense is low.</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>DSI_COUNT_SEL</name>
+              <description>Select what to output  on the dsi_count bus.</description>
+              <lsb>24</lsb>
+              <msb>24</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>CSD_RESULT</name>
+                  <description>depending on the dsi_count_val_sel input either output  RESULT_VAL1.VALUE (0) or RESULT_VAL2.VALUE (1) on the dsi_count bus. Note that dsi_count_val_sel is not synchronized, i.e. it controls the mux combinatorially.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>ADC_RESULT</name>
+                  <description>output ADC_RES.VIN_CNT on the dsi_count bus</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>DSI_SAMPLE_EN</name>
+              <description>Enables the use of the dsi_sample_in input instead of the comparator output to strobe COUNTER.</description>
+              <lsb>25</lsb>
+              <msb>25</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>SAMPLE_SYNC</name>
+              <description>Enables double synchronizing of sample input from DSI (only relevant when DSI_SAMPLE_EN=1).</description>
+              <lsb>26</lsb>
+              <msb>26</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>DSI_SENSE_EN</name>
+              <description>Enables the use of the dsi_sense_in input instead of the internally generated modulation signal to drive csd_sense and csd_shield signals.</description>
+              <lsb>27</lsb>
+              <msb>27</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>LP_MODE</name>
+              <description>Select the power mode for the CSD components (REFGEN, AMBUF, CSDCMP, HSCMP):?0: High Power mode?1: Low Power mode</description>
+              <lsb>30</lsb>
+              <msb>30</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>ENABLE</name>
+              <description>Master enable of the CSDv2 IP.  Must be set to 1 for any CSDv2, ADC or IDAC operation to function.?When 0 all analog components will be off and all switches will be open.</description>
+              <lsb>31</lsb>
+              <msb>31</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>GROUP_CSDV2_IDACA</name>
+          <description>IDACA Configuration</description>
+          <addressOffset>0x40360400</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>VAL</name>
+              <description>Current value setting for this IDAC (7 bits).</description>
+              <lsb>0</lsb>
+              <msb>6</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>POL_DYN</name>
+              <description>Polarity is dynamic, this bit does not influence the logic in the SoftIP, it only goes to the HardIP.</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>STATIC</name>
+                  <description>Static polarity. Polarity is expected to be stable, so to save power this avoids the shunting of the unused polarity, at the expense of response time.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DYNAMIC</name>
+                  <description>Dynamic polarity. Polarity is expected to change frequently (e.g. invert after every csd_sense phase), so to improve response time this keeps the shunt of the unused polarity on at the expense of power.</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>POLARITY</name>
+              <description>Selects the polarity of the IDAC (sensing operation). Normally the actual polarity depends on this bit, optionally mixed with DSI (see DSI_CTRL_EN) and if LEG1_MODE==CSD also mixed with the CSD configuration and operation. However in mutual cap mode with one IDAC (config.mutual_cap=1 &amp; config.csx_dual_idac=0) the polarity of the IDAC is controlled by csd_sense.</description>
+              <lsb>8</lsb>
+              <msb>9</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>VSSA_SRC</name>
+                  <description>Normal: switch between Vssa and Cmod.  For non-CSD application, IDAC will source current.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>VDDA_SNK</name>
+                  <description>Inverted: switch between Vdda and Cmod. For non-CSD application, IDAC will sink current.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>SENSE</name>
+                  <description>The polarity of the IDAC will follow the csd_sense signal (POL_DYN bit should be set too). The intended usage is for CSX using a single IDAC.</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>SENSE_INV</name>
+                  <description>The polarity of the IDAC will follow the inverted csd_sense signal (POL_DYN bit should be set too). The intended usage is for CSX using a single IDAC.</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>BAL_MODE</name>
+              <description>Balancing mode: only applies to legs configured as CSD.</description>
+              <lsb>10</lsb>
+              <msb>11</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>FULL</name>
+                  <description>enabled from start of Phi2 until disabled by CSDCMP. Intended usage: legacy CSD for balancing over a full csd_sense period (non-overlap should be turned off)</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>PHI1</name>
+                  <description>enabled from start of Phi1 and disabled by CSDCMP or at end of Phi1. Enables dual IDAC CSX or Full-Wave, one for sourcing and the other for sinking.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>PHI2</name>
+                  <description>enabled from start of Phi2 and disabled by CSDCMP or at end of Phi2. Intended usage: CSD Low EMI or  dual IDAC CSX or Full-Wave.</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>PHI1_2</name>
+                  <description>enabled from start of both Phi1 and Phi2 and disabled by CSDCMP or at end of Phi1 or Phi2 (if non-overlap enabled). Intended usage: single IDAC CSX, or Full-Wave.</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>LEG1_MODE</name>
+              <description>Controls the usage mode of LEG1 and the Polarity bit</description>
+              <lsb>16</lsb>
+              <msb>17</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>GP_STATIC</name>
+                  <description>General Purpose static mode: LEG1 and POLARITY are controlled by MMIO and optionally mixed with DSI (see DSI_CTRL_EN). No shunting is used, this saves power when off but also any on/off switching will take longer.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>GP</name>
+                  <description>General Purpose dynamic mode: LEG1 and POLARITY are controlled by MMIO and optionally mixed with DSI (see DSI_CTRL_EN). Shunting is used, so on/off switching is faster, but power is wasted when the leg is disabled.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>CSD_STATIC</name>
+                  <description>CSD static mode: LEG1 can only be on when the CSD Sequencer is in the Sample_init or Sample_norm state. In those states LEG1 is controlled by LEG1_EN, csd_sense and the CSD configuration. Polarity is controlled by the CSD configuration and operation. In addition leg1 enable and polarity can optionally be mixed with DSI (see DSI_CTRL_EN). No shunting is used, this saves power when off but also any on/off switching will take longer.</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>CSD</name>
+                  <description>CSD dynamic mode: LEG1 can only be on when the CSD Sequencer is in the Sample_init or Sample_norm state. In thoses states LEG1 is controlled by LEG1_EN, the CSD configuration, csd_sense and the flopped CSDCMP output (CSDCMP_OUT_FF). Polarity is controlled by the CSD configuration and operation. In addition leg1 enable and polarity can optionally be mixed with DSI (see DSI_CTRL_EN). Shunting is used, so on/off switching is faster, but power is wasted when the leg is disabled.</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>LEG2_MODE</name>
+              <description>Controls the usage mode of LEG2</description>
+              <lsb>18</lsb>
+              <msb>19</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>GP_STATIC</name>
+                  <description>General Purpose static mode: LEG2 is controlled by MMIO and optionally mixed with DSI (see DSI_CTRL_EN).  No shunting is used, this saves power when off but also any on/off switching will take longer.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>GP</name>
+                  <description>General Purpose dynamic mode: LEG2 is controlled by MMIO and optionally mixed with DSI (see DSI_CTRL_EN). Shunting is used, so on/off switching is faster, but power is wasted when the leg is disabled.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>CSD_STATIC</name>
+                  <description>CSD static mode: LEG2 can only be on when the CSD Sequencer is in the Sample_init or Sample_norm state. In those states LEG2 is controlled by LEG2_EN, csd_sense and the CSD configuration. Polarity is controlled by the CSD configuration and operation. In addition leg2 enable and polarity can optionally be mixed with DSI (see DSI_CTRL_EN). No shunting is used, this saves power when off but also any on/off switching will take longer.</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>CSD</name>
+                  <description>CSD dynamic mode: LEG2 can only be on when the CSD Sequencer is in the Sample_init or Sample_norm state. In those states LEG2 is controlled by LEG2_EN, the CSD configuration, csd_sense and the flopped CSDCMP output (CSDCMP_OUT_FF). In addition leg2 enable can optionally be mixed with DSI (see DSI_CTRL_EN). Shunting is used, so on/off switching is faster, but power is wasted when the leg is disabled.</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>DSI_CTRL_EN</name>
+              <description>Mix DSI inputs with MMIO controls or not (before getting mixed with CSD controls if enabled).?0: no DSI control ?     IDACA_POLARITY = IDACA.POLARITY ?     IDACA_LEG1_EN =  IDACA.LEG1_EN ?     IDACA_LEG2_EN = IDACA.LEG2_EN   ?1: Mix MMIO with DSI control?     IDACA_POLARITY = IDACA.POLARITY EXOR dsi_idaca_pol?     IDACA_LEG1_EN =  IDACA.LEG1_EN AND dsi_idaca_leg1_en ?     IDACA_LEG2_EN = IDACA.LEG2_EN AND dsi_idaca_leg2_en</description>
+              <lsb>21</lsb>
+              <msb>21</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RANGE</name>
+              <description>IDAC multiplier</description>
+              <lsb>22</lsb>
+              <msb>23</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>IDAC_LO</name>
+                  <description>1 LSB =   37.5 nA</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>IDAC_MED</name>
+                  <description>1 LSB =  300 nA</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>IDAC_HI</name>
+                  <description>1 LSB = 2400 nA</description>
+                  <value>2</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>LEG1_EN</name>
+              <description>output enable for leg 1 to CSDBUSA</description>
+              <lsb>24</lsb>
+              <msb>24</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>LEG2_EN</name>
+              <description>output enable for leg 2 to CSDBUSA</description>
+              <lsb>25</lsb>
+              <msb>25</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>GROUP_CSDV2_IDACB</name>
+          <description>IDACB Configuration</description>
+          <addressOffset>0x40360500</addressOffset>
+          <size>32</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>VAL</name>
+              <description>Current value setting for this IDAC (7 bits).</description>
+              <lsb>0</lsb>
+              <msb>6</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>POL_DYN</name>
+              <description>Polarity is dynamic, this bit does not influence the logic in the SoftIP, it only goes to the HardIP.</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>STATIC</name>
+                  <description>Static polarity. Polarity is expected to be stable, so to save power this avoids the shunting of the unused polarity, at the expense of response time.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DYNAMIC</name>
+                  <description>Dynamic polarity. Polarity is expected to change frequently (e.g. invert after every csd_sense phase), so to improve response time this keeps the shunt of the unused polarity on at the expense of power.</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>POLARITY</name>
+              <description>Selects the polarity of the IDAC (sensing operation). Normally the actual polarity depends on this bit, optionally mixed with DSI (see DSI_CTRL_EN) and if LEG1_EN==1 and LEG1_MODE==CSD also mixed with the CSD configuration and operation. In mutual cap mode however (see config.mutual_cap) the polarity of the IDAC is controlled by csd_sense. If LEG3_EN=1 (the other two legs must be off) then the ADC sequencer controls the IDACB polarity, optionally mixed with DSI.</description>
+              <lsb>8</lsb>
+              <msb>9</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>VSSA_SRC</name>
+                  <description>Normal: switch between Vssa and Cmod.  For non-CSD application, IDAC will source current.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>VDDA_SNK</name>
+                  <description>Inverted: switch between Vdda and Cmod. For non-CSD application, IDAC will sink current.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>SENSE</name>
+                  <description>The polarity of the IDAC will follow the csd_sense signal (POL_DYN bit should be set too). The intended usage is for CSX using a single IDAC.</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>SENSE_INV</name>
+                  <description>The polarity of the IDAC will follow the inverted csd_sense signal (POL_DYN bit should be set too). The intended usage is for CSX using a single IDAC.</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>BAL_MODE</name>
+              <description>same as corresponding IDACA Balancing mode</description>
+              <lsb>10</lsb>
+              <msb>11</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>FULL</name>
+                  <description>same as corresponding IDACA Balancing mode</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>PHI1</name>
+                  <description>same as corresponding IDACA Balancing mode</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>PHI2</name>
+                  <description>same as corresponding IDACA Balancing mode</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>PHI1_2</name>
+                  <description>same as corresponding IDACA Balancing mode</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>LEG1_MODE</name>
+              <description>Controls the usage mode of LEG1 and the Polarity bit</description>
+              <lsb>16</lsb>
+              <msb>17</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>GP_STATIC</name>
+                  <description>same as corresponding IDACA.LEG1_MODE</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>GP</name>
+                  <description>same as corresponding IDACA.LEG1_MODE</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>CSD_STATIC</name>
+                  <description>same as corresponding IDACA.LEG1_MODE</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>CSD</name>
+                  <description>same as corresponding IDACA.LEG1_MODE</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>LEG2_MODE</name>
+              <description>Controls the usage mode of LEG2</description>
+              <lsb>18</lsb>
+              <msb>19</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>GP_STATIC</name>
+                  <description>same as corresponding IDACA.LEG2_MODE</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>GP</name>
+                  <description>same as corresponding IDACA.LEG2_MODE</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>CSD_STATIC</name>
+                  <description>same as corresponding IDACA.LEG2_MODE</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>CSD</name>
+                  <description>same as corresponding IDACA.LEG2_MODE</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>DSI_CTRL_EN</name>
+              <description>Mix DSI inputs with MMIO controls or not (before getting mixed with CSD controls if enabled)?0: no DSI control?     IDACB_POLARITY = IDACB.POLARITY ?     IDACB_LEG1_EN =  IDACB.LEG1_EN ?     IDACB_LEG2_EN = IDACB.LEG2_EN   ?     IDACB_LEG3_EN = IDACB.LEG3_EN   ?1: Mix MMIO with DSI control?     IDACB_POLARITY = IDACB.POLARITY EXOR dsi_idacb_pol?     IDACB_LEG1_EN =  IDACB.LEG1_EN AND dsi_idacb_leg1_en ?     IDACB_LEG2_EN = IDACB.LEG2_EN AND dsi_idacb_leg2_en  ?     IDACB_LEG3_EN = IDACB.LEG3_EN AND dsi_idacb_leg3_en</description>
+              <lsb>21</lsb>
+              <msb>21</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>RANGE</name>
+              <description>IDAC multiplier</description>
+              <lsb>22</lsb>
+              <msb>23</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>IDAC_LO</name>
+                  <description>1 LSB =   37.5 nA</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>IDAC_MED</name>
+                  <description>1 LSB =  300 nA</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>IDAC_HI</name>
+                  <description>1 LSB = 2400 nA</description>
+                  <value>2</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>LEG1_EN</name>
+              <description>output enable for leg 1 to CSDBUSB or CSDBUSA</description>
+              <lsb>24</lsb>
+              <msb>24</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>LEG2_EN</name>
+              <description>output enable for leg 2 to CSDBUSB or CSDBUSA</description>
+              <lsb>25</lsb>
+              <msb>25</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>LEG3_EN</name>
+              <description>output enable for leg3 to CSDBUSC, only allowed when RANGE = IDAC_LO. When this bit is set both other legs should be off.?Note that leg3 can only be used for ADC mode, not GP mode. Which means that leg3 can only be on when the ADC Sequencer is in the ADC_measure or Calib_measure state. In those states  leg3 is controlled by the ADC configuration and the HSCMP output. In addition this leg3 enable bit can optionally be mixed with DSI (see DSI_CTRL_EN).?When LEG3_EN=1 also the IDACB polarity is controlled by the ADC sequencer.</description>
+              <lsb>26</lsb>
+              <msb>26</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+  </peripherals>
+</device>
