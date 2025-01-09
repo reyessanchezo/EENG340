@@ -1,0 +1,8 @@
+C:\Users\oars0\Documents\GitHub\Interfacing_Lab\Lab_2-usb-i2c-mouse-reyessanchezo\PSoC_Creator\Mouse_2\Mouse_2\Mouse_2.cydsn\Mouse_2.cyprj|8b47977c-9238-47f4-8a42-05eb241201b8
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|56b8895e-2ab1-4cfb-a73f-a0e70442190b
+C:\Users\oars0\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|93108f2e-9128-4e46-b064-3c17aec85c38
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|942433b6-6f00-40e1-879a-3dbe57742270
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|2e27f5a6-ab3d-413b-bbd2-72e879297ff7
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|4a4128f2-a41b-4c25-8675-5c8831ad9e54
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|2884d9a6-549c-471a-946b-dba99e6917f6
+C:\Users\oars0\Documents\PSoC Creator\My Templates\Mouse_2.cydsn\Mouse_2.cyprj|f6a1295a-799d-49ff-aa46-da909f6253b7

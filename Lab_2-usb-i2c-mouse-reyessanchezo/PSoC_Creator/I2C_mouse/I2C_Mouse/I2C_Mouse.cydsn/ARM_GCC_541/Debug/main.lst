@@ -1,0 +1,993 @@
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.bss
+  20              		.align	2
+  21              	Mouse_Data:
+  22 0000 000000   		.space	3
+  23              		.section	.rodata
+  24              		.align	2
+  25              	.LC0:
+  26 0000 4F70656E 		.ascii	"Open\012\000"
+  26      0A00
+  27              		.global	__aeabi_i2f
+  28              		.global	__aeabi_fdiv
+  29              		.global	__aeabi_f2iz
+  30 0006 0000     		.align	2
+  31              	.LC1:
+  32 0008 303A2569 		.ascii	"0:%i\011 1:%i\011 2:%i\011\012\000"
+  32      0920313A 
+  32      25690920 
+  32      323A2569 
+  32      090A00
+  33              		.global	__aeabi_i2d
+  34              		.global	__aeabi_ddiv
+  35              		.global	__aeabi_dmul
+  36              		.global	__aeabi_dsub
+  37              		.global	__aeabi_d2iz
+  38              		.global	__aeabi_d2uiz
+  39 001b 00       		.align	2
+  40              	.LC2:
+  41 001c 6368616E 		.ascii	"channel:%i \011 temp:%u \011\000"
+  41      6E656C3A 
+  41      25692009 
+  41      2074656D 
+  41      703A2575 
+  42              		.section	.text.main,"ax",%progbits
+  43              		.align	2
+  44              		.global	main
+  45              		.thumb
+  46              		.thumb_func
+  47              		.type	main, %function
+  48              	main:
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 2
+
+
+  49              	.LFB64:
+  50              		.file 1 "main.c"
+   1:main.c        **** /******************************************************************************
+   2:main.c        **** * File Name: main.c
+   3:main.c        **** *
+   4:main.c        **** * Version: 1.10
+   5:main.c        **** *
+   6:main.c        **** * Description: This is the source code for the HID Mouse code example.
+   7:main.c        **** *
+   8:main.c        **** * Related Document: CE195394_HID_Mouse.pdf
+   9:main.c        **** *
+  10:main.c        **** * Hardware Dependency: See CE195394_HID_Mouse.pdf
+  11:main.c        **** *
+  12:main.c        **** *******************************************************************************
+  13:main.c        **** * Copyright (2018), Cypress Semiconductor Corporation. All rights reserved.
+  14:main.c        **** *******************************************************************************
+  15:main.c        **** * This software, including source code, documentation and related materials
+  16:main.c        **** * (“Software”), is owned by Cypress Semiconductor Corporation or one of its
+  17:main.c        **** * subsidiaries (“Cypress”) and is protected by and subject to worldwide patent
+  18:main.c        **** * protection (United States and foreign), United States copyright laws and
+  19:main.c        **** * international treaty provisions. Therefore, you may use this Software only
+  20:main.c        **** * as provided in the license agreement accompanying the software package from
+  21:main.c        **** * which you obtained this Software (“EULA”).
+  22:main.c        **** *
+  23:main.c        **** * If no EULA applies, Cypress hereby grants you a personal, nonexclusive,
+  24:main.c        **** * non-transferable license to copy, modify, and compile the Software source
+  25:main.c        **** * code solely for use in connection with Cypress’s integrated circuit products.
+  26:main.c        **** * Any reproduction, modification, translation, compilation, or representation
+  27:main.c        **** * of this Software except as specified above is prohibited without the express
+  28:main.c        **** * written permission of Cypress.
+  29:main.c        **** *
+  30:main.c        **** * Disclaimer: THIS SOFTWARE IS PROVIDED AS-IS, WITH NO WARRANTY OF ANY KIND, 
+  31:main.c        **** * EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT, IMPLIED 
+  32:main.c        **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. Cypress 
+  33:main.c        **** * reserves the right to make changes to the Software without notice. Cypress 
+  34:main.c        **** * does not assume any liability arising out of the application or use of the 
+  35:main.c        **** * Software or any product or circuit described in the Software. Cypress does 
+  36:main.c        **** * not authorize its products for use in any products where a malfunction or 
+  37:main.c        **** * failure of the Cypress product may reasonably be expected to result in 
+  38:main.c        **** * significant property damage, injury or death (“High Risk Product”). By 
+  39:main.c        **** * including Cypress’s product in a High Risk Product, the manufacturer of such 
+  40:main.c        **** * system or application assumes all risk of such use and in doing so agrees to 
+  41:main.c        **** * indemnify Cypress against all liability.
+  42:main.c        **** *******************************************************************************/
+  43:main.c        **** 
+  44:main.c        **** 
+  45:main.c        **** #include <project.h>
+  46:main.c        **** #include <stdio.h>
+  47:main.c        **** 
+  48:main.c        **** static int8 Mouse_Data[3] = {0,0,0}; /* [0] = Buttons, [1] = X-Axis, [2] = Y-Axis */
+  49:main.c        **** 
+  50:main.c        **** /*******************************************************************************
+  51:main.c        **** * Function Name: main
+  52:main.c        **** ********************************************************************************
+  53:main.c        **** *
+  54:main.c        **** * Summary:
+  55:main.c        **** *  main() performs following functions:
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 3
+
+
+  56:main.c        **** *  1: Enumerates the PSoC as a HID Mouse.
+  57:main.c        **** *  2: Updates Mouse movement data.
+  58:main.c        **** *  3: Updates Mouse left click with status of P2[2]
+  59:main.c        **** *  4: Waits for ACK from host and then loads new data into EP1.
+  60:main.c        **** *
+  61:main.c        **** * Parameters:
+  62:main.c        **** *  None.
+  63:main.c        **** *
+  64:main.c        **** * Return:
+  65:main.c        **** *  None.
+  66:main.c        **** *
+  67:main.c        **** *******************************************************************************/
+  68:main.c        **** 
+  69:main.c        **** int main()
+  70:main.c        **** {
+  51              		.loc 1 70 0
+  52              		.cfi_startproc
+  53              		@ args = 0, pretend = 0, frame = 128
+  54              		@ frame_needed = 1, uses_anonymous_args = 0
+  55 0000 90B5     		push	{r4, r7, lr}
+  56              		.cfi_def_cfa_offset 12
+  57              		.cfi_offset 4, -12
+  58              		.cfi_offset 7, -8
+  59              		.cfi_offset 14, -4
+  60 0002 A3B0     		sub	sp, sp, #140
+  61              		.cfi_def_cfa_offset 152
+  62 0004 02AF     		add	r7, sp, #8
+  63              		.cfi_def_cfa 7, 144
+  71:main.c        **** 	CYGlobalIntEnable;                        		/* Enable Global Interrupts */
+  64              		.loc 1 71 0
+  65              		.syntax unified
+  66              	@ 71 "main.c" 1
+  67 0006 62B6     		CPSIE   i
+  68              	@ 0 "" 2
+  72:main.c        **** 	USBFS_1_Start(0, USBFS_1_DWR_VDDD_OPERATION);   /* Start USBFS Operation/device 0 and with 5V oper
+  69              		.loc 1 72 0
+  70              		.thumb
+  71              		.syntax unified
+  72 0008 0221     		movs	r1, #2
+  73 000a 0020     		movs	r0, #0
+  74 000c FFF7FEFF 		bl	USBFS_1_Start
+  73:main.c        **** 	while(!USBFS_1_bGetConfiguration()){};      		/* Wait for Device to enumerate */
+  75              		.loc 1 73 0
+  76 0010 00BF     		nop
+  77              	.L2:
+  78              		.loc 1 73 0 is_stmt 0 discriminator 1
+  79 0012 FFF7FEFF 		bl	USBFS_1_GetConfiguration
+  80 0016 0346     		mov	r3, r0
+  81 0018 002B     		cmp	r3, #0
+  82 001a FAD0     		beq	.L2
+  74:main.c        ****     USBFS_1_LoadInEP(1, (uint8 *)Mouse_Data, 3); 	/* Loads an inital value into EP1 and sends it ou
+  83              		.loc 1 74 0 is_stmt 1
+  84 001c 0322     		movs	r2, #3
+  85 001e 6B49     		ldr	r1, .L9
+  86 0020 0120     		movs	r0, #1
+  87 0022 FFF7FEFF 		bl	USBFS_1_LoadInEP
+  75:main.c        **** 	
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 4
+
+
+  76:main.c        ****     ADC_Start();
+  88              		.loc 1 76 0
+  89 0026 FFF7FEFF 		bl	ADC_Start
+  77:main.c        ****     I2C_Start();
+  90              		.loc 1 77 0
+  91 002a FFF7FEFF 		bl	I2C_Start
+  78:main.c        ****     UART_Start();
+  92              		.loc 1 78 0
+  93 002e FFF7FEFF 		bl	UART_Start
+  79:main.c        ****     UART_PutString("Open\n");
+  94              		.loc 1 79 0
+  95 0032 6748     		ldr	r0, .L9+4
+  96 0034 FFF7FEFF 		bl	UART_PutString
+  97              	.L8:
+  80:main.c        ****     char buffer[100];
+  81:main.c        ****     uint8 i2cdata[10];//10 bytes of data - bytes 3+4, 5+6, and 7 correspond to mousex, mousey, and 
+  82:main.c        ****     double temp;
+  83:main.c        ****     
+  84:main.c        ****     
+  85:main.c        **** 	for(;;)
+  86:main.c        ****     {
+  87:main.c        ****         while(!USBFS_1_bGetEPAckState(1));  			/* Wait for ACK before loading data */
+  98              		.loc 1 87 0
+  99 0038 00BF     		nop
+ 100              	.L3:
+ 101              		.loc 1 87 0 is_stmt 0 discriminator 1
+ 102 003a 0120     		movs	r0, #1
+ 103 003c FFF7FEFF 		bl	USBFS_1_GetEPAckState
+ 104 0040 0346     		mov	r3, r0
+ 105 0042 002B     		cmp	r3, #0
+ 106 0044 F9D0     		beq	.L3
+  88:main.c        **** 		USBFS_1_LoadInEP(1, (uint8 *)Mouse_Data, 3); 	/* Load latest mouse data into EP1 and send to PC *
+ 107              		.loc 1 88 0 is_stmt 1
+ 108 0046 0322     		movs	r2, #3
+ 109 0048 6049     		ldr	r1, .L9
+ 110 004a 0120     		movs	r0, #1
+ 111 004c FFF7FEFF 		bl	USBFS_1_LoadInEP
+  89:main.c        **** 	            
+  90:main.c        ****         I2C_MasterReadBuf(0x20, i2cdata,10, I2C_MODE_COMPLETE_XFER);
+ 112              		.loc 1 90 0
+ 113 0050 3946     		mov	r1, r7
+ 114 0052 0023     		movs	r3, #0
+ 115 0054 0A22     		movs	r2, #10
+ 116 0056 2020     		movs	r0, #32
+ 117 0058 FFF7FEFF 		bl	I2C_MasterReadBuf
+  91:main.c        ****         while(I2C_MasterStatus()!=I2C_MSTAT_RD_CMPLT); //wait for i2c to finish
+ 118              		.loc 1 91 0
+ 119 005c 00BF     		nop
+ 120              	.L4:
+ 121              		.loc 1 91 0 is_stmt 0 discriminator 1
+ 122 005e FFF7FEFF 		bl	I2C_MasterStatus
+ 123 0062 0346     		mov	r3, r0
+ 124 0064 012B     		cmp	r3, #1
+ 125 0066 FAD1     		bne	.L4
+  92:main.c        ****                       
+  93:main.c        ****         Mouse_Data[0] = (1-i2cdata[7]) | (!SW_Read());
+ 126              		.loc 1 93 0 is_stmt 1
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 5
+
+
+ 127 0068 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 128 006a C3F10103 		rsb	r3, r3, #1
+ 129 006e DBB2     		uxtb	r3, r3
+ 130 0070 5CB2     		sxtb	r4, r3
+ 131 0072 FFF7FEFF 		bl	SW_Read
+ 132 0076 0346     		mov	r3, r0
+ 133 0078 002B     		cmp	r3, #0
+ 134 007a 0CBF     		ite	eq
+ 135 007c 0123     		moveq	r3, #1
+ 136 007e 0023     		movne	r3, #0
+ 137 0080 DBB2     		uxtb	r3, r3
+ 138 0082 5BB2     		sxtb	r3, r3
+ 139 0084 2343     		orrs	r3, r3, r4
+ 140 0086 5AB2     		sxtb	r2, r3
+ 141 0088 504B     		ldr	r3, .L9
+ 142 008a 1A70     		strb	r2, [r3]
+  94:main.c        ****         Mouse_Data[1] = ((i2cdata[3]<<8 | i2cdata[4])-31168)/(float)3000;
+ 143              		.loc 1 94 0
+ 144 008c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 145 008e 1B02     		lsls	r3, r3, #8
+ 146 0090 3A79     		ldrb	r2, [r7, #4]	@ zero_extendqisi2
+ 147 0092 1343     		orrs	r3, r3, r2
+ 148 0094 A3F5F343 		sub	r3, r3, #31104
+ 149 0098 403B     		subs	r3, r3, #64
+ 150 009a 1846     		mov	r0, r3
+ 151 009c FFF7FEFF 		bl	__aeabi_i2f
+ 152 00a0 0346     		mov	r3, r0
+ 153 00a2 4C49     		ldr	r1, .L9+8
+ 154 00a4 1846     		mov	r0, r3
+ 155 00a6 FFF7FEFF 		bl	__aeabi_fdiv
+ 156 00aa 0346     		mov	r3, r0
+ 157 00ac 1846     		mov	r0, r3
+ 158 00ae FFF7FEFF 		bl	__aeabi_f2iz
+ 159 00b2 0346     		mov	r3, r0
+ 160 00b4 5AB2     		sxtb	r2, r3
+ 161 00b6 454B     		ldr	r3, .L9
+ 162 00b8 5A70     		strb	r2, [r3, #1]
+  95:main.c        ****         Mouse_Data[2] = ((i2cdata[5]<<8 | i2cdata[6])-32768)/(float)3000;
+ 163              		.loc 1 95 0
+ 164 00ba 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 165 00bc 1B02     		lsls	r3, r3, #8
+ 166 00be BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 167 00c0 1343     		orrs	r3, r3, r2
+ 168 00c2 A3F50043 		sub	r3, r3, #32768
+ 169 00c6 1846     		mov	r0, r3
+ 170 00c8 FFF7FEFF 		bl	__aeabi_i2f
+ 171 00cc 0346     		mov	r3, r0
+ 172 00ce 4149     		ldr	r1, .L9+8
+ 173 00d0 1846     		mov	r0, r3
+ 174 00d2 FFF7FEFF 		bl	__aeabi_fdiv
+ 175 00d6 0346     		mov	r3, r0
+ 176 00d8 1846     		mov	r0, r3
+ 177 00da FFF7FEFF 		bl	__aeabi_f2iz
+ 178 00de 0346     		mov	r3, r0
+ 179 00e0 5AB2     		sxtb	r2, r3
+ 180 00e2 3A4B     		ldr	r3, .L9
+ 181 00e4 9A70     		strb	r2, [r3, #2]
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 6
+
+
+  96:main.c        ****         
+  97:main.c        ****         sprintf(buffer, "0:%i\t 1:%i\t 2:%i\t\n",
+  98:main.c        ****             Mouse_Data[0], Mouse_Data[1], Mouse_Data[2]);
+ 182              		.loc 1 98 0
+ 183 00e6 394B     		ldr	r3, .L9
+ 184 00e8 93F90030 		ldrsb	r3, [r3]
+  97:main.c        ****             Mouse_Data[0], Mouse_Data[1], Mouse_Data[2]);
+ 185              		.loc 1 97 0
+ 186 00ec 1A46     		mov	r2, r3
+ 187              		.loc 1 98 0
+ 188 00ee 374B     		ldr	r3, .L9
+ 189 00f0 93F90130 		ldrsb	r3, [r3, #1]
+  97:main.c        ****             Mouse_Data[0], Mouse_Data[1], Mouse_Data[2]);
+ 190              		.loc 1 97 0
+ 191 00f4 1946     		mov	r1, r3
+ 192              		.loc 1 98 0
+ 193 00f6 354B     		ldr	r3, .L9
+ 194 00f8 93F90230 		ldrsb	r3, [r3, #2]
+  97:main.c        ****             Mouse_Data[0], Mouse_Data[1], Mouse_Data[2]);
+ 195              		.loc 1 97 0
+ 196 00fc 07F10C00 		add	r0, r7, #12
+ 197 0100 0093     		str	r3, [sp]
+ 198 0102 0B46     		mov	r3, r1
+ 199 0104 3449     		ldr	r1, .L9+12
+ 200 0106 FFF7FEFF 		bl	sprintf
+  99:main.c        ****         
+ 100:main.c        ****         while(!USBFS_1_bGetEPAckState(1));  			/* Wait for ACK before loading data */
+ 201              		.loc 1 100 0
+ 202 010a 00BF     		nop
+ 203              	.L5:
+ 204              		.loc 1 100 0 is_stmt 0 discriminator 1
+ 205 010c 0120     		movs	r0, #1
+ 206 010e FFF7FEFF 		bl	USBFS_1_GetEPAckState
+ 207 0112 0346     		mov	r3, r0
+ 208 0114 002B     		cmp	r3, #0
+ 209 0116 F9D0     		beq	.L5
+ 101:main.c        **** 		USBFS_1_LoadInEP(1, (uint8 *)Mouse_Data, 3); 	/* Load latest mouse data into EP1 and send to PC *
+ 210              		.loc 1 101 0 is_stmt 1
+ 211 0118 0322     		movs	r2, #3
+ 212 011a 2C49     		ldr	r1, .L9
+ 213 011c 0120     		movs	r0, #1
+ 214 011e FFF7FEFF 		bl	USBFS_1_LoadInEP
+ 215              	.LBB2:
+ 102:main.c        **** 	    
+ 103:main.c        ****         for(int channel = 0; channel < 2; channel++){
+ 216              		.loc 1 103 0
+ 217 0122 0023     		movs	r3, #0
+ 218 0124 FB67     		str	r3, [r7, #124]
+ 219 0126 45E0     		b	.L6
+ 220              	.L7:
+ 104:main.c        ****             ADC_StartConvert();
+ 221              		.loc 1 104 0 discriminator 3
+ 222 0128 FFF7FEFF 		bl	ADC_StartConvert
+ 105:main.c        ****             ADC_IsEndConversion(ADC_WAIT_FOR_RESULT); 
+ 223              		.loc 1 105 0 discriminator 3
+ 224 012c 0020     		movs	r0, #0
+ 225 012e FFF7FEFF 		bl	ADC_IsEndConversion
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 7
+
+
+ 106:main.c        ****             temp = (ADC_GetResult16(channel)/128.0)*10.0-10; 
+ 226              		.loc 1 106 0 discriminator 3
+ 227 0132 FB6F     		ldr	r3, [r7, #124]
+ 228 0134 9BB2     		uxth	r3, r3
+ 229 0136 1846     		mov	r0, r3
+ 230 0138 FFF7FEFF 		bl	ADC_GetResult16
+ 231 013c 0346     		mov	r3, r0
+ 232 013e 1846     		mov	r0, r3
+ 233 0140 FFF7FEFF 		bl	__aeabi_i2d
+ 234 0144 4FF00002 		mov	r2, #0
+ 235 0148 244B     		ldr	r3, .L9+16
+ 236 014a FFF7FEFF 		bl	__aeabi_ddiv
+ 237 014e 0346     		mov	r3, r0
+ 238 0150 0C46     		mov	r4, r1
+ 239 0152 1846     		mov	r0, r3
+ 240 0154 2146     		mov	r1, r4
+ 241 0156 4FF00002 		mov	r2, #0
+ 242 015a 214B     		ldr	r3, .L9+20
+ 243 015c FFF7FEFF 		bl	__aeabi_dmul
+ 244 0160 0346     		mov	r3, r0
+ 245 0162 0C46     		mov	r4, r1
+ 246 0164 1846     		mov	r0, r3
+ 247 0166 2146     		mov	r1, r4
+ 248 0168 4FF00002 		mov	r2, #0
+ 249 016c 1C4B     		ldr	r3, .L9+20
+ 250 016e FFF7FEFF 		bl	__aeabi_dsub
+ 251 0172 0346     		mov	r3, r0
+ 252 0174 0C46     		mov	r4, r1
+ 253 0176 C7E91C34 		strd	r3, [r7, #112]
+ 107:main.c        ****             
+ 108:main.c        ****             Mouse_Data[channel+1] = temp;
+ 254              		.loc 1 108 0 discriminator 3
+ 255 017a FB6F     		ldr	r3, [r7, #124]
+ 256 017c 5C1C     		adds	r4, r3, #1
+ 257 017e D7E91C01 		ldrd	r0, [r7, #112]
+ 258 0182 FFF7FEFF 		bl	__aeabi_d2iz
+ 259 0186 0346     		mov	r3, r0
+ 260 0188 5AB2     		sxtb	r2, r3
+ 261 018a 104B     		ldr	r3, .L9
+ 262 018c 1A55     		strb	r2, [r3, r4]
+ 109:main.c        ****             sprintf(buffer, "channel:%i \t temp:%u \t", channel, (unsigned)temp);
+ 263              		.loc 1 109 0 discriminator 3
+ 264 018e D7E91C01 		ldrd	r0, [r7, #112]
+ 265 0192 FFF7FEFF 		bl	__aeabi_d2uiz
+ 266 0196 0346     		mov	r3, r0
+ 267 0198 07F10C00 		add	r0, r7, #12
+ 268 019c FA6F     		ldr	r2, [r7, #124]
+ 269 019e 1149     		ldr	r1, .L9+24
+ 270 01a0 FFF7FEFF 		bl	sprintf
+ 110:main.c        ****             UART_PutString(buffer);
+ 271              		.loc 1 110 0 discriminator 3
+ 272 01a4 07F10C03 		add	r3, r7, #12
+ 273 01a8 1846     		mov	r0, r3
+ 274 01aa FFF7FEFF 		bl	UART_PutString
+ 103:main.c        ****             ADC_StartConvert();
+ 275              		.loc 1 103 0 discriminator 3
+ 276 01ae FB6F     		ldr	r3, [r7, #124]
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 8
+
+
+ 277 01b0 0133     		adds	r3, r3, #1
+ 278 01b2 FB67     		str	r3, [r7, #124]
+ 279              	.L6:
+ 103:main.c        ****             ADC_StartConvert();
+ 280              		.loc 1 103 0 is_stmt 0 discriminator 1
+ 281 01b4 FB6F     		ldr	r3, [r7, #124]
+ 282 01b6 012B     		cmp	r3, #1
+ 283 01b8 B6DD     		ble	.L7
+ 284              	.LBE2:
+ 111:main.c        ****         
+ 112:main.c        ****         }
+ 113:main.c        ****        
+ 114:main.c        ****         UART_PutString(buffer);
+ 285              		.loc 1 114 0 is_stmt 1
+ 286 01ba 07F10C03 		add	r3, r7, #12
+ 287 01be 1846     		mov	r0, r3
+ 288 01c0 FFF7FEFF 		bl	UART_PutString
+ 115:main.c        ****                
+ 116:main.c        **** 		CyDelay(1);
+ 289              		.loc 1 116 0
+ 290 01c4 0120     		movs	r0, #1
+ 291 01c6 FFF7FEFF 		bl	CyDelay
+ 117:main.c        **** 	}
+ 292              		.loc 1 117 0
+ 293 01ca 35E7     		b	.L8
+ 294              	.L10:
+ 295              		.align	2
+ 296              	.L9:
+ 297 01cc 00000000 		.word	Mouse_Data
+ 298 01d0 00000000 		.word	.LC0
+ 299 01d4 00803B45 		.word	1161527296
+ 300 01d8 08000000 		.word	.LC1
+ 301 01dc 00006040 		.word	1080033280
+ 302 01e0 00002440 		.word	1076101120
+ 303 01e4 1C000000 		.word	.LC2
+ 304              		.cfi_endproc
+ 305              	.LFE64:
+ 306              		.size	main, .-main
+ 307              		.text
+ 308              	.Letext0:
+ 309              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 310              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 311              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 312              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 313              		.section	.debug_info,"",%progbits
+ 314              	.Ldebug_info0:
+ 315 0000 69010000 		.4byte	0x169
+ 316 0004 0400     		.2byte	0x4
+ 317 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 318 000a 04       		.byte	0x4
+ 319 000b 01       		.uleb128 0x1
+ 320 000c 73000000 		.4byte	.LASF23
+ 321 0010 0C       		.byte	0xc
+ 322 0011 2E000000 		.4byte	.LASF24
+ 323 0015 96010000 		.4byte	.LASF25
+ 324 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 325 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 9
+
+
+ 326 0021 00000000 		.4byte	.Ldebug_line0
+ 327 0025 02       		.uleb128 0x2
+ 328 0026 01       		.byte	0x1
+ 329 0027 06       		.byte	0x6
+ 330 0028 4D010000 		.4byte	.LASF0
+ 331 002c 02       		.uleb128 0x2
+ 332 002d 01       		.byte	0x1
+ 333 002e 08       		.byte	0x8
+ 334 002f 0C010000 		.4byte	.LASF1
+ 335 0033 02       		.uleb128 0x2
+ 336 0034 02       		.byte	0x2
+ 337 0035 05       		.byte	0x5
+ 338 0036 7D010000 		.4byte	.LASF2
+ 339 003a 02       		.uleb128 0x2
+ 340 003b 02       		.byte	0x2
+ 341 003c 07       		.byte	0x7
+ 342 003d 0E000000 		.4byte	.LASF3
+ 343 0041 03       		.uleb128 0x3
+ 344 0042 65010000 		.4byte	.LASF9
+ 345 0046 02       		.byte	0x2
+ 346 0047 3F       		.byte	0x3f
+ 347 0048 4C000000 		.4byte	0x4c
+ 348 004c 02       		.uleb128 0x2
+ 349 004d 04       		.byte	0x4
+ 350 004e 05       		.byte	0x5
+ 351 004f 1F010000 		.4byte	.LASF4
+ 352 0053 02       		.uleb128 0x2
+ 353 0054 04       		.byte	0x4
+ 354 0055 07       		.byte	0x7
+ 355 0056 4A000000 		.4byte	.LASF5
+ 356 005a 02       		.uleb128 0x2
+ 357 005b 08       		.byte	0x8
+ 358 005c 05       		.byte	0x5
+ 359 005d 00000000 		.4byte	.LASF6
+ 360 0061 02       		.uleb128 0x2
+ 361 0062 08       		.byte	0x8
+ 362 0063 07       		.byte	0x7
+ 363 0064 5C000000 		.4byte	.LASF7
+ 364 0068 04       		.uleb128 0x4
+ 365 0069 04       		.byte	0x4
+ 366 006a 05       		.byte	0x5
+ 367 006b 696E7400 		.ascii	"int\000"
+ 368 006f 02       		.uleb128 0x2
+ 369 0070 04       		.byte	0x4
+ 370 0071 07       		.byte	0x7
+ 371 0072 21000000 		.4byte	.LASF8
+ 372 0076 03       		.uleb128 0x3
+ 373 0077 87010000 		.4byte	.LASF10
+ 374 007b 03       		.byte	0x3
+ 375 007c 2C       		.byte	0x2c
+ 376 007d 41000000 		.4byte	0x41
+ 377 0081 05       		.uleb128 0x5
+ 378 0082 44000000 		.4byte	.LASF11
+ 379 0086 04       		.byte	0x4
+ 380 0087 E401     		.2byte	0x1e4
+ 381 0089 2C000000 		.4byte	0x2c
+ 382 008d 05       		.uleb128 0x5
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 10
+
+
+ 383 008e 3F000000 		.4byte	.LASF12
+ 384 0092 04       		.byte	0x4
+ 385 0093 E701     		.2byte	0x1e7
+ 386 0095 25000000 		.4byte	0x25
+ 387 0099 02       		.uleb128 0x2
+ 388 009a 04       		.byte	0x4
+ 389 009b 04       		.byte	0x4
+ 390 009c 6F010000 		.4byte	.LASF13
+ 391 00a0 02       		.uleb128 0x2
+ 392 00a1 08       		.byte	0x8
+ 393 00a2 04       		.byte	0x4
+ 394 00a3 28010000 		.4byte	.LASF14
+ 395 00a7 02       		.uleb128 0x2
+ 396 00a8 01       		.byte	0x1
+ 397 00a9 08       		.byte	0x8
+ 398 00aa 1A010000 		.4byte	.LASF15
+ 399 00ae 02       		.uleb128 0x2
+ 400 00af 08       		.byte	0x8
+ 401 00b0 04       		.byte	0x4
+ 402 00b1 59010000 		.4byte	.LASF16
+ 403 00b5 02       		.uleb128 0x2
+ 404 00b6 04       		.byte	0x4
+ 405 00b7 07       		.byte	0x7
+ 406 00b8 37010000 		.4byte	.LASF17
+ 407 00bc 06       		.uleb128 0x6
+ 408 00bd 3A000000 		.4byte	.LASF26
+ 409 00c1 01       		.byte	0x1
+ 410 00c2 45       		.byte	0x45
+ 411 00c3 68000000 		.4byte	0x68
+ 412 00c7 00000000 		.4byte	.LFB64
+ 413 00cb E8010000 		.4byte	.LFE64-.LFB64
+ 414 00cf 01       		.uleb128 0x1
+ 415 00d0 9C       		.byte	0x9c
+ 416 00d1 1A010000 		.4byte	0x11a
+ 417 00d5 07       		.uleb128 0x7
+ 418 00d6 8F010000 		.4byte	.LASF18
+ 419 00da 01       		.byte	0x1
+ 420 00db 50       		.byte	0x50
+ 421 00dc 1A010000 		.4byte	0x11a
+ 422 00e0 03       		.uleb128 0x3
+ 423 00e1 91       		.byte	0x91
+ 424 00e2 FC7E     		.sleb128 -132
+ 425 00e4 07       		.uleb128 0x7
+ 426 00e5 75010000 		.4byte	.LASF19
+ 427 00e9 01       		.byte	0x1
+ 428 00ea 51       		.byte	0x51
+ 429 00eb 2A010000 		.4byte	0x12a
+ 430 00ef 03       		.uleb128 0x3
+ 431 00f0 91       		.byte	0x91
+ 432 00f1 F07E     		.sleb128 -144
+ 433 00f3 07       		.uleb128 0x7
+ 434 00f4 35000000 		.4byte	.LASF20
+ 435 00f8 01       		.byte	0x1
+ 436 00f9 52       		.byte	0x52
+ 437 00fa A0000000 		.4byte	0xa0
+ 438 00fe 02       		.uleb128 0x2
+ 439 00ff 91       		.byte	0x91
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 11
+
+
+ 440 0100 60       		.sleb128 -32
+ 441 0101 08       		.uleb128 0x8
+ 442 0102 22010000 		.4byte	.LBB2
+ 443 0106 98000000 		.4byte	.LBE2-.LBB2
+ 444 010a 07       		.uleb128 0x7
+ 445 010b 2F010000 		.4byte	.LASF21
+ 446 010f 01       		.byte	0x1
+ 447 0110 67       		.byte	0x67
+ 448 0111 68000000 		.4byte	0x68
+ 449 0115 02       		.uleb128 0x2
+ 450 0116 91       		.byte	0x91
+ 451 0117 6C       		.sleb128 -20
+ 452 0118 00       		.byte	0
+ 453 0119 00       		.byte	0
+ 454 011a 09       		.uleb128 0x9
+ 455 011b A7000000 		.4byte	0xa7
+ 456 011f 2A010000 		.4byte	0x12a
+ 457 0123 0A       		.uleb128 0xa
+ 458 0124 B5000000 		.4byte	0xb5
+ 459 0128 63       		.byte	0x63
+ 460 0129 00       		.byte	0
+ 461 012a 09       		.uleb128 0x9
+ 462 012b 81000000 		.4byte	0x81
+ 463 012f 3A010000 		.4byte	0x13a
+ 464 0133 0A       		.uleb128 0xa
+ 465 0134 B5000000 		.4byte	0xb5
+ 466 0138 09       		.byte	0x9
+ 467 0139 00       		.byte	0
+ 468 013a 09       		.uleb128 0x9
+ 469 013b 8D000000 		.4byte	0x8d
+ 470 013f 4A010000 		.4byte	0x14a
+ 471 0143 0A       		.uleb128 0xa
+ 472 0144 B5000000 		.4byte	0xb5
+ 473 0148 02       		.byte	0x2
+ 474 0149 00       		.byte	0
+ 475 014a 07       		.uleb128 0x7
+ 476 014b 01010000 		.4byte	.LASF22
+ 477 014f 01       		.byte	0x1
+ 478 0150 30       		.byte	0x30
+ 479 0151 3A010000 		.4byte	0x13a
+ 480 0155 05       		.uleb128 0x5
+ 481 0156 03       		.byte	0x3
+ 482 0157 00000000 		.4byte	Mouse_Data
+ 483 015b 0B       		.uleb128 0xb
+ 484 015c 40010000 		.4byte	.LASF27
+ 485 0160 05       		.byte	0x5
+ 486 0161 1207     		.2byte	0x712
+ 487 0163 67010000 		.4byte	0x167
+ 488 0167 0C       		.uleb128 0xc
+ 489 0168 76000000 		.4byte	0x76
+ 490 016c 00       		.byte	0
+ 491              		.section	.debug_abbrev,"",%progbits
+ 492              	.Ldebug_abbrev0:
+ 493 0000 01       		.uleb128 0x1
+ 494 0001 11       		.uleb128 0x11
+ 495 0002 01       		.byte	0x1
+ 496 0003 25       		.uleb128 0x25
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 12
+
+
+ 497 0004 0E       		.uleb128 0xe
+ 498 0005 13       		.uleb128 0x13
+ 499 0006 0B       		.uleb128 0xb
+ 500 0007 03       		.uleb128 0x3
+ 501 0008 0E       		.uleb128 0xe
+ 502 0009 1B       		.uleb128 0x1b
+ 503 000a 0E       		.uleb128 0xe
+ 504 000b 55       		.uleb128 0x55
+ 505 000c 17       		.uleb128 0x17
+ 506 000d 11       		.uleb128 0x11
+ 507 000e 01       		.uleb128 0x1
+ 508 000f 10       		.uleb128 0x10
+ 509 0010 17       		.uleb128 0x17
+ 510 0011 00       		.byte	0
+ 511 0012 00       		.byte	0
+ 512 0013 02       		.uleb128 0x2
+ 513 0014 24       		.uleb128 0x24
+ 514 0015 00       		.byte	0
+ 515 0016 0B       		.uleb128 0xb
+ 516 0017 0B       		.uleb128 0xb
+ 517 0018 3E       		.uleb128 0x3e
+ 518 0019 0B       		.uleb128 0xb
+ 519 001a 03       		.uleb128 0x3
+ 520 001b 0E       		.uleb128 0xe
+ 521 001c 00       		.byte	0
+ 522 001d 00       		.byte	0
+ 523 001e 03       		.uleb128 0x3
+ 524 001f 16       		.uleb128 0x16
+ 525 0020 00       		.byte	0
+ 526 0021 03       		.uleb128 0x3
+ 527 0022 0E       		.uleb128 0xe
+ 528 0023 3A       		.uleb128 0x3a
+ 529 0024 0B       		.uleb128 0xb
+ 530 0025 3B       		.uleb128 0x3b
+ 531 0026 0B       		.uleb128 0xb
+ 532 0027 49       		.uleb128 0x49
+ 533 0028 13       		.uleb128 0x13
+ 534 0029 00       		.byte	0
+ 535 002a 00       		.byte	0
+ 536 002b 04       		.uleb128 0x4
+ 537 002c 24       		.uleb128 0x24
+ 538 002d 00       		.byte	0
+ 539 002e 0B       		.uleb128 0xb
+ 540 002f 0B       		.uleb128 0xb
+ 541 0030 3E       		.uleb128 0x3e
+ 542 0031 0B       		.uleb128 0xb
+ 543 0032 03       		.uleb128 0x3
+ 544 0033 08       		.uleb128 0x8
+ 545 0034 00       		.byte	0
+ 546 0035 00       		.byte	0
+ 547 0036 05       		.uleb128 0x5
+ 548 0037 16       		.uleb128 0x16
+ 549 0038 00       		.byte	0
+ 550 0039 03       		.uleb128 0x3
+ 551 003a 0E       		.uleb128 0xe
+ 552 003b 3A       		.uleb128 0x3a
+ 553 003c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 13
+
+
+ 554 003d 3B       		.uleb128 0x3b
+ 555 003e 05       		.uleb128 0x5
+ 556 003f 49       		.uleb128 0x49
+ 557 0040 13       		.uleb128 0x13
+ 558 0041 00       		.byte	0
+ 559 0042 00       		.byte	0
+ 560 0043 06       		.uleb128 0x6
+ 561 0044 2E       		.uleb128 0x2e
+ 562 0045 01       		.byte	0x1
+ 563 0046 3F       		.uleb128 0x3f
+ 564 0047 19       		.uleb128 0x19
+ 565 0048 03       		.uleb128 0x3
+ 566 0049 0E       		.uleb128 0xe
+ 567 004a 3A       		.uleb128 0x3a
+ 568 004b 0B       		.uleb128 0xb
+ 569 004c 3B       		.uleb128 0x3b
+ 570 004d 0B       		.uleb128 0xb
+ 571 004e 49       		.uleb128 0x49
+ 572 004f 13       		.uleb128 0x13
+ 573 0050 11       		.uleb128 0x11
+ 574 0051 01       		.uleb128 0x1
+ 575 0052 12       		.uleb128 0x12
+ 576 0053 06       		.uleb128 0x6
+ 577 0054 40       		.uleb128 0x40
+ 578 0055 18       		.uleb128 0x18
+ 579 0056 9642     		.uleb128 0x2116
+ 580 0058 19       		.uleb128 0x19
+ 581 0059 01       		.uleb128 0x1
+ 582 005a 13       		.uleb128 0x13
+ 583 005b 00       		.byte	0
+ 584 005c 00       		.byte	0
+ 585 005d 07       		.uleb128 0x7
+ 586 005e 34       		.uleb128 0x34
+ 587 005f 00       		.byte	0
+ 588 0060 03       		.uleb128 0x3
+ 589 0061 0E       		.uleb128 0xe
+ 590 0062 3A       		.uleb128 0x3a
+ 591 0063 0B       		.uleb128 0xb
+ 592 0064 3B       		.uleb128 0x3b
+ 593 0065 0B       		.uleb128 0xb
+ 594 0066 49       		.uleb128 0x49
+ 595 0067 13       		.uleb128 0x13
+ 596 0068 02       		.uleb128 0x2
+ 597 0069 18       		.uleb128 0x18
+ 598 006a 00       		.byte	0
+ 599 006b 00       		.byte	0
+ 600 006c 08       		.uleb128 0x8
+ 601 006d 0B       		.uleb128 0xb
+ 602 006e 01       		.byte	0x1
+ 603 006f 11       		.uleb128 0x11
+ 604 0070 01       		.uleb128 0x1
+ 605 0071 12       		.uleb128 0x12
+ 606 0072 06       		.uleb128 0x6
+ 607 0073 00       		.byte	0
+ 608 0074 00       		.byte	0
+ 609 0075 09       		.uleb128 0x9
+ 610 0076 01       		.uleb128 0x1
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 14
+
+
+ 611 0077 01       		.byte	0x1
+ 612 0078 49       		.uleb128 0x49
+ 613 0079 13       		.uleb128 0x13
+ 614 007a 01       		.uleb128 0x1
+ 615 007b 13       		.uleb128 0x13
+ 616 007c 00       		.byte	0
+ 617 007d 00       		.byte	0
+ 618 007e 0A       		.uleb128 0xa
+ 619 007f 21       		.uleb128 0x21
+ 620 0080 00       		.byte	0
+ 621 0081 49       		.uleb128 0x49
+ 622 0082 13       		.uleb128 0x13
+ 623 0083 2F       		.uleb128 0x2f
+ 624 0084 0B       		.uleb128 0xb
+ 625 0085 00       		.byte	0
+ 626 0086 00       		.byte	0
+ 627 0087 0B       		.uleb128 0xb
+ 628 0088 34       		.uleb128 0x34
+ 629 0089 00       		.byte	0
+ 630 008a 03       		.uleb128 0x3
+ 631 008b 0E       		.uleb128 0xe
+ 632 008c 3A       		.uleb128 0x3a
+ 633 008d 0B       		.uleb128 0xb
+ 634 008e 3B       		.uleb128 0x3b
+ 635 008f 05       		.uleb128 0x5
+ 636 0090 49       		.uleb128 0x49
+ 637 0091 13       		.uleb128 0x13
+ 638 0092 3F       		.uleb128 0x3f
+ 639 0093 19       		.uleb128 0x19
+ 640 0094 3C       		.uleb128 0x3c
+ 641 0095 19       		.uleb128 0x19
+ 642 0096 00       		.byte	0
+ 643 0097 00       		.byte	0
+ 644 0098 0C       		.uleb128 0xc
+ 645 0099 35       		.uleb128 0x35
+ 646 009a 00       		.byte	0
+ 647 009b 49       		.uleb128 0x49
+ 648 009c 13       		.uleb128 0x13
+ 649 009d 00       		.byte	0
+ 650 009e 00       		.byte	0
+ 651 009f 00       		.byte	0
+ 652              		.section	.debug_aranges,"",%progbits
+ 653 0000 1C000000 		.4byte	0x1c
+ 654 0004 0200     		.2byte	0x2
+ 655 0006 00000000 		.4byte	.Ldebug_info0
+ 656 000a 04       		.byte	0x4
+ 657 000b 00       		.byte	0
+ 658 000c 0000     		.2byte	0
+ 659 000e 0000     		.2byte	0
+ 660 0010 00000000 		.4byte	.LFB64
+ 661 0014 E8010000 		.4byte	.LFE64-.LFB64
+ 662 0018 00000000 		.4byte	0
+ 663 001c 00000000 		.4byte	0
+ 664              		.section	.debug_ranges,"",%progbits
+ 665              	.Ldebug_ranges0:
+ 666 0000 00000000 		.4byte	.LFB64
+ 667 0004 E8010000 		.4byte	.LFE64
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 15
+
+
+ 668 0008 00000000 		.4byte	0
+ 669 000c 00000000 		.4byte	0
+ 670              		.section	.debug_line,"",%progbits
+ 671              	.Ldebug_line0:
+ 672 0000 CC010000 		.section	.debug_str,"MS",%progbits,1
+ 672      02004C01 
+ 672      00000201 
+ 672      FB0E0D00 
+ 672      01010101 
+ 673              	.LASF6:
+ 674 0000 6C6F6E67 		.ascii	"long long int\000"
+ 674      206C6F6E 
+ 674      6720696E 
+ 674      7400
+ 675              	.LASF3:
+ 676 000e 73686F72 		.ascii	"short unsigned int\000"
+ 676      7420756E 
+ 676      7369676E 
+ 676      65642069 
+ 676      6E7400
+ 677              	.LASF8:
+ 678 0021 756E7369 		.ascii	"unsigned int\000"
+ 678      676E6564 
+ 678      20696E74 
+ 678      00
+ 679              	.LASF24:
+ 680 002e 6D61696E 		.ascii	"main.c\000"
+ 680      2E6300
+ 681              	.LASF20:
+ 682 0035 74656D70 		.ascii	"temp\000"
+ 682      00
+ 683              	.LASF26:
+ 684 003a 6D61696E 		.ascii	"main\000"
+ 684      00
+ 685              	.LASF12:
+ 686 003f 696E7438 		.ascii	"int8\000"
+ 686      00
+ 687              	.LASF11:
+ 688 0044 75696E74 		.ascii	"uint8\000"
+ 688      3800
+ 689              	.LASF5:
+ 690 004a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 690      20756E73 
+ 690      69676E65 
+ 690      6420696E 
+ 690      7400
+ 691              	.LASF7:
+ 692 005c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 692      206C6F6E 
+ 692      6720756E 
+ 692      7369676E 
+ 692      65642069 
+ 693              	.LASF23:
+ 694 0073 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 694      43313120 
+ 694      352E342E 
+ 694      31203230 
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 16
+
+
+ 694      31363036 
+ 695 00a6 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 695      20726576 
+ 695      6973696F 
+ 695      6E203233 
+ 695      37373135 
+ 696 00d9 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 696      66756E63 
+ 696      74696F6E 
+ 696      2D736563 
+ 696      74696F6E 
+ 697              	.LASF22:
+ 698 0101 4D6F7573 		.ascii	"Mouse_Data\000"
+ 698      655F4461 
+ 698      746100
+ 699              	.LASF1:
+ 700 010c 756E7369 		.ascii	"unsigned char\000"
+ 700      676E6564 
+ 700      20636861 
+ 700      7200
+ 701              	.LASF15:
+ 702 011a 63686172 		.ascii	"char\000"
+ 702      00
+ 703              	.LASF4:
+ 704 011f 6C6F6E67 		.ascii	"long int\000"
+ 704      20696E74 
+ 704      00
+ 705              	.LASF14:
+ 706 0128 646F7562 		.ascii	"double\000"
+ 706      6C6500
+ 707              	.LASF21:
+ 708 012f 6368616E 		.ascii	"channel\000"
+ 708      6E656C00 
+ 709              	.LASF17:
+ 710 0137 73697A65 		.ascii	"sizetype\000"
+ 710      74797065 
+ 710      00
+ 711              	.LASF27:
+ 712 0140 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 712      52784275 
+ 712      66666572 
+ 712      00
+ 713              	.LASF0:
+ 714 014d 7369676E 		.ascii	"signed char\000"
+ 714      65642063 
+ 714      68617200 
+ 715              	.LASF16:
+ 716 0159 6C6F6E67 		.ascii	"long double\000"
+ 716      20646F75 
+ 716      626C6500 
+ 717              	.LASF9:
+ 718 0165 5F5F696E 		.ascii	"__int32_t\000"
+ 718      7433325F 
+ 718      7400
+ 719              	.LASF13:
+ 720 016f 666C6F61 		.ascii	"float\000"
+ 720      7400
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccLHMPxV.s 			page 17
+
+
+ 721              	.LASF19:
+ 722 0175 69326364 		.ascii	"i2cdata\000"
+ 722      61746100 
+ 723              	.LASF2:
+ 724 017d 73686F72 		.ascii	"short int\000"
+ 724      7420696E 
+ 724      7400
+ 725              	.LASF10:
+ 726 0187 696E7433 		.ascii	"int32_t\000"
+ 726      325F7400 
+ 727              	.LASF18:
+ 728 018f 62756666 		.ascii	"buffer\000"
+ 728      657200
+ 729              	.LASF25:
+ 730 0196 433A5C55 		.ascii	"C:\\Users\\oars0\\Documents\\GitHub\\Interfacing_La"
+ 730      73657273 
+ 730      5C6F6172 
+ 730      73305C44 
+ 730      6F63756D 
+ 731 01c4 625C4C61 		.ascii	"b\\Lab_2-usb-i2c-mouse-reyessanchezo\\PSoC_Creator\\"
+ 731      625F322D 
+ 731      7573622D 
+ 731      6932632D 
+ 731      6D6F7573 
+ 732 01f5 4932435F 		.ascii	"I2C_mouse\\I2C_Mouse\\I2C_Mouse.cydsn\000"
+ 732      6D6F7573 
+ 732      655C4932 
+ 732      435F4D6F 
+ 732      7573655C 
+ 733              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
