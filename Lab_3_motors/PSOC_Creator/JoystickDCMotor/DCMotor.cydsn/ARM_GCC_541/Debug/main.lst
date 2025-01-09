@@ -1,0 +1,853 @@
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	temp
+  20              		.bss
+  21              		.align	3
+  22              		.type	temp, %object
+  23              		.size	temp, 8
+  24              	temp:
+  25 0000 00000000 		.space	8
+  25      00000000 
+  26              		.global	range
+  27              		.data
+  28              		.align	2
+  29              		.type	range, %object
+  30              		.size	range, 4
+  31              	range:
+  32 0000 C2010000 		.word	450
+  33              		.global	__aeabi_i2d
+  34              		.global	__aeabi_ddiv
+  35              		.global	__aeabi_dmul
+  36              		.global	__aeabi_dsub
+  37              		.global	__aeabi_d2iz
+  38              		.global	__aeabi_dcmpgt
+  39              		.global	__aeabi_dcmplt
+  40              		.section	.text.DCMotorControl,"ax",%progbits
+  41              		.align	2
+  42              		.global	DCMotorControl
+  43              		.thumb
+  44              		.thumb_func
+  45              		.type	DCMotorControl, %function
+  46              	DCMotorControl:
+  47              	.LFB64:
+  48              		.file 1 "main.c"
+   1:main.c        **** /******************************************************************************
+   2:main.c        **** * File Name: main.c
+   3:main.c        **** *
+   4:main.c        **** * Version: 1.10
+   5:main.c        **** *
+   6:main.c        **** * Description: Joystick control for DC Motor. Uses joystick for speed and direction control of a dc
+   7:main.c        **** *******************************************************************************/
+   8:main.c        **** 
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 2
+
+
+   9:main.c        **** 
+  10:main.c        **** #include <project.h>
+  11:main.c        **** #include <stdio.h>
+  12:main.c        **** #include <stdlib.h>
+  13:main.c        **** 
+  14:main.c        **** double temp = 0;
+  15:main.c        **** int range = 450;
+  16:main.c        **** 
+  17:main.c        **** 
+  18:main.c        **** CY_ISR(DCMotorControl)
+  19:main.c        **** {
+  49              		.loc 1 19 0
+  50              		.cfi_startproc
+  51              		@ args = 0, pretend = 0, frame = 0
+  52              		@ frame_needed = 1, uses_anonymous_args = 0
+  53 0000 B0B5     		push	{r4, r5, r7, lr}
+  54              		.cfi_def_cfa_offset 16
+  55              		.cfi_offset 4, -16
+  56              		.cfi_offset 5, -12
+  57              		.cfi_offset 7, -8
+  58              		.cfi_offset 14, -4
+  59 0002 00AF     		add	r7, sp, #0
+  60              		.cfi_def_cfa_register 7
+  20:main.c        ****     ADC_StartConvert();
+  61              		.loc 1 20 0
+  62 0004 FFF7FEFF 		bl	ADC_StartConvert
+  21:main.c        ****     ADC_IsEndConversion(ADC_WAIT_FOR_RESULT); 
+  63              		.loc 1 21 0
+  64 0008 0020     		movs	r0, #0
+  65 000a FFF7FEFF 		bl	ADC_IsEndConversion
+  22:main.c        ****     temp = (ADC_GetResult16(0)/128.0)*range-range; //reading channel zero, horizontal
+  66              		.loc 1 22 0
+  67 000e 0020     		movs	r0, #0
+  68 0010 FFF7FEFF 		bl	ADC_GetResult16
+  69 0014 0346     		mov	r3, r0
+  70 0016 1846     		mov	r0, r3
+  71 0018 FFF7FEFF 		bl	__aeabi_i2d
+  72 001c 4FF00002 		mov	r2, #0
+  73 0020 2C4B     		ldr	r3, .L12
+  74 0022 FFF7FEFF 		bl	__aeabi_ddiv
+  75 0026 0346     		mov	r3, r0
+  76 0028 0C46     		mov	r4, r1
+  77 002a 2546     		mov	r5, r4
+  78 002c 1C46     		mov	r4, r3
+  79 002e 2A4B     		ldr	r3, .L12+4
+  80 0030 1B68     		ldr	r3, [r3]
+  81 0032 1846     		mov	r0, r3
+  82 0034 FFF7FEFF 		bl	__aeabi_i2d
+  83 0038 0246     		mov	r2, r0
+  84 003a 0B46     		mov	r3, r1
+  85 003c 2046     		mov	r0, r4
+  86 003e 2946     		mov	r1, r5
+  87 0040 FFF7FEFF 		bl	__aeabi_dmul
+  88 0044 0346     		mov	r3, r0
+  89 0046 0C46     		mov	r4, r1
+  90 0048 2546     		mov	r5, r4
+  91 004a 1C46     		mov	r4, r3
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 3
+
+
+  92 004c 224B     		ldr	r3, .L12+4
+  93 004e 1B68     		ldr	r3, [r3]
+  94 0050 1846     		mov	r0, r3
+  95 0052 FFF7FEFF 		bl	__aeabi_i2d
+  96 0056 0246     		mov	r2, r0
+  97 0058 0B46     		mov	r3, r1
+  98 005a 2046     		mov	r0, r4
+  99 005c 2946     		mov	r1, r5
+ 100 005e FFF7FEFF 		bl	__aeabi_dsub
+ 101 0062 0346     		mov	r3, r0
+ 102 0064 0C46     		mov	r4, r1
+ 103 0066 1D4A     		ldr	r2, .L12+8
+ 104 0068 C2E90034 		strd	r3, [r2]
+  23:main.c        ****     //temp should range from -450 to +450
+  24:main.c        **** 
+  25:main.c        ****     //Set PWM, 475 being ~95% duty cycle since the drivers are limited by the charge pump
+  26:main.c        ****     PWM_DC_WriteCompare(abs((int)temp));
+ 105              		.loc 1 26 0
+ 106 006c 1B4B     		ldr	r3, .L12+8
+ 107 006e 18CB     		ldmia	r3, {r3-r4}
+ 108 0070 1846     		mov	r0, r3
+ 109 0072 2146     		mov	r1, r4
+ 110 0074 FFF7FEFF 		bl	__aeabi_d2iz
+ 111 0078 0346     		mov	r3, r0
+ 112 007a 002B     		cmp	r3, #0
+ 113 007c B8BF     		it	lt
+ 114 007e 5B42     		rsblt	r3, r3, #0
+ 115 0080 9BB2     		uxth	r3, r3
+ 116 0082 1846     		mov	r0, r3
+ 117 0084 FFF7FEFF 		bl	PWM_DC_WriteCompare
+  27:main.c        ****     
+  28:main.c        ****     //Set direction based on sign of temp
+  29:main.c        ****     if(temp > 15){
+ 118              		.loc 1 29 0
+ 119 0088 144B     		ldr	r3, .L12+8
+ 120 008a D3E90001 		ldrd	r0, [r3]
+ 121 008e 4FF00002 		mov	r2, #0
+ 122 0092 134B     		ldr	r3, .L12+12
+ 123 0094 FFF7FEFF 		bl	__aeabi_dcmpgt
+ 124 0098 0346     		mov	r3, r0
+ 125 009a 002B     		cmp	r3, #0
+ 126 009c 03D0     		beq	.L9
+  30:main.c        ****         //CCW
+  31:main.c        ****         DriverControlReg_Write(1);
+ 127              		.loc 1 31 0
+ 128 009e 0120     		movs	r0, #1
+ 129 00a0 FFF7FEFF 		bl	DriverControlReg_Write
+  32:main.c        ****         
+  33:main.c        ****     }else if(temp < -15){   
+  34:main.c        ****         //CW
+  35:main.c        ****         DriverControlReg_Write(2);
+  36:main.c        ****     }else{
+  37:main.c        ****         /*//Brake, both grounded FETs activated... Don't do this, the source goes into over-voltage
+  38:main.c        ****         DriverControlReg_Write(3);
+  39:main.c        ****         PWM_DC_WriteCompare(range);
+  40:main.c        ****         */
+  41:main.c        ****         DriverControlReg_Write(1);
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 4
+
+
+  42:main.c        ****         PWM_DC_WriteCompare(0);
+  43:main.c        ****     }
+  44:main.c        ****     //Don't set DriverControlReg to 0, that activates both top FETs connecting 12v to 12v.
+  45:main.c        **** }
+ 130              		.loc 1 45 0
+ 131 00a4 14E0     		b	.L11
+ 132              	.L9:
+  33:main.c        ****         //CW
+ 133              		.loc 1 33 0
+ 134 00a6 0D4B     		ldr	r3, .L12+8
+ 135 00a8 D3E90001 		ldrd	r0, [r3]
+ 136 00ac 4FF00002 		mov	r2, #0
+ 137 00b0 0C4B     		ldr	r3, .L12+16
+ 138 00b2 FFF7FEFF 		bl	__aeabi_dcmplt
+ 139 00b6 0346     		mov	r3, r0
+ 140 00b8 002B     		cmp	r3, #0
+ 141 00ba 03D0     		beq	.L10
+  35:main.c        ****     }else{
+ 142              		.loc 1 35 0
+ 143 00bc 0220     		movs	r0, #2
+ 144 00be FFF7FEFF 		bl	DriverControlReg_Write
+ 145              		.loc 1 45 0
+ 146 00c2 05E0     		b	.L11
+ 147              	.L10:
+  41:main.c        ****         PWM_DC_WriteCompare(0);
+ 148              		.loc 1 41 0
+ 149 00c4 0120     		movs	r0, #1
+ 150 00c6 FFF7FEFF 		bl	DriverControlReg_Write
+  42:main.c        ****     }
+ 151              		.loc 1 42 0
+ 152 00ca 0020     		movs	r0, #0
+ 153 00cc FFF7FEFF 		bl	PWM_DC_WriteCompare
+ 154              	.L11:
+ 155              		.loc 1 45 0
+ 156 00d0 00BF     		nop
+ 157 00d2 B0BD     		pop	{r4, r5, r7, pc}
+ 158              	.L13:
+ 159              		.align	2
+ 160              	.L12:
+ 161 00d4 00006040 		.word	1080033280
+ 162 00d8 00000000 		.word	range
+ 163 00dc 00000000 		.word	temp
+ 164 00e0 00002E40 		.word	1076756480
+ 165 00e4 00002EC0 		.word	-1070727168
+ 166              		.cfi_endproc
+ 167              	.LFE64:
+ 168              		.size	DCMotorControl, .-DCMotorControl
+ 169              		.section	.rodata
+ 170              		.align	2
+ 171              	.LC0:
+ 172 0000 55415254 		.ascii	"UART Open\012\000"
+ 172      204F7065 
+ 172      6E0A00
+ 173 000b 00       		.align	2
+ 174              	.LC1:
+ 175 000c 74656D70 		.ascii	"temp:%i\012\000"
+ 175      3A25690A 
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 5
+
+
+ 175      00
+ 176              		.section	.text.main,"ax",%progbits
+ 177              		.align	2
+ 178              		.global	main
+ 179              		.thumb
+ 180              		.thumb_func
+ 181              		.type	main, %function
+ 182              	main:
+ 183              	.LFB65:
+  46:main.c        **** 
+  47:main.c        **** 
+  48:main.c        **** CY_ISR(DCMotorControl);
+  49:main.c        **** 
+  50:main.c        **** 
+  51:main.c        **** int main()
+  52:main.c        **** {
+ 184              		.loc 1 52 0
+ 185              		.cfi_startproc
+ 186              		@ args = 0, pretend = 0, frame = 104
+ 187              		@ frame_needed = 1, uses_anonymous_args = 0
+ 188 0000 90B5     		push	{r4, r7, lr}
+ 189              		.cfi_def_cfa_offset 12
+ 190              		.cfi_offset 4, -12
+ 191              		.cfi_offset 7, -8
+ 192              		.cfi_offset 14, -4
+ 193 0002 9BB0     		sub	sp, sp, #108
+ 194              		.cfi_def_cfa_offset 120
+ 195 0004 00AF     		add	r7, sp, #0
+ 196              		.cfi_def_cfa_register 7
+  53:main.c        **** 	CYGlobalIntEnable;                        		/* Enable Global Interrupts */
+ 197              		.loc 1 53 0
+ 198              		.syntax unified
+ 199              	@ 53 "main.c" 1
+ 200 0006 62B6     		CPSIE   i
+ 201              	@ 0 "" 2
+  54:main.c        **** 	
+  55:main.c        ****     
+  56:main.c        ****     PWM_DC_Start();
+ 202              		.loc 1 56 0
+ 203              		.thumb
+ 204              		.syntax unified
+ 205 0008 FFF7FEFF 		bl	PWM_DC_Start
+  57:main.c        ****     ADC_Start();
+ 206              		.loc 1 57 0
+ 207 000c FFF7FEFF 		bl	ADC_Start
+  58:main.c        ****     UART_Start();
+ 208              		.loc 1 58 0
+ 209 0010 FFF7FEFF 		bl	UART_Start
+  59:main.c        ****     UART_PutString("UART Open\n");
+ 210              		.loc 1 59 0
+ 211 0014 0C48     		ldr	r0, .L16
+ 212 0016 FFF7FEFF 		bl	UART_PutString
+  60:main.c        ****     char buffer[100];
+  61:main.c        ****     ISR_DCMotorControl_StartEx(DCMotorControl);
+ 213              		.loc 1 61 0
+ 214 001a 0C48     		ldr	r0, .L16+4
+ 215 001c FFF7FEFF 		bl	ISR_DCMotorControl_StartEx
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 6
+
+
+ 216              	.L15:
+  62:main.c        ****     
+  63:main.c        ****     
+  64:main.c        ****     
+  65:main.c        **** 	for(;;)
+  66:main.c        ****     {
+  67:main.c        ****         
+  68:main.c        ****         
+  69:main.c        ****         sprintf(buffer, "temp:%i\n", (int)temp);
+ 217              		.loc 1 69 0 discriminator 1
+ 218 0020 0B4B     		ldr	r3, .L16+8
+ 219 0022 18CB     		ldmia	r3, {r3-r4}
+ 220 0024 1846     		mov	r0, r3
+ 221 0026 2146     		mov	r1, r4
+ 222 0028 FFF7FEFF 		bl	__aeabi_d2iz
+ 223 002c 0246     		mov	r2, r0
+ 224 002e 3B1D     		adds	r3, r7, #4
+ 225 0030 0849     		ldr	r1, .L16+12
+ 226 0032 1846     		mov	r0, r3
+ 227 0034 FFF7FEFF 		bl	sprintf
+  70:main.c        ****         UART_PutString(buffer);
+ 228              		.loc 1 70 0 discriminator 1
+ 229 0038 3B1D     		adds	r3, r7, #4
+ 230 003a 1846     		mov	r0, r3
+ 231 003c FFF7FEFF 		bl	UART_PutString
+  71:main.c        ****         
+  72:main.c        **** 		CyDelay(1);
+ 232              		.loc 1 72 0 discriminator 1
+ 233 0040 0120     		movs	r0, #1
+ 234 0042 FFF7FEFF 		bl	CyDelay
+  73:main.c        **** 	}
+ 235              		.loc 1 73 0 discriminator 1
+ 236 0046 EBE7     		b	.L15
+ 237              	.L17:
+ 238              		.align	2
+ 239              	.L16:
+ 240 0048 00000000 		.word	.LC0
+ 241 004c 00000000 		.word	DCMotorControl
+ 242 0050 00000000 		.word	temp
+ 243 0054 0C000000 		.word	.LC1
+ 244              		.cfi_endproc
+ 245              	.LFE65:
+ 246              		.size	main, .-main
+ 247              		.text
+ 248              	.Letext0:
+ 249              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 250              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 251              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 252              		.section	.debug_info,"",%progbits
+ 253              	.Ldebug_info0:
+ 254 0000 1E010000 		.4byte	0x11e
+ 255 0004 0400     		.2byte	0x4
+ 256 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 257 000a 04       		.byte	0x4
+ 258 000b 01       		.uleb128 0x1
+ 259 000c DF000000 		.4byte	.LASF19
+ 260 0010 0C       		.byte	0xc
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 7
+
+
+ 261 0011 96000000 		.4byte	.LASF20
+ 262 0015 2E000000 		.4byte	.LASF21
+ 263 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 264 001d 00000000 		.4byte	0
+ 265 0021 00000000 		.4byte	.Ldebug_line0
+ 266 0025 02       		.uleb128 0x2
+ 267 0026 01       		.byte	0x1
+ 268 0027 06       		.byte	0x6
+ 269 0028 A3010000 		.4byte	.LASF0
+ 270 002c 02       		.uleb128 0x2
+ 271 002d 01       		.byte	0x1
+ 272 002e 08       		.byte	0x8
+ 273 002f 6D010000 		.4byte	.LASF1
+ 274 0033 02       		.uleb128 0x2
+ 275 0034 02       		.byte	0x2
+ 276 0035 05       		.byte	0x5
+ 277 0036 CB010000 		.4byte	.LASF2
+ 278 003a 02       		.uleb128 0x2
+ 279 003b 02       		.byte	0x2
+ 280 003c 07       		.byte	0x7
+ 281 003d 0E000000 		.4byte	.LASF3
+ 282 0041 03       		.uleb128 0x3
+ 283 0042 BB010000 		.4byte	.LASF9
+ 284 0046 02       		.byte	0x2
+ 285 0047 3F       		.byte	0x3f
+ 286 0048 4C000000 		.4byte	0x4c
+ 287 004c 02       		.uleb128 0x2
+ 288 004d 04       		.byte	0x4
+ 289 004e 05       		.byte	0x5
+ 290 004f 80010000 		.4byte	.LASF4
+ 291 0053 02       		.uleb128 0x2
+ 292 0054 04       		.byte	0x4
+ 293 0055 07       		.byte	0x7
+ 294 0056 B6000000 		.4byte	.LASF5
+ 295 005a 02       		.uleb128 0x2
+ 296 005b 08       		.byte	0x8
+ 297 005c 05       		.byte	0x5
+ 298 005d 00000000 		.4byte	.LASF6
+ 299 0061 02       		.uleb128 0x2
+ 300 0062 08       		.byte	0x8
+ 301 0063 07       		.byte	0x7
+ 302 0064 C8000000 		.4byte	.LASF7
+ 303 0068 04       		.uleb128 0x4
+ 304 0069 04       		.byte	0x4
+ 305 006a 05       		.byte	0x5
+ 306 006b 696E7400 		.ascii	"int\000"
+ 307 006f 02       		.uleb128 0x2
+ 308 0070 04       		.byte	0x4
+ 309 0071 07       		.byte	0x7
+ 310 0072 21000000 		.4byte	.LASF8
+ 311 0076 03       		.uleb128 0x3
+ 312 0077 D5010000 		.4byte	.LASF10
+ 313 007b 03       		.byte	0x3
+ 314 007c 2C       		.byte	0x2c
+ 315 007d 41000000 		.4byte	0x41
+ 316 0081 02       		.uleb128 0x2
+ 317 0082 04       		.byte	0x4
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 8
+
+
+ 318 0083 04       		.byte	0x4
+ 319 0084 C5010000 		.4byte	.LASF11
+ 320 0088 02       		.uleb128 0x2
+ 321 0089 08       		.byte	0x8
+ 322 008a 04       		.byte	0x4
+ 323 008b 89010000 		.4byte	.LASF12
+ 324 008f 02       		.uleb128 0x2
+ 325 0090 01       		.byte	0x1
+ 326 0091 08       		.byte	0x8
+ 327 0092 7B010000 		.4byte	.LASF13
+ 328 0096 02       		.uleb128 0x2
+ 329 0097 08       		.byte	0x8
+ 330 0098 04       		.byte	0x4
+ 331 0099 AF010000 		.4byte	.LASF14
+ 332 009d 02       		.uleb128 0x2
+ 333 009e 04       		.byte	0x4
+ 334 009f 07       		.byte	0x7
+ 335 00a0 E4010000 		.4byte	.LASF15
+ 336 00a4 05       		.uleb128 0x5
+ 337 00a5 A7000000 		.4byte	.LASF22
+ 338 00a9 01       		.byte	0x1
+ 339 00aa 12       		.byte	0x12
+ 340 00ab 00000000 		.4byte	.LFB64
+ 341 00af E8000000 		.4byte	.LFE64-.LFB64
+ 342 00b3 01       		.uleb128 0x1
+ 343 00b4 9C       		.byte	0x9c
+ 344 00b5 06       		.uleb128 0x6
+ 345 00b6 A2000000 		.4byte	.LASF23
+ 346 00ba 01       		.byte	0x1
+ 347 00bb 33       		.byte	0x33
+ 348 00bc 68000000 		.4byte	0x68
+ 349 00c0 00000000 		.4byte	.LFB65
+ 350 00c4 58000000 		.4byte	.LFE65-.LFB65
+ 351 00c8 01       		.uleb128 0x1
+ 352 00c9 9C       		.byte	0x9c
+ 353 00ca DE000000 		.4byte	0xde
+ 354 00ce 07       		.uleb128 0x7
+ 355 00cf DD010000 		.4byte	.LASF24
+ 356 00d3 01       		.byte	0x1
+ 357 00d4 3C       		.byte	0x3c
+ 358 00d5 DE000000 		.4byte	0xde
+ 359 00d9 03       		.uleb128 0x3
+ 360 00da 91       		.byte	0x91
+ 361 00db 8C7F     		.sleb128 -116
+ 362 00dd 00       		.byte	0
+ 363 00de 08       		.uleb128 0x8
+ 364 00df 8F000000 		.4byte	0x8f
+ 365 00e3 EE000000 		.4byte	0xee
+ 366 00e7 09       		.uleb128 0x9
+ 367 00e8 9D000000 		.4byte	0x9d
+ 368 00ec 63       		.byte	0x63
+ 369 00ed 00       		.byte	0
+ 370 00ee 0A       		.uleb128 0xa
+ 371 00ef 96010000 		.4byte	.LASF16
+ 372 00f3 04       		.byte	0x4
+ 373 00f4 1207     		.2byte	0x712
+ 374 00f6 FA000000 		.4byte	0xfa
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 9
+
+
+ 375 00fa 0B       		.uleb128 0xb
+ 376 00fb 76000000 		.4byte	0x76
+ 377 00ff 0C       		.uleb128 0xc
+ 378 0100 9D000000 		.4byte	.LASF17
+ 379 0104 01       		.byte	0x1
+ 380 0105 0E       		.byte	0xe
+ 381 0106 88000000 		.4byte	0x88
+ 382 010a 05       		.uleb128 0x5
+ 383 010b 03       		.byte	0x3
+ 384 010c 00000000 		.4byte	temp
+ 385 0110 0C       		.uleb128 0xc
+ 386 0111 90010000 		.4byte	.LASF18
+ 387 0115 01       		.byte	0x1
+ 388 0116 0F       		.byte	0xf
+ 389 0117 68000000 		.4byte	0x68
+ 390 011b 05       		.uleb128 0x5
+ 391 011c 03       		.byte	0x3
+ 392 011d 00000000 		.4byte	range
+ 393 0121 00       		.byte	0
+ 394              		.section	.debug_abbrev,"",%progbits
+ 395              	.Ldebug_abbrev0:
+ 396 0000 01       		.uleb128 0x1
+ 397 0001 11       		.uleb128 0x11
+ 398 0002 01       		.byte	0x1
+ 399 0003 25       		.uleb128 0x25
+ 400 0004 0E       		.uleb128 0xe
+ 401 0005 13       		.uleb128 0x13
+ 402 0006 0B       		.uleb128 0xb
+ 403 0007 03       		.uleb128 0x3
+ 404 0008 0E       		.uleb128 0xe
+ 405 0009 1B       		.uleb128 0x1b
+ 406 000a 0E       		.uleb128 0xe
+ 407 000b 55       		.uleb128 0x55
+ 408 000c 17       		.uleb128 0x17
+ 409 000d 11       		.uleb128 0x11
+ 410 000e 01       		.uleb128 0x1
+ 411 000f 10       		.uleb128 0x10
+ 412 0010 17       		.uleb128 0x17
+ 413 0011 00       		.byte	0
+ 414 0012 00       		.byte	0
+ 415 0013 02       		.uleb128 0x2
+ 416 0014 24       		.uleb128 0x24
+ 417 0015 00       		.byte	0
+ 418 0016 0B       		.uleb128 0xb
+ 419 0017 0B       		.uleb128 0xb
+ 420 0018 3E       		.uleb128 0x3e
+ 421 0019 0B       		.uleb128 0xb
+ 422 001a 03       		.uleb128 0x3
+ 423 001b 0E       		.uleb128 0xe
+ 424 001c 00       		.byte	0
+ 425 001d 00       		.byte	0
+ 426 001e 03       		.uleb128 0x3
+ 427 001f 16       		.uleb128 0x16
+ 428 0020 00       		.byte	0
+ 429 0021 03       		.uleb128 0x3
+ 430 0022 0E       		.uleb128 0xe
+ 431 0023 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 10
+
+
+ 432 0024 0B       		.uleb128 0xb
+ 433 0025 3B       		.uleb128 0x3b
+ 434 0026 0B       		.uleb128 0xb
+ 435 0027 49       		.uleb128 0x49
+ 436 0028 13       		.uleb128 0x13
+ 437 0029 00       		.byte	0
+ 438 002a 00       		.byte	0
+ 439 002b 04       		.uleb128 0x4
+ 440 002c 24       		.uleb128 0x24
+ 441 002d 00       		.byte	0
+ 442 002e 0B       		.uleb128 0xb
+ 443 002f 0B       		.uleb128 0xb
+ 444 0030 3E       		.uleb128 0x3e
+ 445 0031 0B       		.uleb128 0xb
+ 446 0032 03       		.uleb128 0x3
+ 447 0033 08       		.uleb128 0x8
+ 448 0034 00       		.byte	0
+ 449 0035 00       		.byte	0
+ 450 0036 05       		.uleb128 0x5
+ 451 0037 2E       		.uleb128 0x2e
+ 452 0038 00       		.byte	0
+ 453 0039 3F       		.uleb128 0x3f
+ 454 003a 19       		.uleb128 0x19
+ 455 003b 03       		.uleb128 0x3
+ 456 003c 0E       		.uleb128 0xe
+ 457 003d 3A       		.uleb128 0x3a
+ 458 003e 0B       		.uleb128 0xb
+ 459 003f 3B       		.uleb128 0x3b
+ 460 0040 0B       		.uleb128 0xb
+ 461 0041 27       		.uleb128 0x27
+ 462 0042 19       		.uleb128 0x19
+ 463 0043 11       		.uleb128 0x11
+ 464 0044 01       		.uleb128 0x1
+ 465 0045 12       		.uleb128 0x12
+ 466 0046 06       		.uleb128 0x6
+ 467 0047 40       		.uleb128 0x40
+ 468 0048 18       		.uleb128 0x18
+ 469 0049 9642     		.uleb128 0x2116
+ 470 004b 19       		.uleb128 0x19
+ 471 004c 00       		.byte	0
+ 472 004d 00       		.byte	0
+ 473 004e 06       		.uleb128 0x6
+ 474 004f 2E       		.uleb128 0x2e
+ 475 0050 01       		.byte	0x1
+ 476 0051 3F       		.uleb128 0x3f
+ 477 0052 19       		.uleb128 0x19
+ 478 0053 03       		.uleb128 0x3
+ 479 0054 0E       		.uleb128 0xe
+ 480 0055 3A       		.uleb128 0x3a
+ 481 0056 0B       		.uleb128 0xb
+ 482 0057 3B       		.uleb128 0x3b
+ 483 0058 0B       		.uleb128 0xb
+ 484 0059 49       		.uleb128 0x49
+ 485 005a 13       		.uleb128 0x13
+ 486 005b 11       		.uleb128 0x11
+ 487 005c 01       		.uleb128 0x1
+ 488 005d 12       		.uleb128 0x12
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 11
+
+
+ 489 005e 06       		.uleb128 0x6
+ 490 005f 40       		.uleb128 0x40
+ 491 0060 18       		.uleb128 0x18
+ 492 0061 9642     		.uleb128 0x2116
+ 493 0063 19       		.uleb128 0x19
+ 494 0064 01       		.uleb128 0x1
+ 495 0065 13       		.uleb128 0x13
+ 496 0066 00       		.byte	0
+ 497 0067 00       		.byte	0
+ 498 0068 07       		.uleb128 0x7
+ 499 0069 34       		.uleb128 0x34
+ 500 006a 00       		.byte	0
+ 501 006b 03       		.uleb128 0x3
+ 502 006c 0E       		.uleb128 0xe
+ 503 006d 3A       		.uleb128 0x3a
+ 504 006e 0B       		.uleb128 0xb
+ 505 006f 3B       		.uleb128 0x3b
+ 506 0070 0B       		.uleb128 0xb
+ 507 0071 49       		.uleb128 0x49
+ 508 0072 13       		.uleb128 0x13
+ 509 0073 02       		.uleb128 0x2
+ 510 0074 18       		.uleb128 0x18
+ 511 0075 00       		.byte	0
+ 512 0076 00       		.byte	0
+ 513 0077 08       		.uleb128 0x8
+ 514 0078 01       		.uleb128 0x1
+ 515 0079 01       		.byte	0x1
+ 516 007a 49       		.uleb128 0x49
+ 517 007b 13       		.uleb128 0x13
+ 518 007c 01       		.uleb128 0x1
+ 519 007d 13       		.uleb128 0x13
+ 520 007e 00       		.byte	0
+ 521 007f 00       		.byte	0
+ 522 0080 09       		.uleb128 0x9
+ 523 0081 21       		.uleb128 0x21
+ 524 0082 00       		.byte	0
+ 525 0083 49       		.uleb128 0x49
+ 526 0084 13       		.uleb128 0x13
+ 527 0085 2F       		.uleb128 0x2f
+ 528 0086 0B       		.uleb128 0xb
+ 529 0087 00       		.byte	0
+ 530 0088 00       		.byte	0
+ 531 0089 0A       		.uleb128 0xa
+ 532 008a 34       		.uleb128 0x34
+ 533 008b 00       		.byte	0
+ 534 008c 03       		.uleb128 0x3
+ 535 008d 0E       		.uleb128 0xe
+ 536 008e 3A       		.uleb128 0x3a
+ 537 008f 0B       		.uleb128 0xb
+ 538 0090 3B       		.uleb128 0x3b
+ 539 0091 05       		.uleb128 0x5
+ 540 0092 49       		.uleb128 0x49
+ 541 0093 13       		.uleb128 0x13
+ 542 0094 3F       		.uleb128 0x3f
+ 543 0095 19       		.uleb128 0x19
+ 544 0096 3C       		.uleb128 0x3c
+ 545 0097 19       		.uleb128 0x19
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 12
+
+
+ 546 0098 00       		.byte	0
+ 547 0099 00       		.byte	0
+ 548 009a 0B       		.uleb128 0xb
+ 549 009b 35       		.uleb128 0x35
+ 550 009c 00       		.byte	0
+ 551 009d 49       		.uleb128 0x49
+ 552 009e 13       		.uleb128 0x13
+ 553 009f 00       		.byte	0
+ 554 00a0 00       		.byte	0
+ 555 00a1 0C       		.uleb128 0xc
+ 556 00a2 34       		.uleb128 0x34
+ 557 00a3 00       		.byte	0
+ 558 00a4 03       		.uleb128 0x3
+ 559 00a5 0E       		.uleb128 0xe
+ 560 00a6 3A       		.uleb128 0x3a
+ 561 00a7 0B       		.uleb128 0xb
+ 562 00a8 3B       		.uleb128 0x3b
+ 563 00a9 0B       		.uleb128 0xb
+ 564 00aa 49       		.uleb128 0x49
+ 565 00ab 13       		.uleb128 0x13
+ 566 00ac 3F       		.uleb128 0x3f
+ 567 00ad 19       		.uleb128 0x19
+ 568 00ae 02       		.uleb128 0x2
+ 569 00af 18       		.uleb128 0x18
+ 570 00b0 00       		.byte	0
+ 571 00b1 00       		.byte	0
+ 572 00b2 00       		.byte	0
+ 573              		.section	.debug_aranges,"",%progbits
+ 574 0000 24000000 		.4byte	0x24
+ 575 0004 0200     		.2byte	0x2
+ 576 0006 00000000 		.4byte	.Ldebug_info0
+ 577 000a 04       		.byte	0x4
+ 578 000b 00       		.byte	0
+ 579 000c 0000     		.2byte	0
+ 580 000e 0000     		.2byte	0
+ 581 0010 00000000 		.4byte	.LFB64
+ 582 0014 E8000000 		.4byte	.LFE64-.LFB64
+ 583 0018 00000000 		.4byte	.LFB65
+ 584 001c 58000000 		.4byte	.LFE65-.LFB65
+ 585 0020 00000000 		.4byte	0
+ 586 0024 00000000 		.4byte	0
+ 587              		.section	.debug_ranges,"",%progbits
+ 588              	.Ldebug_ranges0:
+ 589 0000 00000000 		.4byte	.LFB64
+ 590 0004 E8000000 		.4byte	.LFE64
+ 591 0008 00000000 		.4byte	.LFB65
+ 592 000c 58000000 		.4byte	.LFE65
+ 593 0010 00000000 		.4byte	0
+ 594 0014 00000000 		.4byte	0
+ 595              		.section	.debug_line,"",%progbits
+ 596              	.Ldebug_line0:
+ 597 0000 92010000 		.section	.debug_str,"MS",%progbits,1
+ 597      02003F01 
+ 597      00000201 
+ 597      FB0E0D00 
+ 597      01010101 
+ 598              	.LASF6:
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 13
+
+
+ 599 0000 6C6F6E67 		.ascii	"long long int\000"
+ 599      206C6F6E 
+ 599      6720696E 
+ 599      7400
+ 600              	.LASF3:
+ 601 000e 73686F72 		.ascii	"short unsigned int\000"
+ 601      7420756E 
+ 601      7369676E 
+ 601      65642069 
+ 601      6E7400
+ 602              	.LASF8:
+ 603 0021 756E7369 		.ascii	"unsigned int\000"
+ 603      676E6564 
+ 603      20696E74 
+ 603      00
+ 604              	.LASF21:
+ 605 002e 433A5C55 		.ascii	"C:\\Users\\oars0\\Documents\\GitHub\\Interfacing_La"
+ 605      73657273 
+ 605      5C6F6172 
+ 605      73305C44 
+ 605      6F63756D 
+ 606 005c 625C4C61 		.ascii	"b\\Lab_3_motors\\PSOC_Creator\\JoystickDCMotor\\DCM"
+ 606      625F335F 
+ 606      6D6F746F 
+ 606      72735C50 
+ 606      534F435F 
+ 607 008b 6F746F72 		.ascii	"otor.cydsn\000"
+ 607      2E637964 
+ 607      736E00
+ 608              	.LASF20:
+ 609 0096 6D61696E 		.ascii	"main.c\000"
+ 609      2E6300
+ 610              	.LASF17:
+ 611 009d 74656D70 		.ascii	"temp\000"
+ 611      00
+ 612              	.LASF23:
+ 613 00a2 6D61696E 		.ascii	"main\000"
+ 613      00
+ 614              	.LASF22:
+ 615 00a7 44434D6F 		.ascii	"DCMotorControl\000"
+ 615      746F7243 
+ 615      6F6E7472 
+ 615      6F6C00
+ 616              	.LASF5:
+ 617 00b6 6C6F6E67 		.ascii	"long unsigned int\000"
+ 617      20756E73 
+ 617      69676E65 
+ 617      6420696E 
+ 617      7400
+ 618              	.LASF7:
+ 619 00c8 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 619      206C6F6E 
+ 619      6720756E 
+ 619      7369676E 
+ 619      65642069 
+ 620              	.LASF19:
+ 621 00df 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 14
+
+
+ 621      43313120 
+ 621      352E342E 
+ 621      31203230 
+ 621      31363036 
+ 622 0112 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 622      20726576 
+ 622      6973696F 
+ 622      6E203233 
+ 622      37373135 
+ 623 0145 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 623      66756E63 
+ 623      74696F6E 
+ 623      2D736563 
+ 623      74696F6E 
+ 624              	.LASF1:
+ 625 016d 756E7369 		.ascii	"unsigned char\000"
+ 625      676E6564 
+ 625      20636861 
+ 625      7200
+ 626              	.LASF13:
+ 627 017b 63686172 		.ascii	"char\000"
+ 627      00
+ 628              	.LASF4:
+ 629 0180 6C6F6E67 		.ascii	"long int\000"
+ 629      20696E74 
+ 629      00
+ 630              	.LASF12:
+ 631 0189 646F7562 		.ascii	"double\000"
+ 631      6C6500
+ 632              	.LASF18:
+ 633 0190 72616E67 		.ascii	"range\000"
+ 633      6500
+ 634              	.LASF16:
+ 635 0196 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 635      52784275 
+ 635      66666572 
+ 635      00
+ 636              	.LASF0:
+ 637 01a3 7369676E 		.ascii	"signed char\000"
+ 637      65642063 
+ 637      68617200 
+ 638              	.LASF14:
+ 639 01af 6C6F6E67 		.ascii	"long double\000"
+ 639      20646F75 
+ 639      626C6500 
+ 640              	.LASF9:
+ 641 01bb 5F5F696E 		.ascii	"__int32_t\000"
+ 641      7433325F 
+ 641      7400
+ 642              	.LASF11:
+ 643 01c5 666C6F61 		.ascii	"float\000"
+ 643      7400
+ 644              	.LASF2:
+ 645 01cb 73686F72 		.ascii	"short int\000"
+ 645      7420696E 
+ 645      7400
+ 646              	.LASF10:
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccvQMnZi.s 			page 15
+
+
+ 647 01d5 696E7433 		.ascii	"int32_t\000"
+ 647      325F7400 
+ 648              	.LASF24:
+ 649 01dd 62756666 		.ascii	"buffer\000"
+ 649      657200
+ 650              	.LASF15:
+ 651 01e4 73697A65 		.ascii	"sizetype\000"
+ 651      74797065 
+ 651      00
+ 652              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

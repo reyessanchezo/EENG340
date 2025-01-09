@@ -1,0 +1,91 @@
+--------------- Build Started: 02/27/2024 08:44:57 Project: MicroServo, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+cydsfit.exe -.appdatapath "C:\Users\oars0\AppData\Local\Cypress Semiconductor\PSoC Creator\4.4" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\oars0\Documents\GitHub\Interfacing_Lab\Lab_3_motors\PSOC_Creator\MicroServo+JoystickControl\MicroServo.cydsn\MicroServo.cyprj -d CY8C5888LTI-LP097 -s C:\Users\oars0\Documents\GitHub\Interfacing_Lab\Lab_3_motors\PSOC_Creator\MicroServo+JoystickControl\MicroServo.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+Elaborating Design...
+ADD: sdb.M0065: information: Analog terminal "vdac_ref" on ADC_SAR_SEQ_v2_10 is unconnected.
+ * C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v2_10\PSoC5\ADC_SAR_SEQ_v2_10.cysch (Signal: vdac_ref)
+ * C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v2_10\PSoC5\ADC_SAR_SEQ_v2_10.cysch (Shape_798)
+ * C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v2_10\PSoC5\ADC_SAR_SEQ_v2_10.cysch (Shape_885)
+ADD: fit.M0032: warning: Clock Warning: (ISR_Clock's accuracy range '100  Hz -55% +100%, (45  Hz - 200  Hz)' is not within the specified tolerance range '100  Hz +/- 5%, (95  Hz - 105  Hz)'.).
+ * C:\Users\oars0\Documents\GitHub\Interfacing_Lab\Lab_3_motors\PSOC_Creator\MicroServo+JoystickControl\MicroServo.cydsn\MicroServo.cydwr (ISR_Clock)
+ * C:\Users\oars0\Documents\GitHub\Interfacing_Lab\Lab_3_motors\PSOC_Creator\MicroServo+JoystickControl\MicroServo.cydsn\TopDesign\TopDesign.cysch (Instance:ISR_Clock)
+HDL Generation...
+Synthesis...
+Tech Mapping...
+ADD: pft.M0040: information: The following 1 pin(s) will be assigned a location by the fitter: \ADC:SAR:Bypass(0)\
+Analog Placement...
+Info: apr.M0002: Analog signal "Net_196" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_215" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_245" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_224" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_225" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_248" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_228" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_229" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_264" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_232" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_233" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_265" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_174" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_175" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_235" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_178" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_179" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_236" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_182" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_183" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_237" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_186" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_187" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_238" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_190" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_191" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_239" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_195" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_197" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_240" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_200" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_201" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_241" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_204" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_205" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_242" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_208" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_209" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_243" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_212" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_213" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_244" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_217" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_219" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_246" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_222" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_247" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_249" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_250" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_251" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_252" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_253" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_254" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_255" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_256" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_257" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_258" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_259" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_260" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_261" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_262" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "Net_263" is connected to one terminal only. (App=cydsfit)
+Analog Routing...
+Analog Code Generation...
+Digital Placement...
+Digital Routing...
+Bitstream Generation...
+Bitstream Verification...
+Static timing analysis...
+Warning: sta.M0021: MicroServo_timing.html: Warning-1350: Asynchronous path(s) exist from "ClockBlock/clk_bus_glb" to "ClockBlock/dclk_glb_0". See the timing report for details. (File=C:\Users\oars0\Documents\GitHub\Interfacing_Lab\Lab_3_motors\PSOC_Creator\MicroServo+JoystickControl\MicroServo.cydsn\MicroServo_timing.html)
+Warning: sta.M0021: MicroServo_timing.html: Warning-1350: Asynchronous path(s) exist from "ClockBlock/clk_bus_glb" to "ClockBlock/dclk_glb_2". See the timing report for details. (File=C:\Users\oars0\Documents\GitHub\Interfacing_Lab\Lab_3_motors\PSOC_Creator\MicroServo+JoystickControl\MicroServo.cydsn\MicroServo_timing.html)
+Warning: sta.M0021: MicroServo_timing.html: Warning-1350: Asynchronous path(s) exist from "ClockBlock/dclk_glb_0" to "ClockBlock/clk_bus_glb". See the timing report for details. (File=C:\Users\oars0\Documents\GitHub\Interfacing_Lab\Lab_3_motors\PSOC_Creator\MicroServo+JoystickControl\MicroServo.cydsn\MicroServo_timing.html)
+API Generation...
+Dependency Generation...
+Cleanup...
+--------------- Build Succeeded: 02/27/2024 08:45:10 ---------------

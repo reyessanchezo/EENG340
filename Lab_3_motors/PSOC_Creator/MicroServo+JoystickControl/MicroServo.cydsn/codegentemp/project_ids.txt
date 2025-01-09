@@ -1,0 +1,7 @@
+C:\Users\oars0\Documents\GitHub\Interfacing_Lab\Lab_3_motors\PSOC_Creator\MicroServo+JoystickControl\MicroServo.cydsn\MicroServo.cyprj|2b296f3e-8501-4505-87e6-7e6e7c72cced
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|bb09f40b-59c3-4e8b-b01f-70cc4a440500
+C:\Users\oars0\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|36c0b55f-d2ed-4ac3-ad2d-661fb40d15dd
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|27bd7a47-e9ab-4171-a63e-21f80cabde22
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|f336b0c7-74bd-479e-bd64-4f2ed6cdd31c
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|ee9d5285-a61d-430b-861b-fd7efa852e64
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|9c0e93b6-83ce-487e-ab43-c79c290ccc64

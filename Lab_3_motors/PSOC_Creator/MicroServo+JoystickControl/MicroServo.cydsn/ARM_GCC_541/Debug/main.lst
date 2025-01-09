@@ -1,0 +1,835 @@
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.data
+  20              		.align	2
+  21              		.type	default_compare, %object
+  22              		.size	default_compare, 4
+  23              	default_compare:
+  24 0000 44480000 		.word	18500
+  25              		.global	temp
+  26              		.bss
+  27              		.align	3
+  28              		.type	temp, %object
+  29              		.size	temp, 8
+  30              	temp:
+  31 0000 00000000 		.space	8
+  31      00000000 
+  32              		.global	__aeabi_i2d
+  33              		.global	__aeabi_ddiv
+  34              		.global	__aeabi_dmul
+  35              		.global	__aeabi_dsub
+  36              		.global	__aeabi_ui2d
+  37              		.global	__aeabi_dadd
+  38              		.global	__aeabi_d2uiz
+  39              		.section	.text.MicroServoControl,"ax",%progbits
+  40              		.align	2
+  41              		.global	MicroServoControl
+  42              		.thumb
+  43              		.thumb_func
+  44              		.type	MicroServoControl, %function
+  45              	MicroServoControl:
+  46              	.LFB64:
+  47              		.file 1 "main.c"
+   1:main.c        **** /******************************************************************************
+   2:main.c        **** * File Name: main.c
+   3:main.c        **** *
+   4:main.c        **** * Version: 1.10
+   5:main.c        **** *
+   6:main.c        **** * Description: This is the source code for the HID Mouse code example.
+   7:main.c        **** *
+   8:main.c        **** * Related Document: CE195394_HID_Mouse.pdf
+   9:main.c        **** *
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 2
+
+
+  10:main.c        **** * Hardware Dependency: See CE195394_HID_Mouse.pdf
+  11:main.c        **** *
+  12:main.c        **** *******************************************************************************
+  13:main.c        **** * Copyright (2018), Cypress Semiconductor Corporation. All rights reserved.
+  14:main.c        **** *******************************************************************************
+  15:main.c        **** * This software, including source code, documentation and related materials
+  16:main.c        **** * (“Software”), is owned by Cypress Semiconductor Corporation or one of its
+  17:main.c        **** * subsidiaries (“Cypress”) and is protected by and subject to worldwide patent
+  18:main.c        **** * protection (United States and foreign), United States copyright laws and
+  19:main.c        **** * international treaty provisions. Therefore, you may use this Software only
+  20:main.c        **** * as provided in the license agreement accompanying the software package from
+  21:main.c        **** * which you obtained this Software (“EULA”).
+  22:main.c        **** *
+  23:main.c        **** * If no EULA applies, Cypress hereby grants you a personal, nonexclusive,
+  24:main.c        **** * non-transferable license to copy, modify, and compile the Software source
+  25:main.c        **** * code solely for use in connection with Cypress’s integrated circuit products.
+  26:main.c        **** * Any reproduction, modification, translation, compilation, or representation
+  27:main.c        **** * of this Software except as specified above is prohibited without the express
+  28:main.c        **** * written permission of Cypress.
+  29:main.c        **** *
+  30:main.c        **** * Disclaimer: THIS SOFTWARE IS PROVIDED AS-IS, WITH NO WARRANTY OF ANY KIND, 
+  31:main.c        **** * EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT, IMPLIED 
+  32:main.c        **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. Cypress 
+  33:main.c        **** * reserves the right to make changes to the Software without notice. Cypress 
+  34:main.c        **** * does not assume any liability arising out of the application or use of the 
+  35:main.c        **** * Software or any product or circuit described in the Software. Cypress does 
+  36:main.c        **** * not authorize its products for use in any products where a malfunction or 
+  37:main.c        **** * failure of the Cypress product may reasonably be expected to result in 
+  38:main.c        **** * significant property damage, injury or death (“High Risk Product”). By 
+  39:main.c        **** * including Cypress’s product in a High Risk Product, the manufacturer of such 
+  40:main.c        **** * system or application assumes all risk of such use and in doing so agrees to 
+  41:main.c        **** * indemnify Cypress against all liability.
+  42:main.c        **** *******************************************************************************/
+  43:main.c        **** 
+  44:main.c        **** 
+  45:main.c        **** #include <project.h>
+  46:main.c        **** #include <stdio.h>
+  47:main.c        **** 
+  48:main.c        **** static uint default_compare = 18500; //should be 0 degrees on the servo
+  49:main.c        **** double temp = 0;
+  50:main.c        **** 
+  51:main.c        **** 
+  52:main.c        **** CY_ISR(MicroServoControl)
+  53:main.c        **** {
+  48              		.loc 1 53 0
+  49              		.cfi_startproc
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 1, uses_anonymous_args = 0
+  52 0000 98B5     		push	{r3, r4, r7, lr}
+  53              		.cfi_def_cfa_offset 16
+  54              		.cfi_offset 3, -16
+  55              		.cfi_offset 4, -12
+  56              		.cfi_offset 7, -8
+  57              		.cfi_offset 14, -4
+  58 0002 00AF     		add	r7, sp, #0
+  59              		.cfi_def_cfa_register 7
+  54:main.c        ****     ADC_StartConvert();
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 3
+
+
+  60              		.loc 1 54 0
+  61 0004 FFF7FEFF 		bl	ADC_StartConvert
+  55:main.c        ****     ADC_IsEndConversion(ADC_WAIT_FOR_RESULT); 
+  62              		.loc 1 55 0
+  63 0008 0020     		movs	r0, #0
+  64 000a FFF7FEFF 		bl	ADC_IsEndConversion
+  56:main.c        ****     temp = (ADC_GetResult16(0)/127.0)*950-1150; //reading channel zero, horizontal
+  65              		.loc 1 56 0
+  66 000e 0020     		movs	r0, #0
+  67 0010 FFF7FEFF 		bl	ADC_GetResult16
+  68 0014 0346     		mov	r3, r0
+  69 0016 1846     		mov	r0, r3
+  70 0018 FFF7FEFF 		bl	__aeabi_i2d
+  71 001c 1AA3     		adr	r3, .L2
+  72 001e D3E90023 		ldrd	r2, [r3]
+  73 0022 FFF7FEFF 		bl	__aeabi_ddiv
+  74 0026 0346     		mov	r3, r0
+  75 0028 0C46     		mov	r4, r1
+  76 002a 1846     		mov	r0, r3
+  77 002c 2146     		mov	r1, r4
+  78 002e 4FF00002 		mov	r2, #0
+  79 0032 194B     		ldr	r3, .L2+16
+  80 0034 FFF7FEFF 		bl	__aeabi_dmul
+  81 0038 0346     		mov	r3, r0
+  82 003a 0C46     		mov	r4, r1
+  83 003c 1846     		mov	r0, r3
+  84 003e 2146     		mov	r1, r4
+  85 0040 13A3     		adr	r3, .L2+8
+  86 0042 D3E90023 		ldrd	r2, [r3]
+  87 0046 FFF7FEFF 		bl	__aeabi_dsub
+  88 004a 0346     		mov	r3, r0
+  89 004c 0C46     		mov	r4, r1
+  90 004e 134A     		ldr	r2, .L2+20
+  91 0050 C2E90034 		strd	r3, [r2]
+  57:main.c        ****     //temp values rang from -1150 to 757, which correspond pretty closely to 0 to 180 degrees on th
+  58:main.c        **** 
+  59:main.c        ****     PWM_WriteCompare(default_compare+temp);
+  92              		.loc 1 59 0
+  93 0054 124B     		ldr	r3, .L2+24
+  94 0056 1B68     		ldr	r3, [r3]
+  95 0058 1846     		mov	r0, r3
+  96 005a FFF7FEFF 		bl	__aeabi_ui2d
+  97 005e 0F4B     		ldr	r3, .L2+20
+  98 0060 18CB     		ldmia	r3, {r3-r4}
+  99 0062 1A46     		mov	r2, r3
+ 100 0064 2346     		mov	r3, r4
+ 101 0066 FFF7FEFF 		bl	__aeabi_dadd
+ 102 006a 0346     		mov	r3, r0
+ 103 006c 0C46     		mov	r4, r1
+ 104 006e 1846     		mov	r0, r3
+ 105 0070 2146     		mov	r1, r4
+ 106 0072 FFF7FEFF 		bl	__aeabi_d2uiz
+ 107 0076 0346     		mov	r3, r0
+ 108 0078 9BB2     		uxth	r3, r3
+ 109 007a 1846     		mov	r0, r3
+ 110 007c FFF7FEFF 		bl	PWM_WriteCompare
+  60:main.c        **** }
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 4
+
+
+ 111              		.loc 1 60 0
+ 112 0080 00BF     		nop
+ 113 0082 98BD     		pop	{r3, r4, r7, pc}
+ 114              	.L3:
+ 115 0084 AFF30080 		.align	3
+ 116              	.L2:
+ 117 0088 00000000 		.word	0
+ 118 008c 00C05F40 		.word	1080016896
+ 119 0090 00000000 		.word	0
+ 120 0094 00F89140 		.word	1083308032
+ 121 0098 00B08D40 		.word	1083027456
+ 122 009c 00000000 		.word	temp
+ 123 00a0 00000000 		.word	default_compare
+ 124              		.cfi_endproc
+ 125              	.LFE64:
+ 126              		.size	MicroServoControl, .-MicroServoControl
+ 127              		.section	.rodata
+ 128              		.align	2
+ 129              	.LC0:
+ 130 0000 55415254 		.ascii	"UART Open\012\000"
+ 130      204F7065 
+ 130      6E0A00
+ 131              		.global	__aeabi_d2iz
+ 132 000b 00       		.align	2
+ 133              	.LC1:
+ 134 000c 74656D70 		.ascii	"temp:%i\012\000"
+ 134      3A25690A 
+ 134      00
+ 135              		.section	.text.main,"ax",%progbits
+ 136              		.align	2
+ 137              		.global	main
+ 138              		.thumb
+ 139              		.thumb_func
+ 140              		.type	main, %function
+ 141              	main:
+ 142              	.LFB65:
+  61:main.c        **** 
+  62:main.c        **** 
+  63:main.c        **** CY_ISR(MicroServoControl);
+  64:main.c        **** 
+  65:main.c        **** 
+  66:main.c        **** 
+  67:main.c        **** 
+  68:main.c        **** int main()
+  69:main.c        **** {
+ 143              		.loc 1 69 0
+ 144              		.cfi_startproc
+ 145              		@ args = 0, pretend = 0, frame = 104
+ 146              		@ frame_needed = 1, uses_anonymous_args = 0
+ 147 0000 90B5     		push	{r4, r7, lr}
+ 148              		.cfi_def_cfa_offset 12
+ 149              		.cfi_offset 4, -12
+ 150              		.cfi_offset 7, -8
+ 151              		.cfi_offset 14, -4
+ 152 0002 9BB0     		sub	sp, sp, #108
+ 153              		.cfi_def_cfa_offset 120
+ 154 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 5
+
+
+ 155              		.cfi_def_cfa_register 7
+  70:main.c        **** 	CYGlobalIntEnable;                        		/* Enable Global Interrupts */
+ 156              		.loc 1 70 0
+ 157              		.syntax unified
+ 158              	@ 70 "main.c" 1
+ 159 0006 62B6     		CPSIE   i
+ 160              	@ 0 "" 2
+  71:main.c        **** 	
+  72:main.c        ****     PWM_Start();
+ 161              		.loc 1 72 0
+ 162              		.thumb
+ 163              		.syntax unified
+ 164 0008 FFF7FEFF 		bl	PWM_Start
+  73:main.c        ****     ADC_Start();
+ 165              		.loc 1 73 0
+ 166 000c FFF7FEFF 		bl	ADC_Start
+  74:main.c        ****     UART_Start();
+ 167              		.loc 1 74 0
+ 168 0010 FFF7FEFF 		bl	UART_Start
+  75:main.c        ****     UART_PutString("UART Open\n");
+ 169              		.loc 1 75 0
+ 170 0014 0C48     		ldr	r0, .L6
+ 171 0016 FFF7FEFF 		bl	UART_PutString
+  76:main.c        ****     char buffer[100];
+  77:main.c        ****     ISR_MicroServoControl_StartEx(MicroServoControl);
+ 172              		.loc 1 77 0
+ 173 001a 0C48     		ldr	r0, .L6+4
+ 174 001c FFF7FEFF 		bl	ISR_MicroServoControl_StartEx
+ 175              	.L5:
+  78:main.c        ****     
+  79:main.c        ****     
+  80:main.c        ****     
+  81:main.c        **** 	for(;;)
+  82:main.c        ****     {
+  83:main.c        ****         
+  84:main.c        ****         
+  85:main.c        ****         sprintf(buffer, "temp:%i\n", (int)temp);
+ 176              		.loc 1 85 0 discriminator 1
+ 177 0020 0B4B     		ldr	r3, .L6+8
+ 178 0022 18CB     		ldmia	r3, {r3-r4}
+ 179 0024 1846     		mov	r0, r3
+ 180 0026 2146     		mov	r1, r4
+ 181 0028 FFF7FEFF 		bl	__aeabi_d2iz
+ 182 002c 0246     		mov	r2, r0
+ 183 002e 3B1D     		adds	r3, r7, #4
+ 184 0030 0849     		ldr	r1, .L6+12
+ 185 0032 1846     		mov	r0, r3
+ 186 0034 FFF7FEFF 		bl	sprintf
+  86:main.c        ****         UART_PutString(buffer);
+ 187              		.loc 1 86 0 discriminator 1
+ 188 0038 3B1D     		adds	r3, r7, #4
+ 189 003a 1846     		mov	r0, r3
+ 190 003c FFF7FEFF 		bl	UART_PutString
+  87:main.c        ****         
+  88:main.c        **** 		CyDelay(1);
+ 191              		.loc 1 88 0 discriminator 1
+ 192 0040 0120     		movs	r0, #1
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 6
+
+
+ 193 0042 FFF7FEFF 		bl	CyDelay
+  89:main.c        **** 	}
+ 194              		.loc 1 89 0 discriminator 1
+ 195 0046 EBE7     		b	.L5
+ 196              	.L7:
+ 197              		.align	2
+ 198              	.L6:
+ 199 0048 00000000 		.word	.LC0
+ 200 004c 00000000 		.word	MicroServoControl
+ 201 0050 00000000 		.word	temp
+ 202 0054 0C000000 		.word	.LC1
+ 203              		.cfi_endproc
+ 204              	.LFE65:
+ 205              		.size	main, .-main
+ 206              		.text
+ 207              	.Letext0:
+ 208              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 209              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 210              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 211              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 212              		.section	.debug_info,"",%progbits
+ 213              	.Ldebug_info0:
+ 214 0000 29010000 		.4byte	0x129
+ 215 0004 0400     		.2byte	0x4
+ 216 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 217 000a 04       		.byte	0x4
+ 218 000b 01       		.uleb128 0x1
+ 219 000c 6D000000 		.4byte	.LASF21
+ 220 0010 0C       		.byte	0xc
+ 221 0011 2E000000 		.4byte	.LASF22
+ 222 0015 40010000 		.4byte	.LASF23
+ 223 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 224 001d 00000000 		.4byte	0
+ 225 0021 00000000 		.4byte	.Ldebug_line0
+ 226 0025 02       		.uleb128 0x2
+ 227 0026 01       		.byte	0x1
+ 228 0027 06       		.byte	0x6
+ 229 0028 C3010000 		.4byte	.LASF0
+ 230 002c 02       		.uleb128 0x2
+ 231 002d 01       		.byte	0x1
+ 232 002e 08       		.byte	0x8
+ 233 002f 0B010000 		.4byte	.LASF1
+ 234 0033 02       		.uleb128 0x2
+ 235 0034 02       		.byte	0x2
+ 236 0035 05       		.byte	0x5
+ 237 0036 EB010000 		.4byte	.LASF2
+ 238 003a 02       		.uleb128 0x2
+ 239 003b 02       		.byte	0x2
+ 240 003c 07       		.byte	0x7
+ 241 003d 0E000000 		.4byte	.LASF3
+ 242 0041 03       		.uleb128 0x3
+ 243 0042 DB010000 		.4byte	.LASF9
+ 244 0046 02       		.byte	0x2
+ 245 0047 3F       		.byte	0x3f
+ 246 0048 4C000000 		.4byte	0x4c
+ 247 004c 02       		.uleb128 0x2
+ 248 004d 04       		.byte	0x4
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 7
+
+
+ 249 004e 05       		.byte	0x5
+ 250 004f 1E010000 		.4byte	.LASF4
+ 251 0053 02       		.uleb128 0x2
+ 252 0054 04       		.byte	0x4
+ 253 0055 07       		.byte	0x7
+ 254 0056 44000000 		.4byte	.LASF5
+ 255 005a 02       		.uleb128 0x2
+ 256 005b 08       		.byte	0x8
+ 257 005c 05       		.byte	0x5
+ 258 005d 00000000 		.4byte	.LASF6
+ 259 0061 02       		.uleb128 0x2
+ 260 0062 08       		.byte	0x8
+ 261 0063 07       		.byte	0x7
+ 262 0064 56000000 		.4byte	.LASF7
+ 263 0068 04       		.uleb128 0x4
+ 264 0069 04       		.byte	0x4
+ 265 006a 05       		.byte	0x5
+ 266 006b 696E7400 		.ascii	"int\000"
+ 267 006f 02       		.uleb128 0x2
+ 268 0070 04       		.byte	0x4
+ 269 0071 07       		.byte	0x7
+ 270 0072 21000000 		.4byte	.LASF8
+ 271 0076 03       		.uleb128 0x3
+ 272 0077 F5010000 		.4byte	.LASF10
+ 273 007b 03       		.byte	0x3
+ 274 007c 2C       		.byte	0x2c
+ 275 007d 41000000 		.4byte	0x41
+ 276 0081 02       		.uleb128 0x2
+ 277 0082 04       		.byte	0x4
+ 278 0083 04       		.byte	0x4
+ 279 0084 E5010000 		.4byte	.LASF11
+ 280 0088 02       		.uleb128 0x2
+ 281 0089 08       		.byte	0x8
+ 282 008a 04       		.byte	0x4
+ 283 008b 27010000 		.4byte	.LASF12
+ 284 008f 02       		.uleb128 0x2
+ 285 0090 01       		.byte	0x1
+ 286 0091 08       		.byte	0x8
+ 287 0092 19010000 		.4byte	.LASF13
+ 288 0096 02       		.uleb128 0x2
+ 289 0097 08       		.byte	0x8
+ 290 0098 04       		.byte	0x4
+ 291 0099 CF010000 		.4byte	.LASF14
+ 292 009d 02       		.uleb128 0x2
+ 293 009e 04       		.byte	0x4
+ 294 009f 07       		.byte	0x7
+ 295 00a0 04020000 		.4byte	.LASF15
+ 296 00a4 03       		.uleb128 0x3
+ 297 00a5 3F000000 		.4byte	.LASF16
+ 298 00a9 04       		.byte	0x4
+ 299 00aa 6C       		.byte	0x6c
+ 300 00ab 6F000000 		.4byte	0x6f
+ 301 00af 05       		.uleb128 0x5
+ 302 00b0 2E010000 		.4byte	.LASF24
+ 303 00b4 01       		.byte	0x1
+ 304 00b5 34       		.byte	0x34
+ 305 00b6 00000000 		.4byte	.LFB64
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 8
+
+
+ 306 00ba A4000000 		.4byte	.LFE64-.LFB64
+ 307 00be 01       		.uleb128 0x1
+ 308 00bf 9C       		.byte	0x9c
+ 309 00c0 06       		.uleb128 0x6
+ 310 00c1 3A000000 		.4byte	.LASF25
+ 311 00c5 01       		.byte	0x1
+ 312 00c6 44       		.byte	0x44
+ 313 00c7 68000000 		.4byte	0x68
+ 314 00cb 00000000 		.4byte	.LFB65
+ 315 00cf 58000000 		.4byte	.LFE65-.LFB65
+ 316 00d3 01       		.uleb128 0x1
+ 317 00d4 9C       		.byte	0x9c
+ 318 00d5 E9000000 		.4byte	0xe9
+ 319 00d9 07       		.uleb128 0x7
+ 320 00da FD010000 		.4byte	.LASF17
+ 321 00de 01       		.byte	0x1
+ 322 00df 4C       		.byte	0x4c
+ 323 00e0 E9000000 		.4byte	0xe9
+ 324 00e4 03       		.uleb128 0x3
+ 325 00e5 91       		.byte	0x91
+ 326 00e6 8C7F     		.sleb128 -116
+ 327 00e8 00       		.byte	0
+ 328 00e9 08       		.uleb128 0x8
+ 329 00ea 8F000000 		.4byte	0x8f
+ 330 00ee F9000000 		.4byte	0xf9
+ 331 00f2 09       		.uleb128 0x9
+ 332 00f3 9D000000 		.4byte	0x9d
+ 333 00f7 63       		.byte	0x63
+ 334 00f8 00       		.byte	0
+ 335 00f9 07       		.uleb128 0x7
+ 336 00fa FB000000 		.4byte	.LASF18
+ 337 00fe 01       		.byte	0x1
+ 338 00ff 30       		.byte	0x30
+ 339 0100 A4000000 		.4byte	0xa4
+ 340 0104 05       		.uleb128 0x5
+ 341 0105 03       		.byte	0x3
+ 342 0106 00000000 		.4byte	default_compare
+ 343 010a 0A       		.uleb128 0xa
+ 344 010b B6010000 		.4byte	.LASF19
+ 345 010f 05       		.byte	0x5
+ 346 0110 1207     		.2byte	0x712
+ 347 0112 16010000 		.4byte	0x116
+ 348 0116 0B       		.uleb128 0xb
+ 349 0117 76000000 		.4byte	0x76
+ 350 011b 0C       		.uleb128 0xc
+ 351 011c 35000000 		.4byte	.LASF20
+ 352 0120 01       		.byte	0x1
+ 353 0121 31       		.byte	0x31
+ 354 0122 88000000 		.4byte	0x88
+ 355 0126 05       		.uleb128 0x5
+ 356 0127 03       		.byte	0x3
+ 357 0128 00000000 		.4byte	temp
+ 358 012c 00       		.byte	0
+ 359              		.section	.debug_abbrev,"",%progbits
+ 360              	.Ldebug_abbrev0:
+ 361 0000 01       		.uleb128 0x1
+ 362 0001 11       		.uleb128 0x11
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 9
+
+
+ 363 0002 01       		.byte	0x1
+ 364 0003 25       		.uleb128 0x25
+ 365 0004 0E       		.uleb128 0xe
+ 366 0005 13       		.uleb128 0x13
+ 367 0006 0B       		.uleb128 0xb
+ 368 0007 03       		.uleb128 0x3
+ 369 0008 0E       		.uleb128 0xe
+ 370 0009 1B       		.uleb128 0x1b
+ 371 000a 0E       		.uleb128 0xe
+ 372 000b 55       		.uleb128 0x55
+ 373 000c 17       		.uleb128 0x17
+ 374 000d 11       		.uleb128 0x11
+ 375 000e 01       		.uleb128 0x1
+ 376 000f 10       		.uleb128 0x10
+ 377 0010 17       		.uleb128 0x17
+ 378 0011 00       		.byte	0
+ 379 0012 00       		.byte	0
+ 380 0013 02       		.uleb128 0x2
+ 381 0014 24       		.uleb128 0x24
+ 382 0015 00       		.byte	0
+ 383 0016 0B       		.uleb128 0xb
+ 384 0017 0B       		.uleb128 0xb
+ 385 0018 3E       		.uleb128 0x3e
+ 386 0019 0B       		.uleb128 0xb
+ 387 001a 03       		.uleb128 0x3
+ 388 001b 0E       		.uleb128 0xe
+ 389 001c 00       		.byte	0
+ 390 001d 00       		.byte	0
+ 391 001e 03       		.uleb128 0x3
+ 392 001f 16       		.uleb128 0x16
+ 393 0020 00       		.byte	0
+ 394 0021 03       		.uleb128 0x3
+ 395 0022 0E       		.uleb128 0xe
+ 396 0023 3A       		.uleb128 0x3a
+ 397 0024 0B       		.uleb128 0xb
+ 398 0025 3B       		.uleb128 0x3b
+ 399 0026 0B       		.uleb128 0xb
+ 400 0027 49       		.uleb128 0x49
+ 401 0028 13       		.uleb128 0x13
+ 402 0029 00       		.byte	0
+ 403 002a 00       		.byte	0
+ 404 002b 04       		.uleb128 0x4
+ 405 002c 24       		.uleb128 0x24
+ 406 002d 00       		.byte	0
+ 407 002e 0B       		.uleb128 0xb
+ 408 002f 0B       		.uleb128 0xb
+ 409 0030 3E       		.uleb128 0x3e
+ 410 0031 0B       		.uleb128 0xb
+ 411 0032 03       		.uleb128 0x3
+ 412 0033 08       		.uleb128 0x8
+ 413 0034 00       		.byte	0
+ 414 0035 00       		.byte	0
+ 415 0036 05       		.uleb128 0x5
+ 416 0037 2E       		.uleb128 0x2e
+ 417 0038 00       		.byte	0
+ 418 0039 3F       		.uleb128 0x3f
+ 419 003a 19       		.uleb128 0x19
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 10
+
+
+ 420 003b 03       		.uleb128 0x3
+ 421 003c 0E       		.uleb128 0xe
+ 422 003d 3A       		.uleb128 0x3a
+ 423 003e 0B       		.uleb128 0xb
+ 424 003f 3B       		.uleb128 0x3b
+ 425 0040 0B       		.uleb128 0xb
+ 426 0041 27       		.uleb128 0x27
+ 427 0042 19       		.uleb128 0x19
+ 428 0043 11       		.uleb128 0x11
+ 429 0044 01       		.uleb128 0x1
+ 430 0045 12       		.uleb128 0x12
+ 431 0046 06       		.uleb128 0x6
+ 432 0047 40       		.uleb128 0x40
+ 433 0048 18       		.uleb128 0x18
+ 434 0049 9642     		.uleb128 0x2116
+ 435 004b 19       		.uleb128 0x19
+ 436 004c 00       		.byte	0
+ 437 004d 00       		.byte	0
+ 438 004e 06       		.uleb128 0x6
+ 439 004f 2E       		.uleb128 0x2e
+ 440 0050 01       		.byte	0x1
+ 441 0051 3F       		.uleb128 0x3f
+ 442 0052 19       		.uleb128 0x19
+ 443 0053 03       		.uleb128 0x3
+ 444 0054 0E       		.uleb128 0xe
+ 445 0055 3A       		.uleb128 0x3a
+ 446 0056 0B       		.uleb128 0xb
+ 447 0057 3B       		.uleb128 0x3b
+ 448 0058 0B       		.uleb128 0xb
+ 449 0059 49       		.uleb128 0x49
+ 450 005a 13       		.uleb128 0x13
+ 451 005b 11       		.uleb128 0x11
+ 452 005c 01       		.uleb128 0x1
+ 453 005d 12       		.uleb128 0x12
+ 454 005e 06       		.uleb128 0x6
+ 455 005f 40       		.uleb128 0x40
+ 456 0060 18       		.uleb128 0x18
+ 457 0061 9642     		.uleb128 0x2116
+ 458 0063 19       		.uleb128 0x19
+ 459 0064 01       		.uleb128 0x1
+ 460 0065 13       		.uleb128 0x13
+ 461 0066 00       		.byte	0
+ 462 0067 00       		.byte	0
+ 463 0068 07       		.uleb128 0x7
+ 464 0069 34       		.uleb128 0x34
+ 465 006a 00       		.byte	0
+ 466 006b 03       		.uleb128 0x3
+ 467 006c 0E       		.uleb128 0xe
+ 468 006d 3A       		.uleb128 0x3a
+ 469 006e 0B       		.uleb128 0xb
+ 470 006f 3B       		.uleb128 0x3b
+ 471 0070 0B       		.uleb128 0xb
+ 472 0071 49       		.uleb128 0x49
+ 473 0072 13       		.uleb128 0x13
+ 474 0073 02       		.uleb128 0x2
+ 475 0074 18       		.uleb128 0x18
+ 476 0075 00       		.byte	0
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 11
+
+
+ 477 0076 00       		.byte	0
+ 478 0077 08       		.uleb128 0x8
+ 479 0078 01       		.uleb128 0x1
+ 480 0079 01       		.byte	0x1
+ 481 007a 49       		.uleb128 0x49
+ 482 007b 13       		.uleb128 0x13
+ 483 007c 01       		.uleb128 0x1
+ 484 007d 13       		.uleb128 0x13
+ 485 007e 00       		.byte	0
+ 486 007f 00       		.byte	0
+ 487 0080 09       		.uleb128 0x9
+ 488 0081 21       		.uleb128 0x21
+ 489 0082 00       		.byte	0
+ 490 0083 49       		.uleb128 0x49
+ 491 0084 13       		.uleb128 0x13
+ 492 0085 2F       		.uleb128 0x2f
+ 493 0086 0B       		.uleb128 0xb
+ 494 0087 00       		.byte	0
+ 495 0088 00       		.byte	0
+ 496 0089 0A       		.uleb128 0xa
+ 497 008a 34       		.uleb128 0x34
+ 498 008b 00       		.byte	0
+ 499 008c 03       		.uleb128 0x3
+ 500 008d 0E       		.uleb128 0xe
+ 501 008e 3A       		.uleb128 0x3a
+ 502 008f 0B       		.uleb128 0xb
+ 503 0090 3B       		.uleb128 0x3b
+ 504 0091 05       		.uleb128 0x5
+ 505 0092 49       		.uleb128 0x49
+ 506 0093 13       		.uleb128 0x13
+ 507 0094 3F       		.uleb128 0x3f
+ 508 0095 19       		.uleb128 0x19
+ 509 0096 3C       		.uleb128 0x3c
+ 510 0097 19       		.uleb128 0x19
+ 511 0098 00       		.byte	0
+ 512 0099 00       		.byte	0
+ 513 009a 0B       		.uleb128 0xb
+ 514 009b 35       		.uleb128 0x35
+ 515 009c 00       		.byte	0
+ 516 009d 49       		.uleb128 0x49
+ 517 009e 13       		.uleb128 0x13
+ 518 009f 00       		.byte	0
+ 519 00a0 00       		.byte	0
+ 520 00a1 0C       		.uleb128 0xc
+ 521 00a2 34       		.uleb128 0x34
+ 522 00a3 00       		.byte	0
+ 523 00a4 03       		.uleb128 0x3
+ 524 00a5 0E       		.uleb128 0xe
+ 525 00a6 3A       		.uleb128 0x3a
+ 526 00a7 0B       		.uleb128 0xb
+ 527 00a8 3B       		.uleb128 0x3b
+ 528 00a9 0B       		.uleb128 0xb
+ 529 00aa 49       		.uleb128 0x49
+ 530 00ab 13       		.uleb128 0x13
+ 531 00ac 3F       		.uleb128 0x3f
+ 532 00ad 19       		.uleb128 0x19
+ 533 00ae 02       		.uleb128 0x2
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 12
+
+
+ 534 00af 18       		.uleb128 0x18
+ 535 00b0 00       		.byte	0
+ 536 00b1 00       		.byte	0
+ 537 00b2 00       		.byte	0
+ 538              		.section	.debug_aranges,"",%progbits
+ 539 0000 24000000 		.4byte	0x24
+ 540 0004 0200     		.2byte	0x2
+ 541 0006 00000000 		.4byte	.Ldebug_info0
+ 542 000a 04       		.byte	0x4
+ 543 000b 00       		.byte	0
+ 544 000c 0000     		.2byte	0
+ 545 000e 0000     		.2byte	0
+ 546 0010 00000000 		.4byte	.LFB64
+ 547 0014 A4000000 		.4byte	.LFE64-.LFB64
+ 548 0018 00000000 		.4byte	.LFB65
+ 549 001c 58000000 		.4byte	.LFE65-.LFB65
+ 550 0020 00000000 		.4byte	0
+ 551 0024 00000000 		.4byte	0
+ 552              		.section	.debug_ranges,"",%progbits
+ 553              	.Ldebug_ranges0:
+ 554 0000 00000000 		.4byte	.LFB64
+ 555 0004 A4000000 		.4byte	.LFE64
+ 556 0008 00000000 		.4byte	.LFB65
+ 557 000c 58000000 		.4byte	.LFE65
+ 558 0010 00000000 		.4byte	0
+ 559 0014 00000000 		.4byte	0
+ 560              		.section	.debug_line,"",%progbits
+ 561              	.Ldebug_line0:
+ 562 0000 91010000 		.section	.debug_str,"MS",%progbits,1
+ 562      02004A01 
+ 562      00000201 
+ 562      FB0E0D00 
+ 562      01010101 
+ 563              	.LASF6:
+ 564 0000 6C6F6E67 		.ascii	"long long int\000"
+ 564      206C6F6E 
+ 564      6720696E 
+ 564      7400
+ 565              	.LASF3:
+ 566 000e 73686F72 		.ascii	"short unsigned int\000"
+ 566      7420756E 
+ 566      7369676E 
+ 566      65642069 
+ 566      6E7400
+ 567              	.LASF8:
+ 568 0021 756E7369 		.ascii	"unsigned int\000"
+ 568      676E6564 
+ 568      20696E74 
+ 568      00
+ 569              	.LASF22:
+ 570 002e 6D61696E 		.ascii	"main.c\000"
+ 570      2E6300
+ 571              	.LASF20:
+ 572 0035 74656D70 		.ascii	"temp\000"
+ 572      00
+ 573              	.LASF25:
+ 574 003a 6D61696E 		.ascii	"main\000"
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 13
+
+
+ 574      00
+ 575              	.LASF16:
+ 576 003f 75696E74 		.ascii	"uint\000"
+ 576      00
+ 577              	.LASF5:
+ 578 0044 6C6F6E67 		.ascii	"long unsigned int\000"
+ 578      20756E73 
+ 578      69676E65 
+ 578      6420696E 
+ 578      7400
+ 579              	.LASF7:
+ 580 0056 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 580      206C6F6E 
+ 580      6720756E 
+ 580      7369676E 
+ 580      65642069 
+ 581              	.LASF21:
+ 582 006d 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 582      43313120 
+ 582      352E342E 
+ 582      31203230 
+ 582      31363036 
+ 583 00a0 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 583      20726576 
+ 583      6973696F 
+ 583      6E203233 
+ 583      37373135 
+ 584 00d3 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 584      66756E63 
+ 584      74696F6E 
+ 584      2D736563 
+ 584      74696F6E 
+ 585              	.LASF18:
+ 586 00fb 64656661 		.ascii	"default_compare\000"
+ 586      756C745F 
+ 586      636F6D70 
+ 586      61726500 
+ 587              	.LASF1:
+ 588 010b 756E7369 		.ascii	"unsigned char\000"
+ 588      676E6564 
+ 588      20636861 
+ 588      7200
+ 589              	.LASF13:
+ 590 0119 63686172 		.ascii	"char\000"
+ 590      00
+ 591              	.LASF4:
+ 592 011e 6C6F6E67 		.ascii	"long int\000"
+ 592      20696E74 
+ 592      00
+ 593              	.LASF12:
+ 594 0127 646F7562 		.ascii	"double\000"
+ 594      6C6500
+ 595              	.LASF24:
+ 596 012e 4D696372 		.ascii	"MicroServoControl\000"
+ 596      6F536572 
+ 596      766F436F 
+ 596      6E74726F 
+ARM GAS  C:\Users\oars0\AppData\Local\Temp\ccoK4Ugp.s 			page 14
+
+
+ 596      6C00
+ 597              	.LASF23:
+ 598 0140 433A5C55 		.ascii	"C:\\Users\\oars0\\Documents\\GitHub\\Interfacing_La"
+ 598      73657273 
+ 598      5C6F6172 
+ 598      73305C44 
+ 598      6F63756D 
+ 599 016e 625C4C61 		.ascii	"b\\Lab_3_motors\\PSOC_Creator\\MicroServo+JoystickC"
+ 599      625F335F 
+ 599      6D6F746F 
+ 599      72735C50 
+ 599      534F435F 
+ 600 019e 6F6E7472 		.ascii	"ontrol\\MicroServo.cydsn\000"
+ 600      6F6C5C4D 
+ 600      6963726F 
+ 600      53657276 
+ 600      6F2E6379 
+ 601              	.LASF19:
+ 602 01b6 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 602      52784275 
+ 602      66666572 
+ 602      00
+ 603              	.LASF0:
+ 604 01c3 7369676E 		.ascii	"signed char\000"
+ 604      65642063 
+ 604      68617200 
+ 605              	.LASF14:
+ 606 01cf 6C6F6E67 		.ascii	"long double\000"
+ 606      20646F75 
+ 606      626C6500 
+ 607              	.LASF9:
+ 608 01db 5F5F696E 		.ascii	"__int32_t\000"
+ 608      7433325F 
+ 608      7400
+ 609              	.LASF11:
+ 610 01e5 666C6F61 		.ascii	"float\000"
+ 610      7400
+ 611              	.LASF2:
+ 612 01eb 73686F72 		.ascii	"short int\000"
+ 612      7420696E 
+ 612      7400
+ 613              	.LASF10:
+ 614 01f5 696E7433 		.ascii	"int32_t\000"
+ 614      325F7400 
+ 615              	.LASF17:
+ 616 01fd 62756666 		.ascii	"buffer\000"
+ 616      657200
+ 617              	.LASF15:
+ 618 0204 73697A65 		.ascii	"sizetype\000"
+ 618      74797065 
+ 618      00
+ 619              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

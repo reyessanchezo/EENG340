@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="ServoAndStepper\ServoAndStepper">
+<ExpandedNodeIds>
+<v>ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper\TopDesign</v>
+<v>ServoAndStepper\ServoAndStepper\ServoAndStepper.cydwr</v>
+<v>ServoAndStepper\ServoAndStepper\ServoAndStepper.cydwr\Pins</v>
+<v>ServoAndStepper\ServoAndStepper\ServoAndStepper.cydwr\Analog</v>
+<v>ServoAndStepper\ServoAndStepper\ServoAndStepper.cydwr\Clocks</v>
+<v>ServoAndStepper\ServoAndStepper\ServoAndStepper.cydwr\Interrupts</v>
+<v>ServoAndStepper\ServoAndStepper\ServoAndStepper.cydwr\DMA</v>
+<v>ServoAndStepper\ServoAndStepper\ServoAndStepper.cydwr\System</v>
+<v>ServoAndStepper\ServoAndStepper\ServoAndStepper.cydwr\Directives</v>
+<v>ServoAndStepper\ServoAndStepper\ServoAndStepper.cydwr\Flash Security</v>
+<v>ServoAndStepper\ServoAndStepper\ServoAndStepper.cydwr\EEPROM</v>
+<v>ServoAndStepper\ServoAndStepper\Header Files</v>
+<v>ServoAndStepper\ServoAndStepper\Header Files\cyapicallbacks.h</v>
+<v>ServoAndStepper\ServoAndStepper\Source Files</v>
+<v>ServoAndStepper\ServoAndStepper\Source Files\main.c</v>
+<v>ServoAndStepper\ServoAndStepper\Generated_Source</v>
+<v>ServoAndStepper\ServoAndStepper\Generated_Source\PSoC5</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper\TopDesign</v>
+<v>ServoAndStepper\ServoAndStepper\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper\TopDesign</v>
+<v>ServoAndStepper\ServoAndStepper\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_FinalBuf_dma.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_INT.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_IntClock.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_IRQ.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PM.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_Bypass.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_INT.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_PM.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_TempBuf_dma.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ISR_Clock.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ISR_MicroServoControl.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ISR_StepperControl.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\JoyX.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\JoyY.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_Clock.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_Out.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_Servo.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_Servo_PM.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_Stepper.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_Stepper_PM.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\Stepper_Clock.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\Stepper_Direction.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\Stepper_Step.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_IntClock.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\ServoAndStepper.elf</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\ServoAndStepper.hex</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\ServoAndStepper.map</v>
+<v>ServoAndStepper\ServoAndStepper\ServoAndStepper.gpdsc</v>
+<v>ServoAndStepper\ServoAndStepper\ServoAndStepper.rpt</v>
+<v>ServoAndStepper\ServoAndStepper\ServoAndStepper_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_FinalBuf_dma.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_INT.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_IntClock.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_IRQ.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PM.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_Bypass.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_INT.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_SAR_PM.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_TempBuf_dma.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ISR_Clock.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ISR_MicroServoControl.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\ISR_StepperControl.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\JoyX.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\JoyY.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_Clock.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_Out.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_Servo.lst</v>
+<v>ServoAndStepper\ServoAndStepper\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_Servo_PM.lst</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper\PSoC 5LP Architecture TRM</v>
+<v>ServoAndStepper\ServoAndStepper\CY8C58LP Family Datasheet</v>
+<v>ServoAndStepper\ServoAndStepper\System Reference Guides</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper</v>
+<v>ServoAndStepper\ServoAndStepper\PSoC 5LP Architecture TRM</v>
+<v>ServoAndStepper\ServoAndStepper\CY8C58LP Family Datasheet</v>
+<v>ServoAndStepper\ServoAndStepper\System Reference Guides</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\ServoAndStepper.cydsn\main.c" />
+<name v=".\ServoAndStepper.cydsn\ServoAndStepper.cydwr" />
+<name v=".\ServoAndStepper.cydsn\TopDesign\TopDesign.cysch" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1085, 501" SelectedTabbedMdiWindow="2bef5a2f-bc1a-4fe0-b5bb-0aee92200845"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="b1a0a0eb-ac2c-4036-a3a4-d168346deac0" /><DocumentWindow Key="C:\Users\oars0\Documents\GitHub\Interfacing_Lab\Lab_3_motors\PSOC_Creator\ServoAndStepper\ServoAndStepper.cydsn\main.c" Guid="2bef5a2f-bc1a-4fe0-b5bb-0aee92200845" /><DocumentWindow Key="C:\Users\oars0\Documents\GitHub\Interfacing_Lab\Lab_3_motors\PSOC_Creator\ServoAndStepper\ServoAndStepper.cydsn\ServoAndStepper.cydwr" Guid="ad8d8034-fcdb-4bb1-8d6c-3b122fad5c09" /><DocumentWindow Key="C:\Users\oars0\Documents\GitHub\Interfacing_Lab\Lab_3_motors\PSOC_Creator\ServoAndStepper\ServoAndStepper.cydsn\TopDesign\TopDesign.cysch" Guid="7dac0719-6ff6-4eb0-8f62-bffc7c42113e" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>
